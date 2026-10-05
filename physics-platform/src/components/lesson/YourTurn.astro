@@ -1,0 +1,9 @@
+---
+/** "Your turn": one item right after a worked example, similar to it. Put exactly one item inside. */
+import { ui, langOfPath } from '../../i18n/ui';
+const L = ui(langOfPath(Astro.url.pathname));
+---
+<div class="am-turn not-content">
+  <div class="am-turn-h">{L.yourTurnTitle}</div>
+  <slot />
+</div>

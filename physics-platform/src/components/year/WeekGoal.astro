@@ -1,0 +1,18 @@
+---
+import { ui, langOfPath } from '../../i18n/ui';
+interface Props { perWeek: number }
+const { perWeek } = Astro.props;
+const L = ui(langOfPath(Astro.url.pathname));
+const uid = `goal-${Math.random().toString(36).slice(2, 8)}`;
+---
+<div class="am-week" data-week data-default={perWeek}>
+  <span class="am-eyebrow">{L.thisWeek}</span>
+  <div class="am-week-dots" aria-hidden="true"></div>
+  <p class="am-week-text">{L.weekText(0, perWeek)}</p>
+  <p class="am-week-streak am-small"></p>
+  <label class="am-small" for={uid}>{L.goal}
+    <select id={uid}>
+      {[2, 3, 4, 5, 6].map((n) => <option value={n} selected={n === perWeek}>{L.goalOption(n, n === perWeek)}</option>)}
+    </select>
+  </label>
+</div>

@@ -1,0 +1,20 @@
+---
+import type { Step } from '../../lib/plan';
+import { ui, langOfPath } from '../../i18n/ui';
+interface Props { seq: Step[]; year: string }
+const { seq, year } = Astro.props;
+const L = ui(langOfPath(Astro.url.pathname));
+const data = seq.map((s) => ({
+  id: s.id, title: s.title, href: s.href, unitHref: s.unitHref, unitId: s.unitId,
+  label: s.unitN != null ? L.nextLabel(s.unitN, s.unitTitle!, s.n!, s.of!) : `${s.semester} · ${L.lessons(s.periods)}`,
+}));
+// Without JavaScript: the first lesson on the site (year-ui.ts picks the pupil's next one).
+const first = data.find((d) => d.href) ?? data[0];
+---
+<div class="am-next" data-next data-year={year} data-seq={JSON.stringify(data)}>
+  <span class="am-eyebrow">{L.nextOnSite}</span>
+  <p class="am-next-title">{first?.title}</p>
+  <p class="am-next-meta">{first?.label}</p>
+  <a class="am-next-go am-cta" href={first?.href ?? `${first?.unitHref}#${first?.id}`}>{L.open}</a>
+  <p class="am-next-note am-small"></p>
+</div>

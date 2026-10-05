@@ -1,0 +1,101 @@
+---
+/** Two parallel forms of one formative unit check, with outcome-level feedback. */
+import { langOfPath } from '../../i18n/ui';
+const lt = langOfPath(Astro.url.pathname) === 'lt';
+---
+<div class="am-unit-check" data-unit-check data-lang={lt ? 'lt' : 'en'}>
+  <div class="am-unit-check-bar not-content">
+    <span class="am-unit-check-current" data-current-form>{lt ? 'A variantas' : 'Form A'}</span>
+    <button type="button" class="am-btn" data-switch-form disabled>{lt ? 'Bandyk dar kartą: B variantas' : 'Try fresh questions: Form B'}</button>
+  </div>
+  <slot />
+  <section class="am-unit-check-results not-content">
+    <h3>{lt ? 'Rezultatai pagal gebėjimą' : 'Results by outcome'}</h3>
+    <p data-unit-progress aria-live="polite" aria-atomic="true"></p>
+    <ul data-unit-outcomes></ul>
+  </section>
+</div>
+<script>
+  import { load, getPref, setPref, isDone, setDone } from '../../lib/progress';
+  const $$ = <T extends Element = HTMLElement>(q: string, root: ParentNode = document) => [...root.querySelectorAll<T>(q)];
+  function initUnitCheck(box: HTMLElement) {
+    const lesson = box.closest<HTMLElement>('.am-lesson');
+    if (!lesson) return;
+    const planId = lesson.dataset.planId || '';
+    const slug = lesson.dataset.slug || '';
+    const lt = box.dataset.lang === 'lt';
+    const forms = $$<HTMLElement>('.am-check-form', box);
+    const formA = forms.find(f => f.dataset.form === 'a')!;
+    const formB = forms.find(f => f.dataset.form === 'b')!;
+    if (!formA || !formB) return;
+    const switchBtn = box.querySelector<HTMLButtonElement>('[data-switch-form]')!;
+    const current = box.querySelector<HTMLElement>('[data-current-form]')!;
+    const progress = box.querySelector<HTMLElement>('[data-unit-progress]')!;
+    const list = box.querySelector<HTMLElement>('[data-unit-outcomes]')!;
+    const pref = `checkForm.${slug}`;
+    let active = getPref(pref) === 'b' ? 'b' : 'a';
+    function contributions(form: HTMLElement, records: Record<string, { ok: boolean; marks?: boolean[] }>) {
+      const groups = new Map<string, { wording: string; values: (boolean | undefined)[] }>();
+      for (const item of $$<HTMLElement>('.am-item[data-id]', form)) {
+        const rec = records[item.dataset.id || ''];
+        const itemIds = (item.dataset.outcome || '').split(' ').filter(Boolean);
+        const marks = $$<HTMLElement>('.am-mark', item);
+        const parts = marks.length ? marks.map((mark, i) => ({ ids: (mark.dataset.outcome || item.dataset.outcome || '').split(' ').filter(Boolean), value: rec?.marks?.[i] ?? (rec ? rec.ok : undefined) })) : [{ ids: itemIds, value: rec?.ok }];
+        for (const part of parts) for (const id of part.ids) {
+          const span = $$<HTMLElement>('.am-outcome', item).find((x) => x.textContent?.trim() === id);
+          const g = groups.get(id) || { wording: span?.title || id, values: [] };
+          g.values.push(part.value);
+          groups.set(id, g);
+        }
+      }
+      return groups;
+    }
+    function refresh() {
+      const p = load();
+      const records = p.lessons[slug]?.items || {};
+      const aItems = $$<HTMLElement>('.am-item[data-id]', formA);
+      const aDone = aItems.length > 0 && aItems.every(i => records[i.dataset.id || '']);
+      if (active === 'b' && !aDone) active = 'a';
+      formA.hidden = active !== 'a'; formB.hidden = active !== 'b';
+      current.textContent = lt ? `${active.toUpperCase()} variantas` : `Form ${active.toUpperCase()}`;
+      switchBtn.disabled = !aDone;
+      switchBtn.textContent = active === 'a' ? (lt ? 'Bandyk dar kartą: B variantas' : 'Try fresh questions: Form B') : (lt ? 'Peržiūrėti A variantą' : 'Review Form A');
+      const form = active === 'a' ? formA : formB;
+      const items = $$<HTMLElement>('.am-item[data-id]', form);
+      const attempted = items.filter(i => records[i.dataset.id || '']).length;
+      const progressText = lt ? `Atsakyta į ${attempted} iš ${items.length} užduočių.` : `${attempted} of ${items.length} questions answered.`;
+      if (progress.textContent !== progressText) progress.textContent = progressText;
+      const groups = contributions(form, records);
+      list.replaceChildren();
+      for (const [id, g] of groups) {
+        const status = g.values.every(v => v === undefined) ? (lt ? 'Dar nebandyta' : 'Not yet tried') : g.values.every(v => v === true) ? (lt ? 'Įtvirtinta' : 'Secure') : (lt ? 'Dar pasipraktikuok' : 'Practise again');
+        const li = document.createElement('li');
+        li.className = g.values.every(v => v === true) ? 'am-outcome-result is-secure' : 'am-outcome-result';
+        const name = document.createElement('span'); name.textContent = `${id} · ${g.wording}`;
+        const result = document.createElement('strong'); result.textContent = status;
+        li.append(name, result); list.appendChild(li);
+      }
+      if (attempted === items.length && items.length && planId && !isDone(planId)) setDone(planId, true);
+    }
+    switchBtn.addEventListener('click', () => { if (switchBtn.disabled) return; active = active === 'a' ? 'b' : 'a'; setPref(pref, active); refresh(); });
+    document.addEventListener('am:progress', refresh);
+    refresh();
+  }
+  document.querySelectorAll<HTMLElement>('[data-unit-check]').forEach(initUnitCheck);
+</script>
+<style is:global>
+  .am-unit-check { display: grid; gap: 1rem; }
+  .am-unit-check-bar { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; }
+  .am-unit-check-current { font-weight: 700; }
+  .am-unit-check-results { border-top: 1px solid var(--am-line); padding-top: 1rem; }
+  .am-unit-check-results ul { list-style: none; padding: 0; display: grid; gap: .4rem; }
+  .am-outcome-result { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--am-line); padding: .35rem 0; }
+  .am-outcome-result strong { white-space: nowrap; }
+  .am-outcome-result.is-secure strong { color: var(--am-ok); }
+  .am-print .am-unit-check-bar, .am-print .am-unit-check-results, .am-print .am-check-form[data-form="b"] { display: none !important; }
+  .am-print .am-check-form[data-form="a"] { display: block !important; }
+  @media print {
+    .am-unit-check-bar, .am-unit-check-results, .am-check-form[data-form="b"] { display: none !important; }
+    .am-check-form[data-form="a"] { display: block !important; }
+  }
+</style>

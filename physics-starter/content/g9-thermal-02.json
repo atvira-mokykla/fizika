@@ -1,0 +1,161 @@
+{
+  "id": "g9-thermal-02",
+  "version": "0.2.0-draft",
+  "language": "lt",
+  "grade": 9,
+  "title": "Šiluma ir temperatūra: ką rodo grafikas?",
+  "status": "draft",
+  "licence": "CC-BY-SA-4.0",
+  "programme_nodes": [
+    "lt-physics-g9-02"
+  ],
+  "objectives_lt": [
+    "Apibūdinti savitąją šilumą ir taikyti Q = mcΔT, kai būsena nekinta.",
+    "Pagal lentelę nubraižyti ir skaityti temperatūros kitimo grafiką, nurodyti modelio ribas.",
+    "Palyginti šilumos kiekį keičiant vandens masę ir pateikti atsakymą su vienetu."
+  ],
+  "achievement_areas": [
+    "B",
+    "D",
+    "E"
+  ],
+  "prerequisites_lt": [
+    "Masės vienetai g ir kg.",
+    "Temperatūros skirtumas.",
+    "Daugyba, dalyba ir lentelės skaitymas."
+  ],
+  "core_minutes": 30,
+  "slot_minutes": 45,
+  "equipment_lt": [
+    "Užduoties lapas arba ekranas.",
+    "Skaičiuotuvas (nebūtinas)."
+  ],
+  "safety_lt": "Šioje pamokoje nagrinėjami pateikti duomenys. Nereikia kaitinti vandens namuose. Tikri matavimai numatomi atskiroje mokytojo prižiūrimoje veikloje.",
+  "data_provenance": {
+    "kind": "synthetic",
+    "note_lt": "Lentelė sukurta idealiam modeliui iliustruoti. Tai nėra mokinio ar autoriaus išmatuoti duomenys."
+  },
+  "review": {
+    "physics": "pending practising human reviewer",
+    "classroom": "pending practising Lithuanian physics teacher",
+    "scope_mapping": "editorial mapping prepared; human sign-off pending"
+  },
+  "source_ids": [
+    "LT-BP-LIVE",
+    "LT-PLAN-9-2026"
+  ],
+  "blocks": [
+    {
+      "id": "start",
+      "type": "question",
+      "title_lt": "Prieš pradedant",
+      "body_lt": "Prisiminimas: nurodyk vieną vidinės energijos kitimo šilumos perdavimu pavyzdį. Du vienodos temperatūros vandens indai turi skirtingą vandens masę. Ar abiem pašildyti 10 °C reikės vienodo šilumos kiekio? Parašyk prognozę ir priežastį.",
+      "worksheet_lines": 3
+    },
+    {
+      "id": "meaning",
+      "type": "explanation",
+      "title_lt": "Temperatūra ir šilumos kiekis",
+      "body_lt": "Temperatūra apibūdina kūno šiluminę būseną. Šilumos kiekis Q apibūdina perduotą energiją dėl temperatūrų skirtumo; jis matuojamas džauliais (J). Vien pagal temperatūrą negalima palyginti dviejų skirtingų kūnų vidinės energijos. Kai medžiagos būsena nekinta, šildymo ar vėsimo uždaviniuose taikome Q = mcΔT. Čia c – savitoji šiluma, m – masė, o ΔT = T_galutinė − T_pradinė. Šioje pamokoje Q teigiamas, kai vanduo gauna šilumos. Savitoji šiluma c nurodo, kiek šilumos reikia 1 kg medžiagos temperatūrai pakeisti 1 K, kai būsena nekinta; skirtingoms medžiagoms c skiriasi. Šios pamokos vandens modelyje naudojame c = 4200 J/(kg·K).",
+      "worksheet_lines": 0
+    },
+    {
+      "id": "heating-table",
+      "type": "table",
+      "title_lt": "Idealaus šildymo modelio duomenys",
+      "body_lt": "Modelis: 0,20 kg vandens, pastovi 42 W šildymo galia, c = 4200 J/(kg·K), visa perduota energija šildo vandenį, nuostolių ir indo šiluminės talpos nepaisome. Tai iliustraciniai, ne išmatuoti duomenys.",
+      "columns_lt": [
+        "Laikas t (s)",
+        "Temperatūra T (°C)"
+      ],
+      "rows": [
+        [
+          0,
+          20
+        ],
+        [
+          50,
+          22.5
+        ],
+        [
+          100,
+          25
+        ],
+        [
+          150,
+          27.5
+        ],
+        [
+          200,
+          30
+        ]
+      ],
+      "worksheet_lines": 0
+    },
+    {
+      "id": "graph",
+      "type": "question",
+      "title_lt": "Perskaityk ir pavaizduok",
+      "body_lt": "Nubraižyk T priklausomybės nuo t grafiką. Ašyse nurodyk dydžius ir vienetus. Kiek laipsnių temperatūra pakito per 100 s? Ką reiškia tiesios linijos nuolydis? Kodėl tikras grafikas galėtų skirtis nuo šio modelio?",
+      "worksheet_lines": 5,
+      "graph": "blank"
+    },
+    {
+      "id": "example",
+      "type": "worked-example",
+      "title_lt": "Kiek energijos perduota vandeniui?",
+      "body_lt": "Per 200 s temperatūra pakito nuo 20 °C iki 30 °C, todėl ΔT = 10 °C = 10 K. Q = 0,20 kg × 4200 J/(kg·K) × 10 K = 8400 J = 8,4 kJ. Temperatūros SKIRTUMO skaitinė vertė kelvinais ir Celsijaus laipsniais vienoda; absoliuti 20 °C temperatūra nėra 20 K. Šį rezultatą patvirtina modelio energija Pt = 42 W × 200 s = 8400 J.",
+      "worksheet_lines": 0
+    },
+    {
+      "id": "practice",
+      "type": "quantity-question",
+      "title_lt": "Pritaikyk kitai masei",
+      "body_lt": "0,40 kg vandens temperatūra padidėja 10 °C. Būsena nekinta. c = 4200 J/(kg·K). Apskaičiuok vandens gautą šilumos kiekį ir nurodyk vienetą. Atsakymą gali pateikti J arba kJ.",
+      "checker": {
+        "status": "learning-mode-v1",
+        "quantity": "energy-transfer",
+        "expected_si": 16800,
+        "si_unit": "J",
+        "accepted_units": [
+          "J",
+          "kJ"
+        ],
+        "absolute_tolerance_si": 0.01,
+        "relative_tolerance": 0,
+        "sign_convention_lt": "Vandens gautas šilumos kiekis teigiamas. Duomenys šiame mokomajame modelyje laikomi tiksliais; matavimo paklaida nevertinama."
+      },
+      "worksheet_lines": 3
+    },
+    {
+      "id": "exit",
+      "type": "retrieval",
+      "title_lt": "Patikrink supratimą",
+      "body_lt": "Be pavyzdžio užrašyk: (1) kodėl vienoda temperatūra nereiškia vienodos vidinės energijos; (2) ką reiškia c; (3) kokią sąlygą būtina patikrinti prieš taikant Q = mcΔT. Prie šių klausimų grįšime kitoje pamokoje.",
+      "worksheet_lines": 3
+    }
+  ],
+  "teacher": {
+    "timing_lt": "3 min prognozė; 5 min sąvokos; 9 min lentelė ir grafikas; 5 min pavyzdys; 5 min savarankiška užduotis; 3 min baigiamieji klausimai. Likęs laikas – aptarimui ir darbo tempui. Laikas dar netikrintas klasėje.",
+    "answers_lt": {
+      "start": "Didesnei tos pačios medžiagos masei reikia daugiau šilumos, jei vienodas temperatūros pokytis ir būsena nekinta.",
+      "graph": "Per 100 s temperatūra padidėja 5 °C. Nuolydis 0,05 °C/s nusako modelio šildymo spartą. Tikrovėje dalis energijos šildo indą ir perduodama aplinkai; galia gali kisti.",
+      "practice": "Q = 0,40 × 4200 × 10 = 16800 J = 16,8 kJ.",
+      "exit": "Vidinė energija priklauso ir nuo medžiagos, kiekio, būsenos. c nurodo šilumos kiekį, reikalingą 1 kg medžiagos temperatūrai pakeisti 1 K, kai būsena nekinta. Formulė netinka vien fazinio virsmo šilumai apskaičiuoti."
+    },
+    "misconceptions_lt": [
+      "Šiluma laikoma kūne saugoma medžiaga.",
+      "Temperatūra painiojama su energija.",
+      "Celsijaus temperatūra tiesiog pakeičiama tokia pačia absoliučia kelvinų verte.",
+      "Masė gramais įstatoma į SI formulę nepakeitus į kilogramus."
+    ],
+    "scope_limit_lt": "Tai viena dalinė g9-02 pamoka. Ji neapima fazinių virsmų, kuro, šilumos balanso, praktinio savitosios šilumos nustatymo, variklių ar siurblių. Sintetinės lentelės analizė neįrodo praktinio matavimo gebėjimų.",
+    "preparation_lt": "Pasirūpinti milimetriniu arba langelių popieriumi. Lentelė yra idealaus modelio, ne išmatuoti duomenys. Grafiko ašys: laikas horizontalėje, temperatūra vertikalėje.",
+    "differentiation_lt": "Pagalba: pateikti ašis ir vieną tašką; naudoti m = 0,40 kg. Papildoma užduotis: vienodai masei ir pokyčiui palyginti vandenį (c = 4200) ir kitą medžiagą (c = 900 J/(kg·K)), nekeičiant būsenos.",
+    "rubric_lt": [
+      "Grafikas: ašys, vienetai, mastelis ir taškai.",
+      "Skaičiavimas: duomenys SI, temperatūros skirtumas, formulė ir vienetas.",
+      "Modelis: įvardija bent vieną neįtrauktą poveikį."
+    ]
+  }
+}

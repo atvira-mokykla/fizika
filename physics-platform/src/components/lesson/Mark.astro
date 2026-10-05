@@ -1,0 +1,5 @@
+---
+interface Props { pts?: number; outcome?: string }
+const { pts = 1, outcome } = Astro.props;
+---
+<li class="am-mark" data-pts={pts} data-outcome={outcome}><slot /></li>

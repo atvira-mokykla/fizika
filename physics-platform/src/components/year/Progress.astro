@@ -1,0 +1,9 @@
+---
+/** A progress bar over a set of year-plan lesson ids; filled in by year-ui.ts. */
+interface Props { ids: string[]; label: string; size?: 'sm' | 'md' | 'lg' }
+const { ids, label, size = 'md' } = Astro.props;
+---
+<div class={`am-prog am-prog-${size}`} data-progress data-ids={ids.join(' ')} role="progressbar" aria-label={label} aria-valuemin="0" aria-valuenow="0" aria-valuemax={ids.length}>
+  <span class="am-prog-bar"><i></i></span>
+  <span class="am-pct">0 of {ids.length}</span>
+</div>

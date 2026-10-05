@@ -1,0 +1,486 @@
+---
+title: Temperature, internal energy and heat
+description: I can distinguish temperature, internal energy and heat. I can explain two ways of changing internal
+  energy. I can compare temperature readings and temperature changes in °C and K.
+sidebar:
+  order: 1
+lesson:
+  grade: 9
+  unit: thermal
+  course:
+  - core
+  curriculum:
+  - lt-physics-g9-01
+  contentArea: thermal
+  achievements:
+  - B1
+  - D1
+  - E1
+  levels:
+  - 1
+  - 2
+  - 3
+  exam: []
+  minutes: 45
+  goal: I can distinguish temperature, internal energy and heat. I can explain two ways of changing internal energy.
+    I can compare temperature readings and temperature changes in °C and K.
+  kicker: An original trial lesson. Practising teacher review is still pending.
+---
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../components/lesson';
+
+<Lesson>
+
+
+
+<Block kind="remember" title="Read a quantity before explaining it">
+
+
+
+<Numeric id="g9-thermal-01-r1" answer="5" outcome="g9.thermal.3" unit="K">
+
+A thermometer reads 18 °C, then 23 °C. How much did the temperature rise? Enter the number; the unit is shown.
+
+<Why value="23">23 is the final reading. Subtract the initial reading.</Why>
+<Ok>23 − 18 = 5. This is a change, not the final reading.</Ok>
+
+
+<Solution>
+
+23 − 18 = 5. This is a change, not the final reading.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+
+<Numeric id="g9-thermal-01-r2" answer="0.25" outcome="g9.thermal.1" unit="kg">
+
+A cup contains 250 g of water. Write its mass in kilograms.
+
+<Why value="250">Divide grams by 1000 to obtain kilograms.</Why>
+<Ok>1000 g = 1 kg, so 250 g = 0.25 kg.</Ok>
+
+
+<Solution>
+
+1000 g = 1 kg, so 250 g = 0.25 kg.
+
+</Solution>
+
+
+</Numeric>
+
+
+**Quick refresh.** Particles of a liquid move continually and interact. They do not start moving only when we heat it. A temperature reading describes the thermal state; write the quantity and its unit together.
+
+</Block>
+
+
+
+
+<Block kind="hook" title="Same thermometer reading, same energy?">
+
+A cup and a bucket both contain water at 20 °C. Your friend says: “The thermometer readings are equal, so their internal energies must be equal.” Before reading on, write whether the conclusion follows and name one missing fact.
+
+<Choice id="g9-thermal-01-h1" outcome="g9.thermal.1">
+
+What does the equal reading establish?
+
+<Option correct>The water has the same temperature.<Why>It establishes the thermal state, not equality of the total energy stored in two different amounts of water.</Why></Option>
+<Option>Both samples have the same internal energy.<Why>The amount of water matters too. Temperature alone is insufficient.</Why></Option>
+<Option>No particles are moving.<Why>Liquid water has thermal motion at 20 °C.</Why></Option>
+
+
+<Solution>
+
+Only equality of temperature follows. To compare energy changes, we will need the masses and material too.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="explain" title="Three ideas, three different questions">
+
+
+
+<Frames>
+
+
+<Frame title="Temperature: how warm?">
+
+Temperature describes the thermal state. In the particle model, for the same liquid, a higher temperature is associated with more intense thermal motion. A thermometer measures temperature after it approaches thermal equilibrium with the object. Touch is unreliable: metal and wood in the same room may feel different because they transfer energy to your hand at different rates.
+
+</Frame>
+
+
+
+
+<Frame title="Internal energy: what is stored?">
+
+Internal energy includes the energy of the particles’ microscopic motion and interactions. It is a property of the system we choose, for example all the water in the cup. It is not the energy of the whole cup moving across a table. Mass, material, temperature and state all matter; a thermometer is not a meter of total internal energy.
+
+</Frame>
+
+
+
+
+<Frame title="Heat: what crosses the boundary?">
+
+Heat is energy transferred because of a temperature difference. We use $Q$ for the transferred amount and measure it in joules (J). If warm and cool water exchange energy without external work, net heat flows from the warmer part towards the cooler part until equilibrium. Say “the water received heat”, rather than “the water contains heat”. Internal energy is stored; heat describes transfer.
+
+</Frame>
+
+
+
+
+<Frame title="Two ways to change internal energy">
+
+Internal energy can change through heat transfer **or work**. A warm radiator transfers energy to cooler surroundings. Rubbing your hands or stirring a liquid with a paddle transfers energy by work. These processes can occur together: define the system and explain which transfer you are discussing.
+
+</Frame>
+
+
+</Frames>
+
+
+
+</Block>
+
+
+
+
+<Block kind="explore" title="Two scales, one temperature" figure="thermal-model" figureProps={{mode: "scales"}} alt="Interactive ideal thermal model; the same values are listed in a data table.">
+
+Predict first: does converting 20 °C to kelvins describe hotter water? Select another reading and compare the table.
+
+$$T(\mathrm{K})=t(^{\circ}\mathrm{C})+273.15.$$
+
+A rise from 20 °C to 30 °C is **10 °C = 10 K as a change**. The final temperature is **303.15 K**, not 10 K. Kelvin uses no degree symbol. For this introductory lesson, 273.15 is the scale offset, not a measure of energy.
+
+</Block>
+
+
+
+
+<Block kind="examples" title="Explain a situation, then try a new one">
+
+
+
+<Example title="Example 1 · A spoon in warm water" fade={0}>
+
+
+
+<ExStep>
+
+Choose the spoon as the system. Initially the water is warmer than the spoon.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Energy crosses into the spoon because of that temperature difference: heat transfer increases its internal energy. Its temperature rises towards equilibrium.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Choice id="g9-thermal-01-p1" outcome="g9.thermal.2">
+
+A room-temperature spoon is placed in cooler water. Which description fits the spoon?
+
+<Option correct>It gives heat to the water; its internal energy decreases.<Why>The direction reverses because the spoon is initially warmer.</Why></Option>
+<Option>Cold flows into the spoon.<Why>Describe energy transfer from warm to cool, rather than a flow of “cold”.</Why></Option>
+
+
+<Solution>
+
+The spoon transfers heat to the cooler water and cools.
+
+</Solution>
+
+
+</Choice>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="Example 2 · Rubbing hands" fade={1}>
+
+
+
+<ExStep>
+
+Choose both hands as the system. You use muscles to rub them together.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Work changes their internal energy. A temperature rise is evidence of a change, but it does not mean the energy must have arrived as heat.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Choice id="g9-thermal-01-p2" outcome="g9.thermal.2">
+
+A paddle driven by a motor stirs water in an insulated container. Which transfer is intended?
+
+<Option correct>Work on the water.<Why>The paddle does work; the insulation is intended to reduce heat exchange with surroundings.</Why></Option>
+<Option>Heat from a hotter outside body.<Why>No hotter external body is specified. A mechanical paddle supplies work.</Why></Option>
+
+
+<Solution>
+
+Work can increase internal energy even when heat exchange is small.
+
+</Solution>
+
+
+</Choice>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="Example 3 · A reading and a change" fade={1}>
+
+
+
+<ExStep>
+
+Convert 25 °C: 25 + 273.15 = 298.15 K.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+For cooling from 25 °C to 18 °C, ΔT = 18 − 25 = −7 K. The scale offset cancels in a difference.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-01-p3" expected={303.15} quantity="absolute-temperature" units="K" show="303.15 K" tolerance={0.05} outcome="g9.thermal.3">
+
+Convert a final reading of 30 °C to kelvins.
+
+<Why value="30">30 is the Celsius reading. Add the scale offset for an absolute kelvin temperature.</Why>
+<Ok>30 + 273.15 = 303.15 K.</Ok>
+
+
+<Solution>
+
+30 + 273.15 = 303.15 K.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="check" title="Check the distinctions">
+
+Try all five. The first four are the core; the fifth is a written explanation. Feedback is for practice, not a school mark.
+
+<Choice id="g9-thermal-01-c1" outcome="g9.thermal.1">
+
+Which quantity is measured in joules?
+
+<Option correct>Heat transferred.<Why>Heat is an amount of transferred energy.</Why></Option>
+<Option>Temperature.<Why>Temperature is measured in °C or K.</Why></Option>
+
+
+<Solution>
+
+Q is measured in J. Temperature and energy are different quantities.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-01-c2" outcome="g9.thermal.1">
+
+Two unequal masses of the same liquid have the same temperature. What can you conclude from the temperature alone?
+
+<Option correct>Their total internal energies cannot be compared from that reading alone.<Why>Amount and material are part of the comparison.</Why></Option>
+<Option>Their total internal energies must be equal.<Why>Equal temperature does not erase the difference in the amounts of liquid.</Why></Option>
+
+
+<Solution>
+
+Equal thermal state is not a guarantee of equal total internal energy.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-01-c3" outcome="g9.thermal.2">
+
+A hot mug cools on a table. Which description identifies the main transfer out of the mug?
+
+<Option correct>Heat transfer to cooler surroundings.<Why>The temperature difference drives transfer.</Why></Option>
+<Option>Only work, because its temperature changed.<Why>A temperature change does not by itself identify work. Here cooler surroundings are specified.</Why></Option>
+
+
+<Solution>
+
+Choose the mug as the system: it gives energy to cooler surroundings by heat transfer.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Quantity id="g9-thermal-01-c4" expected={-8} quantity="temperature-difference" units="K|°C" show="−8 K" tolerance={0.05} outcome="g9.thermal.3">
+
+Water cools from 40 °C to 32 °C. Give signed ΔT = final − initial.
+
+<Why value="8">You gave the magnitude. The defined final-minus-initial change is negative.</Why>
+<Ok>32 − 40 = −8; the difference has the same value in K and °C.</Ok>
+
+
+<Solution>
+
+32 − 40 = −8; the difference has the same value in K and °C.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Task id="g9-thermal-01-c5" outcome="g9.thermal.1">
+
+Write two sentences correcting: “Rubbing my hands adds heat stored in them, and doubling their temperature doubles their internal energy.” Identify the transfer and explain the missing information.
+
+
+
+<Marks>
+<Mark pts={1}>Identify work as the transfer from rubbing.</Mark>
+<Mark pts={1}>Distinguish stored internal energy from heat transfer.</Mark>
+<Mark pts={1}>Reject a general proportionality based only on a temperature reading.</Mark>
+</Marks>
+
+
+
+
+<Solution>
+
+Rubbing transfers energy by work, increasing the hands’ internal energy; heat is not something “stored” in them. A temperature reading alone does not determine total internal energy, and doubling a Celsius reading is not physically doubling absolute temperature. Even in kelvin, proportionality is not a general rule for arbitrary systems; it needs a specific model.
+
+</Solution>
+
+
+</Task>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="summary" title="Keep the question attached to the quantity">
+
+**Temperature:** thermal state, °C or K. **Internal energy:** microscopic energy of the chosen system, J. **Heat:** energy transfer due to a temperature difference, J. Internal energy changes by heat transfer or work. A temperature difference of 1 °C equals 1 K; an absolute temperature needs the scale offset.
+
+<Next>How much energy must we transfer to warm a given mass of water?</Next>
+
+</Block>
+
+
+
+
+<Block kind="teacher" title="Teaching notes and a 45-minute route">
+
+**Core route:** recall 4 min; cup/bucket prediction 5; explanation and scale model 10; examples 10; checks 11; exit explanation 5. Use the written challenge as an extension if discussion runs long. Timing has not been trialled in class.
+
+**Respond to misconceptions:** ask “what is our system?” before naming a transfer. Use the equal-temperature cup/bucket as a counterexample to reading total energy from a thermometer. Do not introduce a general equation linking total internal energy to Celsius temperature.
+
+**Terminology EN · LT:** temperature · temperatūra; internal energy · vidinė energija; heat transferred · šilumos kiekis; thermal motion · šiluminis judėjimas; work · darbas; thermal equilibrium · šiluminė pusiausvyra.
+
+**Scope:** the internal-energy programme node is partly addressed. Changes of state and detailed microscopic models are not completed here. Physics, Lithuanian terminology and classroom review are pending; this is original trial material, not a teacher-certified lesson.
+
+</Block>
+
+
+
+</Lesson>

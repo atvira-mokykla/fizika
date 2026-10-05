@@ -1,0 +1,141 @@
+/* Print pages (/print/{handout|worksheet|key}/…) rendered to A4 PDF by headless Chrome. */
+
+@page { size: A4; margin: 14mm 15mm 16mm; }
+html.am-print { --sl-nav-height: 0px; background: #fff; }
+.am-print body { margin: 0; background: #fff; color: var(--am-ink); font: 10.5pt/1.5 var(--sl-font); padding: 0; }
+.am-print main { display: block; }
+.am-print .katex { font-size: 1.05em; }
+
+/* Header and footer */
+.pr-head { display: flex; justify-content: space-between; gap: 12mm; align-items: flex-start; border-bottom: 2px solid var(--am-accent); padding-bottom: 3mm; margin-bottom: 4mm; }
+.pr-titles { display: grid; gap: 1mm; }
+.pr-kicker, .pr-kind { font: 500 8pt/1.3 var(--am-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-muted); }
+.pr-kind { color: var(--am-accent); }
+.pr-head h1 { margin: 0; font: 800 19pt/1.1 var(--am-display); }
+.pr-qr { display: grid; justify-items: center; gap: 1mm; font: 500 6.5pt var(--am-mono); color: var(--am-muted); flex: none; }
+.pr-qr svg { width: 19mm; height: 19mm; }
+.pr-name { display: flex; gap: 8mm; margin: 0 0 5mm; }
+.pr-name span { flex: 1; border-bottom: 1px solid #999; font: 500 8pt var(--am-mono); color: var(--am-muted); padding-bottom: 5mm; }
+.pr-name span:first-child { flex: 3; }
+.pr-foot { display: none; justify-content: space-between; gap: 6mm; margin-top: 6mm; padding-top: 2mm; border-top: 1px solid var(--am-line); font: 500 7pt var(--am-mono); color: var(--am-muted); }
+
+/* Screen-only parts */
+.am-print .am-toolbar, .am-print .am-block-nav, .am-print .am-fig-bar, .am-print .am-frame-tabs,
+.am-print .am-frame-nav, .am-print .am-ctrl, .am-print .am-fb, .am-print .am-yourturn, .am-print .am-item-type, .am-print .am-lesson-end { display: none !important; }
+
+/* Blocks: flat, no cards */
+.am-print .am-lesson, .am-print .am-lesson-body { display: block; margin: 0; }
+.am-print .am-block { display: block !important; border: 0; padding: 0; margin: 0 0 6mm; background: none; box-shadow: none; }
+.am-print .am-block-h { margin-bottom: 2mm; break-after: avoid; }
+.am-print :is(h2, h3, .am-ex-h, .am-frame-title) { break-after: avoid; }
+.am-print .am-block-title { font-size: 13.5pt; }
+.am-print .am-block-main { gap: 2.5mm; }
+.am-print .am-block-grid { grid-template-columns: minmax(0, 1fr) 62mm; gap: 6mm; }
+.am-print .am-fig-col { position: static; order: 0; }
+.am-print .am-fig-box { max-width: none; max-height: none; border-radius: 3mm; background-size: 4mm 4mm; }
+.am-print .am-fig-cap { font-size: 8pt; }
+.am-print .am-figure { break-inside: avoid; }
+.am-print .am-block-check .am-block-grid:has(.am-sys-check) { display: flex; flex-direction: column; }
+.am-print .am-block-check .am-fig-col:has(.am-sys-check) { order: -1; width: 100%; }
+.am-print .am-fig-box.am-sys-check { width: 100%; max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); aspect-ratio: auto; }
+.am-print .am-sys-panel { break-inside: avoid; }
+
+/* Which blocks go into which PDF */
+.am-print-handout :is(.am-block-remember, .am-block-check, .am-block-exam, .am-block-teacher, .am-turn) { display: none !important; }
+.am-print-worksheet :is(.am-block-start, .am-block-hook, .am-block-explore, .am-block-explain, .am-block-summary, .am-block-teacher) { display: none !important; }
+/* Worksheet: only the examples with blanks, and the blanks are empty lines to write on */
+.am-print-worksheet .am-example:not([data-fade]), .am-print-worksheet .am-example[data-fade='0'] { display: none; }
+.am-print-worksheet .am-ex-step.is-faded .am-ex-body { color: transparent; border-bottom: 1px solid #999; min-height: 11mm; }
+.am-print-worksheet .am-ex-step.is-faded .am-ex-body :is(.katex, img, svg) { visibility: hidden; }
+.am-print-worksheet .am-ex-step.is-faded .am-ex-label { color: var(--am-muted); }
+.am-print-worksheet .am-ex-step.is-faded .am-ex-label::after { content: ' · your turn'; color: var(--am-hint); }
+.am-print-key :is(.am-block-start, .am-block-hook, .am-block-explore, .am-block-explain, .am-block-summary) { display: none !important; }
+/* Answer key: of the examples, only the "Your turn" items (with their answers) */
+.am-print-key .am-example, .am-print-key .am-block-examples:not(:has(.am-turn)) { display: none !important; }
+.am-print-key .am-block-teacher { display: block !important; border-top: 1px solid var(--am-line); padding-top: 4mm; }
+.am-print-key .am-block-teacher p { break-inside: avoid; }
+
+/* Frames and examples: everything shown */
+.am-print .am-frame { display: grid !important; border-left: 2px solid var(--am-line); padding: 0 0 0 3mm; min-height: 0; break-inside: avoid; cursor: auto; }
+.am-print .am-frame.is-current { border-left-color: var(--am-line); }
+.am-print .am-frames { gap: 3mm; }
+.am-print .am-ex-step.is-faded .am-ex-body { display: block; }
+.am-print .am-example { break-inside: avoid; }
+.am-print-handout .am-block-summary { border: 1.5px solid var(--am-accent); border-radius: 3mm; padding: 4mm 5mm; break-inside: avoid; }
+
+/* Items */
+.am-print .am-item { border: 0; padding: 0; gap: 2mm; break-inside: avoid; margin-bottom: 5mm; }
+.am-print .am-item-h { gap: 1.5mm; }
+.am-print .am-item-h span { font-size: 6.5pt; padding: 1mm 1.5mm; }
+.am-print .am-item { counter-increment: item; }
+.am-print :is(.am-block-check, .am-block-remember) { counter-reset: item; }
+.am-print :is(.am-block-check, .am-block-remember) .am-item-body::before { content: counter(item) '.'; font: 800 11pt var(--am-display); color: var(--am-accent); }
+/* This unit check numbers its 18 questions in the pupil text; avoid duplicate print numbers. */
+.am-print .am-item[data-id^="g11b-logs-p1-"] .am-item-body::before { content: none; }
+.am-print .am-hints, .am-print .am-solution, .am-print .am-marks, .am-print .am-why, .am-print .am-ok, .am-print .am-key { display: none; }
+
+.am-popts { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(38mm, 1fr)); gap: 1.5mm 5mm; counter-reset: opt; }
+/* Long radical-pair choices in Grade 9 substitution need readable print columns. */
+.am-print .am-item:is([data-id='g9-sy-5-t2'], [data-id='g9-sy-5-c4']) .am-popts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.am-popts .am-opt { counter-increment: opt; display: flex; gap: 2mm; align-items: baseline; }
+.am-popts .am-opt::before { content: counter(opt, upper-alpha); display: inline-grid; place-items: center; width: 5mm; height: 5mm; border: 1px solid #888; border-radius: 50%; font: 700 7.5pt var(--am-mono); flex: none; }
+.am-popts .am-opt-text > :not(.am-why) { margin: 0; display: inline; }
+.am-porder { margin: 0; padding: 0; list-style: none; display: grid; gap: 1.5mm; }
+.am-porder .am-order-item { display: flex !important; gap: 3mm; align-items: baseline; }
+.am-porder .am-order-item > * { margin: 0; }
+.am-print-worksheet .am-porder .am-order-item::before { content: ''; width: 6mm; height: 6mm; border: 1px solid #888; border-radius: 1mm; flex: none; }
+.am-print-key .am-porder { counter-reset: ord; }
+.am-print-key .am-porder .am-order-item::before { counter-increment: ord; content: counter(ord); font: 700 9pt var(--am-mono); color: var(--am-accent); width: 6mm; }
+
+/* Start card, "Your turn", "Next", quick refresh */
+.am-print .am-block-start { border: 1.5px solid var(--am-accent); border-radius: 3mm; padding: 4mm 5mm; break-inside: avoid; }
+.am-print .am-start-grid { grid-template-columns: 1fr 1fr; gap: 3mm 6mm; }
+.am-print .am-goal { font-size: 11pt; }
+.am-print .am-turn { background: none; border-left: 2px solid var(--am-hint); border-radius: 0; padding: 0 0 0 3mm; margin: 0 0 4mm; break-inside: avoid; }
+.am-print .am-turn .am-item { margin-bottom: 0; }
+.am-print .am-refresh { break-inside: avoid; background: none; }
+/* Quick refreshes are for the screen: on the worksheet and in the key they would crowd out the items */
+.am-print-worksheet .am-refresh, .am-print-key .am-refresh { display: none !important; }
+.am-print .am-prereq a { color: inherit; text-decoration: none; }
+.am-print .am-refresh summary { list-style: none; padding: 2mm 3mm; }
+.am-print .am-nextq { break-inside: avoid; }
+.am-print-key .am-outcome { display: inline-block; }
+
+/* Worksheet: room to write */
+.am-print-worksheet .am-item[data-kind='numeric'] .am-item-body::after { content: 'Answer:'; display: block; border-bottom: 1px solid #999; height: 8mm; font: 500 8pt var(--am-mono); color: var(--am-muted); padding-top: 3mm; }
+.am-print-worksheet .am-item[data-kind='task'] .am-item-body::after {
+  content: ''; display: block; height: 95mm; border: 1px solid #dde3e8; border-radius: 2mm;
+  background-image: linear-gradient(#e6ebef 1px, transparent 1px), linear-gradient(90deg, #e6ebef 1px, transparent 1px); background-size: 5mm 5mm;
+}
+/* Five short written logarithm tasks fit with their exam item on the worksheet. */
+.am-print-worksheet .am-item[data-kind='task'][data-id^='g11b-logs-2-'] .am-item-body::after { height: 75mm; }
+/* A task and its writing grid fit on one A4 page: keep them together, so the number and the question never sit alone at the foot of a page */
+.am-print-worksheet .am-item[data-kind='task'] { break-inside: avoid; }
+
+/* Answer key: answers visible */
+.am-print-key .am-key { display: block; font-weight: 700; color: var(--am-accent); }
+.am-print-key .am-popts .am-opt[data-correct='1'] { font-weight: 700; color: var(--am-accent); }
+.am-print-key .am-popts .am-opt[data-correct='1']::before { background: var(--am-accent); color: #fff; border-color: var(--am-accent); }
+.am-print-key .am-opt[data-correct='1'] .am-why { display: inline; font-weight: 400; color: var(--am-ink); margin-left: 1mm; }
+.am-print-key .am-opt[data-correct='1'] .am-why::before { content: '— '; }
+.am-print-key .am-solution { display: grid; background: none; border: 1px solid var(--am-line); padding: 2.5mm 3.5mm; }
+.am-print-key .am-marks { display: grid; border: 1px solid var(--am-line); padding: 2.5mm 3.5mm; }
+/* A mark is running text with maths in it: block, not flex (the runtime's label wrapper does not exist in print) */
+.am-print .am-mark { display: block; position: relative; padding-right: 12mm; }
+.am-print-key .am-mark::after { content: attr(data-pts) ' pt'; font: 500 7.5pt var(--am-mono); color: var(--am-muted); position: absolute; right: 0; top: 0.2em; white-space: nowrap; }
+.am-print-key .am-item[data-kind='mark'] .am-ok { display: block; color: var(--am-accent); }
+.am-print-key .am-item[data-kind='mark'] .am-ok::before { content: 'Answer: '; font-weight: 700; }
+
+/* Lithuanian labels generated by CSS */
+.am-print-worksheet:lang(lt) .am-item[data-kind='numeric'] .am-item-body::after { content: 'Atsakymas:'; }
+.am-print-worksheet:lang(lt) .am-ex-step.is-faded .am-ex-label::after { content: ' · tavo eilė'; }
+.am-print-key:lang(lt) .am-item[data-kind='mark'] .am-ok::before { content: 'Atsakymas: '; }
+.am-print-key:lang(lt) .am-mark::after { content: attr(data-pts) ' tšk.'; }
+
+/* A unit-check PDF contains Form A only; Form B is the online retry. */
+.am-print .am-unit-check-bar, .am-print .am-unit-check-results, .am-print .am-check-form[data-form="b"] { display: none !important; }
+
+.am-print .am-check-form[data-form="a"] { display: block !important; }
+/* Let a long unit check paginate as ordinary blocks, then start teacher notes cleanly. */
+.am-print .am-unit-check { display: block !important; }
+.am-print:has(.am-unit-check) .am-block-teacher { break-before: page; }

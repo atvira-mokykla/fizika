@@ -1,0 +1,108 @@
+---
+import type { Year } from '../../lib/plan';
+import { proposedUnitWeeks, sequence, numberedUnits, unitHref, yearCalendar, weeksOf, weekRuns } from '../../lib/plan';
+import { ui } from '../../i18n/ui';
+import Progress from './Progress.astro';
+import NextLesson from './NextLesson.astro';
+import WeekGoal from './WeekGoal.astro';
+import ThisWeek from './ThisWeek.astro';
+interface Props { year: Year }
+const { year } = Astro.props;
+const L = ui(year.lang);
+const seq = sequence(year);
+const sems = numberedUnits(year);
+const onSite = seq.filter((s) => s.href).length;
+const cal = yearCalendar(year);
+---
+<div class="am-year not-content">
+  <p class="am-small">{year.lang === 'lt' ? 'Siūlomas metų planas. Temų ir pamokų laikas derinamas su mokyklos planu; tai nėra privaloma oficiali seka.' : 'Proposed year outline. The school adapts topic order and lesson time; this is not a compulsory official sequence.'}</p>
+  <div class="am-year-top">
+    <p class="am-year-meta">{L.yearMeta(year.schoolYear, year.lessonsPerWeek, year.lessonsPerWeek * year.weeks)}{year.exam && <> · <b>{year.exam}</b></>}</p>
+    <div class="am-mine" data-set-year={year.path}><button type="button" class="am-btn">{L.makeMine}</button></div>
+  </div>
+
+  <div class="am-year-now">
+    <NextLesson seq={seq} year={year.path} />
+    {cal ? <ThisWeek cal={cal} perWeek={year.lessonsPerWeek} /> : <WeekGoal perWeek={year.lessonsPerWeek} />}
+  </div>
+
+  <div class="am-year-total">
+    <span class="am-eyebrow">{L.wholeYearTicked}</span>
+    <Progress ids={seq.map((s) => s.id)} label={L.lessonsTicked} size="lg" />
+    <p class="am-small" set:html={L.orderNote} />
+  </div>
+
+  {sems.map((s) => {
+    const ids = [...s.units.flatMap((u) => u.lessons.map((l) => l.id)), ...s.tests.map((t) => t.id)];
+    const semWeeks = cal?.weeks.filter((w) => w.semester === s.id) ?? [];
+    return (
+      <section class="am-sem" aria-labelledby={`sem-${s.id}`}>
+        <header class="am-sem-h">
+          <h2 id={`sem-${s.id}`}>{s.title}</h2>
+          <span class="am-sem-months">{L.months(s.months)}</span>
+          <Progress ids={ids} label={s.title} size="sm" />
+        </header>
+        <ol class="am-path">
+          {s.units.map((u) => {
+            const avail = u.lessons.filter((l) => l.slug).length;
+            const wk = weeksOf(year, cal, u.lessons.map((l) => l.id));
+            return (
+              <li class="am-path-unit">
+                <a class="am-unit-card" href={unitHref(year, u)} data-unit-card={`${year.path}:${u.id}`}>
+                  <span class="am-unit-n">{L.unitN(u.n)}</span>
+                  <span class="am-unit-title">{u.title}</span>
+                  {year.lang === 'en' && <span class="am-unit-lt" lang="lt">{u.lt}</span>}
+                  <span class="am-unit-meta">{wk ? <><b>{wk.label}</b> · {wk.dates}</> : proposedUnitWeeks(year,u)} · {L.classPeriods(u.hours)}</span>
+                  <span class="am-unit-avail">{avail > 0 ? L.availableOf(avail, u.lessons.length) : L.notYet}</span>
+                  <span class="am-class-here" data-class-badge={`${year.path}:${u.id}`} hidden>{L.classHere}</span>
+                  {u.lessons.length > 0 && <Progress ids={u.lessons.map((l) => l.id)} label={`${L.unitN(u.n)}: ${u.title}`} size="sm" />}
+                </a>
+              </li>
+            );
+          })}
+          {s.tests.map((t) => (
+            <li class={`am-path-test am-kind-${t.kind}`} id={t.id} data-row>
+              <label>
+                <input type="checkbox" data-done value={t.id} />
+                <span class="am-test-title">{t.title}</span>
+              </label>
+              <span class="am-test-meta">{L.planKind[t.kind]} · {L.lessons(t.periods)} · {L.endOf(s.title)}{t.slug ? '' : ` · ${L.planned}`}</span>
+            </li>
+          ))}
+        </ol>
+        {semWeeks.length > 0 && (
+          <details class="am-cal">
+            <summary>{L.weekByWeek} <span class="am-small">· {L.weeksShort(semWeeks[0].n, semWeeks[semWeeks.length - 1].n)}</span></summary>
+            {semWeeks[0].preliminary && <p class="am-small am-cal-note">{L.preliminaryNote}</p>}
+            <ol class="am-cal-list">
+              {semWeeks.map((w) => (
+                <>
+                  {w.breakBefore && <li class="am-cal-break">{w.breakBefore.title} · {w.breakBefore.dates}</li>}
+                  <li class="am-cal-row" data-cal-row data-from={w.from} data-to={w.to}>
+                    <span class="am-cal-w">{L.weekShort(w.n)}</span>
+                    <span class="am-cal-d">{w.dates}</span>
+                    <span class="am-cal-what">
+                      {weekRuns(w).map((r) => (
+                        <span class={r.special ? 'am-cal-run am-cal-special' : 'am-cal-run'}>
+                          {r.label && <span class="am-cal-code">{r.label}</span>}
+                          {r.href ? <a href={r.href}>{r.title}</a> : <span>{r.title}</span>}
+                        </span>
+                      ))}
+                    </span>
+                  </li>
+                </>
+              ))}
+            </ol>
+            <p class="am-small am-cal-note">{L.calendarNote}</p>
+          </details>
+        )}
+      </section>
+    );
+  })}
+
+  <p class="am-small am-year-foot">{L.yearFoot(onSite, seq.length)}</p>
+</div>
+
+<script>
+  import '../../lib/year-ui.ts';
+</script>

@@ -1,0 +1,65 @@
+---
+/**
+ * Print versions of each lesson: handout, worksheet, answer key.
+ * scripts/build-pdfs.mjs opens these in headless Chrome and saves A4 PDFs.
+ */
+import { getCollection, render } from 'astro:content';
+import QRCode from 'qrcode';
+import '@fontsource-variable/atkinson-hyperlegible-next';
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource/jetbrains-mono/500.css';
+import 'katex/dist/katex.min.css';
+import '../../../styles/theme.css';
+import '../../../styles/lesson.css';
+import '../../../styles/print.css';
+import { UNITS } from '../../../lib/units';
+import { ui } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('docs', (e) => !!e.data.lesson);
+  return lessons.flatMap((entry) => ['handout', 'worksheet', 'key'].map((kind) => ({ params: { kind, slug: entry.id }, props: { entry } })));
+}
+
+const { kind } = Astro.params as { kind: 'handout' | 'worksheet' | 'key' };
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const m = entry.data.lesson!;
+const lang = entry.id.startsWith('lt/') ? 'lt' : 'en';
+const L = ui(lang);
+const KIND = L.printKind;
+const live = new URL(`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}${entry.id}/`, Astro.site).href;
+const qr = await QRCode.toString(live, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#16212B', light: '#0000' } });
+---
+<!doctype html>
+<html lang={lang} data-theme="light" class={`am-print am-print-${kind}`}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{entry.data.title} · {KIND[kind]} · Atvira mokykla</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}favicon.svg`} type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="pr-head">
+      <div class="pr-titles">
+        <span class="pr-kicker">Atvira mokykla · {L.gradeN(m.grade)}{lang === 'en' && ` · ${UNITS[m.unit] ?? m.unit}`}</span>
+        <h1>{entry.data.title}</h1>
+        <span class="pr-kind">{KIND[kind]}{kind === 'key' && ` · ${L.forTeachers}`}</span>
+      </div>
+      <div class="pr-qr">
+        <Fragment set:html={qr} />
+        <span>{L.interactive}</span>
+      </div>
+    </header>
+    {kind === 'worksheet' && <div class="pr-name"><span>{L.name}</span><span>{L.class}</span><span>{L.date}</span></div>}
+    <p class="print-instructions">{lang === 'lt' ? 'Spausdink naršyklėje arba pasirink „Išsaugoti kaip PDF“. Užduočių lapas ir atsakymų lapas yra atskiri rodiniai.' : 'Print in your browser or choose “Save as PDF”. The worksheet and answer key are separate views.'}</p><main class="sl-markdown-content">
+      <Content />
+    </main>
+    <footer class="pr-foot">
+      <span>{live.replace(/^https?:\/\//, '')}</span>
+      <span>CC BY-SA 4.0 · {L.programme} {m.curriculum.join(', ')} ({m.curriculumVersion})</span>
+    </footer>
+  </body>
+</html>
+
+<style>@media print { .print-instructions {display:none;} }</style>

@@ -1,0 +1,492 @@
+---
+title: 'Šilumos balansas: nuo modelio iki įrodymų'
+description: Moku apskaičiuoti idealią mišinio temperatūrą ir nurodyti prielaidas. Moku apskaičiuoti gautą ir atiduotą
+  šilumos kiekį iš matavimų arba aiškiai pažymėtų modelio duomenų. Moku skirtumą susieti su modelio ribomis, neteigti,
+  kad energija išnyko.
+sidebar:
+  order: 4
+lesson:
+  grade: 9
+  unit: thermal
+  course:
+  - core
+  curriculum:
+  - lt-physics-g9-02
+  contentArea: thermal
+  achievements:
+  - B1
+  - D1
+  - E1
+  levels:
+  - 1
+  - 2
+  - 3
+  exam: []
+  minutes: 45
+  goal: Moku apskaičiuoti idealią mišinio temperatūrą ir nurodyti prielaidas. Moku apskaičiuoti gautą ir atiduotą
+    šilumos kiekį iš matavimų arba aiškiai pažymėtų modelio duomenų. Moku skirtumą susieti su modelio ribomis, neteigti,
+    kad energija išnyko.
+  kicker: Originali bandomoji pamoka. Praktikuojančio mokytojo peržiūra dar neatlikta.
+---
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../../components/lesson';
+
+<Lesson>
+
+
+
+<Block kind="remember" title="Du temperatūros pokyčiai">
+
+
+
+<Quantity id="g9-thermal-04-r1" expected={9} quantity="temperature-difference" units="K|°C" show="9 K" tolerance={0.05} outcome="g9.thermal.11">
+
+Vėsaus vandens temperatūra pakinta nuo 20 °C iki 29 °C. Nurodyk ΔT su ženklu.
+
+<Ok>29 − 20 = +9 K.</Ok>
+
+
+<Solution>
+
+29 − 20 = +9 K.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Quantity id="g9-thermal-04-r2" expected={-11} quantity="temperature-difference" units="K|°C" show="−11 K" tolerance={0.05} outcome="g9.thermal.11">
+
+Šilto vandens temperatūra pakinta nuo 40 °C iki 29 °C. Nurodyk ΔT su ženklu.
+
+<Ok>29 − 40 = −11 K. Atiduoto šilumos kiekio modulis bus teigiamas.</Ok>
+
+
+<Solution>
+
+29 − 40 = −11 K. Atiduoto šilumos kiekio modulis bus teigiamas.
+
+</Solution>
+
+
+</Quantity>
+
+
+Jei atlikote prižiūrimą bandymą, naudok savo tikras mases ir pradinius rodmenis iš 3 pamokos. Žemiau esantys pavyzdžio duomenys yra atskiras, aiškiai sintetinis pratybų rinkinys.
+
+</Block>
+
+
+
+
+<Block kind="hook" title="Prognozė nėra rezultatas">
+
+Vienodos masės iš pradžių yra 20 °C ir 40 °C. Idealus modelis numato 30 °C; pratybų duomenyse pateikta 29,2 °C. Ar skirtumas reiškia, kad energija išnyko? Prieš darydamas išvadą nurodyk sistemą ir parašyk vieną tikrintiną prielaidą.
+
+</Block>
+
+
+
+
+<Block kind="explain" title="Subalansuok perdavimus ir patikrink prielaidas">
+
+
+
+<Frames>
+
+
+<Frame title="Idealus vien vandens balansas">
+
+Abi dalys yra ta pati medžiaga, būsena nekinta. 3 pamokoje šiltas vanduo pilamas į vėsų izoliuotame inde. Indas, kurio pradinė temperatūra artima vėsiam vandeniui, gali gauti energijos ir sumažinti galutinį rodmenį, palyginti su vien vandens prognoze. Pilant į šiltą indą jo indėlis galėtų būti priešingas; vien tvermė nenustato liekanos ženklo. Nepaisome indo, termometro, mainų su aplinka ir maišymo darbo. Šiltas vanduo atiduoda **teigiamą modulį** $Q_w$, vėsus gauna teigiamą $Q_c$.
+
+$$m_w c(T_w-T_f)=m_c c(T_f-T_c).$$
+
+Čia temperatūrų skirtumai yra teigiami moduliai. Tai lygiavertė sąlyga, kad šilumos perdavimų vandeniui su ženklais suma lygi nuliui. Sprendimo viduryje nekeisk ženklų sutarties.
+
+</Frame>
+
+
+
+
+<Frame title="Viduriui reikia vienodų masių">
+
+Tam pačiam vandeniui $c$ susiprastina. Pertvarkę gauname
+
+$$T_f=\frac{m_wT_w+m_cT_c}{m_w+m_c}.$$
+
+Vienodos masės duoda aritmetinį vidurį. Nevienodos masės duoda **mase svertą** temperatūrą, artimesnę didesnės dalies pradinei temperatūrai. Esant šioms prielaidoms, rezultatas turi būti tarp pradinių temperatūrų. Kelvinais vienodoms masėms gauname (293,15 + 313,15)/2 = 303,15 K, tai tie patys 30 °C. Svertinis vidurkis taip pat pasislenka per skalių poslinkį.
+
+</Frame>
+
+
+
+
+<Frame title="Ką pasako skirtumas">
+
+Pagal galutinį rodmenį apskaičiuok $Q_c=m_cc(T_f-T_c)$ ir $Q_w=m_wc(T_w-T_f)$. Skirtumas $R=Q_w-Q_c$ yra **vien vandens balanso liekana**. Teigiamas R rodo, kad šiame skaičiavime šilto vandens energijos sumažėjimas didesnis už vėsaus padidėjimą.
+
+Tai nėra automatiškai tikslus kambariui perduotas šilumos kiekis. Energija gali šildyti indą bei termometrą; R veikia rodmenys, masės ir laikas. Tvermė taikoma pakankamai pilnai sistemai ir visiems perdavimams, ne dviejų nepilnų įverčių lygybei.
+
+</Frame>
+
+
+</Frames>
+
+
+
+</Block>
+
+
+
+
+<Block kind="explore" title="Keisk masę, patikrink prognozę" figure="thermal-model" figureProps={{mode: "mixing"}} alt="Interaktyvus idealus šiluminis modelis; tos pačios reikšmės pateiktos duomenų lentelėje.">
+
+Tai **idealus modelis, ne matavimai**. Vėsaus vandens masė 0,10 kg, pradinė temperatūra 20 °C; šiltas vanduo pradžioje 40 °C. Numatyk, kur pasislinks galutinė T padvigubinus šilto vandens masę. Tada pasirink 0,20 kg. Paaiškink, kodėl aritmetinis vidurys nebetinka. Jei vaizdo negali perskaityti, naudok lentelę. Tikram bandymui naudok išmatuotas pradines temperatūras, nepakeisk jų 20 ir 40.
+
+</Block>
+
+
+
+
+<Block kind="examples" title="Nuo prognozės iki liekanos">
+
+
+
+<Example title="1 pavyzdys · Vienodos masės" fade={0}>
+
+
+
+<ExStep>
+
+0,10 kg 20 °C ir 0,10 kg 40 °C vandeniui nurodyk idealaus modelio prielaidas.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+$T_f=(0{,}10\times20+0{,}10\times40)/0{,}20=30\ ^\circ\mathrm{C}$. Tai 303,15 K, tarp pradinių temperatūrų.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-04-p1" expected={300.15} quantity="absolute-temperature" units="°C|K" show="27 °C = 300,15 K" tolerance={0.05} outcome="g9.thermal.10">
+
+Vienodų masių pradinės temperatūros 18 °C ir 36 °C. Rask idealią T.
+
+<Ok>(18 + 36)/2 = 27 °C.</Ok>
+
+
+<Solution>
+
+(18 + 36)/2 = 27 °C.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="2 pavyzdys · Dvigubai daugiau šilto vandens" fade={1}>
+
+
+
+<ExStep>
+
+Vėsus: 0,10 kg 20 °C. Šiltas: 0,20 kg 40 °C. Taikyk svertinę formulę.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+$T_f=(0{,}10\times20+0{,}20\times40)/0{,}30\approx33{,}3\ ^\circ\mathrm{C}$. Temperatūra artimesnė didesnei šiltai daliai.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-04-p2" expected={299.8166666667} quantity="absolute-temperature" units="°C|K" show="26,7 °C" tolerance={0.051} outcome="g9.thermal.10">
+
+Sukeisk mases: 0,20 kg vėsaus 20 °C; 0,10 kg šilto 40 °C. Nurodyk idealią T vieno dešimtainio ženklo tikslumu.
+
+<Why value="30">Masės nevienodos; taikyk svorius, ne vidurį.</Why>
+<Ok>(0,20 × 20 + 0,10 × 40)/0,30 ≈ 26,7 °C.</Ok>
+
+
+<Solution>
+
+(0,20 × 20 + 0,10 × 40)/0,30 ≈ 26,7 °C.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+**Sintetiniai pratybų duomenys. Ne mokinio ar autoriaus matavimai.** Abiem pratybų bandymams imta 0,100 kg 20,0 °C ir 0,100 kg 40,0 °C vandens. Skaičiai skirti analizei mokytis; jie nepatvirtina laboratorinio protokolo.
+
+| Pratybų bandymas | Pirma nusistovėjusi T (°C) | Delsa (s) | T po +30 s (°C) | T po +60 s (°C) |
+|---|---|---|---|---|
+| 1 | 29,2 | 12 | 29,0 | 28,8 |
+| 2 | 29,4 | 11 | 29,2 | 29,0 |
+
+
+
+<Example title="3 pavyzdys · 1 pratybų bandymas" fade={1}>
+
+
+
+<ExStep>
+
+Vėsaus gautas kiekis: $Q_c=0{,}100\times4200\times(29{,}2-20{,}0)=3864\ \mathrm{J}$.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Šilto atiduotas modulis: $Q_w=0{,}100\times4200\times(40{,}0-29{,}2)=4536\ \mathrm{J}$.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+R = 4536 − 3864 = 672 J. Tai vien vandens neatitikimas; kitus gavėjus ir matavimo ypatumus dar reikia įvertinti.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="check" title="Išanalizuok 2 pratybų bandymą">
+
+
+
+<Quantity id="g9-thermal-04-c1" expected={303.15} quantity="absolute-temperature" units="°C|K" show="30 °C = 303,15 K" tolerance={0.05} outcome="g9.thermal.10">
+
+Rask idealią vienodų masių galutinę temperatūrą.
+
+<Ok>(20 + 40)/2 = 30 °C.</Ok>
+
+
+<Solution>
+
+(20 + 40)/2 = 30 °C.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Quantity id="g9-thermal-04-c2" expected={3948} quantity="energy-transfer" units="J|kJ" show="3948 J" tolerance={0.05} outcome="g9.thermal.11">
+
+2 pratybų bandymo galutinė temperatūra 29,4 °C. Rask vėsaus vandens gautą šilumos kiekį.
+
+<Ok>0,100 × 4200 × (29,4 − 20,0) = 3948 J.</Ok>
+
+
+<Solution>
+
+0,100 × 4200 × (29,4 − 20,0) = 3948 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Quantity id="g9-thermal-04-c3" expected={4452} quantity="energy-transfer" units="J|kJ" show="4452 J" tolerance={0.05} outcome="g9.thermal.11">
+
+Rask šilto vandens atiduoto šilumos kiekio **teigiamą modulį** 2 pratybų bandyme.
+
+<Why value="-4452">Tai Q šiltam vandeniui su ženklu; klausiama teigiamo modulio.</Why>
+<Ok>0,100 × 4200 × (40,0 − 29,4) = 4452 J. Q šiltam vandeniui su ženklu būtų −4452 J.</Ok>
+
+
+<Solution>
+
+0,100 × 4200 × (40,0 − 29,4) = 4452 J. Q šiltam vandeniui su ženklu būtų −4452 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Quantity id="g9-thermal-04-c4" expected={504} quantity="energy-transfer" units="J|kJ" show="504 J" tolerance={0.05} outcome="g9.thermal.12">
+
+Apskaičiuok vien vandens liekaną R = šilto atiduotas − vėsaus gautas.
+
+<Ok>4452 − 3948 = 504 J.</Ok>
+
+
+<Solution>
+
+4452 − 3948 = 504 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Choice id="g9-thermal-04-c5" outcome="g9.thermal.12">
+
+Kokią išvadą pagrindžia liekana?
+
+<Option correct>Vien vandens įverčiai skiriasi; tirti neįtrauktus energijos pokyčius ir matavimo ypatumus.<Why>Tai modelio neatitikimas, ne tvermės pažeidimas.</Why></Option>
+<Option>Tiksliai 504 J išnyko.<Why>Riba neįtraukia indo, termometro ir aplinkos.</Why></Option>
+<Option>Tiksliai 504 J perduota kambariui.<Why>Vien liekana neatskiria indo pokyčio, mainų su aplinka ir matavimo ypatumų.</Why></Option>
+
+
+<Solution>
+
+Pateik liekaną ir jos ribas. Vėlesnis vėsimas yra aplinkybė, ne tikslus liekanos paskirstymas.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Task id="g9-thermal-04-c6" outcome="g9.thermal.12">
+
+Pagal tikrą užrašą arba pažymėtą sintetinį rinkinį parašyk išvadą: prognozė, rezultatas, liekana, dvi ribos ir konkretus patobulinimas. Nurodyk duomenų šaltinį.
+
+
+
+<Marks>
+<Mark pts={1}>Nurodyti tikri ar sintetiniai duomenys ir prognozė.</Mark>
+<Mark pts={1}>Nuosekliai naudoti pradiniai dydžiai ir galutinis rodmuo.</Mark>
+<Mark pts={1}>Apskaičiuota ir paaiškinta liekana, nurodžius ženklų sutartį.</Mark>
+<Mark pts={1}>Nurodytos dvi pagrįstos ribos, neteigiant tikslaus neišmatuoto nuostolio.</Mark>
+<Mark pts={1}>Patobulinimas susietas su riba.</Mark>
+</Marks>
+
+
+
+
+<Solution>
+
+2 sintetiniam bandymui: ideali prognozė 30 °C; iliustracinis pirmas nusistovėjęs rodmuo 29,4 °C po 11 s delsos. Vėsaus gauta 3948 J, šilto atiduota 4452 J, liekana 504 J. Svarbūs gali būti indo energijos pokytis ir termometro atsakas bei laikas. Nuosekli trumpesnė dokumentuota delsa ir įvertintas indas gali pagerinti palyginimą. Sintetiniai skaičiai demonstruoja analizę; jie neįrodo sėkmingo fizinio bandymo.
+
+</Solution>
+
+
+</Task>
+
+
+
+
+
+
+<Numeric id="g9-thermal-04-c7" answer="84" outcome="g9.thermal.12" unit="J">
+
+Papildoma jautrumo patikra: abi vandens masės po 0,100 kg. Galutiniam rodmeniui padidėjus 0,1 °C, keliais džauliais sumažėja R = šilto atiduotas − vėsaus gautas?
+
+<Ok>Kinta abu įverčiai: 2 × 0,100 × 4200 × 0,1 = 84 J. 1 °C žingsnis pakeičia R 840 J. Tai jautrumas vienam rodmeniui, ne visas paklaidos įvertis.</Ok>
+
+
+<Solution>
+
+Kinta abu įverčiai: 2 × 0,100 × 4200 × 0,1 = 84 J. 1 °C žingsnis pakeičia R 840 J. Tai jautrumas vienam rodmeniui, ne visas paklaidos įvertis.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="summary" title="Balansas, riba, įrodymai">
+
+Viduriui reikia vienodų tos pačios medžiagos masių ir idealaus balanso. Kitu atveju taikyk mase svertą formulę. Abiejų dalių pokyčius skaičiuok pagal vieną nurodytą ženklų sutartį. Liekana skatina tikrinti ribą ir prielaidas; ji nerodo, kad energija išnyko. Skirk tikrus įrodymus ir sintetines pratybas.
+
+<Next>Kas keičiasi, kai energija perduodama, o temperatūra nekyla? Kita planuojama pamoka – lydymasis ir kietėjimas.</Next>
+
+</Block>
+
+
+
+
+<Block kind="teacher" title="Prieš vertinimą aptark modelį">
+
+**45 min eiga:** prisiminimas 4 min; prognozė ir riba 5; balanso aiškinimas 10; nevienodų masių modelis 5; skaičiavimai 8; pasitikrinimas 8; išvada 5. Atvirkštinių masių pavyzdys gali būti papildomas. Laikas neišbandytas.
+
+Nuosekliai naudokite pirmą nusistovėjusį rodmenį, tikras mases ir abi pradines temperatūras. Iki džaulio pateikta liekana yra šių pratybų aritmetika, ne vieno džaulio eksperimentinio tikslumo teiginys. Prieš aiškindami mažus skirtumus aptarkite prietaisų padalos vertes.
+
+Sintetiniai atsakymai: 1 bandymas – gauta 3864 J, atiduota 4536 J, liekana 672 J; 2 bandymas – gauta 3948 J, atiduota 4452 J, liekana 504 J. Ideali vienodų masių T = 30 °C; dvigubai daugiau šilto vandens duoda 33,3 °C; dvigubai daugiau vėsaus – 26,7 °C.
+
+**Terminai EN · LT:** heat balance · šilumos balansas; weighted mean · svertinis vidurkis; residual · liekana; model assumption · modelio prielaida. Liekana nevadinama „nuostoliu aplinkai“, neįvertinus kitų veiksnių.
+
+Rašytinį darbą su kriterijais lygina mokinys ar mokytojas. Automatinė dydžio patikra nepatvirtina samprotavimo. Žmogaus fizikos ir darbo klasėje peržiūra dar neatlikta. Keturios pamokos neužbaigia visos šiluminių reiškinių programos temos.
+
+</Block>
+
+
+
+</Lesson>

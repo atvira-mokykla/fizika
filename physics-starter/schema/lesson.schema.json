@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open School physics pilot lesson",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "language",
+    "grade",
+    "title",
+    "status",
+    "licence",
+    "programme_nodes",
+    "objectives_lt",
+    "achievement_areas",
+    "prerequisites_lt",
+    "core_minutes",
+    "slot_minutes",
+    "equipment_lt",
+    "safety_lt",
+    "data_provenance",
+    "review",
+    "source_ids",
+    "blocks",
+    "teacher"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^g(9|10|11|12)-[a-z0-9-]+$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "language": {
+      "const": "lt"
+    },
+    "grade": {
+      "enum": [
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "in-review",
+        "published"
+      ]
+    },
+    "licence": {
+      "const": "CC-BY-SA-4.0"
+    },
+    "programme_nodes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "objectives_lt": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "achievement_areas": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ]
+      }
+    },
+    "prerequisites_lt": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "core_minutes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "slot_minutes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "equipment_lt": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "safety_lt": {
+      "type": "string"
+    },
+    "data_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "note_lt"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "none",
+            "synthetic",
+            "simulated",
+            "measured"
+          ]
+        },
+        "note_lt": {
+          "type": "string"
+        },
+        "evidence_path": {
+          "type": "string"
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "physics",
+        "classroom",
+        "scope_mapping"
+      ],
+      "properties": {
+        "physics": {
+          "type": "string"
+        },
+        "classroom": {
+          "type": "string"
+        },
+        "scope_mapping": {
+          "type": "string"
+        }
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "title_lt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "explanation",
+              "question",
+              "table",
+              "worked-example",
+              "quantity-question",
+              "retrieval"
+            ]
+          },
+          "title_lt": {
+            "type": "string"
+          },
+          "body_lt": {
+            "type": "string"
+          },
+          "columns_lt": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": [
+                  "number",
+                  "string"
+                ]
+              }
+            }
+          },
+          "checker": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "quantity",
+              "expected_si",
+              "si_unit",
+              "accepted_units",
+              "absolute_tolerance_si",
+              "relative_tolerance",
+              "sign_convention_lt"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "specified-not-implemented",
+                  "learning-mode-v1"
+                ]
+              },
+              "quantity": {
+                "type": "string"
+              },
+              "expected_si": {
+                "type": "number"
+              },
+              "si_unit": {
+                "type": "string"
+              },
+              "accepted_units": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "absolute_tolerance_si": {
+                "type": "number",
+                "minimum": 0
+              },
+              "relative_tolerance": {
+                "type": "number",
+                "minimum": 0
+              },
+              "sign_convention_lt": {
+                "type": "string"
+              }
+            }
+          },
+          "worksheet_lines": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 12
+          },
+          "graph": {
+            "enum": [
+              "heating",
+              "blank"
+            ]
+          }
+        }
+      }
+    },
+    "teacher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timing_lt",
+        "answers_lt",
+        "misconceptions_lt",
+        "scope_limit_lt"
+      ],
+      "properties": {
+        "timing_lt": {
+          "type": "string"
+        },
+        "answers_lt": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "misconceptions_lt": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope_limit_lt": {
+          "type": "string"
+        },
+        "preparation_lt": {
+          "type": "string"
+        },
+        "differentiation_lt": {
+          "type": "string"
+        },
+        "rubric_lt": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

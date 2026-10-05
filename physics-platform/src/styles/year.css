@@ -1,0 +1,205 @@
+/* ------------------------------------------------------------------ year, unit and home pages */
+
+.am-eyebrow { font: 500 0.72rem/1.3 var(--am-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--am-accent); }
+.am-small { font-size: 0.88rem; color: var(--am-muted); }
+.am-cta {
+  display: inline-flex; align-items: center; justify-self: start; gap: 0.4rem; text-decoration: none; font: 700 0.95rem/1.2 var(--sl-font);
+  background: var(--am-accent); color: var(--am-accent-ink); border-radius: 10px; padding: 0.65rem 1rem;
+}
+.am-cta:hover { filter: brightness(1.07); }
+.am-cta-ghost { background: transparent; color: var(--am-accent); border: 1.5px solid var(--am-accent); }
+.am-chip { font: 500 0.68rem/1 var(--am-mono); padding: 0.3rem 0.45rem; border-radius: 5px; background: var(--am-surface-2); color: var(--am-muted); white-space: nowrap; }
+.am-chip-soon { background: transparent; border: 1px dashed var(--am-line); }
+.am-chip-exam { background: var(--am-mark-soft); color: var(--am-mark); }
+.am-card { background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 12px; padding: 1rem 1.1rem; }
+.am-card h2, .am-h2 { font: 800 1.15rem/1.2 var(--am-display); margin: 0 0 0.5rem; color: var(--am-ink); }
+.am-card ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+
+/* Progress bars */
+.am-prog { display: flex; align-items: center; gap: 0.6rem; --p: 0; }
+.am-prog-bar { flex: 1; height: 0.5rem; border-radius: 99px; background: var(--am-surface-2); overflow: hidden; }
+.am-prog-bar i { display: block; height: 100%; width: calc(var(--p) * 100%); background: var(--am-accent); border-radius: 99px; transition: width 0.3s; }
+.am-prog-sm .am-prog-bar { height: 0.35rem; }
+.am-prog-lg .am-prog-bar { height: 0.8rem; }
+.am-pct { font: 500 0.75rem var(--am-mono); color: var(--am-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.am-prog.is-complete .am-prog-bar i { background: var(--am-ok); }
+
+/* Year page */
+.am-year { display: grid; gap: 1.6rem; margin-top: 0.4rem; }
+.am-year-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem; align-items: center; }
+.am-year-meta { margin: 0; color: var(--am-muted); max-width: 60ch; }
+.am-mine.is-mine .am-btn { border-color: var(--am-accent); color: var(--am-accent); }
+.am-year-now { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 0.9rem; align-items: start; }
+@media (max-width: 50rem) { .am-year-now { grid-template-columns: minmax(0, 1fr); } }
+.am-next, .am-week { background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 14px; padding: 1.1rem; display: grid; gap: 0.4rem; align-content: start; box-shadow: var(--am-shadow); }
+.am-next { border-color: var(--am-accent); background: linear-gradient(var(--am-accent-soft), var(--am-surface) 75%); }
+.am-next-title { margin: 0; font: 800 1.35rem/1.2 var(--am-display); color: var(--am-ink); }
+.am-next-meta { margin: 0; color: var(--am-muted); font-size: 0.92rem; }
+.am-next-go { margin-top: 0.4rem; }
+.am-next-note:empty { display: none; }
+.am-week-dots { display: flex; gap: 0.35rem; flex-wrap: wrap; margin: 0.2rem 0; }
+.am-week-dots i { width: 1.4rem; height: 1.4rem; border-radius: 50%; border: 2px solid var(--am-line); }
+.am-week-dots i.on { background: var(--am-accent); border-color: var(--am-accent); }
+.am-week-text { margin: 0; font-weight: 700; color: var(--am-ink); }
+.am-week p { margin: 0; }
+.am-week label { display: flex; gap: 0.5rem; align-items: center; margin-top: 0.3rem; }
+.am-week select { font: inherit; padding: 0.2rem 0.4rem; border-radius: 6px; border: 1px solid var(--am-line); background: var(--am-surface); color: var(--am-ink); }
+.am-year-total { display: grid; gap: 0.4rem; }
+
+.am-sem { display: grid; gap: 0.8rem; }
+.am-sem-h { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 1rem; align-items: baseline; }
+.am-sem-h h2 { margin: 0; font: 800 1.45rem/1.2 var(--am-display); color: var(--am-ink); }
+.am-sem-months { color: var(--am-muted); font-size: 0.95rem; }
+.am-sem-h .am-prog { grid-column: 1 / -1; max-width: 26rem; }
+
+/* The path: a vertical line with units as stops and tests as flags */
+.am-path { list-style: none; margin: 0; padding: 0 0 0 1.6rem; display: grid; gap: 0.7rem; position: relative; }
+.am-path::before { content: ''; position: absolute; left: 0.45rem; top: 0.6rem; bottom: 0.6rem; width: 2px; background: var(--am-line); }
+.am-path > li { position: relative; }
+.am-path > li::before {
+  content: ''; position: absolute; left: -1.55rem; top: 1.05rem; width: 0.9rem; height: 0.9rem; border-radius: 50%;
+  background: var(--am-surface); border: 2px solid var(--am-accent);
+}
+.am-path > li:has(.is-complete)::before, .am-path > li.is-done::before { background: var(--am-accent); }
+.am-unit-card {
+  display: grid; grid-template-columns: auto 1fr; gap: 0.15rem 0.8rem; align-items: baseline; text-decoration: none; color: var(--am-ink);
+  background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 12px; padding: 0.8rem 1rem;
+}
+.am-unit-card:hover { border-color: var(--am-accent); }
+.am-unit-n { font: 500 0.75rem var(--am-mono); color: var(--am-accent); grid-row: span 2; white-space: nowrap; }
+.am-unit-title { font: 700 1.08rem/1.25 var(--am-display); }
+.am-unit-lt { grid-column: 2; color: var(--am-muted); font-size: 0.88rem; font-style: italic; }
+.am-unit-meta { grid-column: 2; color: var(--am-muted); font-size: 0.85rem; }
+.am-unit-card .am-prog { grid-column: 2; margin-top: 0.3rem; }
+.am-path-test { display: grid; gap: 0.15rem; padding: 0.7rem 1rem; border: 1.5px dashed var(--am-mark); border-radius: 12px; background: var(--am-mark-soft); }
+.am-path > li.am-path-test::before { border-color: var(--am-mark); border-radius: 3px; transform: rotate(45deg); }
+.am-path > li.am-path-test.is-done::before { background: var(--am-mark); }
+.am-path-test.am-kind-review { border-color: var(--am-line); background: var(--am-surface); }
+.am-path > li.am-kind-review::before { border-color: var(--am-muted); }
+.am-path-test label { display: flex; gap: 0.6rem; align-items: center; font-weight: 700; color: var(--am-ink); cursor: pointer; }
+.am-test-meta { color: var(--am-muted); font-size: 0.85rem; padding-left: 1.7rem; }
+.am-year-foot { max-width: 70ch; }
+
+input[data-done] { width: 1.15rem; height: 1.15rem; accent-color: var(--am-accent); flex: none; cursor: pointer; }
+
+/* Unit page */
+.am-unit { display: grid; gap: 1.4rem; margin-top: 0.2rem; }
+.am-crumbs { display: flex; flex-wrap: wrap; gap: 0.4rem; font: 500 0.78rem var(--am-mono); color: var(--am-muted); }
+.am-crumbs a { color: var(--am-accent); text-decoration: none; }
+.am-unit-sub { margin: -0.6rem 0 0; color: var(--am-muted); }
+.am-unit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0.9rem; }
+.am-needs { background: var(--am-hint-soft); border-color: transparent; }
+.am-lessons { list-style: none; margin: 0 0 0.6rem; padding: 0; display: grid; gap: 0.45rem; }
+.am-lesson-row {
+  display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; gap: 0.8rem; align-items: center;
+  background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 10px; padding: 0.6rem 0.8rem; scroll-margin-top: 6rem;
+}
+.am-lesson-row:target { border-color: var(--am-mark); box-shadow: 0 0 0 3px var(--am-mark-soft); }
+.am-lesson-row.is-done { background: var(--am-accent-soft); }
+.am-row-n { font: 500 0.8rem var(--am-mono); color: var(--am-muted); min-width: 2.2rem; text-align: right; }
+.am-row-t { display: grid; gap: 0.25rem; min-width: 0; }
+.am-row-t a { font-weight: 700; color: var(--am-ink); }
+.am-row-t > span:first-child { color: var(--am-muted); }
+.am-row-meta { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.am-row-meta:empty { display: none; }
+.am-row-go { font-weight: 700; color: var(--am-accent); text-decoration: none; }
+.am-kind-check .am-row-n, .am-kind-test .am-row-n { color: var(--am-mark); }
+.am-unit-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem; border-top: 1px solid var(--am-line); padding-top: 1rem; }
+.am-unit-nav a { color: var(--am-accent); text-decoration: none; font-weight: 700; }
+
+/* Course chooser */
+.am-course { display: grid; gap: 1rem; }
+.am-course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0.9rem; }
+.am-course-card { display: grid; gap: 0.45rem; text-decoration: none; color: var(--am-ink); background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 14px; padding: 1.1rem; box-shadow: var(--am-shadow); }
+.am-course-card:hover { border-color: var(--am-accent); }
+.am-course-title { font: 800 1.2rem var(--am-display); }
+
+/* End of a lesson */
+.am-lesson-end {
+  display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center; justify-content: space-between;
+  background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 14px; padding: 0.9rem 1.1rem;
+}
+.am-done-toggle { display: flex; gap: 0.6rem; align-items: center; font-weight: 700; cursor: pointer; }
+.am-done-toggle.is-done { color: var(--am-ok); }
+.am-end-links { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; margin-left: auto; }
+.am-end-links > a:not(.am-cta) { color: var(--am-accent); font-weight: 700; text-decoration: none; }
+.am-print .am-lesson-end { display: none; }
+
+.am-unit-avail { grid-column: 2; font: 500 0.72rem var(--am-mono); color: var(--am-accent); }
+.am-class-here { grid-column: 2; justify-self: start; font: 700 0.72rem var(--am-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--am-accent-ink); background: var(--am-mark); border-radius: 5px; padding: 0.25rem 0.5rem; }
+.am-unit-card.is-class { border: 2px solid var(--am-mark); }
+.am-unit-status { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+.am-unit-status .am-prog { flex: 1 1 18rem; }
+.am-btn-on { background: var(--am-mark); border-color: var(--am-mark); color: #fff; }
+.am-report { font-size: 0.85rem; color: var(--am-muted); }
+.am-report a { color: var(--am-accent); }
+.am-year-now > * { min-width: 0; }
+.am-week label { flex-wrap: wrap; }
+.am-week select { max-width: 100%; }
+
+/* ------------------------------------------------------------------ the school calendar (ThisWeek, week by week) */
+
+.am-thisweek-h { margin: 0; font: 800 1.05rem/1.25 var(--am-display); color: var(--am-ink); }
+.am-thisweek-break { font-style: italic; }
+.am-slots { list-style: none; margin: 0.25rem 0 0.2rem; padding: 0; display: grid; gap: 0.3rem; }
+.am-slot { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.4rem; align-items: baseline; font-size: 0.92rem; }
+.am-slot-n { font: 500 0.72rem/1 var(--am-mono); color: var(--am-muted); }
+.am-slot a { color: var(--am-ink); text-decoration: none; }
+.am-slot a:hover { color: var(--am-accent); text-decoration: underline; }
+.am-slot-special { color: var(--am-muted); font-style: italic; }
+.am-slot.is-done .am-slot-n::after { content: ' ✓'; color: var(--am-ok); font-weight: 700; }
+.am-slot.is-done a { color: var(--am-muted); }
+.am-thisweek-next { border-top: 1px dashed var(--am-line); padding-top: 0.45rem; }
+.am-week-goal { display: grid; gap: 0.3rem; border-top: 1px solid var(--am-line); padding-top: 0.5rem; margin-top: 0.2rem; }
+.am-week-goal .am-week-text { font-weight: 600; }
+
+.am-cal { margin: 0.2rem 0 0 1.6rem; }
+.am-cal > summary { cursor: pointer; font-weight: 700; color: var(--am-accent); padding: 0.3rem 0; }
+.am-cal-note { margin: 0.3rem 0; }
+.am-cal-list { list-style: none; margin: 0.3rem 0; padding: 0; display: grid; gap: 0; }
+.am-cal-row { display: grid; grid-template-columns: 3.6rem 9.5rem minmax(0, 1fr); gap: 0.2rem 0.6rem; align-items: baseline;
+  padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--am-line); font-size: 0.9rem; }
+.am-cal-row.is-now { background: var(--am-accent-soft); border-radius: 6px; }
+.am-cal-w { font: 500 0.75rem/1.3 var(--am-mono); color: var(--am-muted); }
+.am-cal-d { color: var(--am-muted); }
+.am-cal-what { display: flex; flex-wrap: wrap; gap: 0.15rem 0.9rem; }
+.am-cal-code { font: 500 0.72rem/1 var(--am-mono); color: var(--am-muted); margin-right: 0.3rem; }
+.am-cal-run a { color: var(--am-ink); text-decoration: none; }
+.am-cal-run a:hover { color: var(--am-accent); text-decoration: underline; }
+.am-cal-special { color: var(--am-muted); font-style: italic; }
+.am-cal-break { padding: 0.35rem 0.5rem; font-size: 0.85rem; color: var(--am-hint); font-weight: 600; border-bottom: 1px solid var(--am-line); }
+@media (max-width: 40rem) {
+  .am-cal { margin-left: 0; }
+  .am-cal-row { grid-template-columns: 3.6rem minmax(0, 1fr); }
+  .am-cal-what { grid-column: 1 / -1; }
+}
+.am-chip-week.is-now { background: var(--am-accent-soft); color: var(--am-accent); }
+
+/* Week badges in the menu ("3–6 sav."): quiet text, not Starlight's filled badge. */
+.sl-badge.am-wk { background: transparent; border: 0; padding: 0 0 0 0.3rem; color: var(--am-muted); font: 500 0.76rem/1 var(--am-mono); white-space: nowrap; }
+a[aria-current='page'] .sl-badge.am-wk { color: inherit; opacity: 0.85; }
+
+/* A unit page, week by week: the year page's line with a circle per week. */
+.am-weeks { gap: 0.8rem; }
+.am-week-card { display: grid; gap: 0.5rem; background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 12px; padding: 0.7rem 0.8rem 0.8rem; }
+.am-week-h { margin: 0; color: var(--am-muted); font-size: 0.95rem; }
+.am-week-h b { font: 800 1.02rem/1.2 var(--am-display); color: var(--am-ink); }
+.am-now-tag { display: none; margin-left: 0.3rem; font: 500 0.68rem/1 var(--am-mono); padding: 0.25rem 0.4rem; border-radius: 5px; background: var(--am-accent); color: var(--am-accent-ink); text-transform: uppercase; letter-spacing: 0.05em; }
+.am-weeks > li.is-now > .am-week-card { border: 2px solid var(--am-accent); }
+.am-weeks > li.is-now .am-now-tag { display: inline-block; }
+.am-week-card .am-lessons { margin: 0; }
+.am-week-also { margin: 0; font-style: italic; }
+/* The week's circle fills when every lesson of the week is ticked. */
+.am-weeks > li:not(:has(.am-lesson-row:not(.is-done)))::before { background: var(--am-accent); }
+/* Inside a week card the lessons are plain rows, not cards of their own. */
+.am-week-card .am-lessons { gap: 0; }
+.am-week-card .am-lesson-row { border: 0; border-top: 1px solid var(--am-line); border-radius: 0; box-shadow: none; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.am-week-card .am-lesson-row:first-child { border-top: 0; }
+.am-week-card .am-lesson-row.is-done { border-radius: 6px; }
+@media (max-width: 40rem) {
+  /* On a phone the title itself is the link: the "Open" button would squeeze it. */
+  .am-week-card { padding: 0.6rem 0.6rem 0.7rem; }
+  .am-week-card .am-lesson-row { grid-template-columns: auto auto minmax(0, 1fr); gap: 0.5rem; padding-left: 0.2rem; padding-right: 0.2rem; }
+  .am-week-card .am-row-go { display: none; }
+  .am-week-card .am-row-n { min-width: 1.9rem; }
+}

@@ -1,0 +1,111 @@
+units:
+  thermal:
+    title: Šiluminiai reiškiniai
+    goals:
+    - Paaiškinti ir taikyti temą „Vidinė energija“.
+    - Paaiškinti ir taikyti temą „Medžiagos būsenų kitimas“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-2:
+    title: Mechaninis judėjimas
+    goals:
+    - Paaiškinti ir taikyti temą „Mechaninis judėjimas“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-3:
+    title: Jėgos ir sąveikos dėsniai
+    goals:
+    - Paaiškinti ir taikyti temą „Jėgos“.
+    - Paaiškinti ir taikyti temą „Sąveikos dėsniai“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-4:
+    title: Slėgis
+    goals:
+    - Paaiškinti ir taikyti temą „Slėgis“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-5:
+    title: Darbas, galia ir energija
+    goals:
+    - Paaiškinti ir taikyti temą „Mechaninis darbas ir galia“.
+    - Paaiškinti ir taikyti temą „Mechaninė energija“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-6:
+    title: Paprastieji mechanizmai
+    goals:
+    - Paaiškinti ir taikyti temą „Paprastieji mechanizmai“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  autumn-practice:
+    title: Tyrimai, kartojimas ir vertinimas
+    goals:
+    - Remtis įrodymais, paaiškinti prielaidas ir tobulinti rašytinį sprendimą.
+    needs:
+    - Šio pusmečio temos.
+  spring-practice:
+    title: Tyrimai, kartojimas ir vertinimas
+    goals:
+    - Remtis įrodymais, paaiškinti prielaidas ir tobulinti rašytinį sprendimą.
+    needs:
+    - Šio pusmečio temos.
+lessons:
+  g9-thermal-01: Temperatūra, vidinė energija ir šiluma
+  g9-thermal-02: Šilumos kiekis, savitoji šiluma ir grafikai
+  g9-thermal-03: Vandens maišymo tyrimas
+  g9-thermal-04: 'Šilumos balansas: nuo modelio iki įrodymų'
+  g9-thermal-5: Lydymasis ir kietėjimas
+  g9-thermal-6: Garavimas, kondensacija ir virimas
+  g9-thermal-7: Šildymo grafikas keičiantis būsenai
+  g9-thermal-8: Kuras ir degimo šiluma
+  g9-thermal-9: Medžiagos savitosios šilumos nustatymas
+  g9-thermal-10: Šiluminiai varikliai ir naudingumo koeficientas
+  g9-thermal-11: Šilumos siurbliai ir aplinka
+  g9-thermal-12: Mišrios šiluminių reiškinių užduotys
+  g9-thermal-13: Šiluminių reiškinių pasitikrinimas ir grįžtamasis ryšys
+  g9-topic-2-1: Atskaitos sistema, kelias ir poslinkis
+  g9-topic-2-2: Greitis ir jo kryptis
+  g9-topic-2-3: Vidutinis kelionės greitis
+  g9-topic-2-4: Pagreitis ir greičio kitimas
+  g9-topic-2-5: Tolygiai kintamo judėjimo lygtis
+  g9-topic-2-6: Tolygiai kintamo judėjimo kelias
+  g9-topic-2-7: Laisvasis kritimas
+  g9-topic-2-8: Koordinatės ir laiko grafikai
+  g9-topic-2-9: Greičio ir laiko grafikai
+  g9-topic-2-10: 'Judėjimas apskritimu: periodas ir dažnis'
+  g9-topic-2-11: Įcentrinis pagreitis ir planetų judėjimas
+  g9-topic-2-12: Judėjimo tyrimas ir pasitikrinimas
+  g9-topic-3-1: Jėgos vektoriaus vaizdavimas
+  g9-topic-3-2: Sunkio jėga, svoris ir masė
+  g9-topic-3-3: Tamprumo jėga ir deformacija
+  g9-topic-3-4: Trinties tyrimas
+  g9-topic-3-5: Jėgų atstojamoji
+  g9-topic-3-6: Inercija ir pirmasis Niutono dėsnis
+  g9-topic-3-7: Jėga, masė ir pagreitis
+  g9-topic-3-8: Sąveika ir trečiasis Niutono dėsnis
+  g9-topic-3-9: Niutono dėsnių taikymas
+  g9-topic-3-10: Jėgų tyrimas ir pasitikrinimas
+  g9-topic-4-1: Slėgis ir atramos plotas
+  g9-topic-4-2: Slėgis skysčiuose
+  g9-topic-4-3: Atmosferos slėgis
+  g9-topic-4-4: Archimedo jėga ir plūduriavimas
+  g9-topic-4-5: Slėgio tyrimas ir pasitikrinimas
+  g9-topic-5-1: Mechaninis darbas
+  g9-topic-5-2: Galia
+  g9-topic-5-3: Kinetinė energija
+  g9-topic-5-4: Potencinė sunkio ir tamprumo energija
+  g9-topic-5-5: Mechaninės energijos tvermė ir virsmai
+  g9-topic-5-6: Energijos tyrimas ir pasitikrinimas
+  g9-topic-6-1: Svertai ir jėgos momentas
+  g9-topic-6-2: Skridiniai ir nuožulnioji plokštuma
+  g9-topic-6-3: Paprastųjų mechanizmų naudingumas
+  g9-topic-6-4: Paprastųjų mechanizmų tyrimas ir pasitikrinimas
+  g9-autumn-practice: Pagal klasės poreikius parenkami tyrimai, kartojimas ir vertinimas
+  g9-spring-practice: Pagal klasės poreikius parenkami tyrimai, kartojimas ir vertinimas
+  g9-autumn-investigation: Pagal klasės poreikius parenkamas tyrimas
+  g9-autumn-retrieval: Kartojimas ir mišrios užduotys
+  g9-autumn-assessment: Vertinimas ir grįžtamasis ryšys
+  g9-spring-investigation: Pagal klasės poreikius parenkamas tyrimas
+  g9-spring-retrieval: Kartojimas ir mišrios užduotys
+  g9-spring-assessment: Vertinimas ir grįžtamasis ryšys

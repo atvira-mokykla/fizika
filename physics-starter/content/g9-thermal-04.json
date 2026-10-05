@@ -1,0 +1,172 @@
+{
+  "id": "g9-thermal-04",
+  "version": "0.2.0-draft",
+  "language": "lt",
+  "grade": 9,
+  "title": "Duomenų analizė: kur perduota energija?",
+  "status": "draft",
+  "licence": "CC-BY-SA-4.0",
+  "programme_nodes": [
+    "lt-physics-g9-02"
+  ],
+  "objectives_lt": [
+    "Apskaičiuoti vandens gautą ir atiduotą šilumą pagal savo matavimus arba pažymėtą mokomąjį rinkinį.",
+    "Palyginti realų arba iliustracinį rezultatą su idealaus šilumos balanso prognoze.",
+    "Pagrįsti išvadą duomenimis ir pasiūlyti tyrimo patobulinimą."
+  ],
+  "achievement_areas": [
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "prerequisites_lt": [
+    "Temperatūros skalės skaitymas.",
+    "Masės vienetai g ir kg.",
+    "Lentelių skaitymas ir paprasti skaičiavimai."
+  ],
+  "core_minutes": 30,
+  "slot_minutes": 45,
+  "equipment_lt": [
+    "3 pamokos duomenų lapas arba aiškiai pažymėtas iliustracinis rinkinys.",
+    "Skaičiuotuvas ir langelių popierius."
+  ],
+  "safety_lt": "Naujų bandymų nėra. Jei bandymą kartojate, naudokite tik mokytojo patvirtintą 3 pamokos protokolą.",
+  "data_provenance": {
+    "kind": "synthetic",
+    "note_lt": "Šiame faile esanti lentelė specialiai sukurta analizei mokytis. Ji nėra realaus bandymo rezultatas. Tikri klasės duomenys naudojami atskiru keliu."
+  },
+  "review": {
+    "physics": "pending practising human reviewer",
+    "classroom": "pending practising Lithuanian physics teacher",
+    "scope_mapping": "editorial mapping prepared; human sign-off pending"
+  },
+  "source_ids": [
+    "LT-BP-LIVE",
+    "LT-PLAN-9-2026"
+  ],
+  "blocks": [
+    {
+      "id": "route",
+      "type": "explanation",
+      "title_lt": "Pasirink duomenų kelią",
+      "body_lt": "A: naudok savo 3 pamokos rodmenis ir metodą. B: naudok žemiau pateiktą ILIUSTRACINĘ lentelę, jei tikrų matavimų nėra. Ataskaitoje parašyk, kurį kelią pasirinkai. B kelias moko analizės, bet neįrodo, kad atlikai matavimus. Jei tikrus duomenis pateikė mokytojas, įvardyk jų šaltinį ir tai, kad pats jų nerinkai.",
+      "worksheet_lines": 0
+    },
+    {
+      "id": "recall",
+      "type": "retrieval",
+      "title_lt": "Iš atminties",
+      "body_lt": "Užrašyk Q = mcΔT dydžius ir vienetus. Kuo skiriasi prietaiso skyra ir jo tikslumas? Kokia būtų dviejų vienodų vandens masių ideali mišinio temperatūra?",
+      "worksheet_lines": 3
+    },
+    {
+      "id": "example-data",
+      "type": "table",
+      "title_lt": "Iliustraciniai duomenys, ne matavimai",
+      "body_lt": "Abiejuose mokomuosiuose bandymuose m_v = m_š = 100 g, T_v = 20,0 °C, T_š = 40,0 °C. T_m rodmuo įrašomas praėjus iliustracinei 10 s delsai po pylimo. Tada rodomas tolesnis vėsimas. Skaičiai sukurti užduočiai; prietaisų tikslumas jais nepatvirtintas.",
+      "worksheet_lines": 0,
+      "columns_lt": [
+        "Bandymas",
+        "T_m (°C)",
+        "T po 30 s (°C)",
+        "T po 60 s (°C)"
+      ],
+      "rows": [
+        [
+          1,
+          29.2,
+          29.0,
+          28.8
+        ],
+        [
+          2,
+          29.4,
+          29.2,
+          29.0
+        ]
+      ]
+    },
+    {
+      "id": "balance",
+      "type": "worked-example",
+      "title_lt": "Pirmojo iliustracinio bandymo energijos apskaita",
+      "body_lt": "Naudojame c = 4200 J/(kg·K). m_v = m_š = 0,100 kg. Gautą ir atiduotą šilumą čia skaičiuojame kaip TEIGIAMUS kiekius: Q_gauta = m_v c(T_m − T_v) = 0,100 × 4200 × (29,2 − 20,0) = 3864 J. Q_atiduota = m_š c(T_š − T_m) = 0,100 × 4200 × (40,0 − 29,2) = 4536 J. Skirtumas 672 J. Tai nėra įrodymas, kad energija išnyko: mūsų vandens apskaita neįtraukia indo, aplinkos ir matavimo poveikių. Šio skirtumo negalima vadinti vien tik tiksliai išmatuotu šilumos nuostoliu.",
+      "worksheet_lines": 0
+    },
+    {
+      "id": "calculate",
+      "type": "question",
+      "title_lt": "Tavo pasirinkto rinkinio apskaita",
+      "body_lt": "Užrašyk duomenų kilmę. Pasirink vieną bandymą, gramus pakeisk kilogramais ir apskaičiuok Q_gauta bei Q_atiduota. Nurodyk jų skirtumą. Jei naudoji B kelią, savarankiškai apskaičiuok antrojo iliustracinio bandymo rezultatus.",
+      "worksheet_lines": 6
+    },
+    {
+      "id": "ideal",
+      "type": "quantity-question",
+      "title_lt": "Idealaus modelio patikra",
+      "body_lt": "Idealiame modelyje sumaišoma 0,100 kg vandens, kurio temperatūra 20 °C, ir 0,100 kg vandens, kurio temperatūra 40 °C. Indo ir aplinkos poveikio nepaisome, būsena nekinta. Kokia galutinė temperatūra? Pateik °C arba K.",
+      "worksheet_lines": 3,
+      "checker": {
+        "status": "learning-mode-v1",
+        "quantity": "absolute-temperature",
+        "expected_si": 303.15,
+        "si_unit": "K",
+        "accepted_units": [
+          "°C",
+          "K"
+        ],
+        "absolute_tolerance_si": 0.01,
+        "relative_tolerance": 0,
+        "sign_convention_lt": "Klausiama absoliučios galutinės temperatūros, ne jos pokyčio. Idealūs duomenys laikomi tiksliais."
+      }
+    },
+    {
+      "id": "graph",
+      "type": "question",
+      "title_lt": "Pavaizduok kitimą",
+      "body_lt": "B keliu nubraižyk pirmojo bandymo temperatūros grafiką laiko taškuose 0, 30 ir 60 s nuo pirmojo stabilaus rodmens. A keliu naudok savo laikus. Ašyse nurodyk vienetus. Kodėl šis grafikas neparodo paties maišymo pirmosiomis sekundėmis?",
+      "worksheet_lines": 4,
+      "graph": "blank"
+    },
+    {
+      "id": "conclusion",
+      "type": "question",
+      "title_lt": "Išvada ir tyrimo ribos",
+      "body_lt": "Palygink rezultatą su hipoteze. Išvadoje pateik bent du duomenis, aptark vieną skirtumo priežastį ir pasiūlyk konkretų patobulinimą. Jei pradines sąlygas pavyko išlaikyti panašias, galima palyginti dviejų mišinio rodmenų vidurkį, tačiau jis nepašalina sisteminio indo poveikio.",
+      "worksheet_lines": 5
+    },
+    {
+      "id": "exit",
+      "type": "retrieval",
+      "title_lt": "Perkelk į naują situaciją",
+      "body_lt": "0,100 kg vėsesnio vandens sumaišoma su 0,200 kg šiltesnio vandens. Ar galima taikyti paprastą dviejų temperatūrų vidurkį? Paaiškink. Ką kitą kartą patikrinsi savo tyrime?",
+      "worksheet_lines": 3
+    }
+  ],
+  "teacher": {
+    "timing_lt": "3 min prisiminimas; 4 min kilmė ir modelis; 6 min pavyzdys; 8 min savarankiška apskaita; 5 min grafikas; 4 min išvada. Jei grafikas ir išvada netelpa, naudoti 15 min rezervą; fiksuoti faktinį laiką.",
+    "answers_lt": {
+      "recall": "Q – šilumos kiekis J, m – masė kg, c – J/(kg·K), ΔT – temperatūros pokytis K (tokios pačios skaitinės vertės °C). Skyra – mažiausias rodmens žingsnis; tikslumas – atskira prietaiso charakteristika. Vienodoms vandens masėms ideali prognozė 30 °C.",
+      "calculate": "B kelio antras bandymas: Q_gauta = 3948 J; Q_atiduota = 4452 J; skirtumas 504 J. A kelias vertinamas pagal užrašytus rodmenis ir aiškias prielaidas, o ne pagal vieną iš anksto parinktą skaičių.",
+      "ideal": "30 °C = 303,15 K. Tik to paties vandens vienodoms masėms ir nurodytoms idealioms sąlygoms temperatūra lygi paprastam vidurkiui.",
+      "graph": "Pirmojo iliustracinio bandymo taškai: (0; 29,2), (30; 29,0), (60; 28,8). Ašys: laikas s ir temperatūra °C. 0 s atitinka pirmą stabilų rodmenį, gautą po 10 s nuo pylimo; pradinis maišymas neužfiksuotas.",
+      "conclusion": "B pavyzdys: 29,2 ir 29,4 °C yra žemiau idealios 30 °C prognozės; vidurkis 29,3 °C, nuokrypis −0,7 °C. Tai tik mokomojo rinkinio analizė. Galimi indo įšilimo, aplinkos ir skaitymo poveikiai; duomenys vieni jų neatskiria. Patobulinimas: izoliuoti indą, įvertinti jo šiluminę talpą arba aiškiai vienodinti skaitymo delsą.",
+      "exit": "Ne: nevienodoms masėms idealus vidurkis svertinis. T_m = (m_v T_v + m_š T_š)/(m_v + m_š), jei c abiem vienoda. Pasirinktoms 20 ir 40 °C temperatūroms būtų apie 33,3 °C. Tai papildoma užduotis, ne būtina pirmojo tyrimo prielaida."
+    },
+    "misconceptions_lt": [
+      "Visais maišymo atvejais naudojamas paprastas temperatūrų vidurkis.",
+      "Energijos apskaitos skirtumas laikomas energijos išnykimu arba vien tik aplinkos nuostoliu.",
+      "Vidurkis laikomas priemone pašalinti sistemines klaidas."
+    ],
+    "scope_limit_lt": "Dalinis g9-02 šilumos balanso ir tyrimo analizės darbas. Neapima nežinomos medžiagos savitosios šilumos nustatymo, fazinių virsmų, kuro, variklių ar siurblių. Sintetinis kelias neįrodo praktinių gebėjimų.",
+    "preparation_lt": "Pirmiausia pasirinkti savo/mokytojo tikrus duomenis arba B mokomąjį rinkinį. Neperrašyti tikrų rodmenų, kad sutaptų su pavyzdžiu. Aptarti, kad c = 4200 yra tinkamas mokyklinis vandens modelis, o ne šio bandymo išmatuota c reikšmė.",
+    "differentiation_lt": "Pagalba: atskirai pateikti ΔT_v ir ΔT_š skaičiavimo žingsnius. Papildoma: nevienodų masių svertinis vidurkis; nepaversti jo visiems privaloma pirmąja užduotimi.",
+    "rubric_lt": [
+      "Kilmė: aiškiai skiria savo, pateiktus tikrus ir sintetinius duomenis.",
+      "Apskaita: teisingos masės, skirtumai, formulė, vienetai ir ženklų sutartis.",
+      "Išvada: remiasi skaičiais, aptaria ribotumą ir nesiūlo išvados apie energijos išnykimą.",
+      "Patobulinimas: konkretus ir susietas su įvardyta problema."
+    ]
+  }
+}

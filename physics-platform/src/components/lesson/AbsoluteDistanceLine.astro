@@ -1,0 +1,44 @@
+---
+interface Props {
+  id: string;
+  locale: 'en' | 'lt';
+  variant: 'origin' | 'pair';
+}
+const { id, locale, variant } = Astro.props;
+const lt = locale === 'lt';
+const origin = variant === 'origin';
+const left = origin ? -4 : -2;
+const right = origin ? 0 : 4;
+const length = right - left;
+const x = (v: number) => 58 + (v + 6) * 44;
+const ticks = Array.from({ length: 13 }, (_, i) => i - 6);
+const title = origin
+  ? (lt ? 'Atstumas nuo −4 iki nulio' : 'Distance from −4 to zero')
+  : (lt ? 'Atstumas tarp −2 ir 4' : 'Distance between −2 and 4');
+const description = origin
+  ? (lt ? 'Skaičių tiesė nuo −6 iki 6. Pažymėti taškai −4 ir 0; tarp jų keturi vienetiniai tarpai. Todėl |−4| = 4.' : 'Number line from −6 to 6. Points −4 and 0 are marked, with four unit intervals between them. Therefore |−4| = 4.')
+  : (lt ? 'Skaičių tiesė nuo −6 iki 6. Pažymėti taškai −2 ir 4; tarp jų šeši vienetiniai tarpai. Todėl |−2 − 4| = 6.' : 'Number line from −6 to 6. Points −2 and 4 are marked, with six unit intervals between them. Therefore |−2 − 4| = 6.');
+const segmentLabel = lt ? `${length} vienetiniai tarpai` : `${length} unit intervals`;
+---
+<svg viewBox="0 0 650 145" width="650" role="img" aria-labelledby={`${id}-title`} aria-describedby={`${id}-desc`} style="display:block;max-width:100%;height:auto;margin:0.7rem auto">
+  <title id={`${id}-title`}>{title}</title>
+  <desc id={`${id}-desc`}>{description}</desc>
+  <line x1="45" y1="72" x2="615" y2="72" stroke="currentColor" stroke-width="2" />
+  <path d="M615 72 L606 67 M615 72 L606 77" fill="none" stroke="currentColor" stroke-width="2" />
+  <line x1={x(left)} y1="72" x2={x(right)} y2="72" stroke="var(--sl-color-accent, currentColor)" stroke-width="6" stroke-linecap="round" />
+  {ticks.map((v) => <g>
+    <line x1={x(v)} y1="63" x2={x(v)} y2="81" stroke="currentColor" stroke-width={v === 0 ? '2' : '1.5'} />
+    <text x={x(v)} y="109" text-anchor="middle" fill="currentColor" font-size="15" font-family="sans-serif">{v < 0 ? `−${-v}` : v}</text>
+  </g>)}
+  <circle cx={x(left)} cy="72" r="6" fill="var(--sl-color-accent, currentColor)" stroke="currentColor" stroke-width="1" />
+  <circle cx={x(right)} cy="72" r="6" fill="var(--sl-color-accent, currentColor)" stroke="currentColor" stroke-width="1" />
+  {!origin && <>
+    <text x={x(left)} y="53" text-anchor="middle" fill="currentColor" font-size="15" font-weight="700" font-family="sans-serif">P</text>
+    <text x={x(right)} y="53" text-anchor="middle" fill="currentColor" font-size="15" font-weight="700" font-family="sans-serif">Q</text>
+  </>}
+  <text x={(x(left) + x(right)) / 2} y="43" text-anchor="middle" fill="currentColor" font-size="17" font-weight="700" font-family="sans-serif">{segmentLabel}</text>
+</svg>
+<style>
+  @media print { svg { color: #111; --sl-color-accent: #111; } }
+  @media (forced-colors: active) { svg { color: CanvasText; --sl-color-accent: Highlight; } }
+</style>

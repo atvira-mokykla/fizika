@@ -1,0 +1,9 @@
+---
+interface Props { id: string; props?: Record<string, unknown>; alt?: string; ratio?: string }
+const { id, props = {}, alt = 'Interactive figure', ratio = '1 / 1' } = Astro.props;
+---
+<div class="am-figure not-content" data-figure={id} data-props={JSON.stringify(props)} style={`--am-fig-ratio: ${ratio}`}>
+  <div class="am-fig-box" role="img" aria-label={alt}></div>
+  <div class="am-fig-bar"></div>
+  <p class="am-fig-cap" aria-live="polite"></p>
+</div>

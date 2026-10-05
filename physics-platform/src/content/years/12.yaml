@@ -1,0 +1,202 @@
+path: '12'
+grade: 12
+gymn: IV
+title: Grade 12
+subtitle: IV gimnazijos klasė · Physics
+schoolYear: 2026–2027
+lessonsPerWeek: 3
+weeks: 34
+exam: null
+semesters:
+- id: autumn
+  title: Autumn semester
+  months: September–January
+  units:
+  - id: topic-1
+    title: Oscillations, waves and alternating current
+    lt: Svyravimai, bangos ir kintamoji srovė
+    curriculum:
+    - lt-physics-g12-01
+    - lt-physics-g12-02
+    - lt-physics-g12-03
+    - lt-physics-g12-04
+    hours: 25
+    months: September–January
+    goals:
+    - Explain and apply oscillations.
+    - Explain and apply waves.
+    - Explain and apply wave properties.
+    - Explain and apply alternating current and its transmission.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g12-topic-1-1
+      title: Oscillations
+      periods: 5
+      kind: lesson
+    - id: g12-topic-1-2
+      title: Waves
+      periods: 4
+      kind: lesson
+    - id: g12-topic-1-3
+      title: Wave properties
+      periods: 4
+      kind: lesson
+    - id: g12-topic-1-4
+      title: Alternating current and its transmission
+      periods: 4
+      kind: lesson
+    - id: g12-topic-1-5
+      title: Apply the models to problems
+      periods: 4
+      kind: practice
+    - id: g12-topic-1-6
+      title: Investigation, unit check and feedback
+      periods: 4
+      kind: check
+  - id: topic-2
+    title: Geometrical and wave optics
+    lt: Geometrinė ir banginė optika
+    curriculum:
+    - lt-physics-g12-05
+    - lt-physics-g12-06
+    hours: 25
+    months: September–January
+    goals:
+    - Explain and apply geometrical optics.
+    - Explain and apply wave phenomena of light.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g12-topic-2-1
+      title: Geometrical optics
+      periods: 7
+      kind: lesson
+    - id: g12-topic-2-2
+      title: Wave phenomena of light
+      periods: 6
+      kind: lesson
+    - id: g12-topic-2-3
+      title: Apply the models to problems
+      periods: 6
+      kind: practice
+    - id: g12-topic-2-4
+      title: Investigation, unit check and feedback
+      periods: 6
+      kind: check
+  - id: autumn-practice
+    title: Investigations, revision and assessment
+    lt: Tyrimai, kartojimas ir vertinimas
+    curriculum: []
+    hours: 1
+    months: September–January
+    goals:
+    - Use evidence, explain assumptions and improve a written solution.
+    needs:
+    - The topics studied in this semester.
+    lessons:
+    - id: g12-autumn-practice
+      title: Class-selected investigations, retrieval practice and assessment
+      kind: review
+      periods: 1
+  tests: []
+- id: spring
+  title: Spring semester
+  months: February–June
+  units:
+  - id: topic-3
+    title: Quantum optics, atoms, nuclei and particles
+    lt: Kvantinė optika, atomas, branduolys ir dalelės
+    curriculum:
+    - lt-physics-g12-07
+    - lt-physics-g12-08
+    - lt-physics-g12-09
+    - lt-physics-g12-10
+    hours: 26
+    months: February–June
+    goals:
+    - Explain and apply quantum optics.
+    - Explain and apply atomic structure.
+    - Explain and apply the atomic nucleus and radioactivity.
+    - Explain and apply elementary particles.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g12-topic-3-1
+      title: Quantum optics
+      periods: 5
+      kind: lesson
+    - id: g12-topic-3-2
+      title: Atomic structure
+      periods: 5
+      kind: lesson
+    - id: g12-topic-3-3
+      title: The atomic nucleus and radioactivity
+      periods: 4
+      kind: lesson
+    - id: g12-topic-3-4
+      title: Elementary particles
+      periods: 4
+      kind: lesson
+    - id: g12-topic-3-5
+      title: Apply the models to problems
+      periods: 4
+      kind: practice
+    - id: g12-topic-3-6
+      title: Investigation, unit check and feedback
+      periods: 4
+      kind: check
+  - id: topic-4
+    title: Relativity
+    lt: Reliatyvumo teorija
+    curriculum:
+    - lt-physics-g12-11
+    - lt-physics-g12-12
+    hours: 10
+    months: February–June
+    goals:
+    - Explain and apply introduction to relativity.
+    - Explain and apply relativistic mechanics.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g12-topic-4-1
+      title: Introduction to relativity
+      periods: 3
+      kind: lesson
+    - id: g12-topic-4-2
+      title: Relativistic mechanics
+      periods: 3
+      kind: lesson
+    - id: g12-topic-4-3
+      title: Apply the models to problems
+      periods: 2
+      kind: practice
+    - id: g12-topic-4-4
+      title: Investigation, unit check and feedback
+      periods: 2
+      kind: check
+  - id: spring-practice
+    title: Investigations, revision and assessment
+    lt: Tyrimai, kartojimas ir vertinimas
+    curriculum: []
+    hours: 15
+    months: February–June
+    goals:
+    - Use evidence, explain assumptions and improve a written solution.
+    needs:
+    - The topics studied in this semester.
+    lessons:
+    - id: g12-spring-investigation
+      title: Class-selected investigation
+      kind: lesson
+      periods: 7
+    - id: g12-spring-retrieval
+      title: Retrieval and mixed practice
+      kind: practice
+      periods: 7
+    - id: g12-spring-assessment
+      title: Assessment and feedback
+      kind: check
+      periods: 1
+  tests: []

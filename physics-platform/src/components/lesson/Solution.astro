@@ -1,0 +1,5 @@
+---
+import { ui, langOfPath } from '../../i18n/ui';
+const L = ui(langOfPath(Astro.url.pathname));
+---
+<div class="am-solution"><div class="am-solution-h">{L.workedSolution}</div><div class="am-solution-body"><slot /></div></div>

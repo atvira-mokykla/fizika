@@ -1,0 +1,180 @@
+{
+  "id": "g9-thermal-03",
+  "version": "0.2.0-draft",
+  "language": "lt",
+  "grade": 9,
+  "title": "Tyrimas: maišome šiltą ir vėsų vandenį",
+  "status": "draft",
+  "licence": "CC-BY-SA-4.0",
+  "programme_nodes": [
+    "lt-physics-g9-02"
+  ],
+  "objectives_lt": [
+    "Suformuluoti maišymo tyrimo klausimą ir patikrinamą hipotezę.",
+    "Suplanuoti ir saugiai atlikti matavimus, užrašyti faktines mases, temperatūras ir prietaisų skyras.",
+    "Pakartoti bandymą ir išsaugoti tikrus duomenis kitai pamokai."
+  ],
+  "achievement_areas": [
+    "B",
+    "C",
+    "E"
+  ],
+  "prerequisites_lt": [
+    "Temperatūros skalės skaitymas.",
+    "Masės vienetai g ir kg.",
+    "Lentelių skaitymas ir paprasti skaičiavimai."
+  ],
+  "core_minutes": 30,
+  "slot_minutes": 45,
+  "equipment_lt": [
+    "Mokytojo paruoštas 35–40 °C vanduo ir kambario temperatūros vanduo.",
+    "Du nedūžtantys indai, izoliuotas maišymo indas, padėklas ir maišymo lazdelė.",
+    "Svarstyklės (pageidautina 1 g skyra) ir du ne gyvsidabrio termometrai.",
+    "Laikmatis, popierius ir rašiklis."
+  ],
+  "safety_lt": "Tik mokykloje prižiūrint mokytojui. Mokytojas patikrina, kad šiltas vanduo būtų ne aukštesnės kaip 40 °C temperatūros; virdulys ir kiti šildytuvai lieka mokytojo valdomi. Naudok nedūžtančius indus ant padėklo, nepilk virš stabilaus užpildymo lygio, neragauk vandens. Išpylus vandenį pranešk mokytojui ir nutrauk darbą; saugok elektrinius prietaisus nuo vandens. Termometrą laikyk pagal instrukciją, nejunk kaitinimo įrangos. Tai konservatyvus siūlomas protokolas, ne atliktas mokyklos saugos vertinimas.",
+  "data_provenance": {
+    "kind": "none",
+    "note_lt": "Šaltinyje matavimo duomenų nėra. Tuščios lentelės skirtos klasės duomenims; iliustracinis kelias pateiktas atskirai ir taip pažymėtas."
+  },
+  "review": {
+    "physics": "pending practising human reviewer",
+    "classroom": "pending practising Lithuanian physics teacher",
+    "scope_mapping": "editorial mapping prepared; human sign-off pending"
+  },
+  "source_ids": [
+    "LT-BP-LIVE",
+    "LT-PLAN-9-2026"
+  ],
+  "blocks": [
+    {
+      "id": "recall",
+      "type": "retrieval",
+      "title_lt": "Prieš tyrimą",
+      "body_lt": "Ką reiškia c formulėje Q = mcΔT? Ar 10 °C temperatūros pokytis lygus 10 K pokyčiui? Nurodyk, kodėl vanduo po sumaišymo negalėtų tapti šiltesnis už abu pradinius vandens kiekius, jei iš išorės negauna energijos.",
+      "worksheet_lines": 3
+    },
+    {
+      "id": "hypothesis",
+      "type": "question",
+      "title_lt": "Klausimas ir hipotezė",
+      "body_lt": "Kokia bus galutinė temperatūra sumaišius vienodas to paties vandens mases skirtingomis temperatūromis? Užrašyk hipotezę ir paaiškinimą. Prielaida prognozei: vanduo nekeičia būsenos, o indo ir aplinkos poveikio nepaisome.",
+      "worksheet_lines": 3
+    },
+    {
+      "id": "plan",
+      "type": "question",
+      "title_lt": "Kas turi likti vienoda?",
+      "body_lt": "Pasiūlyk, ką išlaikysi vienodą kartodamas bandymą: vandens mases, pradinį temperatūrų skirtumą, indą, maišymą ir matavimo momentą. Įvardyk matuojamus dydžius ir bent vieną būdą, kaip sumažinsi nuostolius.",
+      "worksheet_lines": 4
+    },
+    {
+      "id": "method",
+      "type": "explanation",
+      "title_lt": "Matavimo eiga",
+      "body_lt": "1. Mokytojas patvirtina priemones ir vandens temperatūrą. Užrašyk termometrų ir svarstyklių skyrą; skyrą atskirk nuo gamintojo nurodyto tikslumo. 2. Į maišymo indą įpilk apie 100 g vėsesnio vandens; matuok tik vandens masę, atėmęs indo masę. Kitame inde paruošk panašią šiltesnio vandens masę. Užrašyk tikras mases. 3. Prieš pat pylimą išmatuok abiejų vandens kiekių temperatūras. Termometro jutiklis turi būti panardintas pagal instrukciją ir neliesti sienelių. 4. Supilk šiltą vandenį į vėsesnio vandens indą, švelniai išmaišyk. Užrašyk pirmą stabilią mišinio temperatūrą ir laiką nuo pylimo, laikydamasis vienodo kriterijaus abiem bandymams. 5. Nuo šio rodmens užrašymo po 30 s ir 60 s pakartok mišinio temperatūros rodmenis. 6. Pakeisk vandenį, grąžink indą į tą pačią pradinę būseną ir pakartok bandymą. Jei sąlygos skiriasi, užrašyk skirtumus; tokių bandymų nesujunk į vieną vidurkį be pagrindimo.",
+      "worksheet_lines": 0
+    },
+    {
+      "id": "instruments",
+      "type": "question",
+      "title_lt": "Prietaisai ir sąlygos",
+      "body_lt": "Užrašyk: svarstyklių skyra; termometrų skyra ir nurodytas tikslumas (jei žinomas); pasirinktas stabilaus rodmens kriterijus; kambario temperatūra; neįprastos aplinkybės. Vien skyrą vadinti visa matavimo paklaida negalima.",
+      "worksheet_lines": 4
+    },
+    {
+      "id": "measurements",
+      "type": "table",
+      "title_lt": "Tikros klasės duomenų lentelė",
+      "body_lt": "Užrašyk gautus rodmenis, ne laukiamus skaičius. m_v – vėsesnio, m_š – šiltesnio vandens masė; T_v ir T_š – pradinės temperatūros; T_m – pirmas stabilus mišinio rodmuo.",
+      "worksheet_lines": 0,
+      "columns_lt": [
+        "Bandymas",
+        "m_v (g)",
+        "m_š (g)",
+        "T_v (°C)",
+        "T_š (°C)",
+        "T_m (°C)"
+      ],
+      "rows": [
+        [
+          "1",
+          "____",
+          "____",
+          "____",
+          "____",
+          "____"
+        ],
+        [
+          "2",
+          "____",
+          "____",
+          "____",
+          "____",
+          "____"
+        ]
+      ]
+    },
+    {
+      "id": "cooling",
+      "type": "table",
+      "title_lt": "Rodmenys po sumaišymo",
+      "body_lt": "Laikas skaičiuojamas nuo pirmojo stabilaus rodmens. Užrašyk pirmojo rodmens delsą nuo pylimo atskirai.",
+      "worksheet_lines": 0,
+      "columns_lt": [
+        "Bandymas",
+        "Delsa nuo pylimo (s)",
+        "T_m (°C)",
+        "T po 30 s (°C)",
+        "T po 60 s (°C)"
+      ],
+      "rows": [
+        [
+          "1",
+          "____",
+          "____",
+          "____",
+          "____"
+        ],
+        [
+          "2",
+          "____",
+          "____",
+          "____",
+          "____"
+        ]
+      ]
+    },
+    {
+      "id": "handoff",
+      "type": "retrieval",
+      "title_lt": "Išsaugok įrodymus",
+      "body_lt": "Prie lentelės pridėk bandymo datą, anoniminį grupės kodą, metodą ir prietaisų informaciją. Kuri hipotezės dalis jau tikrinama duomenimis? Ko dar reikia kitai pamokai? Nereikia mokinių vardų ar nuotraukų.",
+      "worksheet_lines": 3
+    }
+  ],
+  "teacher": {
+    "timing_lt": "3 min prisiminimas; 6 min hipotezė ir planas; 4 min sauga ir prietaisai; 13 min du bandymai; 4 min patikra ir duomenų išsaugojimas. 15 min rezervas įrangos dalijimuisi ir sutvarkymui; jei du bandymai netelpa, analizės pradžią perkelti ir laiką užrašyti.",
+    "answers_lt": {
+      "recall": "c – savitoji šiluma. 10 °C ir 10 K pokyčiai lygūs. Be išorinio energijos tiekimo vandens mišinio temperatūra neviršija abiejų pradinių vandens temperatūrų, taikant aprašytas sąlygas.",
+      "hypothesis": "Vienodoms masėms idealiame modelyje T_m = (T_v + T_š)/2. Realus rodmuo gali skirtis dėl indo, aplinkos ir matavimo.",
+      "plan": "Kontroliuojamos masės, pradinių temperatūrų skirtumas, indas, maišymo ir skaitymo protokolas. Matuojamos masės ir temperatūros. Izoliacija, trumpas pylimas ir vienodas rodmens kriterijus mažina dalį poveikių.",
+      "instruments": "Mokinys pateikia savo prietaisų duomenis. 1 g ar 0,1 °C yra siūlomos skyrų vertės, ne garantuotas tikslumas ir ne išmatuoti rodmenys.",
+      "handoff": "Tikras bandymo įrašas turi metodą, sąlygas ir neperrašytus rodmenis. Be šių duomenų negalima teigti, kad hipotezė patikrinta."
+    },
+    "misconceptions_lt": [
+      "Laukiama 30 °C reikšmė įrašoma vietoje rodmens.",
+      "Svarstyklių rodmuo apima indo masę.",
+      "Dėl indo sušildymo atsiradęs skirtumas laikomas energijos išnykimu."
+    ],
+    "scope_limit_lt": "Parengtas tyrimo protokolas; fizinis bandymas dar neatliktas. Praktinių C4 gebėjimų negalima pažymėti pagal ekraninį ar demonstracinį kelią. Nežinomos medžiagos savitoji šiluma nenustatoma.",
+    "preparation_lt": "Prieš mokinių darbą mokytojas pats išbando įrangą, tūrį, rodmens stabilumą ir laiką. Visoms grupėms paruošti vandenį ir patikrinti temperatūrą. Su vienu termometru pradiniai rodmenys gaunami nevienu metu: pažymėti papildomą ribotumą. Jei saugios įrangos nėra, pasirinkti planavimo ir iliustracinių duomenų analizės kelią.",
+    "differentiation_lt": "Bendros priemonės: mokytojo demonstracija arba grupių rotacija; užrašyti, kas iš tikrųjų matavo. Be priemonių: atlikti hipotezės ir plano užduotis, tada analizuoti aiškiai sintetinius 4 pamokos duomenis. Nevertinti šio kelio kaip praktinio matavimo įrodymo.",
+    "rubric_lt": [
+      "Klausimas ir hipotezė yra patikrinami.",
+      "Metodas nurodo kontroliuojamas sąlygas ir priemonių ribas.",
+      "Rodmenys tikri, su vienetais, laiku ir prietaisų informacija.",
+      "Praktinius veiksmus ir saugų elgesį stebi mokytojas."
+    ]
+  }
+}

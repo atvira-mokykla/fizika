@@ -1,0 +1,189 @@
+path: '10'
+grade: 10
+gymn: II
+title: Grade 10
+subtitle: II gimnazijos klasė · Physics
+schoolYear: 2026–2027
+lessonsPerWeek: 2
+weeks: 36
+exam: null
+semesters:
+- id: autumn
+  title: Autumn semester
+  months: September–January
+  units:
+  - id: topic-1
+    title: Mechanical oscillations and waves
+    lt: Mechaniniai svyravimai ir bangos
+    curriculum:
+    - lt-physics-g10-01
+    - lt-physics-g10-02
+    hours: 15
+    months: September–January
+    goals:
+    - Explain and apply mechanical oscillations.
+    - Explain and apply mechanical waves.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g10-topic-1-1
+      title: Mechanical oscillations
+      periods: 4
+      kind: lesson
+    - id: g10-topic-1-2
+      title: Mechanical waves
+      periods: 4
+      kind: lesson
+    - id: g10-topic-1-3
+      title: Apply the models to problems
+      periods: 4
+      kind: practice
+    - id: g10-topic-1-4
+      title: Investigation, unit check and feedback
+      periods: 3
+      kind: check
+  - id: topic-2
+    title: Permanent magnets and magnetic fields
+    lt: Nuolatiniai magnetai ir magnetinis laukas
+    curriculum: &id001
+    - lt-physics-g10-03
+    - lt-physics-g10-04
+    hours: 10
+    months: September–January
+    goals: &id002
+    - Explain and apply permanent magnets.
+    - Explain and apply electric current and magnetic fields.
+    needs: &id003
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g10-topic-2-1
+      title: Permanent magnets
+      periods: 5
+      kind: lesson
+    - id: g10-topic-2-2
+      title: Electric current and magnetic fields
+      periods: 5
+      kind: lesson
+  - id: autumn-practice
+    title: Investigations, revision and assessment
+    lt: Tyrimai, kartojimas ir vertinimas
+    curriculum: []
+    hours: 11
+    months: September–January
+    goals:
+    - Use evidence, explain assumptions and improve a written solution.
+    needs:
+    - The topics studied in this semester.
+    lessons:
+    - id: g10-autumn-investigation
+      title: Class-selected investigation
+      kind: lesson
+      periods: 5
+    - id: g10-autumn-retrieval
+      title: Retrieval and mixed practice
+      kind: practice
+      periods: 5
+    - id: g10-autumn-assessment
+      title: Assessment and feedback
+      kind: check
+      periods: 1
+  tests: []
+- id: spring
+  title: Spring semester
+  months: February–June
+  units:
+  - id: topic-2-spring
+    title: Current, magnetic fields and induction
+    lt: Srovė, magnetinis laukas ir indukcija
+    curriculum: *id001
+    hours: 10
+    months: February–June
+    goals: *id002
+    needs: *id003
+    lessons:
+    - id: g10-topic-2-3
+      title: Apply the models to problems
+      periods: 5
+      kind: practice
+    - id: g10-topic-2-4
+      title: Investigation, unit check and feedback
+      periods: 5
+      kind: check
+  - id: topic-3
+    title: Producing electrical energy
+    lt: Elektros energijos gamyba
+    curriculum:
+    - lt-physics-g10-05
+    hours: 5
+    months: February–June
+    goals:
+    - Explain and apply producing and using electrical energy.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g10-topic-3-1
+      title: Producing and using electrical energy
+      periods: 2
+      kind: lesson
+    - id: g10-topic-3-2
+      title: Apply the models to problems
+      periods: 2
+      kind: practice
+    - id: g10-topic-3-3
+      title: Investigation, unit check and feedback
+      periods: 1
+      kind: check
+  - id: topic-4
+    title: Electromagnetic oscillations and waves
+    lt: Elektromagnetiniai virpesiai ir bangos
+    curriculum:
+    - lt-physics-g10-06
+    - lt-physics-g10-07
+    hours: 10
+    months: February–June
+    goals:
+    - Explain and apply electromagnetic oscillations.
+    - Explain and apply electromagnetic waves and their properties.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g10-topic-4-1
+      title: Electromagnetic oscillations
+      periods: 3
+      kind: lesson
+    - id: g10-topic-4-2
+      title: Electromagnetic waves and their properties
+      periods: 3
+      kind: lesson
+    - id: g10-topic-4-3
+      title: Apply the models to problems
+      periods: 2
+      kind: practice
+    - id: g10-topic-4-4
+      title: Investigation, unit check and feedback
+      periods: 2
+      kind: check
+  - id: spring-practice
+    title: Investigations, revision and assessment
+    lt: Tyrimai, kartojimas ir vertinimas
+    curriculum: []
+    hours: 11
+    months: February–June
+    goals:
+    - Use evidence, explain assumptions and improve a written solution.
+    needs:
+    - The topics studied in this semester.
+    lessons:
+    - id: g10-spring-investigation
+      title: Class-selected investigation
+      kind: lesson
+      periods: 5
+    - id: g10-spring-retrieval
+      title: Retrieval and mixed practice
+      kind: practice
+      periods: 5
+    - id: g10-spring-assessment
+      title: Assessment and feedback
+      kind: check
+      periods: 1
+  tests: []

@@ -1,0 +1,9 @@
+---
+/**
+ * Equation transformed line by line, with the operation for each step in a right-hand column (as on Serlo).
+ * `wide`: the lines are too long for a phone next to the column, so on a narrow screen each operation goes under its line.
+ */
+interface Props { wide?: boolean }
+const { wide } = Astro.props;
+---
+<div class:list={['am-eqsteps', 'not-content', { 'am-eqsteps-wide': wide }]}><slot /></div>

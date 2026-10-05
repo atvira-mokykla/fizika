@@ -1,0 +1,5 @@
+---
+interface Props { form: 'a' | 'b' }
+const { form } = Astro.props;
+---
+<div class="am-check-form" data-form={form} hidden={form === 'b'}><slot /></div>

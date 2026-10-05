@@ -1,0 +1,62 @@
+---
+interface Props {
+  id: string;
+  locale: 'en' | 'lt';
+  variant: 'example' | 'turn';
+}
+const { id, locale, variant } = Astro.props;
+const lt = locale === 'lt';
+const example = variant === 'example';
+const rows = example
+  ? [
+      { name: 'A', start: -4, end: 4, startClosed: true, endClosed: true, y: 67 },
+      { name: 'B', start: -1, end: 2, startClosed: true, endClosed: false, y: 127 },
+    ]
+  : [
+      { name: 'C', start: -5, end: 5, startClosed: true, endClosed: false, y: 67 },
+      { name: 'D', start: -2, end: 1, startClosed: false, endClosed: false, y: 127 },
+    ];
+const x = (v: number) => 63 + (v + 5) * 47;
+const ticks = [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5];
+const title = example
+  ? (lt ? 'Intervalų A ir B skaičių tiesės' : 'Number-line strips for intervals A and B')
+  : (lt ? 'Tuščios intervalų C ir D skaičių tiesės' : 'Blank number-line strips for intervals C and D');
+const description = example
+  ? (lt
+      ? 'Abi skaičių tiesės turi tą pačią skalę nuo −5 iki 5. A eina nuo −4 iki 4, abu galai užtušuoti. B eina nuo −1, šis galas užtušuotas, iki 2, šis galas tuščiaviduris.'
+      : 'The two number lines use the same scale from −5 to 5. A runs from −4 to 4 with filled dots at both ends. B runs from −1 with a filled dot to 2 with an open dot.')
+  : (lt
+      ? 'Dvi tuščios skaičių tiesės su ta pačia skale nuo −5 iki 5, pažymėtos C ir D. Intervalų galai dar nepažymėti – pažymėk juos.'
+      : 'Two blank number lines on the same scale from −5 to 5, labelled C and D. No interval endpoints are marked; add them yourself.');
+---
+<svg viewBox="0 0 600 184" width="600" role="img" aria-labelledby={`${id}-title`} aria-describedby={`${id}-desc`} style="display:block;max-width:100%;height:auto;margin:0.65rem auto">
+  <title id={`${id}-title`}>{title}</title>
+  <desc id={`${id}-desc`}>{description}</desc>
+  <defs>
+    {rows.map((row) => <mask id={`${id}-${row.name}-axis`} maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="184">
+      <rect x="0" y="0" width="600" height="184" fill="white" />
+      {example && !row.startClosed && <circle cx={x(row.start)} cy={row.y} r="7" fill="black" />}
+      {example && !row.endClosed && <circle cx={x(row.end)} cy={row.y} r="7" fill="black" />}
+    </mask>)}
+  </defs>
+  {rows.map((row) => (
+    <g>
+      <text x="14" y={row.y + 6} fill="currentColor" font-size="20" font-weight="700" font-family="sans-serif">{row.name}</text>
+      <g mask={`url(#${id}-${row.name}-axis)`}>
+        <line x1={x(-5.6)} y1={row.y} x2={x(5.6)} y2={row.y} stroke="currentColor" stroke-opacity="0.36" stroke-width="1.5" />
+        {ticks.map((t) => <line x1={x(t)} y1={row.y - 4} x2={x(t)} y2={row.y + 4} stroke="currentColor" stroke-opacity="0.52" stroke-width="1" />)}
+      </g>
+      {example && <>
+        <line x1={x(row.start) + (row.startClosed ? 0 : 10)} y1={row.y} x2={x(row.end) - (row.endClosed ? 0 : 10)} y2={row.y} stroke="var(--sl-color-accent, currentColor)" stroke-width="5" stroke-linecap="round" />
+        <circle cx={x(row.start)} cy={row.y} r="6.3" fill={row.startClosed ? 'var(--sl-color-accent, currentColor)' : 'none'} stroke="var(--sl-color-accent, currentColor)" stroke-width="2" />
+        <circle cx={x(row.end)} cy={row.y} r="6.3" fill={row.endClosed ? 'var(--sl-color-accent, currentColor)' : 'none'} stroke="var(--sl-color-accent, currentColor)" stroke-width="2" />
+      </>}
+    </g>
+  ))}
+  {ticks.map((t) => <text x={x(t)} y="170" text-anchor="middle" fill="currentColor" font-size="16" font-family="sans-serif">{t < 0 ? `−${-t}` : t}</text>)}
+</svg>
+<style>
+  @media print {
+    svg { color: #111; --sl-color-accent: #111; }
+  }
+</style>

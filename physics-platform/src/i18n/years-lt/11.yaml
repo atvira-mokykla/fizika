@@ -1,0 +1,94 @@
+units:
+  topic-1:
+    title: Fizikos mokslas, metodai ir matavimai
+    goals:
+    - Paaiškinti ir taikyti temą „Fizikos mokslo raida“.
+    - Paaiškinti ir taikyti temą „Pažinimo metodai ir kalba“.
+    - Paaiškinti ir taikyti temą „Matavimai ir skaičiavimai fizikoje“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-2:
+    title: Judėjimas ir jėgos
+    goals:
+    - Paaiškinti ir taikyti temą „Judėjimas“.
+    - Paaiškinti ir taikyti temą „Jėgos“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-3:
+    title: Judesio kiekis ir impulsas
+    goals:
+    - Paaiškinti ir taikyti temą „Judesio kiekis ir jėgos impulsas“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-4:
+    title: Energija, darbas, galia
+    goals:
+    - Paaiškinti ir taikyti temą „Energija, darbas, galia“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-5:
+    title: Mikro ir makro pasaulis, termodinamika
+    goals:
+    - Paaiškinti ir taikyti temą „Ryšys tarp mikro ir makro pasaulio“.
+    - Paaiškinti ir taikyti temą „Termodinamika“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-6:
+    title: Elektriniai ir magnetiniai reiškiniai, energijos šaltiniai
+    goals:
+    - Paaiškinti ir taikyti temą „Elektrostatinis laukas“.
+    - Paaiškinti ir taikyti temą „Elektros srovė metaluose“.
+    - Paaiškinti ir taikyti temą „Elektros srovės šaltiniai“.
+    - Paaiškinti ir taikyti temą „Magnetinis laukas“.
+    - Paaiškinti ir taikyti temą „Elektromagnetinė indukcija“.
+    - Paaiškinti ir taikyti temą „Energijos šaltiniai“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  autumn-practice:
+    title: Tyrimai, kartojimas ir vertinimas
+    goals:
+    - Remtis įrodymais, paaiškinti prielaidas ir tobulinti rašytinį sprendimą.
+    needs:
+    - Šio pusmečio temos.
+  spring-practice:
+    title: Tyrimai, kartojimas ir vertinimas
+    goals:
+    - Remtis įrodymais, paaiškinti prielaidas ir tobulinti rašytinį sprendimą.
+    needs:
+    - Šio pusmečio temos.
+lessons:
+  g11-topic-1-1: Fizikos mokslo raida
+  g11-topic-1-2: Pažinimo metodai ir kalba
+  g11-topic-1-3: Matavimai ir skaičiavimai fizikoje
+  g11-topic-1-4: Modelių taikymas uždaviniams
+  g11-topic-1-5: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g11-topic-2-1: Judėjimas
+  g11-topic-2-2: Jėgos
+  g11-topic-2-3: Modelių taikymas uždaviniams
+  g11-topic-2-4: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g11-topic-3-1: Judesio kiekis ir jėgos impulsas
+  g11-topic-3-2: Modelių taikymas uždaviniams
+  g11-topic-3-3: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g11-topic-4-1: Energija, darbas, galia
+  g11-topic-4-2: Modelių taikymas uždaviniams
+  g11-topic-4-3: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g11-topic-5-1: Ryšys tarp mikro ir makro pasaulio
+  g11-topic-5-2: Termodinamika
+  g11-topic-5-3: Modelių taikymas uždaviniams
+  g11-topic-5-4: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g11-topic-6-1: Elektrostatinis laukas
+  g11-topic-6-2: Elektros srovė metaluose
+  g11-topic-6-3: Elektros srovės šaltiniai
+  g11-topic-6-4: Magnetinis laukas
+  g11-topic-6-5: Elektromagnetinė indukcija
+  g11-topic-6-6: Energijos šaltiniai
+  g11-topic-6-7: Modelių taikymas uždaviniams
+  g11-topic-6-8: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g11-autumn-practice: Pagal klasės poreikius parenkami tyrimai, kartojimas ir vertinimas
+  g11-spring-practice: Pagal klasės poreikius parenkami tyrimai, kartojimas ir vertinimas
+  g11-autumn-investigation: Pagal klasės poreikius parenkamas tyrimas
+  g11-autumn-retrieval: Kartojimas ir mišrios užduotys
+  g11-autumn-assessment: Vertinimas ir grįžtamasis ryšys
+  g11-spring-investigation: Pagal klasės poreikius parenkamas tyrimas
+  g11-spring-retrieval: Kartojimas ir mišrios užduotys
+  g11-spring-assessment: Vertinimas ir grįžtamasis ryšys

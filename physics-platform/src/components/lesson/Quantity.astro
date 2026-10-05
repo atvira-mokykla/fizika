@@ -1,0 +1,12 @@
+---
+import ItemFrame from './ItemFrame.astro';
+import { ui, langOfPath } from '../../i18n/ui';
+interface Props { id:string; expected:number; quantity:'energy-transfer'|'absolute-temperature'|'temperature-difference'|'ratio'; units:string; show:string; tolerance?:number; outcome?:string; prefix?:string }
+const {id,expected,quantity,units,show,tolerance=0.05,outcome,prefix}=Astro.props;
+const L=ui(langOfPath(Astro.url.pathname));
+const spec={quantity,expected_si:expected,accepted_units:units.split('|'),absolute_tolerance_si:tolerance,relative_tolerance:0};
+---
+<ItemFrame kind="quantity" id={id} outcome={outcome} data={{spec:JSON.stringify(spec),prefix,answer:show}}>
+<slot />
+<div class="am-key">{L.answer} <span class="am-key-val">{show}</span></div>
+</ItemFrame>

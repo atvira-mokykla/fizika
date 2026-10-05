@@ -1,0 +1,12 @@
+---
+import ItemFrame from './ItemFrame.astro';
+interface Props {
+  id: string; target: string; level?: 1 | 2 | 3 | 4; exam?: string; outcome?: string; reveal?: string; tries?: number;
+  /** Keyboard and screen-reader equivalent: points to choose from, separated by |, the correct one starting with *. */
+  choices: string;
+}
+const { id, target, level, exam, outcome, reveal, tries, choices } = Astro.props;
+---
+<ItemFrame kind="mark" id={id} level={level} exam={exam} outcome={outcome} data={{ target, reveal, tries, choices }}>
+  <slot />
+</ItemFrame>

@@ -1,0 +1,483 @@
+---
+title: Šilumos kiekis, savitoji šiluma ir grafikai
+description: Moku taikyti Q = mcΔT, masę nurodyti kilogramais ir paaiškinti modelio ribas. Moku skaityti ir braižyti
+  temperatūros ir laiko grafiką, nurodyti vienetus. Moku taikyti savitąją šilumą šildymui ir vėsimui palyginti.
+sidebar:
+  order: 2
+lesson:
+  grade: 9
+  unit: thermal
+  course:
+  - core
+  curriculum:
+  - lt-physics-g9-02
+  contentArea: thermal
+  achievements:
+  - B1
+  - D1
+  - E1
+  levels:
+  - 1
+  - 2
+  - 3
+  exam: []
+  minutes: 45
+  goal: Moku taikyti Q = mcΔT, masę nurodyti kilogramais ir paaiškinti modelio ribas. Moku skaityti ir braižyti
+    temperatūros ir laiko grafiką, nurodyti vienetus. Moku taikyti savitąją šilumą šildymui ir vėsimui palyginti.
+  kicker: Originali bandomoji pamoka. Praktikuojančio mokytojo peržiūra dar neatlikta.
+---
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../../components/lesson';
+
+<Lesson>
+
+
+
+<Block kind="remember" title="Masė, pokytis ir perdavimas">
+
+
+
+<Numeric id="g9-thermal-02-r1" answer="0.2" outcome="g9.thermal.4" unit="kg">
+
+200 g vandens masę perskaičiuok į kilogramus.
+
+<Why value="200">Naudok kilogramus, ne pradinį gramų skaičių.</Why>
+<Ok>200 ÷ 1000 = 0,20 kg.</Ok>
+
+
+<Solution>
+
+200 ÷ 1000 = 0,20 kg.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+
+<Quantity id="g9-thermal-02-r2" expected={10} quantity="temperature-difference" units="K|°C" show="10 K" tolerance={0.05} outcome="g9.thermal.4">
+
+Vanduo šyla nuo 20 °C iki 30 °C. Nurodyk temperatūros pokytį.
+
+<Why value="30">Atimk pradinę temperatūrą; nenaudok vien galutinio rodmens.</Why>
+<Ok>30 − 20 = 10 K, taip pat 10 °C pokytis.</Ok>
+
+
+<Solution>
+
+30 − 20 = 10 K, taip pat 10 °C pokytis.
+
+</Solution>
+
+
+</Quantity>
+
+
+**Ryšys su 1 pamoka.** Šilumos kiekis matuojamas J. Vidinė energija yra pasirinktos sistemos savybė. Dabar modeliuojame skystą vandenį; indo energijos į šį paprastą skaičiavimą neįtraukiame.
+
+</Block>
+
+
+
+
+<Block kind="hook" title="Kuriam puodeliui reikia daugiau energijos?">
+
+
+
+<Choice id="g9-thermal-02-h1" outcome="g9.thermal.6">
+
+0,10 kg ir 0,20 kg vandens pašildome nuo 20 °C iki 30 °C. Abiem atvejais vanduo lieka skystas. Palygink reikalingą energiją.
+
+<Option correct>0,20 kg vandeniui reikia dvigubai daugiau.<Why>Tai pačiai medžiagai ir tam pačiam pokyčiui energija proporcinga masei.</Why></Option>
+<Option>Abiem reikia tiek pat, nes galutinė temperatūra vienoda.<Why>Vien temperatūra neatsižvelgia į vandens kiekį.</Why></Option>
+<Option>Mažesnei masei reikia dvigubai daugiau.<Why>Mažesniam vandens kiekiui tokiam pačiam pokyčiui reikia mažiau energijos.</Why></Option>
+
+
+<Solution>
+
+Padvigubinus masę, Q padvigubėja, kai c ir ΔT tie patys. Po paaiškinimo patikrink.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="explain" title="Sudaryk modelį su vienetais">
+
+
+
+<Frames>
+
+
+<Frame title="Ką reiškia savitoji šiluma">
+
+Savitoji šiluma (savitoji šiluminė talpa) $c$ nurodo šilumos kiekį, reikalingą 1 kg medžiagos temperatūrai pakelti 1 K nekintant būsenai. Skirtingų medžiagų ji skirtinga. Šio skysto vandens modelyje naudojame $c=4200\ \mathrm{J/(kg\cdot K)}$. Tai tinkamas artinys nedideliam temperatūrų intervalui, ne universali visų būsenų ir temperatūrų konstanta. Temperatūros pokyčiui J/(kg·K) ir J/(kg·°C) yra lygiaverčiai vienetai.
+
+</Frame>
+
+
+
+
+<Frame title="Skaičiavimas">
+
+Kai būsena nekinta ir $c$ laikome pastovia,
+
+$$Q=mc\Delta T,\qquad \Delta T=T_f-T_i.$$
+
+Čia $Q$ **teigiamas, kai vanduo gauna energijos šiluma**. Masę nurodyk kg. Pokytis gali būti K arba °C, nes jų padalos vienodo dydžio. Vienetų patikra: $\mathrm{kg}\times\mathrm{J/(kg\cdot K)}\times\mathrm{K}=\mathrm{J}$.
+
+</Frame>
+
+
+
+
+<Frame title="Vėsimas ir modelio ribos">
+
+Vėstant galutinė minus pradinė temperatūra neigiama, todėl šilumos kiekis vandeniui su ženklu taip pat neigiamas. **Atiduoto šilumos kiekio modulis** yra teigiamas priešingo ženklo dydis. Nurodyk, ką pateiki.
+
+Lydymosi esant pastoviai temperatūrai neaprašyk $mc\Delta T$: energija gali keisti būseną, nors ΔT lygu nuliui. Fazinius virsmus nagrinėsime vėliau. Tikras šildymas šildo ir indą bei aplinką; ne visa šildytuvo energija būtinai tenka vandeniui.
+
+</Frame>
+
+
+</Frames>
+
+
+
+</Block>
+
+
+
+
+<Block kind="explore" title="Numatyk nuolydį, tada pakeisk masę" figure="thermal-model" figureProps={{mode: "heating"}} alt="Interaktyvus idealus šiluminis modelis; tos pačios reikšmės pateiktos duomenų lentelėje.">
+
+**Iliustraciniai modelio duomenys, ne matavimai.** Pastovi 42 W galia kiekvieną sekundę perduoda vandeniui 42 J. Pradžioje 0,20 kg vandens temperatūra 20 °C; indo ir nuostolių nepaisoma. Po 0, 50, 100, 150 ir 200 s temperatūra yra 20; 22,5; 25; 27,5 ir 30 °C.
+
+Nubraižyk grafiką popieriuje: horizontalioji ašis $t$ sekundėmis, vertikalioji $T$ Celsijaus laipsniais. Nuolydis yra **temperatūros pokytis per sekundę**, ne pati šiluma. Numatyk, ką pakeis dviguba masė, tada pasirink 0,40 kg. Kas kinta, kas lieka taip pat? Paaiškink taikydamas $Q=mc\Delta T$.
+
+</Block>
+
+
+
+
+<Block kind="examples" title="Apskaičiuok, rask kitą dydį, palygink">
+
+
+
+<Example title="1 pavyzdys · Vandens šildymas" fade={0}>
+
+
+
+<ExStep>
+
+200 g vandens šyla nuo 20 °C iki 30 °C: m = 0,20 kg; ΔT = 10 K.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+$Q=0{,}20\times4200\times10=8400\ \mathrm{J}=8{,}4\ \mathrm{kJ}$. Teigiamas: vanduo gauna energijos.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-02-p1" expected={16800} quantity="energy-transfer" units="J|kJ" show="16 800 J = 16,8 kJ" tolerance={0.05} outcome="g9.thermal.4">
+
+0,40 kg vandens pašildoma 10 K. Kiek šilumos gaunama?
+
+<Why value="8400">Pokytis tas pats, bet masė dviguba.</Why>
+<Hints>
+<Hint>Į formulę įrašyk 0,40 kg, ne 400 g.</Hint>
+</Hints>
+<Ok>0,40 × 4200 × 10 = 16 800 J; dvigubai daugiau nei 1 pavyzdyje.</Ok>
+
+
+<Solution>
+
+0,40 × 4200 × 10 = 16 800 J; dvigubai daugiau nei 1 pavyzdyje.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="2 pavyzdys · Rask temperatūros pokytį" fade={1}>
+
+
+
+<ExStep>
+
+0,10 kg vandens gauna 2100 J. Pertvarkyk: $\Delta T=Q/(mc)$.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+$\Delta T=2100/(0{,}10\times4200)=5\ \mathrm{K}$. Jei pradžioje buvo 20 °C, galutinė temperatūra 25 °C.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-02-p2" expected={5} quantity="temperature-difference" units="K|°C" show="5 K" tolerance={0.05} outcome="g9.thermal.4">
+
+0,20 kg vandens gauna 4200 J. Rask ΔT.
+
+<Ok>4200/(0,20 × 4200) = 5 K.</Ok>
+
+
+<Solution>
+
+4200/(0,20 × 4200) = 5 K.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="3 pavyzdys · Vėsimas su ženklu" fade={1}>
+
+
+
+<ExStep>
+
+0,10 kg vandens vėsta nuo 40 °C iki 35 °C. ΔT = −5 K.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Q vandeniui = 0,10 × 4200 × (−5) = −2100 J. Atiduoto šilumos kiekio modulis 2100 J.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-02-p3" expected={-4200} quantity="energy-transfer" units="J|kJ" show="−4200 J" tolerance={0.05} outcome="g9.thermal.6">
+
+0,20 kg vandens vėsta nuo 30 °C iki 25 °C. Nurodyk Q **vandeniui** su ženklu.
+
+<Why value="4200">Tai atiduoto kiekio modulis; Q vėstančiam vandeniui neigiamas.</Why>
+<Ok>Q = 0,20 × 4200 × (25 − 30) = −4200 J.</Ok>
+
+
+<Solution>
+
+Q = 0,20 × 4200 × (25 − 30) = −4200 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="check" title="Taikyk lygtį ir patikrink jos ribas">
+
+Pagrindas: 1–3 klausimai. 4–5 klausimai ir vėsimo su ženklu pavyzdys yra papildomos užduotys. Prieš tęsiant atlik pagrindą ir paaiškink klaidų pataisymus; automatinė žyma yra tik veiklos užrašas.
+
+<Quantity id="g9-thermal-02-c1" expected={8400} quantity="energy-transfer" units="J|kJ" show="8400 J = 8,4 kJ" tolerance={0.05} outcome="g9.thermal.4">
+
+250 g vandens pašildoma nuo 18 °C iki 26 °C. Rask gautą Q.
+
+<Why value="27300">Naudok 8 pokytį, ne galutinį rodmenį 26.</Why>
+<Ok>m = 0,25 kg, ΔT = 8 K; Q = 0,25 × 4200 × 8 = 8400 J.</Ok>
+
+
+<Solution>
+
+m = 0,25 kg, ΔT = 8 K; Q = 0,25 × 4200 × 8 = 8400 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Numeric id="g9-thermal-02-c2" answer="25" outcome="g9.thermal.5" unit="°C">
+
+Kokia 0,20 kg modelio temperatūra po 100 s? Skaityk grafiką arba lentelę.
+
+<Why value="5">5 yra pokytis nuo pradžios, ne temperatūros rodmuo.</Why>
+<Ok>Po 100 s lentelėje 25 °C. Pokytis 5 K, o rodmuo 25 °C.</Ok>
+
+
+<Solution>
+
+Po 100 s lentelėje 25 °C. Pokytis 5 K, o rodmuo 25 °C.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+
+<Choice id="g9-thermal-02-c3" outcome="g9.thermal.6">
+
+Vienodas šilumos kiekis tenka dviem vienodos masės medžiagoms, būsena nekinta. A savitoji šiluma dvigubai didesnė už B. Kuri sušyla mažiau?
+
+<Option correct>A: jos pokytis perpus mažesnis nei B.<Why>ΔT = Q/(mc); esant tam pačiam Q ir m, didesnis c reiškia mažesnį pokytį.</Why></Option>
+<Option>A: jos pokytis dvigubai didesnis nei B.<Why>Savitoji šiluma nusako energiją vienam laipsniui, ne temperatūros kilimo lengvumą.</Why></Option>
+
+
+<Solution>
+
+A vienam kelvinui reikia daugiau energijos, todėl tas pats kiekis pakelia temperatūrą mažiau.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-02-c4" outcome="g9.thermal.4">
+
+Kuris stebėjimas neatitinka nekintančios būsenos modelio?
+
+<Option correct>Ledas lydosi, gauna energijos, o temperatūra nekinta.<Why>Energija tenka faziniam virsmui; vien Q = mcΔT šio intervalo neaprašo.</Why></Option>
+<Option>Didesnė vandens masė šyla lėčiau esant tai pačiai tiekiamai galiai.<Why>Tai numato nekintančios būsenos modelis.</Why></Option>
+
+
+<Solution>
+
+Pastovios temperatūros fazinio virsmo intervalui reikia kito modelio; jis bus vėliau.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Task id="g9-thermal-02-c5" outcome="g9.thermal.4">
+
+Tikras šildytuvas sunaudoja daugiau nei 8400 J, kol 0,20 kg vandens sušyla 10 K. Paaiškink, kodėl tai savaime nepaneigia energijos tvermės. Nubraižyk energijos perdavimą per sistemos ribą.
+
+
+
+<Marks>
+<Mark pts={1}>Vien vandens gauta energija 8400 J.</Mark>
+<Mark pts={1}>Nurodytas indas ir (arba) aplinka kaip papildomi energijos gavėjai.</Mark>
+<Mark pts={1}>Paaiškinta, kad paprastas modelis šių perdavimų nepaiso.</Mark>
+</Marks>
+
+
+
+
+<Solution>
+
+8400 J skaičiavimas nusako tik vandens energijos padidėjimą. Gali šilti ir indas, o energija patekti į aplinką. Pasirink tai, ką laikai sistema, ir palygink visus perdavimus bei pokyčius, o ne automatiškai prilygink elektros energiją vien vandens energijos pokyčiui.
+
+</Solution>
+
+
+</Task>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="summary" title="Penkios patikros prieš įstatant">
+
+Apibrėžk sistemą; patikrink, kad būsena nekinta; masę perskaičiuok į kg; apskaičiuok galutinė minus pradinė; atsakyk su vienetu ir ženklų sutartimi. Grafike atskirk rodmenį, pokytį ir nuolydį. $c$ nusako medžiagą; keičiant masę jos savitoji šiluma nesikeičia.
+
+<Next>Ar prižiūrimas maišymo tyrimas gali patikrinti šilumos balanso prognozę?</Next>
+
+</Block>
+
+
+
+
+<Block kind="teacher" title="Pamokos eiga ir būdingos klaidos">
+
+**45 min pagrindas:** prisiminimas 4 min; prognozė 4; lygties aiškinimas 9; grafiko modelis 8; pavyzdžiai 10; pasitikrinimas 8; baigiamasis sistemos ribos brėžinys 2. Atvirkštinį skaičiavimą ir rašytinę užduotį galima skirti vėliau. Laiką reikia patikrinti klasėje.
+
+Prieš keičiant modelio masę prašykite prognozės ir santykio paaiškinimo. Aiškiai palyginkite ΔT ir galutinę T. Būdingos klaidos: gramai vietoje kg; galutinė temperatūra vietoje ΔT; didesnis c suprantamas kaip didesnis temperatūros pokytis; praleistas vėsimo ženklas; horizontali atkarpa laikoma „energija neperduodama“.
+
+**Terminai EN · LT:** specific heat capacity · savitoji šiluma; temperature change · temperatūros pokytis; slope · nuolydis; heat received/given away · gautas/atiduotas šilumos kiekis. Tikrintuvas priima J ir kJ, bet skaičius turi atitikti pasirinktą vienetą.
+
+Tikro šildytuvo nereikia. Duomenys ir vaizdas yra idealaus modelio reikšmės, ne matavimai. Aptariami tik nekintančios būsenos ir grafiko pagrindai, sudarantys dalį platesnės būsenų kitimo programos temos. Žmogaus peržiūra dar neatlikta.
+
+</Block>
+
+
+
+</Lesson>

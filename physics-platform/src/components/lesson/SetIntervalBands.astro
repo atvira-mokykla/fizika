@@ -1,0 +1,39 @@
+---
+interface Props { id: string; locale: 'en' | 'lt'; showResults?: boolean; showDifferences?: boolean; }
+const { id, locale, showResults = true, showDifferences = false } = Astro.props;
+const lt = locale === 'lt';
+const rows = [
+  { label: 'A', y: 52, x1: 70, x2: 270, leftClosed: true, rightClosed: true },
+  { label: 'B', y: 91, x1: 190, x2: 350, leftClosed: false, rightClosed: true },
+  ...(showResults ? [
+    { label: 'A∪B', y: 137, x1: 70, x2: 350, leftClosed: true, rightClosed: true },
+    { label: 'A∩B', y: 176, x1: 190, x2: 270, leftClosed: false, rightClosed: true },
+  ] : []),
+  ...(showDifferences ? [
+    { label: 'A∖B', y: showResults ? 225 : 137, x1: 70, x2: 190, leftClosed: true, rightClosed: true },
+    { label: 'B∖A', y: showResults ? 264 : 176, x1: 270, x2: 350, leftClosed: false, rightClosed: true },
+  ] : []),
+];
+const h = showResults && showDifferences ? 316 : showResults || showDifferences ? 228 : 145;
+const desc = lt
+  ? `Lygiagrečios skaičių tiesės: A nuo −2 imtinai iki 3 imtinai; B nuo 1 neimtinai iki 5 imtinai.${showResults ? ' Jų sąjunga nuo −2 imtinai iki 5 imtinai; sankirta nuo 1 neimtinai iki 3 imtinai.' : ''}${showDifferences ? ' A be B nuo −2 imtinai iki 1 imtinai; B be A nuo 3 neimtinai iki 5 imtinai.' : ''} Vertikalios gairės žymi 1 ir 3.`
+  : `Parallel number lines: A from −2 inclusive to 3 inclusive; B from 1 exclusive to 5 inclusive.${showResults ? ' Their union runs from −2 inclusive to 5 inclusive; their intersection from 1 exclusive to 3 inclusive.' : ''}${showDifferences ? ' A without B runs from −2 inclusive to 1 inclusive; B without A runs from 3 exclusive to 5 inclusive.' : ''} Vertical guides mark 1 and 3.`;
+---
+<svg viewBox={`0 0 400 ${h}`} width="400" role="img" aria-labelledby={`${id}-title`} aria-describedby={`${id}-desc`} style="display:block;max-width:100%;height:auto;margin:0.5rem auto">
+  <title id={`${id}-title`}>{lt ? 'Intervalų skaičių tiesės' : 'Interval number lines'}</title>
+  <desc id={`${id}-desc`}>{desc}</desc>
+  <g stroke="currentColor" stroke-opacity="0.34" stroke-width="1" stroke-dasharray="3 4">
+    <line x1="190" y1="25" x2="190" y2={h - 32} />
+    <line x1="270" y1="25" x2="270" y2={h - 32} />
+  </g>
+  {rows.map((r) => <g>
+    <text x="17" y={r.y + 5} fill="currentColor" font-size="15" font-family="sans-serif" font-weight="700">{r.label}</text>
+    <line x1="53" y1={r.y} x2="372" y2={r.y} stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5" />
+    <line x1={r.x1 + (r.leftClosed ? 0 : 7)} y1={r.y} x2={r.x2 - (r.rightClosed ? 0 : 7)} y2={r.y} stroke="currentColor" stroke-width="6" />
+    <circle cx={r.x1} cy={r.y} r="6" fill={r.leftClosed ? 'currentColor' : 'none'} stroke="currentColor" stroke-width="2" />
+    <circle cx={r.x2} cy={r.y} r="6" fill={r.rightClosed ? 'currentColor' : 'none'} stroke="currentColor" stroke-width="2" />
+  </g>)}
+  <g fill="currentColor" text-anchor="middle" font-size="12" font-family="sans-serif">
+    <text x="70" y={h - 12}>−2</text><text x="190" y={h - 12}>1</text><text x="270" y={h - 12}>3</text><text x="350" y={h - 12}>5</text>
+  </g>
+</svg>

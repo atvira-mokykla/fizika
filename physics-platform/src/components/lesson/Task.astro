@@ -1,0 +1,8 @@
+---
+import ItemFrame from './ItemFrame.astro';
+interface Props { id: string; level?: 1 | 2 | 3 | 4; exam?: string; outcome?: string; points?: number }
+const { id, level, exam, outcome } = Astro.props;
+---
+<ItemFrame kind="task" id={id} level={level} exam={exam} outcome={outcome}>
+  <slot />
+</ItemFrame>

@@ -1,0 +1,176 @@
+programme: https://emokykla.lt/bendrosios-programos/visos-bendrosios-programos/12
+semester: autumn
+roots:
+- id: g8.measure
+  item: prior-measurement-skills
+  quote: Editorial prerequisite; not a verbatim programme quote.
+  en: Read a thermometer, convert g to kg and subtract two readings.
+  lt: Skaityti termometro rodmenis, perskaičiuoti g į kg ir atimti du rodmenis.
+  refresh: Mass conversion and temperature difference
+  refreshLt: Masės perskaičiavimas ir temperatūros skirtumas
+outcomes:
+- id: g9.thermal.1
+  item: lt-physics-g9-01
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g8.measure
+  en: I can distinguish temperature, internal energy and heat.
+  lt: Moku atskirti temperatūrą, vidinę energiją ir šilumos kiekį.
+- id: g9.thermal.2
+  item: lt-physics-g9-01
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g8.measure
+  en: I can explain two ways of changing internal energy.
+  lt: Moku paaiškinti du vidinės energijos kitimo būdus.
+- id: g9.thermal.3
+  item: lt-physics-g9-01
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g8.measure
+  en: I can compare temperature readings and temperature changes in °C and K.
+  lt: Moku palyginti temperatūras ir jų pokyčius Celsijaus ir Kelvino skalėse.
+- id: g9.thermal.4
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.1
+  en: I can apply Q = mcΔT with mass in kilograms and explain its limits.
+  lt: Moku taikyti Q = mcΔT, masę nurodyti kilogramais ir paaiškinti modelio ribas.
+- id: g9.thermal.5
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.1
+  en: I can read and draw a temperature–time graph with units.
+  lt: Moku skaityti ir braižyti temperatūros ir laiko grafiką, nurodyti vienetus.
+- id: g9.thermal.6
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.1
+  en: I can use specific heat capacity to compare heating and cooling.
+  lt: Moku taikyti savitąją šilumą šildymui ir vėsimui palyginti.
+- id: g9.thermal.7
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.4
+  en: I can plan a supervised investigation with a defined system and safe procedure.
+  lt: Moku suplanuoti prižiūrimą tyrimą, apibrėžti sistemą ir saugią eigą.
+- id: g9.thermal.8
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.4
+  en: I can record masses, temperatures and instrument resolution without inventing data.
+  lt: Moku užrašyti mases, temperatūras ir prietaisų padalos vertę, neišgalvoti duomenų.
+- id: g9.thermal.9
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.4
+  en: I can explain how timing and the container affect a mixing experiment.
+  lt: Moku paaiškinti laiko ir indo įtaką vandens maišymo tyrimui.
+- id: g9.thermal.10
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.7
+  en: I can calculate an ideal mixing temperature and state the assumptions.
+  lt: Moku apskaičiuoti idealią mišinio temperatūrą ir nurodyti prielaidas.
+- id: g9.thermal.11
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.7
+  en: I can calculate heat gained and lost from measured or labelled model data.
+  lt: Moku apskaičiuoti gautą ir atiduotą šilumos kiekį iš matavimų arba aiškiai pažymėtų modelio duomenų.
+- id: g9.thermal.12
+  item: lt-physics-g9-02
+  quote: Editorial objective; see the linked official programme scope.
+  achievement:
+  - B1
+  - D1
+  - E1
+  level: 1
+  needs:
+  - g9.thermal.7
+  en: I can use a discrepancy as evidence about the model, without claiming energy disappeared.
+  lt: Moku skirtumą susieti su modelio ribomis, neteigti, kad energija išnyko.
+lessons:
+- id: g9-thermal-01
+  outcomes:
+  - g9.thermal.1
+  - g9.thermal.2
+  - g9.thermal.3
+- id: g9-thermal-02
+  outcomes:
+  - g9.thermal.4
+  - g9.thermal.5
+  - g9.thermal.6
+- id: g9-thermal-03
+  outcomes:
+  - g9.thermal.7
+  - g9.thermal.8
+  - g9.thermal.9
+- id: g9-thermal-04
+  outcomes:
+  - g9.thermal.10
+  - g9.thermal.11
+  - g9.thermal.12

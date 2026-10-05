@@ -1,0 +1,56 @@
+---
+interface Props {
+  id: string;
+  locale: 'en' | 'lt';
+}
+const { id, locale } = Astro.props;
+const lt = locale === 'lt';
+const ox = 30;
+const y = 125;
+const unit = 85;
+const ux = ox + unit;
+const px = ox + unit * Math.SQRT2;
+const qx = ox + unit * Math.sqrt(3);
+const top = y - unit;
+const radius2 = unit * Math.SQRT2;
+const radius3 = unit * Math.sqrt(3);
+const title = lt ? 'Tikslusis kvadratinių šaknų iš 2 ir 3 atidėjimas' : 'Exact placement of the square roots of 2 and 3';
+const description = lt
+  ? 'Skaičių tiesėje O yra 0, U yra 1. Taške U pakeltas vieneto ilgio statmuo iki A; įžambinė OA yra šaknis iš 2, o lankas su centru O pažymi P tiesėje. Taške P pakeltas kitas vieneto ilgio statmuo iki B; įžambinė OB yra šaknis iš 3, o antras lankas pažymi Q. Abu taškai P ir Q yra tarp 1 ir 2.'
+  : 'On the number line O is 0 and U is 1. A unit perpendicular at U ends at A; hypotenuse OA is the square root of 2 and an arc centred at O marks P on the line. A second unit perpendicular at P ends at B; hypotenuse OB is the square root of 3 and another arc marks Q. Both P and Q lie between 1 and 2.';
+const x2 = ox + 2 * unit;
+const x3 = ox + 3 * unit;
+---
+<svg id={id} viewBox="0 0 330 210" width="330" role="img" aria-labelledby={`${id}-title`} aria-describedby={`${id}-desc`} style="display:block;max-width:100%;height:auto;margin:0.8rem auto">
+  <title id={`${id}-title`}>{title}</title>
+  <desc id={`${id}-desc`}>{description}</desc>
+  <line x1="15" y1={y} x2="310" y2={y} stroke="currentColor" stroke-width="2" />
+  <path d={`M310 ${y} l-9 -5 m9 5 l-9 5`} fill="none" stroke="currentColor" stroke-width="2" />
+  {[{x:ox,label:'0'},{x:ux,label:'1'},{x:x2,label:'2'},{x:x3,label:'3'}].map(({x,label}) => <g>
+    <line x1={x} y1={y-7} x2={x} y2={y+7} stroke="currentColor" stroke-width="1.5" />
+    <text x={x} y="149" text-anchor="middle" fill="currentColor" font-size="18" font-family="sans-serif">{label}</text>
+  </g>)}
+  <path d={`M${ux} ${y} V${top} L${ox} ${y} M${px} ${y} V${top} L${ox} ${y}`} fill="none" stroke="currentColor" stroke-width="2" />
+  <path d={`M${ux} ${y-8} h8 v8 M${px} ${y-8} h8 v8`} fill="none" stroke="currentColor" stroke-width="1.5" />
+  <path d={`M${ux} ${top} A${radius2} ${radius2} 0 0 1 ${px} ${y}`} fill="none" stroke="var(--sl-color-accent, currentColor)" stroke-width="1.5" stroke-dasharray="4 4" />
+  <path d={`M${px} ${top} A${radius3} ${radius3} 0 0 1 ${qx} ${y}`} fill="none" stroke="var(--sl-color-accent, currentColor)" stroke-width="2" stroke-dasharray="7 4" />
+  <circle cx={ox} cy={y} r="3.5" fill="currentColor" />
+  <circle cx={ux} cy={y} r="3.5" fill="currentColor" />
+  <circle cx={px} cy={y} r="4" fill="currentColor" />
+  <circle cx={qx} cy={y} r="4" fill="currentColor" />
+  <circle cx={ux} cy={top} r="3" fill="currentColor" />
+  <circle cx={px} cy={top} r="3" fill="currentColor" />
+  <text x={ux-5} y="30" text-anchor="end" fill="currentColor" font-size="19" font-weight="700" font-family="sans-serif">A</text>
+  <text x={px+5} y="30" text-anchor="start" fill="currentColor" font-size="19" font-weight="700" font-family="sans-serif">B</text>
+  <text x={ux+5} y="80" fill="currentColor" font-size="17" font-family="sans-serif">1</text>
+  <text x={px+5} y="80" fill="currentColor" font-size="17" font-family="sans-serif">1</text>
+  <text x={px} y="173" text-anchor="middle" fill="currentColor" font-size="18" font-family="sans-serif">P = √2</text>
+  <text x={qx} y="199" text-anchor="middle" fill="currentColor" font-size="18" font-family="sans-serif">Q = √3</text>
+  <text x={ox} y="112" text-anchor="middle" fill="currentColor" font-size="17" font-family="sans-serif">O</text>
+  <text x={ux-5} y="112" text-anchor="end" fill="currentColor" font-size="17" font-family="sans-serif">U</text>
+</svg>
+<style>
+  :global(.am-example:has(#g11b-roots-1-construction) .am-ex-body) { overflow: visible; }
+  @media print { svg { color: #111; --sl-color-accent: #111; } }
+  @media (forced-colors: active) { svg { color: CanvasText; --sl-color-accent: Highlight; } }
+</style>

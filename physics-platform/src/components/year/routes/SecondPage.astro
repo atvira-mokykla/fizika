@@ -1,0 +1,12 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import YearView from '../YearView.astro';
+import UnitView from '../UnitView.astro';
+import { ui } from '../../../i18n/ui';
+const { year, unit, semester, prev, next } = Astro.props as any;
+const L = ui(year.lang);
+const title = unit ? L.unitTitle(unit.n, unit.title) : (year.lang === 'lt' ? year.title : `${year.title} · ${year.subtitle}`);
+---
+<StarlightPage frontmatter={{ title, description: unit ? `${year.title}: ${unit.title}` : year.title, tableOfContents: false }}>
+  {unit ? <UnitView year={year} unit={unit} semester={semester} prev={prev} next={next} /> : <YearView year={year} />}
+</StarlightPage>

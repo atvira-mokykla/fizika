@@ -1,0 +1,483 @@
+---
+title: Heat, specific heat capacity and graphs
+description: I can apply Q = mcΔT with mass in kilograms and explain its limits. I can read and draw a temperature–time
+  graph with units. I can use specific heat capacity to compare heating and cooling.
+sidebar:
+  order: 2
+lesson:
+  grade: 9
+  unit: thermal
+  course:
+  - core
+  curriculum:
+  - lt-physics-g9-02
+  contentArea: thermal
+  achievements:
+  - B1
+  - D1
+  - E1
+  levels:
+  - 1
+  - 2
+  - 3
+  exam: []
+  minutes: 45
+  goal: I can apply Q = mcΔT with mass in kilograms and explain its limits. I can read and draw a temperature–time
+    graph with units. I can use specific heat capacity to compare heating and cooling.
+  kicker: An original trial lesson. Practising teacher review is still pending.
+---
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../components/lesson';
+
+<Lesson>
+
+
+
+<Block kind="remember" title="Mass, change and transfer">
+
+
+
+<Numeric id="g9-thermal-02-r1" answer="0.2" outcome="g9.thermal.4" unit="kg">
+
+Convert 200 g of water to kilograms.
+
+<Why value="200">Use kilograms, not the original gram value.</Why>
+<Ok>200 ÷ 1000 = 0.20 kg.</Ok>
+
+
+<Solution>
+
+200 ÷ 1000 = 0.20 kg.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+
+<Quantity id="g9-thermal-02-r2" expected={10} quantity="temperature-difference" units="K|°C" show="10 K" tolerance={0.05} outcome="g9.thermal.4">
+
+Water warms from 20 °C to 30 °C. Give its temperature change.
+
+<Why value="30">Subtract the initial temperature; do not use the final reading.</Why>
+<Ok>30 − 20 = 10 K, also a change of 10 °C.</Ok>
+
+
+<Solution>
+
+30 − 20 = 10 K, also a change of 10 °C.
+
+</Solution>
+
+
+</Quantity>
+
+
+**Bridge from lesson 1.** Heat transferred is measured in J. Internal energy belongs to the chosen system. We now model the water while it remains liquid; the container is outside this simple calculation.
+
+</Block>
+
+
+
+
+<Block kind="hook" title="Which cup takes more energy?">
+
+
+
+<Choice id="g9-thermal-02-h1" outcome="g9.thermal.6">
+
+We warm 0.10 kg and 0.20 kg of water from 20 °C to 30 °C. Both stay liquid. Predict the energy comparison.
+
+<Option correct>The 0.20 kg sample requires twice as much.<Why>With the same material and temperature rise, the required energy is proportional to mass.</Why></Option>
+<Option>Both require the same, because the final temperatures match.<Why>Temperature alone leaves out the amount of water.</Why></Option>
+<Option>The smaller mass requires twice as much.<Why>Less water requires less transferred energy for the same temperature rise.</Why></Option>
+
+
+<Solution>
+
+Doubling mass doubles Q when c and ΔT stay the same. Check this after the explanation.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="explain" title="Build the model with units">
+
+
+
+<Frames>
+
+
+<Frame title="What specific heat capacity means">
+
+Specific heat capacity $c$ is the heat needed to raise 1 kg of a material by 1 K without a change of state. Different materials have different values. For our liquid-water model, use $c=4200\ \mathrm{J/(kg\cdot K)}$. This is a useful approximation for these modest temperature ranges, not a universal constant for every state or temperature. For a temperature difference, J/(kg·K) and J/(kg·°C) are equivalent units.
+
+</Frame>
+
+
+
+
+<Frame title="The calculation">
+
+For unchanged state and approximately constant $c$,
+
+$$Q=mc\Delta T,\qquad \Delta T=T_f-T_i.$$
+
+Here $Q$ is **positive when the water gains energy as heat**. Put mass in kg. A difference may be in K or °C because the steps have the same size. The unit check is $\mathrm{kg}\times\mathrm{J/(kg\cdot K)}\times\mathrm{K}=\mathrm{J}$.
+
+</Frame>
+
+
+
+
+<Frame title="Cooling and the model boundary">
+
+For cooling, final − initial is negative, so the signed heat transfer to the water is negative. The **magnitude of heat given away** is its positive opposite. State which quantity you report.
+
+Do not use $mc\Delta T$ to describe melting at constant temperature: energy can change the state even while ΔT is zero. We will treat phase changes later. Real heating can also warm the container and surroundings; energy supplied by a heater need not all reach the water.
+
+</Frame>
+
+
+</Frames>
+
+
+
+</Block>
+
+
+
+
+<Block kind="explore" title="Predict the slope, then change the mass" figure="thermal-model" figureProps={{mode: "heating"}} alt="Interactive ideal thermal model; the same values are listed in a data table.">
+
+**Illustrative model data, not measurements.** A constant 42 W transfers 42 J every second to the water. Start with 0.20 kg at 20 °C; ignore the container and heat loss. At 0, 50, 100, 150 and 200 s, the temperatures are 20, 22.5, 25, 27.5 and 30 °C.
+
+Draw the graph on paper: horizontal axis $t$ in s, vertical axis $T$ in °C. The slope is **temperature rise per second**, not heat itself. Predict what doubling mass does, then select 0.40 kg. What changes? What stays the same? Explain using $Q=mc\Delta T$.
+
+</Block>
+
+
+
+
+<Block kind="examples" title="Calculate, reverse, compare">
+
+
+
+<Example title="Example 1 · Heating water" fade={0}>
+
+
+
+<ExStep>
+
+For 200 g warming from 20 °C to 30 °C: m = 0.20 kg; ΔT = 10 K.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+$Q=0.20\times4200\times10=8400\ \mathrm{J}=8.4\ \mathrm{kJ}$. Positive: the water gains energy.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-02-p1" expected={16800} quantity="energy-transfer" units="J|kJ" show="16 800 J = 16.8 kJ" tolerance={0.05} outcome="g9.thermal.4">
+
+Warm 0.40 kg of water by 10 K. How much heat is received?
+
+<Why value="8400">The temperature rise matches, but the mass has doubled.</Why>
+<Hints>
+<Hint>Use 0.40 kg, not 400 g, in the formula.</Hint>
+</Hints>
+<Ok>0.40 × 4200 × 10 = 16 800 J; twice example 1.</Ok>
+
+
+<Solution>
+
+0.40 × 4200 × 10 = 16 800 J; twice example 1.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="Example 2 · Find the temperature rise" fade={1}>
+
+
+
+<ExStep>
+
+0.10 kg of water receives 2100 J. Rearrange: $\Delta T=Q/(mc)$.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+$\Delta T=2100/(0.10\times4200)=5\ \mathrm{K}$. If it started at 20 °C, its final temperature is 25 °C.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-02-p2" expected={5} quantity="temperature-difference" units="K|°C" show="5 K" tolerance={0.05} outcome="g9.thermal.4">
+
+0.20 kg of water receives 4200 J. Find ΔT.
+
+<Ok>4200/(0.20 × 4200) = 5 K.</Ok>
+
+
+<Solution>
+
+4200/(0.20 × 4200) = 5 K.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="Example 3 · Cooling, with a sign" fade={1}>
+
+
+
+<ExStep>
+
+0.10 kg cools from 40 °C to 35 °C. ΔT = −5 K.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Q to the water = 0.10 × 4200 × (−5) = −2100 J. It gives away a heat magnitude of 2100 J.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-02-p3" expected={-4200} quantity="energy-transfer" units="J|kJ" show="−4200 J" tolerance={0.05} outcome="g9.thermal.6">
+
+0.20 kg cools from 30 °C to 25 °C. Give signed Q **to the water**.
+
+<Why value="4200">That is the magnitude given away; Q to the cooling water is negative.</Why>
+<Ok>Q = 0.20 × 4200 × (25 − 30) = −4200 J.</Ok>
+
+
+<Solution>
+
+Q = 0.20 × 4200 × (25 − 30) = −4200 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="check" title="Use the equation and challenge it">
+
+Core: questions 1–3. Questions 4–5 and the signed-cooling example are follow-up extensions. Complete the core and explain corrections before moving on; an automatic tick is only a practice record.
+
+<Quantity id="g9-thermal-02-c1" expected={8400} quantity="energy-transfer" units="J|kJ" show="8400 J = 8.4 kJ" tolerance={0.05} outcome="g9.thermal.4">
+
+250 g of water warms from 18 °C to 26 °C. Find received Q.
+
+<Why value="27300">Use the temperature change 8, not the final reading 26.</Why>
+<Ok>m = 0.25 kg, ΔT = 8 K; Q = 0.25 × 4200 × 8 = 8400 J.</Ok>
+
+
+<Solution>
+
+m = 0.25 kg, ΔT = 8 K; Q = 0.25 × 4200 × 8 = 8400 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Numeric id="g9-thermal-02-c2" answer="25" outcome="g9.thermal.5" unit="°C">
+
+In the 0.20 kg model, what is the temperature at 100 s? Read the graph or table.
+
+<Why value="5">5 is the change from the start, not the temperature reading.</Why>
+<Ok>At 100 s the table gives 25 °C. The rise is 5 K; the reading is 25 °C.</Ok>
+
+
+<Solution>
+
+At 100 s the table gives 25 °C. The rise is 5 K; the reading is 25 °C.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+
+<Choice id="g9-thermal-02-c3" outcome="g9.thermal.6">
+
+The same heat reaches equal masses of two materials, with no state change. Material A has twice the specific heat capacity of B. Which warms less?
+
+<Option correct>A: its rise is half that of B.<Why>ΔT = Q/(mc); a larger c means a smaller rise for fixed Q and m.</Why></Option>
+<Option>A: its rise is twice that of B.<Why>Specific heat capacity describes energy needed per degree, not how readily temperature rises.</Why></Option>
+
+
+<Solution>
+
+A needs more energy per kelvin, so the same input raises its temperature less.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-02-c4" outcome="g9.thermal.4">
+
+Which observation challenges the unchanged-state model?
+
+<Option correct>Ice melts while energy enters and the temperature stays constant.<Why>The energy goes into a phase change; Q = mcΔT alone cannot describe that segment.</Why></Option>
+<Option>A larger water mass warms more slowly at the same supplied power.<Why>That is what the unchanged-state model predicts.</Why></Option>
+
+
+<Solution>
+
+A constant-temperature phase-change segment needs a different model, which comes later.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Task id="g9-thermal-02-c5" outcome="g9.thermal.4">
+
+A real heater uses more than 8400 J while 0.20 kg of water warms by 10 K. Explain why this does not by itself disprove energy conservation. Include an annotated energy boundary.
+
+
+
+<Marks>
+<Mark pts={1}>Water-only gain is 8400 J.</Mark>
+<Mark pts={1}>Identify container and/or surroundings as additional recipients.</Mark>
+<Mark pts={1}>Explain that the simple model ignores those transfers.</Mark>
+</Marks>
+
+
+
+
+<Solution>
+
+The 8400 J calculation estimates the gain of the water alone. The container can also warm and energy can reach the surroundings. Compare all inputs and gains for the chosen system rather than equating electrical input with the water-only gain.
+
+</Solution>
+
+
+</Task>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="summary" title="Five checks before substituting">
+
+Identify the system; check that its state stays the same; convert mass to kg; calculate final − initial; give the answer with a unit and sign convention. In the graph, distinguish a reading, a change and a slope. $c$ describes the material; changing mass does not change its specific heat capacity.
+
+<Next>Can a supervised mixing experiment test a heat-balance prediction?</Next>
+
+</Block>
+
+
+
+
+<Block kind="teacher" title="Teaching route and misconceptions">
+
+**45-minute core:** recall 4 min; prediction 4; equation frames 9; graph model 8; examples 10; checks 8; exit boundary sketch 2. The reverse calculation and written challenge can become follow-up practice. These timings need classroom validation.
+
+Ask pupils to predict before changing the model’s mass, and justify with a ratio before calculating. Compare ΔT and final T explicitly. Typical errors: grams substituted as kg; final temperature used for ΔT; larger c interpreted as larger temperature rise; cooling sign omitted; plateau declared “no energy transfer”.
+
+**Terms EN · LT:** specific heat capacity · savitoji šiluma; temperature change · temperatūros pokytis; slope · nuolydis; heat received/given away · gautas/atiduotas šilumos kiekis. The checker accepts J and kJ but requires the numerical value to match the chosen unit.
+
+No physical heater is needed. The data and visualisation are ideal-model values, not measurements. This addresses only the constant-state and graph foundations within the much broader changes-of-state programme node. Human review is pending.
+
+</Block>
+
+
+
+</Lesson>

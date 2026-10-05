@@ -1,0 +1,6 @@
+---
+import { inlineTex } from '../../lib/tex';
+interface Props { op?: string }
+const { op } = Astro.props;
+---
+<div class="am-eq"><div class="am-eq-l"><slot /></div><div class="am-eq-op">{op && <span set:html={inlineTex(op)} />}</div></div>

@@ -1,0 +1,364 @@
+path: '9'
+grade: 9
+gymn: I
+title: Grade 9
+subtitle: I gimnazijos klasė · Physics
+schoolYear: 2026–2027
+lessonsPerWeek: 2
+weeks: 36
+exam: null
+semesters:
+- id: autumn
+  title: Autumn semester
+  months: September–January
+  units:
+  - id: thermal
+    title: Thermal phenomena
+    lt: Šiluminiai reiškiniai
+    curriculum:
+    - lt-physics-g9-01
+    - lt-physics-g9-02
+    hours: 13
+    months: September–January
+    goals:
+    - Explain and apply internal energy.
+    - Explain and apply changes of state.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g9-thermal-01
+      title: Temperature, internal energy and heat
+      periods: 1
+      kind: lesson
+      slug: 9/thermal/temperature-energy-heat
+      outcomes:
+      - g9.thermal.1
+      - g9.thermal.2
+      - g9.thermal.3
+    - id: g9-thermal-02
+      title: Heat, specific heat capacity and graphs
+      periods: 1
+      kind: lesson
+      slug: 9/thermal/specific-heat-and-graphs
+      outcomes:
+      - g9.thermal.4
+      - g9.thermal.5
+      - g9.thermal.6
+    - id: g9-thermal-03
+      title: Investigating water mixing
+      periods: 1
+      kind: lesson
+      slug: 9/thermal/water-mixing-investigation
+      outcomes:
+      - g9.thermal.7
+      - g9.thermal.8
+      - g9.thermal.9
+    - id: g9-thermal-04
+      title: 'Heat balance: from model to evidence'
+      periods: 1
+      kind: lesson
+      slug: 9/thermal/heat-balance
+      outcomes:
+      - g9.thermal.10
+      - g9.thermal.11
+      - g9.thermal.12
+    - id: g9-thermal-5
+      title: Melting and freezing
+      periods: 1
+      kind: lesson
+    - id: g9-thermal-6
+      title: Evaporation, condensation and boiling
+      periods: 1
+      kind: lesson
+    - id: g9-thermal-7
+      title: Reading a heating curve through changes of state
+      periods: 1
+      kind: lesson
+    - id: g9-thermal-8
+      title: Fuels and the heat of combustion
+      periods: 1
+      kind: lesson
+    - id: g9-thermal-9
+      title: Finding a material’s specific heat capacity
+      periods: 1
+      kind: lesson
+    - id: g9-thermal-10
+      title: Heat engines and efficiency
+      periods: 1
+      kind: lesson
+    - id: g9-thermal-11
+      title: Heat pumps and the environment
+      periods: 1
+      kind: lesson
+    - id: g9-thermal-12
+      title: Mixed thermal practice
+      periods: 1
+      kind: practice
+    - id: g9-thermal-13
+      title: Thermal unit check and feedback
+      periods: 1
+      kind: check
+  - id: topic-2
+    title: Mechanical motion
+    lt: Mechaninis judėjimas
+    curriculum:
+    - lt-physics-g9-03
+    hours: 12
+    months: September–January
+    goals:
+    - Explain and apply mechanical motion.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g9-topic-2-1
+      title: Reference frames, path and displacement
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-2
+      title: Speed and its direction
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-3
+      title: Average speed on a journey
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-4
+      title: Acceleration and changing velocity
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-5
+      title: The equation of uniformly accelerated motion
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-6
+      title: Distance in uniformly accelerated motion
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-7
+      title: Free fall
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-8
+      title: Reading position–time graphs
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-9
+      title: Reading velocity–time graphs
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-10
+      title: 'Circular motion: period and frequency'
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-11
+      title: Circular motion and centripetal acceleration; planetary motion
+      periods: 1
+      kind: lesson
+    - id: g9-topic-2-12
+      title: 'Motion: investigation and unit check'
+      periods: 1
+      kind: check
+  - id: autumn-practice
+    title: Investigations, revision and assessment
+    lt: Tyrimai, kartojimas ir vertinimas
+    curriculum: []
+    hours: 11
+    months: September–January
+    goals:
+    - Use evidence, explain assumptions and improve a written solution.
+    needs:
+    - The topics studied in this semester.
+    lessons:
+    - id: g9-autumn-investigation
+      title: Class-selected investigation
+      kind: lesson
+      periods: 5
+    - id: g9-autumn-retrieval
+      title: Retrieval and mixed practice
+      kind: practice
+      periods: 5
+    - id: g9-autumn-assessment
+      title: Assessment and feedback
+      kind: check
+      periods: 1
+  tests: []
+- id: spring
+  title: Spring semester
+  months: February–June
+  units:
+  - id: topic-3
+    title: Forces and interaction
+    lt: Jėgos ir sąveikos dėsniai
+    curriculum:
+    - lt-physics-g9-04
+    - lt-physics-g9-05
+    hours: 10
+    months: February–June
+    goals:
+    - Explain and apply forces.
+    - Explain and apply laws of interaction.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g9-topic-3-1
+      title: Drawing force vectors
+      periods: 1
+      kind: lesson
+    - id: g9-topic-3-2
+      title: Gravity, weight and mass
+      periods: 1
+      kind: lesson
+    - id: g9-topic-3-3
+      title: Elastic force and deformation
+      periods: 1
+      kind: lesson
+    - id: g9-topic-3-4
+      title: Investigating friction
+      periods: 1
+      kind: lesson
+    - id: g9-topic-3-5
+      title: Resultant forces
+      periods: 1
+      kind: lesson
+    - id: g9-topic-3-6
+      title: Inertia and Newton’s first law
+      periods: 1
+      kind: lesson
+    - id: g9-topic-3-7
+      title: Force, mass and acceleration
+      periods: 1
+      kind: lesson
+    - id: g9-topic-3-8
+      title: Interactions and Newton’s third law
+      periods: 1
+      kind: lesson
+    - id: g9-topic-3-9
+      title: Applying Newton’s laws
+      periods: 1
+      kind: practice
+    - id: g9-topic-3-10
+      title: 'Forces: investigation and unit check'
+      periods: 1
+      kind: check
+  - id: topic-4
+    title: Pressure
+    lt: Slėgis
+    curriculum:
+    - lt-physics-g9-06
+    hours: 5
+    months: February–June
+    goals:
+    - Explain and apply pressure.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g9-topic-4-1
+      title: Pressure and contact area
+      periods: 1
+      kind: lesson
+    - id: g9-topic-4-2
+      title: Pressure in liquids
+      periods: 1
+      kind: lesson
+    - id: g9-topic-4-3
+      title: Atmospheric pressure
+      periods: 1
+      kind: lesson
+    - id: g9-topic-4-4
+      title: Buoyancy and floating
+      periods: 1
+      kind: lesson
+    - id: g9-topic-4-5
+      title: 'Pressure: investigation and check'
+      periods: 1
+      kind: check
+  - id: topic-5
+    title: Work, power and energy
+    lt: Darbas, galia ir energija
+    curriculum:
+    - lt-physics-g9-07
+    - lt-physics-g9-08
+    hours: 6
+    months: February–June
+    goals:
+    - Explain and apply mechanical work and power.
+    - Explain and apply mechanical energy.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g9-topic-5-1
+      title: Mechanical work
+      periods: 1
+      kind: lesson
+    - id: g9-topic-5-2
+      title: Power
+      periods: 1
+      kind: lesson
+    - id: g9-topic-5-3
+      title: Kinetic energy
+      periods: 1
+      kind: lesson
+    - id: g9-topic-5-4
+      title: Gravitational and elastic potential energy
+      periods: 1
+      kind: lesson
+    - id: g9-topic-5-5
+      title: Conservation and transformations of mechanical energy
+      periods: 1
+      kind: lesson
+    - id: g9-topic-5-6
+      title: 'Energy: investigation and check'
+      periods: 1
+      kind: check
+  - id: topic-6
+    title: Simple machines
+    lt: Paprastieji mechanizmai
+    curriculum:
+    - lt-physics-g9-09
+    hours: 4
+    months: February–June
+    goals:
+    - Explain and apply simple machines.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g9-topic-6-1
+      title: Levers and moments of force
+      periods: 1
+      kind: lesson
+    - id: g9-topic-6-2
+      title: Pulleys and inclined planes
+      periods: 1
+      kind: lesson
+    - id: g9-topic-6-3
+      title: Efficiency of simple machines
+      periods: 1
+      kind: lesson
+    - id: g9-topic-6-4
+      title: 'Simple machines: investigation and check'
+      periods: 1
+      kind: check
+  - id: spring-practice
+    title: Investigations, revision and assessment
+    lt: Tyrimai, kartojimas ir vertinimas
+    curriculum: []
+    hours: 11
+    months: February–June
+    goals:
+    - Use evidence, explain assumptions and improve a written solution.
+    needs:
+    - The topics studied in this semester.
+    lessons:
+    - id: g9-spring-investigation
+      title: Class-selected investigation
+      kind: lesson
+      periods: 5
+    - id: g9-spring-retrieval
+      title: Retrieval and mixed practice
+      kind: practice
+      periods: 5
+    - id: g9-spring-assessment
+      title: Assessment and feedback
+      kind: check
+      periods: 1
+  tests: []

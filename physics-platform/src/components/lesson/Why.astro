@@ -1,0 +1,6 @@
+---
+/** Feedback for one option, or (in <Numeric>) for one specific wrong value. */
+interface Props { value?: string }
+const { value } = Astro.props;
+---
+<span class="am-why" data-value={value}><slot /></span>

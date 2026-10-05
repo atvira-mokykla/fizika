@@ -1,0 +1,15 @@
+---
+/** The last line of the summary: the question the next lesson answers. The next lesson's title comes from the year plan. */
+import { contextsForSlug, slugOfPath } from '../../lib/plan';
+import { ui, langOfPath } from '../../i18n/ui';
+const lang = langOfPath(Astro.url.pathname);
+const L = ui(lang);
+const ctx = (await contextsForSlug(slugOfPath(Astro.url.pathname), lang))[0];
+const next = ctx?.next;
+const label = next && (next.unitN !== null ? `${L.lessonShort(next.unitN, next.n!)} · ${next.title}` : next.title);
+---
+<div class="am-nextq not-content">
+  <span class="am-nextq-k">{L.nextUp}</span>
+  <div class="am-nextq-q"><slot /></div>
+  {next && (next.href ? <a class="am-nextq-l" href={next.href}>{label} →</a> : <span class="am-nextq-l">{label}</span>)}
+</div>

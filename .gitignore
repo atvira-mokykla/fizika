@@ -1,0 +1,9 @@
+node_modules
+dist/
+.cache/
+.astro/
+__pycache__/
+*.pyc
+physics-starter/site/
+output/
+research/thermal-pilot-validation.json

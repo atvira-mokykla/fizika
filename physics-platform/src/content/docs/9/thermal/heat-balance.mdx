@@ -1,0 +1,492 @@
+---
+title: 'Heat balance: from model to evidence'
+description: I can calculate an ideal mixing temperature and state the assumptions. I can calculate heat gained
+  and lost from measured or labelled model data. I can use a discrepancy as evidence about the model, without claiming
+  energy disappeared.
+sidebar:
+  order: 4
+lesson:
+  grade: 9
+  unit: thermal
+  course:
+  - core
+  curriculum:
+  - lt-physics-g9-02
+  contentArea: thermal
+  achievements:
+  - B1
+  - D1
+  - E1
+  levels:
+  - 1
+  - 2
+  - 3
+  exam: []
+  minutes: 45
+  goal: I can calculate an ideal mixing temperature and state the assumptions. I can calculate heat gained and lost
+    from measured or labelled model data. I can use a discrepancy as evidence about the model, without claiming
+    energy disappeared.
+  kicker: An original trial lesson. Practising teacher review is still pending.
+---
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../components/lesson';
+
+<Lesson>
+
+
+
+<Block kind="remember" title="Two temperature changes">
+
+
+
+<Quantity id="g9-thermal-04-r1" expected={9} quantity="temperature-difference" units="K|°C" show="9 K" tolerance={0.05} outcome="g9.thermal.11">
+
+Cool water changes from 20 °C to 29 °C. Give signed ΔT.
+
+<Ok>29 − 20 = +9 K.</Ok>
+
+
+<Solution>
+
+29 − 20 = +9 K.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Quantity id="g9-thermal-04-r2" expected={-11} quantity="temperature-difference" units="K|°C" show="−11 K" tolerance={0.05} outcome="g9.thermal.11">
+
+Warm water changes from 40 °C to 29 °C. Give signed ΔT.
+
+<Ok>29 − 40 = −11 K. The magnitude given away will be positive.</Ok>
+
+
+<Solution>
+
+29 − 40 = −11 K. The magnitude given away will be positive.
+
+</Solution>
+
+
+</Quantity>
+
+
+Use your actual masses and initial readings from lesson 3 if a supervised trial was performed. The example data below are a separate, explicitly synthetic practice set.
+
+</Block>
+
+
+
+
+<Block kind="hook" title="A prediction is not a result">
+
+Equal masses start at 20 °C and 40 °C. The ideal model predicts 30 °C; practice data give 29.2 °C. Does the difference mean energy has disappeared? Name the system and write one assumption you would check before drawing a conclusion.
+
+</Block>
+
+
+
+
+<Block kind="explain" title="Balance transfers and inspect assumptions">
+
+
+
+<Frames>
+
+
+<Frame title="The ideal water-only balance">
+
+Both portions are the same material; no state changes occur. Lesson 3 pours warm into cool water in the insulated cup. A cup initially near the cool temperature can gain energy and lower the final reading compared with the water-only prediction. Pouring into a warm cup could reverse that contribution; the residual sign is not fixed by conservation alone. Ignore the container, thermometer, heat exchange with surroundings and stirring work. Let warm water give away a **positive magnitude** $Q_w$, while cool water receives positive $Q_c$.
+
+$$m_w c(T_w-T_f)=m_c c(T_f-T_c).$$
+
+The temperature differences here are positive magnitudes. This is equivalent to the sum of signed transfers to the water being zero. Do not mix signed Q with positive magnitudes halfway through a solution.
+
+</Frame>
+
+
+
+
+<Frame title="The midpoint requires equal masses">
+
+For the same water, $c$ cancels. Rearranging gives
+
+$$T_f=\frac{m_wT_w+m_cT_c}{m_w+m_c}.$$
+
+Equal masses give the arithmetic midpoint. Unequal masses give a **mass-weighted** temperature closer to the larger portion’s initial temperature. The result must be between the two initial temperatures under these assumptions. In kelvin, equal masses give (293.15 + 313.15)/2 = 303.15 K, which is the same 30 °C. A weighted mean shifts by the scale offset too.
+
+</Frame>
+
+
+
+
+<Frame title="What a discrepancy tells us">
+
+Using a final reading, calculate $Q_c=m_cc(T_f-T_c)$ and $Q_w=m_wc(T_w-T_f)$. Their difference $R=Q_w-Q_c$ is a **water-only balance residual**. A positive R says the warm-water decrease exceeds the cool-water increase in this calculation.
+
+It is not automatically the exact heat lost to the room. Energy may warm the cup and thermometer; readings, masses and timing may also affect R. Conservation concerns a sufficiently complete system and all transfers, not equality of two incomplete estimates.
+
+</Frame>
+
+
+</Frames>
+
+
+
+</Block>
+
+
+
+
+<Block kind="explore" title="Change the mass, test your prediction" figure="thermal-model" figureProps={{mode: "mixing"}} alt="Interactive ideal thermal model; the same values are listed in a data table.">
+
+This is an **ideal model, not measurements**. Cool water stays at 0.10 kg and 20 °C; warm water starts at 40 °C. Predict where final T moves if you double the warm mass. Then select 0.20 kg. Explain why the arithmetic midpoint no longer applies. Use the table if the figure cannot be read. In a real experiment, use measured initial temperatures rather than replacing them with 20 and 40.
+
+</Block>
+
+
+
+
+<Block kind="examples" title="From prediction to residual">
+
+
+
+<Example title="Example 1 · Equal masses" fade={0}>
+
+
+
+<ExStep>
+
+For 0.10 kg at 20 °C and 0.10 kg at 40 °C, state the ideal assumptions.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+$T_f=(0.10\times20+0.10\times40)/0.20=30\ ^\circ\mathrm{C}$. This is 303.15 K, between the two initial temperatures.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-04-p1" expected={300.15} quantity="absolute-temperature" units="°C|K" show="27 °C = 300.15 K" tolerance={0.05} outcome="g9.thermal.10">
+
+Equal masses start at 18 °C and 36 °C. Find ideal T.
+
+<Ok>(18 + 36)/2 = 27 °C.</Ok>
+
+
+<Solution>
+
+(18 + 36)/2 = 27 °C.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="Example 2 · Twice as much warm water" fade={1}>
+
+
+
+<ExStep>
+
+Cool: 0.10 kg at 20 °C. Warm: 0.20 kg at 40 °C. Use the weighted formula.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+$T_f=(0.10\times20+0.20\times40)/0.30\approx33.3\ ^\circ\mathrm{C}$. It is closer to the larger warm portion.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-04-p2" expected={299.8166666667} quantity="absolute-temperature" units="°C|K" show="26.7 °C" tolerance={0.051} outcome="g9.thermal.10">
+
+Reverse the masses: 0.20 kg cool at 20 °C; 0.10 kg warm at 40 °C. Give ideal T to one decimal place.
+
+<Why value="30">The masses are unequal; use weights, not the midpoint.</Why>
+<Ok>(0.20 × 20 + 0.10 × 40)/0.30 ≈ 26.7 °C.</Ok>
+
+
+<Solution>
+
+(0.20 × 20 + 0.10 × 40)/0.30 ≈ 26.7 °C.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+**Synthetic practice data. Not measured by a pupil or the author.** Both practice trials use 0.100 kg initially at 20.0 °C and 0.100 kg at 40.0 °C. These values practise analysis; they do not validate the laboratory protocol.
+
+| Practice trial | First stable T (°C) | Delay (s) | T at +30 s (°C) | T at +60 s (°C) |
+|---|---|---|---|---|
+| 1 | 29.2 | 12 | 29.0 | 28.8 |
+| 2 | 29.4 | 11 | 29.2 | 29.0 |
+
+
+
+<Example title="Example 3 · Practice trial 1" fade={1}>
+
+
+
+<ExStep>
+
+Cool gain: $Q_c=0.100\times4200\times(29.2-20.0)=3864\ \mathrm{J}$.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Warm loss magnitude: $Q_w=0.100\times4200\times(40.0-29.2)=4536\ \mathrm{J}$.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+R = 4536 − 3864 = 672 J. This is a water-only mismatch; other recipients and measurement effects remain to be assessed.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="check" title="Analyse practice trial 2">
+
+
+
+<Quantity id="g9-thermal-04-c1" expected={303.15} quantity="absolute-temperature" units="°C|K" show="30 °C = 303.15 K" tolerance={0.05} outcome="g9.thermal.10">
+
+Find the ideal equal-mass final temperature.
+
+<Ok>(20 + 40)/2 = 30 °C.</Ok>
+
+
+<Solution>
+
+(20 + 40)/2 = 30 °C.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Quantity id="g9-thermal-04-c2" expected={3948} quantity="energy-transfer" units="J|kJ" show="3948 J" tolerance={0.05} outcome="g9.thermal.11">
+
+Practice trial 2 ends at 29.4 °C. Find cool-water heat received.
+
+<Ok>0.100 × 4200 × (29.4 − 20.0) = 3948 J.</Ok>
+
+
+<Solution>
+
+0.100 × 4200 × (29.4 − 20.0) = 3948 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Quantity id="g9-thermal-04-c3" expected={4452} quantity="energy-transfer" units="J|kJ" show="4452 J" tolerance={0.05} outcome="g9.thermal.11">
+
+Find the **positive magnitude** given away by warm water in practice trial 2.
+
+<Why value="-4452">That is signed Q to warm water; this asks for the positive magnitude.</Why>
+<Ok>0.100 × 4200 × (40.0 − 29.4) = 4452 J. Signed Q to warm water would be −4452 J.</Ok>
+
+
+<Solution>
+
+0.100 × 4200 × (40.0 − 29.4) = 4452 J. Signed Q to warm water would be −4452 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Quantity id="g9-thermal-04-c4" expected={504} quantity="energy-transfer" units="J|kJ" show="504 J" tolerance={0.05} outcome="g9.thermal.12">
+
+Calculate water-only residual R = warm loss − cool gain.
+
+<Ok>4452 − 3948 = 504 J.</Ok>
+
+
+<Solution>
+
+4452 − 3948 = 504 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Choice id="g9-thermal-04-c5" outcome="g9.thermal.12">
+
+What conclusion is justified by the residual?
+
+<Option correct>The water-only estimates differ; investigate omitted energy changes and measurement effects.<Why>This diagnoses a model mismatch, not a failure of conservation.</Why></Option>
+<Option>Exactly 504 J vanished.<Why>The boundary omits the container, thermometer and surroundings.</Why></Option>
+<Option>Exactly 504 J was transferred to the room.<Why>The residual alone cannot separate the cup’s gain, environmental exchange and measurement effects.</Why></Option>
+
+
+<Solution>
+
+Report the residual and its limits. A later cooling trend is context, not an exact allocation of this residual.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Task id="g9-thermal-04-c6" outcome="g9.thermal.12">
+
+Write a conclusion using your real record or the labelled synthetic set. Include prediction, result, residual, two limitations and one specific improvement. State which data source you used.
+
+
+
+<Marks>
+<Mark pts={1}>Identify real or synthetic data and the prediction.</Mark>
+<Mark pts={1}>Use actual inputs and final reading consistently.</Mark>
+<Mark pts={1}>Calculate and interpret the residual with a stated sign convention.</Mark>
+<Mark pts={1}>Name two plausible limitations without an exact unmeasured loss claim.</Mark>
+<Mark pts={1}>Link an improvement to a limitation.</Mark>
+</Marks>
+
+
+
+
+<Solution>
+
+For synthetic trial 2: ideal prediction 30 °C; illustrative first stable reading 29.4 °C after an 11 s delay. Cool gain 3948 J, warm loss 4452 J, residual 504 J. Container energy changes and thermometer response/timing can matter. A consistent shorter documented delay and a characterised container could improve comparison. These synthetic values demonstrate analysis; they are not evidence that a physical trial succeeded.
+
+</Solution>
+
+
+</Task>
+
+
+
+
+
+
+<Numeric id="g9-thermal-04-c7" answer="84" outcome="g9.thermal.12" unit="J">
+
+Optional sensitivity check: both water masses are 0.100 kg. If the final reading increases by 0.1 °C, by how many joules does R = Qwarm − Qcool decrease?
+
+<Ok>Both estimates change: 2 × 0.100 × 4200 × 0.1 = 84 J. A 1 °C step changes R by 840 J. This is sensitivity to one reading, not a complete uncertainty bound.</Ok>
+
+
+<Solution>
+
+Both estimates change: 2 × 0.100 × 4200 × 0.1 = 84 J. A 1 °C step changes R by 840 J. This is sensitivity to one reading, not a complete uncertainty bound.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="summary" title="Balance, boundary, evidence">
+
+The midpoint needs equal masses of the same material and an ideal balance. Otherwise use the mass-weighted formula. Calculate both water changes with one stated sign convention. A residual asks you to check the boundary and assumptions; it does not show energy vanished. Keep real evidence separate from synthetic practice.
+
+<Next>What changes when energy enters but temperature does not rise? The next planned lesson studies melting and freezing.</Next>
+
+</Block>
+
+
+
+
+<Block kind="teacher" title="Discuss the model before a verdict">
+
+**45-minute route:** recall 4 min; prediction and boundary 5; balance frames 10; unequal-mass model 5; worked calculations 8; checks 8; conclusion 5. The reversed-mass extension can be follow-up. Timing is untested.
+
+Use the first stable reading consistently, with actual masses and both initial temperatures. A residual rounded to a joule is arithmetic for this practice set, not a claim of one-joule experimental precision. Discuss instrument resolution before interpreting small differences.
+
+Synthetic keys: trial 1 — 3864 J gain, 4536 J loss magnitude, 672 J residual; trial 2 — 3948 J gain, 4452 J loss magnitude, 504 J residual. Ideal equal-mass T = 30 °C; twice as much warm water gives 33.3 °C; twice as much cool water gives 26.7 °C.
+
+**Terms EN · LT:** heat balance · šilumos balansas; weighted mean · svertinis vidurkis; residual · liekana; model assumption · modelio prielaida. Do not label the residual “environmental loss” without accounting for other influences.
+
+Written work requires comparison with the rubric by a pupil or teacher. Automated quantity checks cannot certify reasoning. Human physics/classroom review remains pending. The four lessons do not complete the whole thermal programme node.
+
+</Block>
+
+
+
+</Lesson>

@@ -1,0 +1,181 @@
+---
+import { years, yearHref, sequence } from '../lib/plan';
+import { type Lang } from '../i18n/ui';
+import NextLesson from './year/NextLesson.astro';
+import WeekGoal from './year/WeekGoal.astro';
+interface Props { lang?: Lang }
+const { lang = 'en' } = Astro.props;
+const T = {
+  en: {
+    your: 'Your year', change: 'Change grade', seeYear: 'See my whole year →',
+    which: 'Which grade are you in?', all: 'All grades',
+    pickNote: 'Pick your grade to see your whole school year: two semesters, units, lessons and tests, in the order your class meets them. We remember it on this device.',
+    how: 'How it works',
+    steps: [
+      ['Your year, like at school.', 'Autumn and spring semesters, units in a proposed order aligned with the physics programme, two physics lessons a week in grades 9–10 and three in grades 11–12, time for investigation, revision and assessment.'],
+      ['One lesson at a time.', 'Each lesson starts with a question, explains with figures you can move, and ends with a short check that marks your answers at once.'],
+      ['See how far you are.', 'Lessons tick themselves when you finish the check, and you can tick lessons you did in class. Set a weekly goal; progress bars show the unit, the semester and the year.'],
+    ],
+    parents: "Parents: pick your child's grade to see what the class learns this year and when. Progress is saved only on the device your child uses; nothing is sent anywhere.",
+    teachers: 'Teachers: each year page is a provisional long-term outline with curriculum scope, and every lesson has a projector view, teacher notes and printable worksheets and answer keys (save as PDF in the browser).',
+    privH: 'Your progress stays with you',
+    privText: "There are no accounts and no tracking. What you have seen and answered is saved only in this browser, on this device. Anyone using the same browser can see it, and clearing the browser's data deletes it. You can move it to another device with a file.",
+    save: 'Save progress to a file', load: 'Load progress from a file', del: 'Delete my progress', delQ: 'Delete everything saved on this device?', delYes: 'Yes, delete', delNo: 'Keep it',
+    saved: 'Saved as atvira-mokykla-physics-progress.json.', loaded: 'Progress loaded. Reloading…', badFile: 'That file is not an Atvira mokykla progress file.', deleted: 'Deleted. Reloading…',
+    soonH: 'Being built',
+    soon: [
+      ['More lessons', 'four grade 9 thermal lessons are available in both languages; the rest of grades 9–12 is planned.'],
+      ['"What you need" checks', 'before each unit, with quick refreshers of earlier skills.'],
+      ['Tests and exam practice', 'unit checks, and physics assessment and exam practice after checking the current specifications.'],
+      ['Lietuvių kalba', 'every page in Lithuanian, with decimal commas.'],
+    ],
+  },
+  lt: {
+    your: 'Tavo klasė', change: 'Keisti klasę', seeYear: 'Visi mano metai →',
+    which: 'Kurioje klasėje mokaisi?', all: 'Visos klasės',
+    pickNote: 'Pasirink klasę ir pamatysi visus mokslo metus: du pusmečius, temas, pamokas ir kontrolinius ta tvarka, kuria mokosi klasė. Gali mokytis iš eilės arba pasirinkti temą, kurią dabar mokotės mokykloje. Pasirinkimas išsaugomas šiame įrenginyje.',
+    how: 'Kaip tai veikia',
+    steps: [
+      ['Tavo mokslo metai, kaip mokykloje.', 'I ir II pusmetis, temos pagal fizikos bendrąją programą; seka siūloma, 9–10 klasėse dvi fizikos pamokos per savaitę, 11–12 klasėse trys, laikas tyrimams, kartojimui ir vertinimui.'],
+      ['Po vieną pamoką.', 'Kiekviena pamoka prasideda klausimu, joje aiškinama naudojant brėžinius, kuriuos gali judinti, ir baigiasi trumpu pasitikrinimu, kuris iš karto įvertina atsakymus.'],
+      ['Matai savo pažangą.', 'Pamokos pažymimos savaime, kai atlieki pasitikrinimą; gali pažymėti ir klasėje išmoktas pamokas. Nusistatyk savaitės tikslą; juostos rodo temos, pusmečio ir metų pažangą.'],
+    ],
+    parents: 'Tėvams: pasirinkite vaiko klasę ir pamatysite, ko ir kada klasė mokosi šiais metais. Pažanga saugoma tik vaiko naudojamame įrenginyje; niekur nesiunčiama.',
+    teachers: 'Mokytojams: kiekvienas metų puslapis yra siūlomas ilgalaikio plano karkasas su programos aprėptimi, o kiekviena pamoka turi projektoriaus rodinį, pastabas mokytojui ir spausdinamus užduočių lapus ir atsakymus (naršyklėje galima išsaugoti PDF).',
+    privH: 'Tavo pažanga lieka pas tave',
+    privText: 'Jokių paskyrų ir jokio sekimo. Tai, ką peržiūrėjai ir atsakei, saugoma tik šioje naršyklėje, šiame įrenginyje. Ją mato kiekvienas, kas naudojasi ta pačia naršykle, o išvalius naršyklės duomenis ji išsitrina. Į kitą įrenginį ją gali perkelti failu.',
+    save: 'Išsaugoti pažangą faile', load: 'Įkelti pažangą iš failo', del: 'Ištrinti mano pažangą', delQ: 'Ištrinti viską, kas išsaugota šiame įrenginyje?', delYes: 'Taip, ištrinti', delNo: 'Palikti',
+    saved: 'Išsaugota: atvira-mokykla-physics-progress.json.', loaded: 'Pažanga įkelta. Puslapis perkraunamas…', badFile: 'Tai ne Atviros mokyklos pažangos failas.', deleted: 'Ištrinta. Puslapis perkraunamas…',
+    soonH: 'Kuriama',
+    soon: [
+      ['Daugiau pamokų', 'keturios 9 klasės šiluminių reiškinių pamokos jau parengtos abiem kalbomis; kitos 9–12 klasių pamokos planuojamos.'],
+      ['Pasitikrinimai „Ką reikia mokėti“', 'prieš kiekvieną temą, su trumpais ankstesnių įgūdžių pakartojimais.'],
+      ['Kontroliniai darbai ir pasirengimo egzaminams užduotys', 'temų pasitikrinimai, fizikos vertinimo ir egzaminų užduotys, patikrinus aktualius reikalavimus.'],
+      ['English', 'every page is also available in English.'],
+    ],
+  },
+}[lang];
+const ys = await years(lang);
+const g = (n: number) => ys.filter((y) => y.grade === n);
+const topics = (n: number) => g(n)[0].semesters.flatMap((s) => s.units.map((u) => u.title.split(':')[0].split(';')[0].toLowerCase())).slice(0, 5).join(', ');
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+const gradeName = (y: (typeof ys)[number]) => (lang === 'lt' ? y.title : y.subtitle);
+---
+<div class="am-home not-content">
+  {ys.map((y) => (
+    <section class="am-mine-box" data-mine-only={y.path} hidden aria-label={T.your}>
+      <div class="am-mine-h">
+        <div>
+          <span class="am-eyebrow">{T.your}</span>
+          <h2><a href={yearHref(y)}>{y.title}</a></h2>
+          <span class="am-small">{y.subtitle} · {y.schoolYear}</span>
+        </div>
+        <button type="button" class="am-btn am-btn-ghost" data-forget>{T.change}</button>
+      </div>
+      <div class="am-year-now">
+        <NextLesson seq={sequence(y)} year={y.path} />
+        <WeekGoal perWeek={y.lessonsPerWeek} />
+      </div>
+      <a class="am-cta" href={yearHref(y)}>{T.seeYear}</a>
+    </section>
+  ))}
+
+  <section class="am-pick" aria-labelledby="pick-h">
+    <h2 id="pick-h"><span data-no-mine>{T.which}</span><span data-has-mine hidden>{T.all}</span></h2>
+    <p class="am-small" data-no-mine>{T.pickNote}</p>
+    <div class="am-pick-grid">
+      {[9, 10, 11, 12].map((n) => (
+        <a class="am-pick-card" href={yearHref(g(n)[0])} data-choose-year={g(n)[0].path}>
+          <span class="am-pick-n">{n}</span>
+          <span class="am-pick-name">{gradeName(g(n)[0])}</span>
+          <span class="am-small">{cap(topics(n))}…</span>
+          {g(n)[0].exam && <span class="am-chip am-chip-exam">{g(n)[0].exam}</span>}
+        </a>
+      ))}
+
+    </div>
+  </section>
+
+  <section class="am-how" aria-labelledby="how-h">
+    <h2 id="how-h">{T.how}</h2>
+    <ol class="am-how-steps">
+      {T.steps.map(([b, t]) => <li><b>{b}</b> {t}</li>)}
+    </ol>
+    <p class="am-small">{T.parents}</p>
+    <p class="am-small">{T.teachers}</p>
+  </section>
+
+  <section aria-labelledby="privacy-h" class="am-privacy" data-msgs={JSON.stringify({ saved: T.saved, loaded: T.loaded, badFile: T.badFile, deleted: T.deleted })}>
+    <h2 id="privacy-h">{T.privH}</h2>
+    <p>{T.privText}</p>
+    <div class="am-priv-actions">
+      <button type="button" class="am-btn" id="am-export">{T.save}</button>
+      <label class="am-btn" for="am-import-file">{T.load}</label>
+      <input type="file" id="am-import-file" accept="application/json,.json" hidden />
+      <button type="button" class="am-btn" id="am-reset">{T.del}</button>
+      <span id="am-reset-confirm" hidden>{T.delQ} <button type="button" class="am-btn am-btn-danger" id="am-reset-yes">{T.delYes}</button> <button type="button" class="am-btn" id="am-reset-no">{T.delNo}</button></span>
+    </div>
+    <p class="am-small" id="am-priv-msg" aria-live="polite"></p>
+  </section>
+
+  <section aria-labelledby="soon-h" class="am-soon">
+    <h2 id="soon-h">{T.soonH}</h2>
+    <ul>{T.soon.map(([b, t]) => <li><b>{b}</b>: {t}</li>)}</ul>
+  </section>
+</div>
+
+<script>
+  import '../lib/year-ui.ts';
+  import { exportAll, importAll, resetAll, setPref } from '../lib/progress';
+  const M = JSON.parse(document.querySelector<HTMLElement>('.am-privacy')!.dataset.msgs!);
+  document.querySelectorAll('[data-forget]').forEach((b) => b.addEventListener('click', () => {
+    setPref('year', '');
+    document.dispatchEvent(new CustomEvent('am:progress'));
+    document.getElementById('pick-h')?.scrollIntoView({ behavior: 'smooth' });
+  }));
+  const msg = document.getElementById('am-priv-msg')!;
+  document.getElementById('am-export')!.addEventListener('click', () => {
+    const blob = new Blob([exportAll()], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'atvira-mokykla-physics-progress.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    msg.textContent = M.saved;
+  });
+  document.getElementById('am-import-file')!.addEventListener('change', async (e) => {
+    const f = (e.target as HTMLInputElement).files?.[0];
+    if (!f) return;
+    const ok = importAll(await f.text());
+    msg.textContent = ok ? M.loaded : M.badFile;
+    if (ok) setTimeout(() => location.reload(), 600);
+  });
+  const confirmBox = document.getElementById('am-reset-confirm')!;
+  document.getElementById('am-reset')!.addEventListener('click', () => { confirmBox.hidden = false; });
+  document.getElementById('am-reset-no')!.addEventListener('click', () => { confirmBox.hidden = true; });
+  document.getElementById('am-reset-yes')!.addEventListener('click', () => { resetAll(); msg.textContent = M.deleted; setTimeout(() => location.reload(), 600); });
+</script>
+
+<style>
+  .am-home { display: grid; gap: 2.5rem; margin-top: 0.5rem; }
+  .am-home h2 { font: 800 1.5rem/1.2 var(--am-display); margin: 0 0 0.6rem; color: var(--am-ink); }
+  .am-small { margin: 0; font-size: 0.88rem; color: var(--am-muted); }
+  .am-mine-box { display: grid; gap: 1rem; background: var(--am-surface); border: 1.5px solid var(--am-accent); border-radius: 16px; padding: 1.25rem; box-shadow: var(--am-shadow); }
+  .am-mine-h { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+  .am-mine-h h2 { margin: 0.2rem 0 0.1rem; }
+  .am-mine-h h2 a { color: var(--am-ink); text-decoration: none; }
+  .am-pick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.9rem; margin-top: 0.9rem; }
+  .am-pick-card { display: grid; gap: 0.45rem; align-content: start; text-decoration: none; color: var(--am-ink); background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 14px; padding: 1.1rem; box-shadow: var(--am-shadow); }
+  a.am-pick-card:hover { border-color: var(--am-accent); }
+  .am-pick-n { font: 800 2.6rem/1 var(--am-display); color: var(--am-accent); }
+  .am-pick-name { font: 700 1.05rem var(--am-display); }
+  .am-pick-courses { display: flex; gap: 0.5rem; margin-top: 0.3rem; }
+  .am-pick-courses .am-btn { flex: 1; text-align: center; text-decoration: none; }
+  .am-chip-exam { justify-self: start; }
+  .am-how-steps { margin: 0 0 0.8rem; padding-left: 1.3rem; display: grid; gap: 0.6rem; color: var(--am-ink); max-width: 70ch; }
+  .am-privacy { display: grid; gap: 0.6rem; background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 12px; padding: 1.1rem; }
+  .am-privacy h2 { margin: 0; }
+  .am-privacy p { margin: 0; max-width: 65ch; color: var(--am-ink); }
+  .am-priv-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  .am-priv-actions label { cursor: pointer; }
+  :global(.am-btn-danger) { background: var(--am-bad); border-color: var(--am-bad); color: #fff; }
+  .am-soon ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.4rem; color: var(--am-ink); }
+</style>

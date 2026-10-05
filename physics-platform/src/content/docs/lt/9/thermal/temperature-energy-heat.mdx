@@ -1,0 +1,486 @@
+---
+title: Temperatūra, vidinė energija ir šiluma
+description: Moku atskirti temperatūrą, vidinę energiją ir šilumos kiekį. Moku paaiškinti du vidinės energijos kitimo
+  būdus. Moku palyginti temperatūras ir jų pokyčius Celsijaus ir Kelvino skalėse.
+sidebar:
+  order: 1
+lesson:
+  grade: 9
+  unit: thermal
+  course:
+  - core
+  curriculum:
+  - lt-physics-g9-01
+  contentArea: thermal
+  achievements:
+  - B1
+  - D1
+  - E1
+  levels:
+  - 1
+  - 2
+  - 3
+  exam: []
+  minutes: 45
+  goal: Moku atskirti temperatūrą, vidinę energiją ir šilumos kiekį. Moku paaiškinti du vidinės energijos kitimo
+    būdus. Moku palyginti temperatūras ir jų pokyčius Celsijaus ir Kelvino skalėse.
+  kicker: Originali bandomoji pamoka. Praktikuojančio mokytojo peržiūra dar neatlikta.
+---
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../../components/lesson';
+
+<Lesson>
+
+
+
+<Block kind="remember" title="Pirma perskaityk dydį">
+
+
+
+<Numeric id="g9-thermal-01-r1" answer="5" outcome="g9.thermal.3" unit="K">
+
+Termometras rodė 18 °C, vėliau 23 °C. Kiek pakilo temperatūra? Įrašyk skaičių; vienetas nurodytas.
+
+<Why value="23">23 yra galutinė temperatūra. Atimk pradinę.</Why>
+<Ok>23 − 18 = 5. Tai pokytis, ne galutinė temperatūra.</Ok>
+
+
+<Solution>
+
+23 − 18 = 5. Tai pokytis, ne galutinė temperatūra.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+
+<Numeric id="g9-thermal-01-r2" answer="0.25" outcome="g9.thermal.1" unit="kg">
+
+Puodelyje yra 250 g vandens. Nurodyk masę kilogramais.
+
+<Why value="250">Gramų skaičių dalyk iš 1000.</Why>
+<Ok>1000 g = 1 kg, todėl 250 g = 0,25 kg.</Ok>
+
+
+<Solution>
+
+1000 g = 1 kg, todėl 250 g = 0,25 kg.
+
+</Solution>
+
+
+</Numeric>
+
+
+**Trumpas prisiminimas.** Skysčio dalelės nuolat juda ir sąveikauja. Jos nepradeda judėti tik pašildžius skystį. Temperatūra apibūdina šiluminę būseną; dydį rašyk su vienetu.
+
+</Block>
+
+
+
+
+<Block kind="hook" title="Ta pati temperatūra – ta pati energija?">
+
+Puodelyje ir kibire yra 20 °C vanduo. Draugas sako: „Termometrų rodmenys vienodi, todėl jų vidinės energijos vienodos.“ Prieš skaitydamas toliau parašyk, ar išvada pagrįsta, ir kokio fakto trūksta.
+
+<Choice id="g9-thermal-01-h1" outcome="g9.thermal.1">
+
+Ką rodo vienodos temperatūros?
+
+<Option correct>Vandens temperatūra vienoda.<Why>Jos nusako šiluminę būseną, bet ne dviejų skirtingų vandens kiekių visos vidinės energijos lygybę.</Why></Option>
+<Option>Abiejų vandens kiekių vidinė energija vienoda.<Why>Svarbus ir vandens kiekis. Vien temperatūros nepakanka.</Why></Option>
+<Option>Dalelės nejuda.<Why>20 °C skystame vandenyje vyksta šiluminis judėjimas.</Why></Option>
+
+
+<Solution>
+
+Galime teigti tik temperatūrų lygybę. Energijos pokyčiams palyginti reikės masės ir medžiagos.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="explain" title="Trys sąvokos – trys klausimai">
+
+
+
+<Frames>
+
+
+<Frame title="Temperatūra: kiek šilta?">
+
+Temperatūra apibūdina kūno šiluminę būseną. Dalelių modelyje to paties skysčio aukštesnė temperatūra siejama su intensyvesniu šiluminiu judėjimu. Termometras matuoja temperatūrą, artėdamas prie šiluminės pusiausvyros su kūnu. Lytėjimas nepatikimas: tame pačiame kambaryje metalas ir mediena gali atrodyti skirtingai šalti, nes nevienodai greitai perduoda energiją rankai.
+
+</Frame>
+
+
+
+
+<Frame title="Vidinė energija: kas sukaupta?">
+
+Vidinę energiją sudaro dalelių mikroskopinio judėjimo ir sąveikos energija. Tai pasirinktos sistemos, pavyzdžiui, viso vandens puodelyje, savybė. Ji nėra viso puodelio judėjimo stalu energija. Svarbūs masė, medžiaga, temperatūra ir būsena; termometras nematuoja visos vidinės energijos.
+
+</Frame>
+
+
+
+
+<Frame title="Šiluma: kas perduodama?">
+
+Šiluma yra energijos perdavimas dėl temperatūrų skirtumo. Perduotą šilumos kiekį žymime $Q$ ir matuojame džauliais (J). Kai šiltas ir vėsus vanduo keičiasi energija be išorinio darbo, grynasis šilumos perdavimas vyksta iš šiltesnio į vėsesnį iki pusiausvyros. Tiksliau sakyti „vanduo gavo šilumos“, o ne „vandenyje yra šilumos“. Vidinė energija sukaupta, o šiluma apibūdina perdavimą.
+
+</Frame>
+
+
+
+
+<Frame title="Du vidinės energijos kitimo būdai">
+
+Vidinė energija gali kisti perduodant šilumą **arba atliekant darbą**. Šiltas radiatorius perduoda šilumą vėsesnei aplinkai. Trinant rankas arba maišant skystį mentele energija perduodama darbu. Abu procesai gali vykti kartu: apibrėžk sistemą ir paaiškink, apie kurį perdavimą kalbi.
+
+</Frame>
+
+
+</Frames>
+
+
+
+</Block>
+
+
+
+
+<Block kind="explore" title="Dvi skalės, viena temperatūra" figure="thermal-model" figureProps={{mode: "scales"}} alt="Interaktyvus idealus šiluminis modelis; tos pačios reikšmės pateiktos duomenų lentelėje.">
+
+Pirmiausia numatyk: ar 20 °C perskaičiavimas į kelvinus reiškia, kad vanduo sušilo? Pasirink kitą temperatūrą ir palygink lentelę.
+
+$$T(\mathrm{K})=t(^{\circ}\mathrm{C})+273{,}15.$$
+
+Pakilus nuo 20 °C iki 30 °C, **pokytis yra 10 °C = 10 K**. Galutinė temperatūra yra **303,15 K**, ne 10 K. Kelvino vienetas rašomas be laipsnio ženklo. Šioje įvadinėje pamokoje 273,15 yra skalių poslinkis, ne energijos matas.
+
+</Block>
+
+
+
+
+<Block kind="examples" title="Paaiškink situaciją ir pabandyk pats">
+
+
+
+<Example title="1 pavyzdys · Šaukštas šiltame vandenyje" fade={0}>
+
+
+
+<ExStep>
+
+Sistema – šaukštas. Iš pradžių vanduo šiltesnis už šaukštą.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Dėl temperatūrų skirtumo energija perduodama šaukštui šiluma: jo vidinė energija didėja. Temperatūra kyla, artėdama prie pusiausvyros.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Choice id="g9-thermal-01-p1" outcome="g9.thermal.2">
+
+Kambario temperatūros šaukštas įdedamas į vėsesnį vandenį. Kas vyksta šaukštui?
+
+<Option correct>Jis atiduoda šilumą vandeniui; jo vidinė energija mažėja.<Why>Kryptis pasikeičia, nes iš pradžių šaukštas šiltesnis.</Why></Option>
+<Option>Šaltis teka į šaukštą.<Why>Apibūdink energijos perdavimą iš šiltesnio į vėsesnį, ne „šalčio tekėjimą“.</Why></Option>
+
+
+<Solution>
+
+Šaukštas atiduoda šilumą vėsesniam vandeniui ir vėsta.
+
+</Solution>
+
+
+</Choice>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="2 pavyzdys · Rankų trynimas" fade={1}>
+
+
+
+<ExStep>
+
+Sistema – abi rankos. Raumenimis jas trini vieną į kitą.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Darbas keičia jų vidinę energiją. Temperatūros kilimas rodo pokytį, bet neįrodo, kad energija būtinai perduota šiluma.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Choice id="g9-thermal-01-p2" outcome="g9.thermal.2">
+
+Variklis suka mentelę ir maišo vandenį izoliuotame inde. Koks energijos perdavimas numatytas?
+
+<Option correct>Darbas vandeniui.<Why>Mentelė atlieka darbą; izoliacija mažina šilumos mainus su aplinka.</Why></Option>
+<Option>Šiluma iš karštesnio išorinio kūno.<Why>Karštesnis išorinis kūnas nenurodytas. Mentelė perduoda energiją darbu.</Why></Option>
+
+
+<Solution>
+
+Darbas gali didinti vidinę energiją net esant mažiems šilumos mainams.
+
+</Solution>
+
+
+</Choice>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="3 pavyzdys · Temperatūra ir pokytis" fade={1}>
+
+
+
+<ExStep>
+
+Perskaičiuok 25 °C: 25 + 273,15 = 298,15 K.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Vėstant nuo 25 °C iki 18 °C, ΔT = 18 − 25 = −7 K. Skalių poslinkis skirtume susiprastina.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Quantity id="g9-thermal-01-p3" expected={303.15} quantity="absolute-temperature" units="K" show="303,15 K" tolerance={0.05} outcome="g9.thermal.3">
+
+Galutinę 30 °C temperatūrą perskaičiuok į kelvinus.
+
+<Why value="30">30 yra Celsijaus temperatūra. Absoliučiai temperatūrai kelvinais pridėk skalių poslinkį.</Why>
+<Ok>30 + 273,15 = 303,15 K.</Ok>
+
+
+<Solution>
+
+30 + 273,15 = 303,15 K.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+</YourTurn>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="check" title="Pasitikrink sąvokas">
+
+Atlik visas penkias užduotis. Pirmosios keturios yra pagrindinės; penktoje paaiškink raštu. Grįžtamasis ryšys skirtas mokytis, ne mokykliniam pažymiui.
+
+<Choice id="g9-thermal-01-c1" outcome="g9.thermal.1">
+
+Kuris dydis matuojamas džauliais?
+
+<Option correct>Perduotas šilumos kiekis.<Why>Šilumos kiekis – perduotos energijos kiekis.</Why></Option>
+<Option>Temperatūra.<Why>Temperatūra matuojama °C arba K.</Why></Option>
+
+
+<Solution>
+
+Q matuojamas J. Temperatūra ir energija – skirtingi dydžiai.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-01-c2" outcome="g9.thermal.1">
+
+Dviejų nevienodų to paties skysčio masių temperatūra vienoda. Ką gali nuspręsti vien iš temperatūros?
+
+<Option correct>Vien šio rodmens nepakanka visai vidinei energijai palyginti.<Why>Palyginimui svarbus kiekis ir medžiaga.</Why></Option>
+<Option>Jų visa vidinė energija būtinai vienoda.<Why>Vienoda temperatūra nepanaikina skysčio kiekio skirtumo.</Why></Option>
+
+
+<Solution>
+
+Vienoda šiluminė būsena negarantuoja vienodos visos vidinės energijos.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-01-c3" outcome="g9.thermal.2">
+
+Karštas puodelis vėsta ant stalo. Kaip apibūdinsi pagrindinį energijos perdavimą iš puodelio?
+
+<Option correct>Šilumos perdavimas vėsesnei aplinkai.<Why>Perdavimą lemia temperatūrų skirtumas.</Why></Option>
+<Option>Tik darbas, nes temperatūra pasikeitė.<Why>Vien temperatūros pokytis nereiškia darbo. Čia nurodyta vėsesnė aplinka.</Why></Option>
+
+
+<Solution>
+
+Sistema – puodelis: jis šiluma perduoda energiją vėsesnei aplinkai.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Quantity id="g9-thermal-01-c4" expected={-8} quantity="temperature-difference" units="K|°C" show="−8 K" tolerance={0.05} outcome="g9.thermal.3">
+
+Vanduo vėsta nuo 40 °C iki 32 °C. Nurodyk ΔT = galutinė − pradinė su ženklu.
+
+<Why value="8">Nurodei pokyčio modulį. Pagal galutinė minus pradinė sutartį pokytis neigiamas.</Why>
+<Ok>32 − 40 = −8; pokytis kelvinais ir Celsijaus laipsniais turi tą pačią skaitinę reikšmę.</Ok>
+
+
+<Solution>
+
+32 − 40 = −8; pokytis kelvinais ir Celsijaus laipsniais turi tą pačią skaitinę reikšmę.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Task id="g9-thermal-01-c5" outcome="g9.thermal.1">
+
+Dviem sakiniais pataisyk: „Trindamas rankas pridedu jose sukauptos šilumos, o padvigubėjus temperatūrai vidinė energija padvigubėja.“ Nurodyk perdavimo būdą ir paaiškink, kokios informacijos trūksta.
+
+
+
+<Marks>
+<Mark pts={1}>Nurodytas darbas trinant rankas.</Mark>
+<Mark pts={1}>Atskirta sukaupta vidinė energija ir šilumos perdavimas.</Mark>
+<Mark pts={1}>Atmestas bendras proporcingumas vien pagal temperatūrą.</Mark>
+</Marks>
+
+
+
+
+<Solution>
+
+Trinant energija perduodama darbu ir didina rankų vidinę energiją; „sukaupta šiluma“ nėra tikslus apibūdinimas. Vien temperatūra nenusako visos vidinės energijos, o dvigubas Celsijaus rodmuo nėra dviguba absoliuti temperatūra. Net kelvinais proporcingumas nėra bendras bet kurios sistemos dėsnis; jam reikia konkretaus modelio.
+
+</Solution>
+
+
+</Task>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="summary" title="Susiek dydį su jo klausimu">
+
+**Temperatūra:** šiluminė būsena, °C arba K. **Vidinė energija:** pasirinktos sistemos mikroskopinė energija, J. **Šiluma:** energijos perdavimas dėl temperatūrų skirtumo, J. Vidinė energija kinta perduodant šilumą arba atliekant darbą. 1 °C pokytis lygus 1 K; absoliučiai temperatūrai reikia skalių poslinkio.
+
+<Next>Kiek energijos reikia perduoti tam tikrai vandens masei pašildyti?</Next>
+
+</Block>
+
+
+
+
+<Block kind="teacher" title="Pastabos mokytojui ir 45 min eiga">
+
+**Pagrindinė eiga:** prisiminimas 4 min; puodelio ir kibiro prognozė 5; aiškinimas ir skalių modelis 10; pavyzdžiai 10; pasitikrinimas 11; baigiamasis paaiškinimas 5. Jei diskusija užtrunka, rašytinę užduotį skirk papildomai. Laikas klasėje dar neišbandytas.
+
+**Klaidų aptarimas:** prieš įvardydami perdavimą klauskite „kokia mūsų sistema?“ Vienodos temperatūros puodelis ir kibiras padeda paneigti visos energijos nustatymą termometru. Neteikite bendros visos vidinės energijos priklausomybės nuo Celsijaus temperatūros lygties.
+
+**Terminai EN · LT:** temperature · temperatūra; internal energy · vidinė energija; heat transferred · šilumos kiekis; thermal motion · šiluminis judėjimas; work · darbas; thermal equilibrium · šiluminė pusiausvyra.
+
+**Aprėptis:** vidinės energijos programos tema aptarta iš dalies. Būsenų kitimas ir išsamūs mikroskopiniai modeliai čia neužbaigti. Fizikos, lietuviškų terminų ir darbo klasėje žmogaus peržiūra dar neatlikta; tai originali bandomoji medžiaga.
+
+</Block>
+
+
+
+</Lesson>

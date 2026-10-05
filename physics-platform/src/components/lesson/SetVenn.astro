@@ -1,0 +1,71 @@
+---
+interface Props {
+  id: string;
+  locale: 'en' | 'lt';
+  mode?: 'blank' | 'union' | 'intersection' | 'a-only' | 'b-only';
+  left?: string;
+  right?: string;
+  onlyLeft?: string;
+  both?: string;
+  onlyRight?: string;
+  outside?: string;
+}
+const {
+  id, locale, mode = 'blank', left = 'A', right = 'B',
+  onlyLeft = '', both = '', onlyRight = '', outside = '',
+} = Astro.props;
+const lt = locale === 'lt';
+const names = lt
+  ? [`tik ${left}`, `${left} ir ${right}`, `tik ${right}`, `nei ${left}, nei ${right}`]
+  : [`only ${left}`, `${left} and ${right}`, `only ${right}`, 'outside both'];
+const hatched = {
+  blank: [],
+  union: [names[0], names[1], names[2]],
+  intersection: [names[1]],
+  'a-only': [names[0]],
+  'b-only': [names[2]],
+}[mode];
+const hatchText = hatched.length
+  ? (lt ? `Užbrūkšniuota: ${hatched.join('; ')}.` : `Hatched: ${hatched.join('; ')}.`)
+  : (lt ? 'Nė viena sritis neužbrūkšniuota.' : 'No region is hatched.');
+const description = lt
+  ? `Veno diagrama: stačiakampis – duotoji aibė U. ${hatchText} ${names[0]}: ${onlyLeft || 'nepažymėta'}. ${names[1]}: ${both || 'nepažymėta'}. ${names[2]}: ${onlyRight || 'nepažymėta'}. ${names[3]}: ${outside || 'nepažymėta'}.`
+  : `Venn diagram: the rectangle is the specified set U. ${hatchText} ${names[0]}: ${onlyLeft || 'unmarked'}. ${names[1]}: ${both || 'unmarked'}. ${names[2]}: ${onlyRight || 'unmarked'}. ${names[3]}: ${outside || 'unmarked'}.`;
+const title = lt ? `Veno diagrama: ${left} ir ${right}. ${hatchText}` : `Venn diagram: ${left} and ${right}. ${hatchText}`;
+const hatch = `${id}-hatch`;
+const clipLeft = `${id}-clip-left`;
+const maskUnion = `${id}-mask-union`;
+const maskLeft = `${id}-mask-left`;
+const maskRight = `${id}-mask-right`;
+---
+<svg viewBox="0 0 360 210" width="360" role="img" aria-labelledby={`${id}-title`} aria-describedby={`${id}-desc`} style="display:block;max-width:100%;height:auto;margin:0.5rem auto">
+  <title id={`${id}-title`}>{title}</title>
+  <desc id={`${id}-desc`}>{description}</desc>
+  <defs>
+    <pattern id={hatch} width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 7 L7 0" fill="none" stroke="currentColor" stroke-width="1.3" stroke-opacity="0.65" /></pattern>
+    <clipPath id={clipLeft}><circle cx="140" cy="106" r="67" /></clipPath>
+    <mask id={maskUnion}><circle cx="140" cy="106" r="67" fill="white" /><circle cx="210" cy="106" r="67" fill="white" /></mask>
+    <mask id={maskLeft}><circle cx="140" cy="106" r="67" fill="white" /><circle cx="210" cy="106" r="67" fill="black" /></mask>
+    <mask id={maskRight}><circle cx="210" cy="106" r="67" fill="white" /><circle cx="140" cy="106" r="67" fill="black" /></mask>
+  </defs>
+  <rect x="12" y="8" width="336" height="194" rx="6" fill="none" stroke="currentColor" stroke-width="1.5" />
+  {mode === 'union' && <rect x="12" y="8" width="336" height="194" fill={`url(#${hatch})`} mask={`url(#${maskUnion})`} />}
+  {mode === 'intersection' && <g clip-path={`url(#${clipLeft})`}><circle cx="210" cy="106" r="67" fill={`url(#${hatch})`} /></g>}
+  {mode === 'a-only' && <rect x="12" y="8" width="336" height="194" fill={`url(#${hatch})`} mask={`url(#${maskLeft})`} />}
+  {mode === 'b-only' && <rect x="12" y="8" width="336" height="194" fill={`url(#${hatch})`} mask={`url(#${maskRight})`} />}
+  <circle cx="140" cy="106" r="67" fill="none" stroke="currentColor" stroke-width="2" />
+  <circle cx="210" cy="106" r="67" fill="none" stroke="currentColor" stroke-width="2" />
+  <g fill="currentColor" text-anchor="middle" font-family="sans-serif" paint-order="stroke" stroke="var(--sl-color-bg, white)" stroke-width="3" stroke-linejoin="round">
+    <text x="20" y="27" text-anchor="start" font-size="12">U</text>
+    <text x="100" y="45" font-size="16" font-weight="700">{left}</text>
+    <text x="250" y="45" font-size="16" font-weight="700">{right}</text>
+    <text x="111" y="91" font-size="11">{names[0]}</text>
+    <text x="175" y="91" font-size="11">{names[1]}</text>
+    <text x="241" y="91" font-size="11">{names[2]}</text>
+    <text x="292" y="177" font-size="11">{names[3]}</text>
+    {onlyLeft && <text x="110" y="113" font-size="13" font-weight="700">{onlyLeft}</text>}
+    {both && <text x="175" y="113" font-size="13" font-weight="700">{both}</text>}
+    {onlyRight && <text x="242" y="113" font-size="13" font-weight="700">{onlyRight}</text>}
+    {outside && <text x="292" y="193" font-size="13" font-weight="700">{outside}</text>}
+  </g>
+</svg>

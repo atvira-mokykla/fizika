@@ -1,0 +1,8 @@
+---
+import ItemFrame from './ItemFrame.astro';
+interface Props { id: string; level?: 1 | 2 | 3 | 4; exam?: string; outcome?: string; tries?: number }
+const { id, level, exam, outcome, tries } = Astro.props;
+---
+<ItemFrame kind="order" id={id} level={level} exam={exam} outcome={outcome} data={{ tries }}>
+  <slot />
+</ItemFrame>

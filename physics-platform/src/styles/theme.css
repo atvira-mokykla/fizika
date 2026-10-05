@@ -1,0 +1,114 @@
+/*
+ * Atvira mokykla theme.
+ * Starlight's convention: bare :root is the dark theme, [data-theme='light'] the light one.
+ * Our own tokens (--am-*) follow the same convention and are used by lessons and figures.
+ */
+
+:root {
+  /* dark */
+  --sl-color-accent-low: #133029;
+  --sl-color-accent: #3FAE90;
+  --sl-color-accent-high: #B5EBDB;
+  --sl-color-white: #FFFFFF;
+  --sl-color-gray-1: #E4E9ED;
+  --sl-color-gray-2: #C3CCD4;
+  --sl-color-gray-3: #98A4AF;
+  --sl-color-gray-4: #5E6A75;
+  --sl-color-gray-5: #2A343E;
+  --sl-color-gray-6: #1C242C;
+  --sl-color-black: #0E1216;
+
+  --am-bg: #0E1216;
+  --am-surface: #151B21;
+  --am-surface-2: #1C242C;
+  --am-ink: #E4E9ED;
+  --am-muted: #98A4AF;
+  --am-line: #2A343E;
+  --am-accent: #5CC2A6;
+  --am-accent-ink: #0B1A15;
+  --am-accent-soft: #16312A;
+  --am-mark: #FF6FA3;
+  --am-mark-soft: #3A1A27;
+  --am-hint: #F2B350;
+  --am-hint-soft: #30250E;
+  --am-ok: #62D18F;
+  --am-ok-soft: #11301D;
+  --am-bad: #FF8A80;
+  --am-bad-soft: #3A1614;
+  --am-fig-bg: #12181D;
+  --am-grid: rgba(92, 194, 166, 0.08);
+  --am-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  --sl-font: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --sl-font-system-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --am-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --am-mono: var(--sl-font-system-mono);
+
+  --sl-text-base: 1.0625rem;
+  --sl-line-height: 1.65;
+  --sl-content-width: 46rem;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #D9EEE8;
+  --sl-color-accent: #1F6F5C;
+  --sl-color-accent-high: #11443A;
+  --sl-color-white: #16212B;
+  --sl-color-gray-1: #1F2A34;
+  --sl-color-gray-2: #34414D;
+  --sl-color-gray-3: #56636F;
+  --sl-color-gray-4: #8793A0;
+  --sl-color-gray-5: #C9D1D8;
+  --sl-color-gray-6: #ECF0F2;
+  --sl-color-gray-7: #F5F7F8;
+  --sl-color-black: #FFFFFF;
+
+  --am-bg: #F5F7F8;
+  --am-surface: #FFFFFF;
+  --am-surface-2: #ECF0F2;
+  --am-ink: #16212B;
+  --am-muted: #56636F;
+  --am-line: #D5DCE1;
+  --am-accent: #1F6F5C;
+  --am-accent-ink: #FFFFFF;
+  --am-accent-soft: #DCEFE9;
+  --am-mark: #C2185B;
+  --am-mark-soft: #F9E3EC;
+  --am-hint: #8A5300;
+  --am-hint-soft: #FFF0D4;
+  --am-ok: #1C7A3A;
+  --am-ok-soft: #E1F4E7;
+  --am-bad: #B3261E;
+  --am-bad-soft: #FBE6E4;
+  --am-fig-bg: #FBFCFD;
+  --am-grid: rgba(31, 111, 92, 0.09);
+  --am-shadow: 0 1px 2px rgba(22, 33, 43, 0.06), 0 8px 24px rgba(22, 33, 43, 0.06);
+}
+
+/* Headings in the display face */
+.sl-markdown-content :is(h1, h2, h3, h4),
+h1#_top,
+.hero h1,
+.am-display {
+  font-family: var(--am-display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h1#_top { font-weight: 800; }
+
+/* Maths: a touch larger than body text reads better with Atkinson */
+.katex { font-size: 1.08em; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding-block: 0.25rem; }
+
+/* Sidebar and header: calmer than the docs default */
+.sidebar-content { --sl-sidebar-item-padding-inline: 0.6rem; }
+header.header { border-bottom-color: var(--am-line); }
+
+:focus-visible { outline: 3px solid var(--am-accent); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+
+/* The hidden attribute always wins over component display rules. */
+[hidden] { display: none !important; }

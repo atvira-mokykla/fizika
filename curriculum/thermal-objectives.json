@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-04",
+  "module_id": "g9-thermal-initial",
+  "status": "editorial-alignment-human-review-pending",
+  "note": "Project objective IDs are not official curriculum codes. Achievement codes are official; objective wording and evidence are original editorial mappings. No automatic attainment level/mark is assigned.",
+  "objectives": [
+    {
+      "id": "g9-thermal-01-o1",
+      "lesson_id": "g9-thermal-01",
+      "objective_index": 0,
+      "objective_lt": "Apibūdinti šiluminį dalelių judėjimą ir jo ryšį su temperatūra.",
+      "programme_node": "lt-physics-g9-01",
+      "programme_title_lt": "Vidinė energija",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "Apibūdinamas šiluminis judėjimas",
+      "achievements": [
+        "B1",
+        "D1"
+      ],
+      "evidence_blocks": [
+        "particles",
+        "exit"
+      ],
+      "evidence_lt": "Žvilgsnis į daleles; Trys sakiniai",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-01-o2",
+      "lesson_id": "g9-thermal-01",
+      "objective_index": 1,
+      "objective_lt": "Paaiškinti du vidinės energijos kitimo būdus: perduodant šilumą ir atliekant darbą.",
+      "programme_node": "lt-physics-g9-01",
+      "programme_title_lt": "Vidinė energija",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "vidinė energija ir jos kitimo būdai",
+      "achievements": [
+        "B5",
+        "D3"
+      ],
+      "evidence_blocks": [
+        "sort",
+        "exit"
+      ],
+      "evidence_lt": "Palygink situacijas; Trys sakiniai",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-01-o3",
+      "lesson_id": "g9-thermal-01",
+      "objective_index": 2,
+      "objective_lt": "Paaiškinti, kodėl temperatūra nėra energijos kiekis.",
+      "programme_node": "lt-physics-g9-01",
+      "programme_title_lt": "Vidinė energija",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "vidinė energija",
+      "achievements": [
+        "B5",
+        "E3"
+      ],
+      "evidence_blocks": [
+        "predict",
+        "compare"
+      ],
+      "evidence_lt": "Ką pasako termometras?; Vienoda temperatūra – skirtingi kūnai",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-02-o1",
+      "lesson_id": "g9-thermal-02",
+      "objective_index": 0,
+      "objective_lt": "Apibūdinti savitąją šilumą ir taikyti Q = mcΔT, kai būsena nekinta.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "savitoji šiluma",
+      "achievements": [
+        "B1",
+        "D3"
+      ],
+      "evidence_blocks": [
+        "meaning",
+        "practice"
+      ],
+      "evidence_lt": "Temperatūra ir šilumos kiekis; Pritaikyk kitai masei",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-02-o2",
+      "lesson_id": "g9-thermal-02",
+      "objective_index": 1,
+      "objective_lt": "Pagal lentelę nubraižyti ir skaityti temperatūros kitimo grafiką, nurodyti modelio ribas.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "Mokomasi brėžti ir skaityti temperatūros kitimo grafiką",
+      "achievements": [
+        "B2",
+        "B4",
+        "D5"
+      ],
+      "evidence_blocks": [
+        "graph"
+      ],
+      "evidence_lt": "Perskaityk ir pavaizduok",
+      "coverage_note_lt": "Tai kaitinimo grafiko parengiamasis darbas. Oficialus fazinių virsmų grafiko reikalavimas lieka vėlesnėms pamokoms.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-02-o3",
+      "lesson_id": "g9-thermal-02",
+      "objective_index": 2,
+      "objective_lt": "Palyginti šilumos kiekį keičiant vandens masę ir pateikti atsakymą su vienetu.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "Skaičiuojami šilumos kiekiai",
+      "achievements": [
+        "B1",
+        "E1"
+      ],
+      "evidence_blocks": [
+        "start",
+        "practice"
+      ],
+      "evidence_lt": "Prieš pradedant; Pritaikyk kitai masei",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-03-o1",
+      "lesson_id": "g9-thermal-03",
+      "objective_index": 0,
+      "objective_lt": "Suformuluoti maišymo tyrimo klausimą ir patikrinamą hipotezę.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "patikrinamas energijos tvermės dėsnis",
+      "achievements": [
+        "C2",
+        "B5"
+      ],
+      "evidence_blocks": [
+        "hypothesis"
+      ],
+      "evidence_lt": "Klausimas ir hipotezė",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-03-o2",
+      "lesson_id": "g9-thermal-03",
+      "objective_index": 1,
+      "objective_lt": "Suplanuoti ir saugiai atlikti matavimus, užrašyti faktines mases, temperatūras ir prietaisų skyras.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "Praktiškai",
+      "achievements": [
+        "C3",
+        "C4",
+        "B1"
+      ],
+      "evidence_blocks": [
+        "plan",
+        "instruments",
+        "measurements",
+        "cooling"
+      ],
+      "evidence_lt": "Kas turi likti vienoda?; Prietaisai ir sąlygos; Tikros klasės duomenų lentelė; Rodmenys po sumaišymo",
+      "coverage_note_lt": "Praktiniai C4 įrodymai galimi tik po realaus mokinio darbo; protokolas ir ekraninė analizė jų nepatvirtina.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-03-o3",
+      "lesson_id": "g9-thermal-03",
+      "objective_index": 2,
+      "objective_lt": "Pakartoti bandymą ir išsaugoti tikrus duomenis kitai pamokai.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "patikrinamas energijos tvermės dėsnis",
+      "achievements": [
+        "C4",
+        "C5"
+      ],
+      "evidence_blocks": [
+        "measurements",
+        "cooling",
+        "handoff"
+      ],
+      "evidence_lt": "Tikros klasės duomenų lentelė; Rodmenys po sumaišymo; Išsaugok įrodymus",
+      "coverage_note_lt": "Praktiniai C4 įrodymai galimi tik po realaus mokinio darbo; protokolas ir ekraninė analizė jų nepatvirtina.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-04-o1",
+      "lesson_id": "g9-thermal-04",
+      "objective_index": 0,
+      "objective_lt": "Apskaičiuoti vandens gautą ir atiduotą šilumą pagal savo matavimus arba pažymėtą mokomąjį rinkinį.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "šilumos balanso lygtį",
+      "achievements": [
+        "B1",
+        "C5",
+        "D3"
+      ],
+      "evidence_blocks": [
+        "calculate"
+      ],
+      "evidence_lt": "Tavo pasirinkto rinkinio apskaita",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-04-o2",
+      "lesson_id": "g9-thermal-04",
+      "objective_index": 1,
+      "objective_lt": "Palyginti realų arba iliustracinį rezultatą su idealaus šilumos balanso prognoze.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "šilumos balanso lygtį",
+      "achievements": [
+        "C5",
+        "D5",
+        "E3"
+      ],
+      "evidence_blocks": [
+        "ideal",
+        "graph",
+        "calculate"
+      ],
+      "evidence_lt": "Idealaus modelio patikra; Pavaizduok kitimą; Tavo pasirinkto rinkinio apskaita",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    },
+    {
+      "id": "g9-thermal-04-o3",
+      "lesson_id": "g9-thermal-04",
+      "objective_index": 2,
+      "objective_lt": "Pagrįsti išvadą duomenimis ir pasiūlyti tyrimo patobulinimą.",
+      "programme_node": "lt-physics-g9-02",
+      "programme_title_lt": "Medžiagos būsenų kitimas",
+      "source_id": "LT-BP-LIVE",
+      "source_pdf_page": 47,
+      "official_scope_fragment_lt": "patikrinamas energijos tvermės dėsnis",
+      "achievements": [
+        "C6",
+        "B5",
+        "E4"
+      ],
+      "evidence_blocks": [
+        "conclusion",
+        "exit"
+      ],
+      "evidence_lt": "Išvada ir tyrimo ribos; Perkelk į naują situaciją",
+      "coverage_note_lt": "Dalinė modulio aprėptis; mokytojo patvirtinimas dar negautas.",
+      "human_review": "pending"
+    }
+  ],
+  "remaining_scope_lt": "Faziniai virsmai ir jų temperatūros grafikai; sublimacija; įvairių medžiagų savitosios šilumos praktinis nustatymas; kuras ir degimo šiluma; varikliai, naudingumo koeficientas ir šilumos siurbliai; platesnė savarankiška praktika ir gylio patikra.",
+  "source_urls": [
+    "https://emokykla.lt/bendrosios-programos/visos-bendrosios-programos/12",
+    "https://emokykla.lt/upload/files/2026/08/17/fizikos-ilgalaikio-plano-9-i-gimnazijos-klasei-pavyzdys-2026-08-17.docx"
+  ]
+}

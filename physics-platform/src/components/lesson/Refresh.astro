@@ -1,0 +1,17 @@
+---
+/**
+ * A quick refresh of a grade 5–8 skill (a root of the learning tree), folded until the pupil opens it.
+ * The lesson's start card links to it. The topic name comes from src/content/outcomes/.
+ */
+import { getCollection } from 'astro:content';
+import { ui, langOfPath } from '../../i18n/ui';
+interface Props { root: string }
+const { root } = Astro.props;
+const lang = langOfPath(Astro.url.pathname);
+const r = (await getCollection('outcomes')).flatMap((e) => e.data.roots).find((x) => x.id === root);
+if (!r) throw new Error(`<Refresh root="${root}">: no such root in src/content/outcomes/`);
+---
+<details class="am-refresh not-content" id={`refresh-${root}`} data-root={root}>
+  <summary><span class="am-refresh-k">{ui(lang).quickRefresh}</span> <span class="am-refresh-t">{lang === 'lt' ? r.refreshLt : r.refresh}</span></summary>
+  <div class="am-refresh-body"><slot /></div>
+</details>

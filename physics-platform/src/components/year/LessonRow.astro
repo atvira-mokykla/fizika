@@ -1,0 +1,23 @@
+---
+/** One lesson on a unit page: tick box, number ("1.3"), title and link, and chips for its kind. */
+import type { PlanLesson, Year } from '../../lib/plan';
+import { lessonHref } from '../../lib/plan';
+import { ui } from '../../i18n/ui';
+interface Props { year: Year; l: PlanLesson; n: string }
+const { year, l, n } = Astro.props;
+const L = ui(year.lang);
+const href = lessonHref(year, l);
+---
+<li class={`am-lesson-row am-kind-${l.kind}`} id={l.id} data-row>
+  <input type="checkbox" data-done value={l.id} id={`cb-${l.id}`} aria-label={L.doneAria(l.title)} />
+  <span class="am-row-n">{n}</span>
+  <span class="am-row-t">
+    {href ? <a href={href}>{l.title}</a> : <span>{l.title}</span>}
+    <span class="am-row-meta">
+      {l.kind !== 'lesson' && <span class="am-chip">{L.planKind[l.kind]}</span>}
+      {l.periods > 1 && <span class="am-chip">{L.classPeriods(l.periods)}</span>}
+      {!href && <span class="am-chip am-chip-soon">{L.planned}</span>}
+    </span>
+  </span>
+  {href && <a class="am-row-go" href={href} aria-label={L.openAria(l.title)}>{L.open}</a>}
+</li>

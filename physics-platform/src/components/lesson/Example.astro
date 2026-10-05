@@ -1,0 +1,9 @@
+---
+/** A worked example made of <ExStep>s. `fade` hides the last n steps for the pupil to try first. */
+interface Props { title: string; fade?: number }
+const { title, fade = 0 } = Astro.props;
+---
+<div class="am-example" data-fade={fade}>
+  <div class="am-ex-h">{title}</div>
+  <slot />
+</div>

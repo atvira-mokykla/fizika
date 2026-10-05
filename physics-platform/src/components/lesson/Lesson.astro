@@ -1,0 +1,110 @@
+---
+/**
+ * Wraps a lesson. Children are <Block>s. The runtime turns them into the lesson path:
+ * step by step for pupils, "Show all" for teachers and projectors, and print for PDFs.
+ */
+import { getEntry } from 'astro:content';
+import { contextsForSlug, yearHref, slugOfPath } from '../../lib/plan';
+import { startCard } from '../../lib/outcomes';
+import { inlineTex } from '../../lib/tex';
+import { ui, langOfPath } from '../../i18n/ui';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+// Print pages are not Starlight pages, so the route data may be missing.
+let title = '';
+try { title = Astro.locals.starlightRoute?.entry?.data?.title ?? ''; } catch { /* print page */ }
+const slug = slugOfPath(Astro.url.pathname);
+const lang = langOfPath(Astro.url.pathname);
+const L = ui(lang);
+const contexts = await contextsForSlug(slug, lang);
+// Lithuanian PDFs exist only for translated lessons; untranslated (fallback) pages link to the English ones.
+const ltEntry = lang === 'lt' ? await getEntry('docs', `lt/${slug}`) : undefined;
+const pdfSlug = ltEntry ? `lt/${slug}` : slug;
+const meta = (ltEntry ?? (await getEntry('docs', slug)))?.data.lesson;
+const planId = contexts[0]?.step.id ?? '';
+
+// The start card: goal, "By the end of the lesson" (outcomes from the learning tree), what is needed from before, time.
+// Rendered as the first block, so the lesson path starts on it.
+const card = contexts[0] ? await startCard(contexts[0].year, planId, lang) : null;
+const body = await Astro.slots.render('default');
+const refreshHref = (r: { id: string; refreshStep: { href: string | null } | null }) =>
+  body.includes(`id="refresh-${r.id}"`) ? `#refresh-${r.id}` : r.refreshStep?.href ?? null;
+const periods = contexts[0]?.step.periods ?? 1;
+const pdf = (kind: string) => `${base}print/${kind}/${pdfSlug}/`;
+---
+<div class="am-lesson mode-all" data-slug={slug} data-title={title} data-plan-id={planId}>
+  <div class="am-toolbar not-content">
+    <nav class="am-rail" aria-label={L.lessonSteps}></nav>
+    <div class="am-tools">
+      <div class="am-seg" role="group" aria-label={L.view}>
+        <button type="button" data-mode="steps" aria-pressed="true">{L.stepByStep}</button>
+        <button type="button" data-mode="all" aria-pressed="false">{L.showAll}</button>
+      </div>
+      <button type="button" class="am-tool" data-action="projector" aria-pressed="false">{L.projector}</button>
+      <button type="button" class="am-tool" data-action="teacher" aria-pressed="false">{L.teacherNotes}</button>
+      <details class="am-pdf">
+        <summary class="am-tool">{lang === 'lt' ? 'Spausdinti / PDF' : 'Print / PDF'}</summary>
+        <div class="am-pdf-menu">
+          <a href={pdf('handout')}>{L.handout} <span>{L.handoutNote}</span></a>
+          <a href={pdf('worksheet')}>{L.worksheet} <span>{L.worksheetNote}</span></a>
+          <a href={pdf('key')}>{L.key} <span>{L.keyNote}</span></a>
+        </div>
+      </details>
+    </div>
+  </div>
+  <div class="am-lesson-body">
+    {card && (
+      <section class="am-block am-block-start" data-kind="start" data-title={L.startTitle} id="b-start">
+        <header class="am-block-h">
+          <span class="am-kind">{L.blockLabel.start}</span>
+          <h2 class="am-block-title">{L.startTitle}</h2>
+        </header>
+        <div class="am-block-main">
+          {meta?.goal && <p class="am-goal" set:html={inlineTex(meta.goal)} />}
+          <div class="am-start-grid not-content">
+            <div class="am-start-col">
+              <h3 class="am-start-h">{L.byTheEndLesson}</h3>
+              <ul class="am-outcomes">{card.outcomes.map((o) => <li data-outcome={o.id}>{o.text}</li>)}</ul>
+            </div>
+            {(card.roots.length > 0 || card.earlier.length > 0) && (
+              <div class="am-start-col">
+                <h3 class="am-start-h">{L.needFromBefore}</h3>
+                <ul class="am-prereq">
+                  {card.earlier.map((s) => <li>{s.href ? <a href={s.href}>{L.lessonShort(s.unitN!, s.n!)} · {s.title}</a> : <span>{L.lessonShort(s.unitN!, s.n!)} · {s.title}</span>}</li>)}
+                  {card.roots.map((r) => { const h = refreshHref(r); return <li data-root={r.id}>{h ? <a href={h}>{r.topic}</a> : <span>{r.topic}</span>}</li>; })}
+                </ul>
+              </div>
+            )}
+          </div>
+          <p class="am-start-time">{L.periodsTime(periods)}</p>
+        </div>
+      </section>
+    )}
+    <Fragment set:html={body} />
+  </div>
+  {contexts.map((c, i) => (
+    <div class="am-lesson-end not-content" data-year-ctx={c.year.path} hidden={i > 0}>
+      <label class="am-done-toggle" data-row>
+        <input type="checkbox" data-done value={c.step.id} />
+        <span>{L.doneLesson}</span>
+      </label>
+      <span class="am-small am-done-hint">{L.doneHint}</span>
+      <span class="am-end-links">
+        <a href={c.step.unitHref}>{L.unitLessons(c.step.unitN!)}</a>
+        <a class="am-report" href={`https://github.com/atvira-mokykla/fizika/issues/new?title=${encodeURIComponent(L.mistakeTitle(title))}`}>{L.mistake}</a>
+        {c.next && (c.next.href
+          ? <a class="am-cta" href={c.next.href}>{L.nextTitle(c.next.title)}</a>
+          : <a class="am-cta am-cta-ghost" href={`${c.next.unitHref ?? yearHref(c.year)}#${c.next.id}`}>{L.nextTitle(c.next.title)}</a>)}
+      </span>
+    </div>
+  ))}
+</div>
+
+<script>
+  import '../../lib/runtime.ts';
+  import '../../lib/year-ui.ts';
+  // Show where this lesson sits in the pupil's own year (grade 12: course B or A).
+  import { getPref } from '../../lib/progress';
+  const mine = getPref('year');
+  const ctx = [...document.querySelectorAll<HTMLElement>('[data-year-ctx]')];
+  if (mine && ctx.some((e) => e.dataset.yearCtx === mine)) ctx.forEach((e) => { e.hidden = e.dataset.yearCtx !== mine; });
+</script>

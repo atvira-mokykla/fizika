@@ -1,0 +1,112 @@
+{
+  "id": "g9-thermal-01",
+  "version": "0.2.0-draft",
+  "language": "lt",
+  "grade": 9,
+  "title": "Temperatūra, vidinė energija ir šiluma",
+  "status": "draft",
+  "licence": "CC-BY-SA-4.0",
+  "programme_nodes": [
+    "lt-physics-g9-01"
+  ],
+  "objectives_lt": [
+    "Apibūdinti šiluminį dalelių judėjimą ir jo ryšį su temperatūra.",
+    "Paaiškinti du vidinės energijos kitimo būdus: perduodant šilumą ir atliekant darbą.",
+    "Paaiškinti, kodėl temperatūra nėra energijos kiekis."
+  ],
+  "achievement_areas": [
+    "B",
+    "D",
+    "E"
+  ],
+  "prerequisites_lt": [
+    "Temperatūros skalės skaitymas.",
+    "Masės vienetai g ir kg.",
+    "Lentelių skaitymas ir paprasti skaičiavimai."
+  ],
+  "core_minutes": 30,
+  "slot_minutes": 45,
+  "equipment_lt": [
+    "Užduoties lapas ir rašiklis."
+  ],
+  "safety_lt": "Eksperimentuoti nereikia. Trinties pavyzdį aptariame; nedarome bandymų su kaitinamu metalu ar liepsna.",
+  "data_provenance": {
+    "kind": "none",
+    "note_lt": "Pateikiamos situacijos yra mokomieji pavyzdžiai, ne bandymo duomenys."
+  },
+  "review": {
+    "physics": "pending practising human reviewer",
+    "classroom": "pending practising Lithuanian physics teacher",
+    "scope_mapping": "editorial mapping prepared; human sign-off pending"
+  },
+  "source_ids": [
+    "LT-BP-LIVE",
+    "LT-PLAN-9-2026"
+  ],
+  "blocks": [
+    {
+      "id": "predict",
+      "type": "question",
+      "title_lt": "Ką pasako termometras?",
+      "body_lt": "Puodelyje yra 0,20 kg, o inde – 1,0 kg vandens. Abiejų temperatūra 25 °C. Ar vien temperatūra leidžia teigti, kad jų vidinė energija vienoda? Paaiškink prognozę.",
+      "worksheet_lines": 3
+    },
+    {
+      "id": "particles",
+      "type": "explanation",
+      "title_lt": "Žvilgsnis į daleles",
+      "body_lt": "Medžiagos dalelės juda netvarkingai. Didėjant temperatūrai paprastai didėja jų šiluminio judėjimo intensyvumas. Vidinė energija apima netvarkingo dalelių judėjimo kinetinę energiją ir dalelių tarpusavio sąveikos potencinę energiją. Kūno judėjimo kaip visumos kinetinės energijos čia neskaičiuojame. Temperatūra apibūdina šiluminę būseną; ji nėra visos vidinės energijos matas.",
+      "worksheet_lines": 0
+    },
+    {
+      "id": "change",
+      "type": "worked-example",
+      "title_lt": "Du energijos perdavimo būdai",
+      "body_lt": "Šiltesnis vanduo perduoda energiją šaltesniam šaukštui dėl temperatūrų skirtumo – tai šilumos perdavimas. Trinant rankas energija perduodama atliekant darbą, ir rankų vidinė energija gali padidėti. Šiluma nėra kūne saugoma medžiaga: šilumos kiekis Q nusako perduotą energiją. Šioje pamokoje nagrinėjame procesus be būsenos kitimo.",
+      "worksheet_lines": 0
+    },
+    {
+      "id": "sort",
+      "type": "question",
+      "title_lt": "Palygink situacijas",
+      "body_lt": "A: šaltas šaukštas įdedamas į šiltą vandenį. B: triname rankas. Kiekvienai situacijai nurodyk pasirinktą kūną, vidinės energijos kitimo būdą ir pokyčio priežastį. A atveju nurodyk savaiminio šilumos perdavimo kryptį.",
+      "worksheet_lines": 5
+    },
+    {
+      "id": "compare",
+      "type": "question",
+      "title_lt": "Vienoda temperatūra – skirtingi kūnai",
+      "body_lt": "Kodėl vien pagal 25 °C temperatūrą negalima nuspręsti, kad puodelio vandens ir didesnio indo vandens vidinė energija vienoda? Kokius du papildomus kūnų požymius būtų svarbu žinoti?",
+      "worksheet_lines": 3
+    },
+    {
+      "id": "exit",
+      "type": "retrieval",
+      "title_lt": "Trys sakiniai",
+      "body_lt": "Užbaik: Temperatūra parodo… Vidinė energija apima… Vidinė energija gali keistis… Pateik savo pavyzdį kiekvienam kitimo būdui.",
+      "worksheet_lines": 4
+    }
+  ],
+  "teacher": {
+    "timing_lt": "3 min prognozė; 7 min dalelių modelis; 5 min pavyzdys; 9 min situacijos; 6 min aptarimas ir baigiamieji sakiniai. 15 min rezervas perėjimams ir papildomai pagalbai. Laikas dar netikrintas klasėje.",
+    "answers_lt": {
+      "predict": "Ne. Temperatūra nėra visos vidinės energijos matas. Skiriasi vandens kiekis; vienoda temperatūra nereiškia vienodos energijos.",
+      "sort": "A: šaukštas gauna šilumos iš šiltesnio vandens; jo vidinė energija didėja. B: rankų vidinė energija didėja atliekant darbą dėl trinties.",
+      "compare": "Svarbūs medžiagos kiekis (masė), medžiaga ir būsena. Nereikalaujame absoliučios vidinės energijos skaičiavimo.",
+      "exit": "Temperatūra apibūdina šiluminę būseną; vidinė energija apima dalelių netvarkingo judėjimo ir tarpusavio sąveikos energiją; ją galima keisti šilumos perdavimu arba darbu."
+    },
+    "misconceptions_lt": [
+      "Šiluma laikoma kūne esančia medžiaga.",
+      "Vidinė energija sutapatinama su temperatūra.",
+      "Vidinė energija painiojama su viso kūno judėjimo energija."
+    ],
+    "scope_limit_lt": "Apima g9-01 sąvokų branduolį; savarankiškumo ir skirtingų situacijų gylį dar turi patikrinti mokytojas. Neapima fazinių virsmų.",
+    "preparation_lt": "Paruošti du skirtingos masės vandens indų vaizdinius arba nupiešti juos lentoje. Nenaudoti karšto vandens demonstracijai.",
+    "differentiation_lt": "Pagalba: sakinių pradžios ir žodynėlis. Papildoma užduotis: aptarti, kodėl trinties ir šilumos perdavimo procesai gali vykti kartu.",
+    "rubric_lt": [
+      "Sąvokos: atskiria temperatūrą, vidinę energiją ir perduotą šilumą.",
+      "Priežastis: nurodo kūną, kitimo būdą ir perdavimo kryptį.",
+      "Argumentas: vienoda temperatūra nepakankama energijai palyginti."
+    ]
+  }
+}

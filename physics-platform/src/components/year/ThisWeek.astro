@@ -1,0 +1,44 @@
+---
+/**
+ * "This week" on the year page: the lessons the model plan puts in the current school week, and the pupil's own weekly
+ * goal. Every week is in the HTML; year-ui.ts shows the one for today's date (or the coming week in a break).
+ */
+import type { YearCalendar } from '../../lib/plan';
+import { ui, langOfPath } from '../../i18n/ui';
+interface Props { cal: YearCalendar; perWeek: number }
+const { cal, perWeek } = Astro.props;
+const L = ui(langOfPath(Astro.url.pathname));
+const uid = `goal-${Math.random().toString(36).slice(2, 8)}`;
+---
+<div class="am-week am-thisweek" id="this-week" data-cal-now data-week data-default={perWeek}
+  data-label-this={L.thisWeek} data-label-coming={L.comingWeek} data-label-next={L.nextWeek} data-label-after={L.afterThat}
+  data-not-started={L.yearNotStarted} data-over={L.yearOver}>
+  <span class="am-eyebrow" data-cal-label>{L.weekPlan}</span>
+  <p class="am-thisweek-intro am-small" data-cal-intro hidden></p>
+  {cal.weeks.map((w) => (
+    <div class="am-cal-week" data-cal-week={w.n} data-from={w.from} data-to={w.to} data-short={`${L.weekN(w.n)} · ${w.dates}`} hidden={w.n !== 1}>
+      {w.breakBefore && <p class="am-thisweek-break am-small" data-break>{w.breakBefore.title} · {w.breakBefore.dates}</p>}
+      <p class="am-thisweek-h">{L.weekN(w.n)} · {w.dates}</p>
+      <ol class="am-slots">
+        {w.slots.map((s) => (
+          <li class={`am-slot am-slot-${s.kind}`} data-slot={s.id ?? ''}>
+            <span class="am-slot-n">{s.code}</span>
+            {s.id ? <a href={s.href}>{s.title}</a> : <span class="am-slot-special">{s.title}</span>}
+          </li>
+        ))}
+      </ol>
+      {w.slots.some((s) => !s.id) && <p class="am-small am-slots-note">{L.slotsNote}</p>}
+    </div>
+  ))}
+  <p class="am-thisweek-next am-small" data-cal-next></p>
+  <div class="am-week-goal">
+    <div class="am-week-dots" aria-hidden="true"></div>
+    <p class="am-week-text am-small">{L.weekText(0, perWeek)}</p>
+    <p class="am-week-streak am-small"></p>
+    <label class="am-small" for={uid}>{L.goal}
+      <select id={uid}>
+        {[2, 3, 4, 5, 6].map((n) => <option value={n} selected={n === perWeek}>{L.goalOption(n, n === perWeek)}</option>)}
+      </select>
+    </label>
+  </div>
+</div>

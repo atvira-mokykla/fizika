@@ -1,0 +1,54 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import { UNITS } from '../../lib/units';
+import { contextsForSlug, yearHref, yearCalendar } from '../../lib/plan';
+import { ui, langOfPath } from '../../i18n/ui';
+const route = Astro.locals.starlightRoute;
+const lesson = route.entry.data.lesson;
+const lang = langOfPath(Astro.url.pathname);
+const L = ui(lang);
+const contexts = lesson ? await contextsForSlug(route.entry.id.replace(/^lt\//, ''), lang) : [];
+/** The lesson's school week in each year plan that has a calendar. */
+const weekOf = (c: (typeof contexts)[number]) => {
+  const cal = yearCalendar(c.year);
+  const n = cal?.weekOf[c.step.id];
+  return n ? cal!.weeks[n - 1] : null;
+};
+---
+{lesson && contexts.length === 0 && (
+  <p class="am-crumb">Grade {lesson.grade} · {UNITS[lesson.unit] ?? lesson.unit}</p>
+)}
+{contexts.map((c, i) => (
+  <nav class="am-where" aria-label={L.whereLesson} data-year-ctx={c.year.path} hidden={i > 0}>
+    <a href={yearHref(c.year)}>{c.year.title}</a><span aria-hidden="true">›</span>
+    <span>{c.step.semester}</span><span aria-hidden="true">›</span>
+    <a href={c.step.unitHref}>{L.unitTitle(c.step.unitN!, c.step.unitTitle!)}</a><span aria-hidden="true">›</span>
+    <span>{L.lessonNofM(c.step.n!, c.step.of!)}</span>
+    {(() => { const w = weekOf(c); return w && <><span aria-hidden="true">·</span><a class="am-where-week" href={`${yearHref(c.year)}#this-week`}>{L.weekNote(w.n, w.dates)}</a></>; })()}
+  </nav>
+))}
+<Default />
+{lesson && (
+  <div class="am-meta">
+    {lesson.kicker && <p class="am-lede">{lesson.kicker}</p>}
+    <div class="am-tagrow">
+      {lesson.exam.map((e) => <span class="am-tag am-tag-exam">{L.exam[e]}</span>)}
+      {lesson.course.map((c) => <span class="am-tag">{L.course[c]}</span>)}
+
+      <span class="am-tag">{L.minutes(lesson.minutes)}</span>
+      <span class="am-tag" title={`Programme text: ${lesson.curriculumVersion}`}>{lang === 'lt' ? 'Programos registro ID' : 'Programme registry ID'} {lesson.curriculum.join(', ')}</span>
+    </div>
+  </div>
+)}
+
+<style>
+  .am-where { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: baseline; margin: 1rem 0 -0.4rem; font: 500 0.78rem/1.4 var(--am-mono); color: var(--am-muted); }
+  .am-where a { color: var(--am-accent); text-decoration: none; }
+  .am-where a:hover { text-decoration: underline; }
+  .am-crumb { margin: 1rem 0 -0.5rem; font: 500 0.78rem/1.3 var(--am-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-accent); }
+  .am-meta { display: grid; gap: 0.6rem; margin-top: 0.6rem; }
+  .am-lede { margin: 0; font-size: 1.15rem; color: var(--sl-color-gray-2); max-width: 60ch; }
+  .am-tagrow { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .am-tag { font: 500 0.7rem/1 var(--am-mono); padding: 0.35rem 0.5rem; border-radius: 5px; background: var(--am-surface-2); color: var(--am-muted); }
+  .am-tag-exam { background: var(--am-mark-soft); color: var(--am-mark); }
+</style>

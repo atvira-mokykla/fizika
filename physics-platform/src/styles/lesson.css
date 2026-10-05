@@ -1,0 +1,322 @@
+/* ------------------------------------------------------------------ lesson page frame */
+
+:root:has(.am-lesson) { --sl-content-width: 66rem; }
+.am-lesson { --am-toolbar-h: 3.4rem; display: grid; gap: 1.25rem; margin-top: 1rem; }
+
+.am-toolbar {
+  position: sticky; top: calc(var(--sl-nav-height) + 0.25rem); z-index: 5;
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; justify-content: space-between;
+  padding: 0.5rem 0.6rem; border: 1px solid var(--am-line); border-radius: 12px;
+  background: color-mix(in srgb, var(--am-surface) 92%, transparent); backdrop-filter: blur(8px);
+  box-shadow: var(--am-shadow);
+}
+.am-rail { display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1 1 36rem; }
+.am-rail-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; cursor: pointer;
+  border: 0; background: transparent; color: var(--am-muted); font: 700 0.82rem/1 var(--sl-font);
+  padding: 0.45rem 0.6rem; border-radius: 8px;
+}
+.am-rail-btn i { width: 0.8rem; height: 0.8rem; border-radius: 50%; border: 1.5px solid var(--am-line); flex: none; }
+.am-rail-btn.is-seen i { background: var(--am-accent); border-color: var(--am-accent); }
+.am-rail-btn.is-current { background: var(--am-accent-soft); color: var(--am-ink); }
+.am-rail-btn.is-current i { border-color: var(--am-accent); background: var(--am-surface); box-shadow: inset 0 0 0 2px var(--am-accent); }
+.am-rail-btn:hover { color: var(--am-ink); }
+.am-rail-btn.am-teacher-only { display: none; }
+.am-block-title:focus, .am-frame-title:focus, .am-kind:focus { outline: none; }
+.teacher-on .am-rail-btn.am-teacher-only { display: inline-flex; }
+
+.am-tools { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
+.am-seg { display: inline-flex; border: 1px solid var(--am-line); border-radius: 8px; overflow: hidden; }
+.am-seg button, .am-tool {
+  border: 0; background: var(--am-surface); color: var(--am-muted); cursor: pointer;
+  font: 700 0.78rem/1 var(--sl-font); padding: 0.5rem 0.65rem;
+}
+.am-tool { border: 1px solid var(--am-line); border-radius: 8px; }
+.am-seg button[aria-pressed='true'], .am-tool[aria-pressed='true'] { background: var(--am-accent); color: var(--am-accent-ink); }
+.am-pdf { position: relative; }
+.am-pdf summary { list-style: none; }
+.am-pdf summary::-webkit-details-marker { display: none; }
+.am-pdf-menu {
+  position: absolute; right: 0; top: calc(100% + 6px); z-index: 10; display: grid; min-width: 15rem;
+  background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 10px; box-shadow: var(--am-shadow); padding: 0.35rem;
+}
+.am-pdf-menu a { display: grid; padding: 0.45rem 0.6rem; border-radius: 6px; text-decoration: none; color: var(--am-ink); font-weight: 700; font-size: 0.9rem; }
+.am-pdf-menu a span { font-weight: 400; color: var(--am-muted); font-size: 0.8rem; }
+.am-pdf-menu a:hover { background: var(--am-surface-2); }
+
+/* ------------------------------------------------------------------ blocks */
+
+.am-lesson-body { display: grid; gap: 1.25rem; }
+.mode-steps .am-block:not(.is-current) { display: none; }
+.am-block {
+  background: var(--am-surface); border: 1px solid var(--am-line); border-radius: 14px;
+  padding: 1.25rem 1.35rem 1rem; display: grid; gap: 1rem;
+  /* Starlight already pads the page top by the header height (html scroll-padding-top); add only the sticky toolbar. */
+  scroll-margin-top: calc(var(--am-toolbar-h) + 0.5rem);
+}
+.am-block-h { display: grid; gap: 0.2rem; }
+.am-kind { font: 500 0.72rem/1.3 var(--am-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--am-accent); }
+.sl-markdown-content .am-block-title, .am-block-title { margin: 0; font-size: 1.45rem; font-weight: 800; color: var(--am-ink); }
+.am-block-main { display: grid; gap: 0.85rem; align-content: start; min-width: 0; }
+.am-block-main > * { margin: 0 !important; }
+.am-block-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); gap: 1.5rem; align-items: start; }
+.am-fig-col { position: sticky; top: calc(var(--sl-nav-height) + var(--am-toolbar-h) + 1.25rem); }
+@media (max-width: 64rem) {
+  .am-block-grid { grid-template-columns: 1fr; }
+  .am-fig-col { position: static; order: -1; }
+}
+.am-block-nav { display: flex; gap: 0.5rem; justify-content: flex-end; align-items: center; border-top: 1px solid var(--am-line); padding-top: 0.85rem; }
+.mode-all .am-block-nav { display: none; }
+.am-done { color: var(--am-muted); font-size: 0.9rem; }
+
+.am-block-summary { background: linear-gradient(var(--am-accent-soft), var(--am-surface) 70%); }
+.am-block-exam .am-kind { color: var(--am-mark); }
+.am-teacher-only { display: none; }
+.teacher-on .am-teacher-only { display: grid; }
+.mode-steps.teacher-on .am-teacher-only:not(.is-current) { display: none; }
+.am-block-teacher { background: var(--am-surface-2); border-style: dashed; }
+
+/* ------------------------------------------------------------------ figures */
+
+.am-figure { display: grid; gap: 0.5rem; }
+.am-fig-box {
+  width: 100%; aspect-ratio: var(--am-fig-ratio, 1 / 1); max-height: 70vh; position: relative; overflow: hidden; touch-action: none;
+  border: 1px solid var(--am-line); border-radius: 12px; background-color: var(--am-fig-bg);
+  /* the squared ruling of a Lithuanian maths notebook */
+  background-image: linear-gradient(var(--am-grid) 1px, transparent 1px), linear-gradient(90deg, var(--am-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+@media (max-width: 64rem) { .am-fig-box { max-width: 28rem; margin-inline: auto; } }
+.am-fig-box svg text { font-family: var(--sl-font) !important; }
+.am-fig-box.am-sys-check, .am-fig-box.am-sys-explain-print { display: grid; gap: 2px; max-height: none; }
+.am-fig-box.am-sys-check { grid-template-columns: minmax(0, 1fr); aspect-ratio: 1 / 3; }
+.am-fig-box.am-sys-explain-print { grid-template-columns: repeat(2, minmax(0, 1fr)); aspect-ratio: 1 / 1; }
+.am-sys-panel { position: relative; min-width: 0; min-height: 0; aspect-ratio: 1 / 1; overflow: hidden; border: 1px solid; border-radius: 4px; break-inside: avoid; }
+.am-sys-panel-label { position: absolute; left: 5px; top: 3px; z-index: 1; max-width: calc(100% - 10px); font: 700 .8rem/1.15 system-ui; padding: 1px 2px; }
+@media (min-width: 48rem) { .am-fig-box.am-sys-check { max-width: 360px; margin-inline: auto; } }
+@media (max-width: 30rem) { .am-fig-box.am-sys-explain-print { grid-template-columns: minmax(0, 1fr); aspect-ratio: auto; } }
+@media print { .am-fig-box.am-sys-check { grid-template-columns: repeat(2, minmax(0, 1fr)); aspect-ratio: auto; } }
+.am-fig-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.am-fig-bar:empty { display: none; }
+.am-fig-cap { margin: 0; font-size: 0.88rem; color: var(--am-muted); min-height: 1.4em; }
+.am-slider { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; flex: 1 1 100%; }
+.am-slider-name { font-family: var(--am-mono); color: var(--am-muted); min-width: 1.2rem; }
+.am-slider input { flex: 1; accent-color: var(--am-accent); }
+.am-slider-val { font-family: var(--am-mono); font-variant-numeric: tabular-nums; min-width: 2.6rem; text-align: right; }
+
+/* ------------------------------------------------------------------ buttons */
+
+.am-btn {
+  border: 1px solid var(--am-line); background: var(--am-surface); color: var(--am-ink); cursor: pointer;
+  border-radius: 8px; padding: 0.45rem 0.8rem; font: 700 0.88rem/1.2 var(--sl-font);
+}
+.am-btn:hover:not(:disabled) { border-color: var(--am-accent); }
+.am-btn:disabled { opacity: 0.45; cursor: default; }
+.am-btn-sm { padding: 0.32rem 0.6rem; font-size: 0.8rem; }
+.am-btn-pri { background: var(--am-accent); border-color: var(--am-accent); color: var(--am-accent-ink); }
+.am-btn-pri.is-armed { background: var(--am-mark); border-color: var(--am-mark); }
+.am-btn-hint { border-color: color-mix(in srgb, var(--am-hint) 40%, var(--am-line)); color: var(--am-hint); }
+.am-btn-ghost { background: transparent; }
+
+/* ------------------------------------------------------------------ frames (steps inside Explain) */
+
+.am-frames { display: grid; gap: 0.85rem; }
+.am-frame-tabs { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.am-frame-tab {
+  border: 1px solid var(--am-line); background: var(--am-surface); color: var(--am-muted); cursor: pointer;
+  border-radius: 999px; padding: 0.3rem 0.7rem; font: 700 0.78rem/1.2 var(--sl-font);
+}
+.am-frame-tab.is-seen { color: var(--am-ink); border-color: var(--am-accent); }
+.am-frame-tab[aria-selected='true'] { background: var(--am-accent); border-color: var(--am-accent); color: var(--am-accent-ink); }
+.am-frame { display: grid; gap: 0.6rem; }
+.am-frames.is-js .am-frame { display: none; }
+.am-frames.is-js .am-frame.is-current { display: grid; min-height: 9rem; align-content: start; }
+.am-frame > * { margin: 0 !important; }
+.sl-markdown-content .am-frame-title, .am-frame-title { font-size: 1.15rem; margin: 0; }
+.am-frame-nav { display: flex; gap: 0.5rem; align-items: center; }
+.am-frame-count { margin-left: auto; font: 500 0.75rem var(--am-mono); color: var(--am-muted); }
+.mode-all .am-frame-tabs, .mode-all .am-frame-nav { display: none; }
+.mode-all .am-frames.is-js .am-frame, .mode-all .am-frame { display: grid; padding: 0.6rem 0.75rem; border-left: 3px solid var(--am-line); cursor: pointer; }
+.mode-all .am-frame.is-current { border-left-color: var(--am-mark); min-height: 0; }
+
+/* ------------------------------------------------------------------ worked examples */
+
+.am-example { border: 1px solid var(--am-line); border-radius: 10px; padding: 0.9rem 1rem; display: grid; gap: 0.6rem; }
+.am-ex-h { font: 700 1.02rem var(--am-display); }
+.am-ex-step { display: grid; gap: 0.4rem; padding-left: 0.8rem; border-left: 2px solid var(--am-line); }
+.am-ex-step > .am-ex-body > * { margin: 0 !important; }
+.am-ex-body { display: block; }
+.am-ex-body > p { margin: 0.3rem 0 0; }
+.am-ex-label { display: block; font: 500 0.72rem var(--am-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--am-muted); }
+.am-ex-step.is-faded { border-left-color: var(--am-hint); }
+.am-ex-step.is-faded .am-ex-body { display: none; }
+.am-ex-step.is-revealed { border-left-color: var(--am-accent); }
+.am-yourturn { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; background: var(--am-hint-soft); border-radius: 8px; padding: 0.55rem 0.7rem; font-size: 0.92rem; }
+
+/* One grid for all lines: the operation column starts right after the widest line, not at the far right. */
+.am-eqsteps { display: grid; grid-template-columns: minmax(0, max-content) minmax(4.5rem, 1fr); gap: 0.1rem 1.25rem; align-items: center; padding: 0.4rem 0; }
+.am-eq-l .katex { white-space: nowrap; } /* an equation line never breaks mid-expression; a very long one scrolls */
+.am-eq { display: contents; }
+.am-eq > * { padding: 0.15rem 0; }
+.am-eq-l { overflow-x: auto; }
+.am-eq-l > * { margin: 0 !important; }
+.am-eq-op { border-left: 2px solid var(--am-accent); padding-left: 0.6rem; color: var(--am-accent); font-size: 0.95rem; min-height: 1.4em; }
+.am-eq-op:empty { border-left-color: transparent; }
+/* <EqSteps wide>: lines too long for a phone next to the column. On a narrow screen each operation goes under its line. */
+@media (max-width: 36rem) {
+  .am-eqsteps-wide { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .am-eqsteps-wide .am-eq-op { margin: 0.1rem 0 0.35rem 0.4rem; font-size: 0.9rem; min-height: 0; }
+  .am-eqsteps-wide .am-eq-op:empty { display: none; }
+}
+
+/* ------------------------------------------------------------------ check items */
+
+.am-item { border: 1px solid var(--am-line); border-radius: 12px; padding: 0.95rem 1rem; display: grid; gap: 0.75rem; background: var(--am-surface); }
+.am-item-h { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.am-item-type, .am-level, .am-exam { font: 500 0.68rem/1 var(--am-mono); padding: 0.3rem 0.45rem; border-radius: 5px; background: var(--am-surface-2); color: var(--am-muted); }
+.am-exam { background: var(--am-mark-soft); color: var(--am-mark); }
+.am-item-body { display: grid; gap: 0.6rem; }
+.am-item-body > * { margin: 0 !important; }
+.am-item-body p { margin: 0; }
+.am-item.is-right { border-color: color-mix(in srgb, var(--am-ok) 50%, var(--am-line)); }
+
+.am-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.5rem; }
+.am-opt-btn {
+  border: 1.5px solid var(--am-line); background: var(--am-surface); color: var(--am-ink); cursor: pointer;
+  border-radius: 9px; padding: 0.6rem 0.7rem; font: 700 0.98rem/1.35 var(--sl-font); text-align: center;
+}
+.am-opt-btn:hover:not(:disabled) { border-color: var(--am-accent); }
+.am-opt-btn[aria-pressed='true'] { border-color: var(--am-accent); background: var(--am-accent-soft); }
+.am-opt-btn.right { border-color: var(--am-ok); background: var(--am-ok-soft); }
+.am-opt-btn.wrong { border-color: var(--am-bad); background: var(--am-bad-soft); }
+.am-opt-btn:disabled { cursor: default; }
+.am-opt-btn p { margin: 0; }
+/* KaTeX layout boxes overflow their option; the button takes the pointer. */
+.am-opt-btn .katex, .am-opt-btn .katex * { pointer-events: none; }
+
+.am-ctrl { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.am-num-label { font-size: 0.9rem; color: var(--am-muted); }
+.am-num-input {
+  font: 500 1rem var(--am-mono); width: 10rem; padding: 0.45rem 0.6rem; border-radius: 8px;
+  border: 1.5px solid var(--am-line); background: var(--am-surface); color: var(--am-ink);
+}
+.am-num-input:focus { border-color: var(--am-accent); outline: none; }
+.am-num-unit { color: var(--am-muted); }
+.am-tries { font: 500 0.72rem var(--am-mono); color: var(--am-muted); margin-left: auto; }
+
+.am-fbox { font-size: 0.95rem; padding: 0.65rem 0.8rem; border-radius: 8px; border-left: 3px solid; }
+.am-fbox p { margin: 0.2rem 0 0; }
+.am-fbox-ok { background: var(--am-ok-soft); border-color: var(--am-ok); }
+.am-fbox-no { background: var(--am-bad-soft); border-color: var(--am-bad); }
+.am-fbox-hint { background: var(--am-hint-soft); border-color: var(--am-hint); }
+.am-fbox-info { background: var(--am-surface-2); border-color: var(--am-muted); }
+
+.am-why, .am-ok, .am-key, .am-order-item[hidden] { display: none; }
+.am-hints { display: grid; gap: 0.4rem; }
+.am-hint { display: none; background: var(--am-hint-soft); border-radius: 8px; padding: 0.5rem 0.7rem; font-size: 0.94rem; counter-increment: hint; }
+.am-hints { counter-reset: hint; }
+.am-hint::before { content: 'Hint ' counter(hint) ': '; font-weight: 700; color: var(--am-hint); }
+.am-hint.is-shown { display: block; }
+:lang(lt) .am-hint::before { content: 'Užuomina ' counter(hint) ': '; }
+.am-hint > * { display: inline; margin: 0; }
+.am-solution { display: none; border: 1px solid var(--am-line); border-radius: 10px; padding: 0.75rem 0.9rem; background: var(--am-surface-2); gap: 0.45rem; }
+.am-solution.is-shown { display: grid; }
+.am-solution > * { margin: 0 !important; }
+.am-solution-h { font: 500 0.72rem var(--am-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-muted); }
+
+.am-order-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.4rem; counter-reset: ord; }
+.am-order-li { display: flex; gap: 0.6rem; align-items: center; border: 1.5px solid var(--am-line); border-radius: 9px; padding: 0.45rem 0.6rem; counter-increment: ord; }
+.am-order-li::before { content: counter(ord); font: 700 0.8rem var(--am-mono); color: var(--am-muted); min-width: 1.1rem; }
+.am-order-li.wrong { border-color: var(--am-bad); background: var(--am-bad-soft); }
+.am-order-txt { flex: 1; min-width: 0; overflow-x: auto; }
+.am-order-txt .katex { white-space: nowrap; } /* an equation never breaks at its = sign; a long one scrolls */
+.am-order-txt p { margin: 0; }
+.am-order-btns { display: flex; gap: 0.25rem; }
+@media (max-width: 36rem) { .am-order-btns { flex-direction: column; } } /* more room for the line on a phone */
+.is-right .am-order-li { border-color: var(--am-ok); }
+
+.am-marks { display: none; border: 1px solid var(--am-line); border-radius: 10px; padding: 0.7rem 0.9rem; gap: 0.5rem; }
+.am-marks.is-shown { display: grid; }
+.am-marks-h { font: 500 0.72rem var(--am-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-muted); }
+.am-marks-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
+.am-mark { display: flex; gap: 0.5rem; align-items: baseline; }
+.am-mark input { accent-color: var(--am-accent); width: 1.05rem; height: 1.05rem; flex: none; }
+.am-mark label { flex: 1; }
+.am-pts { font: 500 0.72rem var(--am-mono); color: var(--am-muted); margin-left: 0.5rem; }
+.am-score { font-weight: 700; }
+
+/* ------------------------------------------------------------------ start card, remember, your turn, next, refresh */
+
+.am-block-start { background: linear-gradient(var(--am-accent-soft), var(--am-surface) 55%); }
+.am-goal { font-size: 1.12rem; font-weight: 700; max-width: 62ch; }
+.am-start-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem 1.5rem; }
+.am-start-col { display: grid; gap: 0.45rem; align-content: start; }
+.sl-markdown-content .am-start-h, .am-start-h { margin: 0; font: 500 0.72rem/1.3 var(--am-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-muted); }
+.am-outcomes, .am-prereq { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.4rem; }
+.am-outcomes li { position: relative; padding-left: 1.6rem; }
+.am-outcomes li::before {
+  content: ''; position: absolute; left: 0; top: 0.2em; width: 1rem; height: 1rem;
+  border: 1.5px solid var(--am-accent); border-radius: 4px; background: var(--am-surface);
+}
+.am-prereq li { padding-left: 1.1rem; position: relative; }
+.am-prereq a { color: var(--am-accent); }
+.am-prereq li::before { content: '↩'; position: absolute; left: 0; color: var(--am-muted); }
+.am-start-time { font: 500 0.78rem var(--am-mono); color: var(--am-muted); }
+
+.am-block-remember { border-left: 4px solid var(--am-hint); }
+
+.am-turn { display: grid; gap: 0.5rem; margin-top: -0.35rem; padding: 0.7rem 0.8rem 0.8rem; border-radius: 12px; background: var(--am-hint-soft); }
+.am-turn-h { font: 500 0.72rem/1.3 var(--am-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-hint); }
+.am-turn .am-item { border-color: color-mix(in srgb, var(--am-hint) 35%, var(--am-line)); }
+.am-example + .am-turn, .am-turn + .am-example { margin-top: 0; }
+
+.am-nextq { display: grid; gap: 0.3rem; border-top: 1px solid var(--am-line); padding-top: 0.75rem; }
+.am-nextq-k { font: 500 0.72rem/1.3 var(--am-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-accent); }
+.am-nextq-q { font-weight: 700; }
+.am-nextq-q > * { margin: 0; }
+.am-nextq-l { font-size: 0.9rem; color: var(--am-muted); }
+a.am-nextq-l { color: var(--am-accent); }
+
+.am-refresh { border: 1px solid var(--am-line); border-radius: 10px; background: var(--am-surface-2); scroll-margin-top: calc(var(--am-toolbar-h) + 0.5rem); }
+.am-refresh summary { cursor: pointer; padding: 0.55rem 0.8rem; font-weight: 700; }
+.am-refresh-k { font: 500 0.7rem var(--am-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--am-accent); margin-right: 0.3rem; }
+.am-refresh-body { display: grid; gap: 0.6rem; padding: 0 0.9rem 0.8rem; }
+.am-refresh-body > * { margin: 0 !important; }
+
+.am-outcome { display: none; font: 500 0.68rem/1 var(--am-mono); padding: 0.3rem 0.45rem; border-radius: 5px; background: var(--am-accent-soft); color: var(--am-accent); }
+.teacher-on .am-outcome { display: inline-block; }
+
+/* ------------------------------------------------------------------ summary card */
+
+.am-block-summary .am-block-main ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+
+/* ------------------------------------------------------------------ projector mode */
+
+html.am-projector { --sl-text-base: 1.3rem; --sl-content-width: 90rem; }
+html.am-projector .sidebar-pane, html.am-projector mobile-starlight-toggle { display: none !important; }
+html.am-projector .main-frame { padding-inline-start: 0 !important; }
+html.am-projector .am-block { font-size: 1.25rem; }
+html.am-projector .am-fig-box { max-height: 78vh; }
+
+/* ------------------------------------------------------------------ narrow screens */
+
+/* Grid children may shrink below their content width; long formulas scroll inside their own box. */
+.am-lesson, .am-lesson :is(.am-lesson-body, .am-block, .am-block-main, .am-frames, .am-frame, .am-example, .am-item, .am-item-body) { grid-template-columns: minmax(0, 1fr); }
+.am-lesson > * { min-width: 0; }
+.am-ex-body, .am-frame, .am-solution { overflow-x: auto; }
+
+@media (max-width: 64rem) {
+  /* On phones the toolbar scrolls away and the figure of an Explain block stays pinned instead. */
+  .am-toolbar { position: static; }
+  .am-block, .am-refresh { scroll-margin-top: 0; }
+  .am-block-explain .am-fig-col {
+    position: sticky; top: var(--sl-nav-height); z-index: 4; margin-inline: -0.5rem; padding: 0.4rem 0.5rem 0.5rem;
+    background: var(--am-surface); border-bottom: 1px solid var(--am-line);
+  }
+  .am-block-explain .am-fig-box { height: 36vh; width: min(100%, 36vh); aspect-ratio: auto; max-height: none; margin-inline: auto; }
+  .am-block-explain .am-fig-cap { display: none; }
+}
+.am-model-table {width:100%; border-collapse:collapse; font-size:.85rem; margin:.5rem 0;}
+.am-model-table :is(th,td) {padding:.35rem .6rem; border-bottom:1px solid var(--am-line); text-align:left;}
+.am-block-main table {max-width:100%; display:block; overflow-x:auto;}
+.am-safety {padding:1rem; border-left:4px solid var(--am-hint); background:var(--am-hint-soft);}

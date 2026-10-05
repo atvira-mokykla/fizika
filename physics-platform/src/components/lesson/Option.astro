@@ -1,0 +1,6 @@
+---
+/** One option of a <Choice>. Put a <Why> inside to explain the misconception behind it. */
+interface Props { correct?: boolean }
+const { correct = false } = Astro.props;
+---
+<div class="am-opt" data-correct={correct ? '1' : '0'}><div class="am-opt-text"><slot /></div></div>

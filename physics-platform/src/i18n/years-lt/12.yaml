@@ -1,0 +1,71 @@
+units:
+  topic-1:
+    title: Svyravimai, bangos ir kintamoji srovė
+    goals:
+    - Paaiškinti ir taikyti temą „Svyravimai“.
+    - Paaiškinti ir taikyti temą „Bangos“.
+    - Paaiškinti ir taikyti temą „Bangų savybės“.
+    - Paaiškinti ir taikyti temą „Kintamoji elektros srovė ir jos perdavimas“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-2:
+    title: Geometrinė ir banginė optika
+    goals:
+    - Paaiškinti ir taikyti temą „Geometrinė optika“.
+    - Paaiškinti ir taikyti temą „Banginiai šviesos reiškiniai“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-3:
+    title: Kvantinė optika, atomas, branduolys ir dalelės
+    goals:
+    - Paaiškinti ir taikyti temą „Kvantinė optika“.
+    - Paaiškinti ir taikyti temą „Atomo sandara“.
+    - Paaiškinti ir taikyti temą „Atomo branduolys ir radioaktyvumas“.
+    - Paaiškinti ir taikyti temą „Elementariosios dalelės“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  topic-4:
+    title: Reliatyvumo teorija
+    goals:
+    - Paaiškinti ir taikyti temą „Įvadas į reliatyvumo teoriją“.
+    - Paaiškinti ir taikyti temą „Reliatyvistinė mechanika“.
+    needs:
+    - Matuoti dydžius ir nurodyti vienetus; skaityti lenteles ir grafikus.
+  autumn-practice:
+    title: Tyrimai, kartojimas ir vertinimas
+    goals:
+    - Remtis įrodymais, paaiškinti prielaidas ir tobulinti rašytinį sprendimą.
+    needs:
+    - Šio pusmečio temos.
+  spring-practice:
+    title: Tyrimai, kartojimas ir vertinimas
+    goals:
+    - Remtis įrodymais, paaiškinti prielaidas ir tobulinti rašytinį sprendimą.
+    needs:
+    - Šio pusmečio temos.
+lessons:
+  g12-topic-1-1: Svyravimai
+  g12-topic-1-2: Bangos
+  g12-topic-1-3: Bangų savybės
+  g12-topic-1-4: Kintamoji elektros srovė ir jos perdavimas
+  g12-topic-1-5: Modelių taikymas uždaviniams
+  g12-topic-1-6: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g12-topic-2-1: Geometrinė optika
+  g12-topic-2-2: Banginiai šviesos reiškiniai
+  g12-topic-2-3: Modelių taikymas uždaviniams
+  g12-topic-2-4: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g12-topic-3-1: Kvantinė optika
+  g12-topic-3-2: Atomo sandara
+  g12-topic-3-3: Atomo branduolys ir radioaktyvumas
+  g12-topic-3-4: Elementariosios dalelės
+  g12-topic-3-5: Modelių taikymas uždaviniams
+  g12-topic-3-6: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g12-topic-4-1: Įvadas į reliatyvumo teoriją
+  g12-topic-4-2: Reliatyvistinė mechanika
+  g12-topic-4-3: Modelių taikymas uždaviniams
+  g12-topic-4-4: Tyrimas, temos pasitikrinimas ir grįžtamasis ryšys
+  g12-autumn-practice: Pagal klasės poreikius parenkami tyrimai, kartojimas ir vertinimas
+  g12-spring-practice: Pagal klasės poreikius parenkami tyrimai, kartojimas ir vertinimas
+  g12-spring-investigation: Pagal klasės poreikius parenkamas tyrimas
+  g12-spring-retrieval: Kartojimas ir mišrios užduotys
+  g12-spring-assessment: Vertinimas ir grįžtamasis ryšys

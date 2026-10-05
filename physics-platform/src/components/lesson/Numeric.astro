@@ -1,0 +1,30 @@
+---
+import ItemFrame from './ItemFrame.astro';
+import { inlineTex } from '../../lib/tex';
+import { ui, langOfPath } from '../../i18n/ui';
+interface Props {
+  id: string;
+  /** Expected value(s) as expressions, e.g. "sqrt(13)" or "7; -2". */
+  answer: string;
+  /** If set, decimal answers must be rounded to this many places. Exact forms are always accepted. */
+  decimals?: number;
+  /** Several values that must come in this order, e.g. a; b; c or a pair x; y. Otherwise any order is accepted. */
+  ordered?: boolean;
+  /** How the answer is displayed in feedback and the answer key; may contain $…$. */
+  show?: string;
+  prefix?: string;
+  unit?: string;
+  placeholder?: string;
+  level?: 1 | 2 | 3 | 4;
+  outcome?: string;
+  exam?: string;
+  reveal?: string;
+  tries?: number;
+}
+const { id, answer, decimals, show, prefix, unit, placeholder, level, exam, outcome, reveal, tries, ordered } = Astro.props;
+const L = ui(langOfPath(Astro.url.pathname));
+---
+<ItemFrame kind="numeric" id={id} level={level} exam={exam} outcome={outcome} data={{ answer, decimals, ordered: ordered || undefined, prefix, unit, placeholder, reveal, tries }}>
+  <slot />
+  <div class="am-key">{L.answer} <span class="am-key-val" set:html={inlineTex(show ?? answer)} /></div>
+</ItemFrame>

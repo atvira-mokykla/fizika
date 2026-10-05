@@ -1,0 +1,96 @@
+---
+import type { Year, PlanUnit } from '../../lib/plan';
+import { proposedUnitWeeks, unitHref, yearHref, yearCalendar, weeksOf, weekRuns, type CalWeek, type PlanLesson } from '../../lib/plan';
+import { ui } from '../../i18n/ui';
+import Progress from './Progress.astro';
+import Row from './LessonRow.astro';
+import fs from 'node:fs';
+const registry = JSON.parse(fs.readFileSync('public/sources/programme-nodes.json', 'utf8'));
+type U = PlanUnit & { n: number };
+interface Props { year: Year; unit: U; semester: string; prev?: U | null; next?: U | null }
+const { year, unit, semester, prev, next } = Astro.props;
+const L = ui(year.lang);
+const avail = unit.lessons.filter((l) => l.slug).length;
+const cal = yearCalendar(year);
+const span = weeksOf(year, cal, unit.lessons.map((l) => l.id));
+// With a calendar, the lessons are shown week by week: each week of the unit, its lessons, and what else that week holds.
+const weeks: { w: CalWeek; items: { l: PlanLesson; i: number }[] }[] = [];
+if (cal) {
+  unit.lessons.forEach((l, i) => {
+    const n = cal.weekOf[l.id];
+    if (!n) return;
+    const g = weeks.find((x) => x.w.n === n) ?? (weeks.push({ w: cal.weeks[n - 1], items: [] }), weeks[weeks.length - 1]);
+    g.items.push({ l, i });
+  });
+}
+const code = (i: number) => `${unit.n}.${i + 1}`;
+---
+<div class="am-unit not-content">
+  <nav class="am-crumbs" aria-label={L.whereYouAre}>
+    <a href={yearHref(year)}>{year.title}</a><span aria-hidden="true">›</span><span>{semester}</span><span aria-hidden="true">›</span><span>{L.unitN(unit.n)}</span>
+  </nav>
+  <p class="am-unit-sub">{year.lang === 'en' && <><span lang="lt">{unit.lt}</span> · </>}{span ? <><b>{span.label}</b> · {span.dates}</> : proposedUnitWeeks(year,unit)}{unit.curriculum.length > 0 && <> · {L.programmeItems(unit.curriculum.join(', '))}</>}</p>
+  <div class="am-unit-status">
+    {unit.lessons.length > 0 && <Progress ids={unit.lessons.map((l) => l.id)} label={L.unitTitle(unit.n, unit.title)} size="lg" />}
+    <button type="button" class="am-btn" data-pin-unit={`${year.path}:${unit.id}`} aria-pressed="false" data-on={L.pinnedUnit} data-off={L.pinUnit}>{L.pinUnit}</button>
+  </div>
+  {unit.lessons.length > 0 && <p class="am-small">{L.availableNote(avail, unit.lessons.length)}</p>}
+
+  <p class="am-small">{year.lang === 'lt' ? 'Siūlomas laikas: ' : 'Proposed allocation: '}{L.classPeriods(unit.hours)}. {year.lang === 'lt' ? 'Laiką ir tvarką mokytojas pritaiko klasei.' : 'Your teacher adapts timing and order to the class.'}</p>
+  {unit.curriculum.length > 0 && <details class="am-card"><summary>{year.lang === 'lt' ? 'Bendroji programa ir aprėptis' : 'Programme source and scope'}</summary><p><a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}sources/coverage.csv`}>{year.lang === 'lt' ? 'Programos ir metų planų sąsajų lentelė' : 'Programme-to-plan coverage table'}</a></p><p class="am-small">{year.lang === 'lt' ? 'Oficialios programos citatos nepatenka į mūsų originalios medžiagos CC BY-SA licenciją.' : 'Quoted official programme text is excluded from our original-content CC BY-SA licence.'}</p><p><a href={registry.source}>{year.lang === 'lt' ? 'Oficiali fizikos bendroji programa' : 'Official physics programme'}</a></p>{registry.nodes.filter((n:any) => unit.curriculum.includes(n.id)).map((n:any) => <div><h3>{year.lang === 'lt' ? n.title_lt : n.title_en}</h3><p lang="lt">{n.official_text_lt}</p><p class="am-small">{n.id} · {year.lang === 'lt' ? 'mūsų registro ID; pamokos apima tik dalį temos, kol visos parengtos.' : 'our registry ID; published lessons cover only part of this scope.'}</p></div>)}</details>}
+  <div class="am-unit-grid">
+    <section class="am-card">
+      <h2>{L.byTheEnd}</h2>
+      <ul>{unit.goals.map((g) => <li>{g}</li>)}</ul>
+    </section>
+    {unit.needs.length > 0 && (
+      <section class="am-card am-needs">
+        <h2>{L.needs}</h2>
+        <ul>{unit.needs.map((g) => <li>{g}</li>)}</ul>
+        <p class="am-small">{L.needsNote}</p>
+      </section>
+    )}
+  </div>
+
+  <section aria-labelledby="lessons-h">
+    <h2 id="lessons-h" class="am-h2">{L.lessonsH}</h2>
+    {unit.lessons.length === 0 ? (
+      <p>{L.unitEmpty}</p>
+    ) : (
+      weeks.length > 0 ? (
+        <ol class="am-path am-weeks">
+          {weeks.map(({ w, items }) => {
+            const others = weekRuns(w).filter((r) => r.title !== unit.title);
+            return (
+              <li class="am-week-node" data-cal-row data-from={w.from} data-to={w.to}>
+                <div class="am-week-card">
+                  <p class="am-week-h"><b>{L.weekN(w.n)}</b> · {w.dates} <span class="am-now-tag">{L.thisWeek}</span></p>
+                  <ol class="am-lessons">
+                    {items.map(({ l, i }) => <Row year={year} l={l} n={code(i)} />)}
+                  </ol>
+                  {others.length > 0 && (
+                    <p class="am-small am-week-also">{L.alsoThisWeek}: {others.map((r, k) => <>{k > 0 && '; '}{r.label && `${r.label} `}{r.title}</>)}</p>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      ) : (
+        <ol class="am-lessons">
+          {unit.lessons.map((l, i) => <Row year={year} l={l} n={code(i)} />)}
+        </ol>
+      )
+    )}
+    <p class="am-small">{L.tickNote}</p>
+  </section>
+
+  <nav class="am-unit-nav" aria-label={L.otherUnits}>
+    {prev ? <a href={unitHref(year, prev)}>← {L.unitTitle(prev.n, prev.title)}</a> : <a href={yearHref(year)}>← {L.wholeYear(year.title)}</a>}
+    {next ? <a href={unitHref(year, next)}>{L.unitTitle(next.n, next.title)} →</a> : <a href={yearHref(year)}>{L.wholeYear(year.title)} →</a>}
+  </nav>
+</div>
+
+<script>
+  import '../../lib/year-ui.ts';
+</script>

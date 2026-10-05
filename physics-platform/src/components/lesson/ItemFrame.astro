@@ -1,0 +1,32 @@
+---
+interface Props {
+  kind: 'choice' | 'multi' | 'numeric' | 'quantity' | 'order' | 'mark' | 'task';
+  id: string;
+  level?: 1 | 2 | 3 | 4;
+  exam?: string;
+  /** Learning outcome(s) the item tests, e.g. "g9.qe.1" or "g9.qe.1, g9.qe.2" (src/content/outcomes/). */
+  outcome?: string;
+  data?: Record<string, string | number | boolean | undefined>;
+}
+const { kind, id, level, exam, outcome, data = {} } = Astro.props;
+import { getCollection } from 'astro:content';
+import { ui, langOfPath } from '../../i18n/ui';
+const lang = langOfPath(Astro.url.pathname);
+const L = ui(lang);
+const outcomeIds = (outcome ?? '').split(/[\s,]+/).filter(Boolean);
+// The outcome's wording, shown to teachers on hover.
+const trees = outcomeIds.length ? (await getCollection('outcomes')).map((e) => e.data) : [];
+const wording = (id: string) => trees.flatMap((t) => [...t.outcomes, ...t.roots]).find((o) => o.id === id)?.[lang] ?? id;
+const TYPE = L.itemType;
+const LEVEL = L.level;
+const attrs = Object.fromEntries(Object.entries(data).filter(([, v]) => v !== undefined).map(([k, v]) => [`data-${k}`, String(v)]));
+---
+<div class="am-item not-content" data-kind={kind} data-id={id} data-outcome={outcomeIds.join(' ') || undefined} {...attrs}>
+  <div class="am-item-h">
+    <span class="am-item-type">{TYPE[kind]}</span>
+    {level && <span class={`am-level am-level-${level}`}>{LEVEL[level]}</span>}
+    {exam && <span class="am-exam">{exam}</span>}
+    {outcomeIds.map((o) => <span class="am-outcome" title={wording(o)}>{o}</span>)}
+  </div>
+  <div class="am-item-body"><slot /></div>
+</div>

@@ -1,0 +1,30 @@
+---
+import Figure from './Figure.astro';
+import { ui, langOfPath } from '../../i18n/ui';
+
+interface Props {
+  kind: 'remember' | 'hook' | 'explore' | 'explain' | 'examples' | 'check' | 'exam' | 'summary' | 'teacher';
+  title?: string;
+  id?: string;
+  /** Figure module in src/figures/, pinned beside the block's text. */
+  figure?: string;
+  figureProps?: Record<string, unknown>;
+  alt?: string;
+}
+const { kind, title, id, figure, figureProps, alt } = Astro.props;
+const LABEL = ui(langOfPath(Astro.url.pathname)).blockLabel;
+---
+<section class:list={['am-block', `am-block-${kind}`, { 'am-teacher-only': kind === 'teacher' }]} data-kind={kind} data-title={title} id={id ?? `b-${kind}`}>
+  <header class="am-block-h">
+    <span class="am-kind">{LABEL[kind]}</span>
+    {title && <h2 class="am-block-title">{title}</h2>}
+  </header>
+  {figure ? (
+    <div class="am-block-grid">
+      <div class="am-block-main"><slot /></div>
+      <aside class="am-fig-col"><Figure id={figure} props={figureProps} alt={alt} /></aside>
+    </div>
+  ) : (
+    <div class="am-block-main"><slot /></div>
+  )}
+</section>

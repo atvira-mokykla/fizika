@@ -1,0 +1,476 @@
+---
+title: Investigating water mixing
+description: I can plan a supervised investigation with a defined system and safe procedure. I can record masses,
+  temperatures and instrument resolution without inventing data. I can explain how timing and the container affect
+  a mixing experiment.
+sidebar:
+  order: 3
+lesson:
+  grade: 9
+  unit: thermal
+  course:
+  - core
+  curriculum:
+  - lt-physics-g9-02
+  contentArea: thermal
+  achievements:
+  - B1
+  - D1
+  - E1
+  levels:
+  - 1
+  - 2
+  - 3
+  exam: []
+  minutes: 45
+  goal: I can plan a supervised investigation with a defined system and safe procedure. I can record masses, temperatures
+    and instrument resolution without inventing data. I can explain how timing and the container affect a mixing
+    experiment.
+  kicker: An original trial lesson. Practising teacher review is still pending.
+---
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../components/lesson';
+
+<Lesson>
+
+
+
+<Block kind="remember" title="Before collecting evidence">
+
+
+
+<Quantity id="g9-thermal-03-r1" expected={4200} quantity="energy-transfer" units="J|kJ" show="4200 J" tolerance={0.05} outcome="g9.thermal.7">
+
+0.10 kg of water warms by 10 K. With c = 4200 J/(kg·K), find Q.
+
+<Ok>0.10 × 4200 × 10 = 4200 J.</Ok>
+
+
+<Solution>
+
+0.10 × 4200 × 10 = 4200 J.
+
+</Solution>
+
+
+</Quantity>
+
+
+
+
+<Choice id="g9-thermal-03-r2" outcome="g9.thermal.7">
+
+What does a negative signed Q to the water mean?
+
+<Option correct>The water gives energy away as heat.<Why>We chose positive for heat received.</Why></Option>
+<Option>Its temperature must be below 0 °C.<Why>The sign describes a transfer, not an absolute temperature reading.</Why></Option>
+
+
+<Solution>
+
+A cooling sample can have a positive temperature and a negative heat transfer to it.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+
+
+<Choice id="g9-thermal-03-r3" outcome="g9.thermal.8">
+
+A thermometer display changes in 0.1 °C steps. What can you record directly?
+
+<Option correct>Its displayed resolution is 0.1 °C.<Why>Resolution describes the displayed step; a full uncertainty assessment needs more information.</Why></Option>
+<Option>All measurements are exactly correct to 0.001 °C.<Why>Extra digits and an accuracy guarantee do not follow from the display step.</Why></Option>
+
+
+<Solution>
+
+Record resolution separately from assumptions about measurement uncertainty.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="hook" title="Will the mixture be exactly halfway?">
+
+Your class will mix equal measured masses of cool water near 20 °C and warm water at or below 40 °C. Before touching the equipment, predict the final temperature and list what could make a real result differ. “It should be 30 °C” is a model prediction, not permission to write 30 into the results table.
+
+</Block>
+
+
+
+
+<Block kind="explain" title="Plan a safe and interpretable test">
+
+
+
+<Frames>
+
+
+<Frame title="System and question">
+
+Choose the two portions of water together as the calculation system. Ask: “How close is the measured mixture temperature to an ideal heat-balance prediction?” The simple model omits energy changes of the cup, thermometer and surroundings. Record what is omitted before the experiment; do not decide the assumptions after seeing a result.
+
+</Frame>
+
+
+
+
+<Frame title="Equipment and safety">
+
+**Teacher-supervised classroom activity only.** Use two stable cups, an insulated mixing cup, a balance, a mercury-free thermometer suitable for water (preferably a digital probe), a timer, water and a spill cloth. Aim for about 100 g in each portion. The teacher prepares warm water at **35–40 °C, never above 40 °C**, and checks its temperature before distribution. Pupils do not operate kettles or heat water.
+
+Keep cups away from desk edges and electrical equipment. Do not drink the water. Stir gently without splashing; report spills and dry the surface. If glass breaks, stop, keep away and let the teacher follow the school’s clean-up procedure. If safe equipment or supervision is unavailable, analyse the clearly labelled example data in lesson 4 instead; do not improvise a home heating experiment.
+
+</Frame>
+
+
+
+
+<Frame title="Which quantities to record">
+
+Measure each water mass; do not replace it with the intended “100 g”. Tare the container or subtract its empty mass. Record thermometer and balance resolution (smallest displayed step or scale division), not an invented uncertainty. Put the cool water into the insulated mixing cup; record that cup’s initial condition. Use one thermometer: measure cool water first, then warm water, allowing it to settle each time; record the order and times. Pour warm water into the cool water in that same insulated cup immediately after the warm reading. Measure both initial temperatures as close to mixing as practical.
+
+Use the same protocol in each trial: container, stirring, reading criterion and timing. A changed mass is a changed input, so it must appear in the record and prediction.
+
+</Frame>
+
+
+
+
+<Frame title="Define the reading time">
+
+For this protocol, use this operational rule: while stirring gently, the display stays within one displayed step for 5 s. Record that reading as the **first stable reading** and $t_{\mathrm{reading}}=0$. This criterion does not prove exact thermal equilibrium. The separate pouring clock starts at the start of pouring. Note how many seconds elapsed from pouring to that reading. Then record the temperature at +30 s and +60 s. Keep the thermometer immersed appropriately, without touching the cup wall or bottom, and follow its manufacturer’s instructions.
+
+For a detailed residual comparison, use a thermometer with 0.1 °C resolution or finer and check its documented accuracy; resolution alone is not accuracy. A 1 °C thermometer supports only a rough temperature-range comparison. A later drift can indicate ongoing exchange with the surroundings; it cannot on its own measure the heat exchanged during the whole mixing process.
+
+</Frame>
+
+
+</Frames>
+
+
+
+</Block>
+
+
+
+
+<Block kind="explore" title="Collect your own evidence">
+
+1. Record the equipment and instrument resolutions; check the teacher’s safety instructions.
+2. Measure actual masses and initial temperatures, and write your prediction.
+3. Under teacher supervision, pour warm water into the cool water already in the insulated cup and stir gently. Record the first stable reading, its delay and the later readings.
+4. Repeat once using the same protocol. Record new actual inputs.
+5. Keep every raw reading. If no reading is available, write “not measured”, rather than filling it from the model.
+
+**Blank record for real measurements:**
+
+| Trial | Cool mass (g) | Warm mass (g) | Initial cool T (°C) | Initial warm T (°C) | First stable T (°C) | Delay (s) | T at +30 s (°C) | T at +60 s (°C) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |
+| 2 | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |
+
+Balance resolution: ____ g. Thermometer resolution: ____ °C. Container initial condition: ____. Pour direction: warm into cool. Initial-reading order/times: ____. Stability criterion: one step over 5 s.
+
+</Block>
+
+
+
+
+<Block kind="examples" title="Make the record usable">
+
+
+
+<Example title="Example 1 · A mass entry" fade={0}>
+
+
+
+<ExStep>
+
+Suppose, as an illustrative entry, an empty cup is 32 g and cup + water is 131 g.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Water mass = 131 − 32 = 99 g = 0.099 kg. Record 99 g, not the target 100 g. These are example values, not your trial.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Numeric id="g9-thermal-03-p1" answer="102" outcome="g9.thermal.8" unit="g">
+
+Illustrative entry: empty cup 28 g; cup + water 130 g. Find water mass.
+
+<Ok>130 − 28 = 102 g.</Ok>
+
+
+<Solution>
+
+130 − 28 = 102 g.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="Example 2 · A time label" fade={1}>
+
+
+
+<ExStep>
+
+The first stable reading occurs 12 s after pouring. Label that reading t = 0 and record delay = 12 s.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+A +30 s reading is taken 42 s after pouring. Do not label the first reading as an instantaneous pouring temperature.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+<YourTurn>
+
+
+
+<Numeric id="g9-thermal-03-p2" answer="75" outcome="g9.thermal.9" unit="s">
+
+First stable reading occurs 15 s after pouring. The +60 s reading occurs how many seconds after pouring?
+
+<Ok>15 + 60 = 75 s.</Ok>
+
+
+<Solution>
+
+15 + 60 = 75 s.
+
+</Solution>
+
+
+</Numeric>
+
+
+
+</YourTurn>
+
+
+
+
+<Example title="Example 3 · A cautious observation" fade={1}>
+
+
+
+<ExStep>
+
+A later reading is lower than the first stable reading.
+
+</ExStep>
+
+
+
+
+<ExStep>
+
+Write: “The reading decreased over this interval; continued heat exchange or measurement effects may contribute.” Do not write an exact environmental heat loss without a suitable model and data.
+
+</ExStep>
+
+
+</Example>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="check" title="A readiness check, not invented results">
+
+
+
+<Choice id="g9-thermal-03-c1" outcome="g9.thermal.8">
+
+The measured masses are 97 g and 103 g. Which inputs should the analysis use?
+
+<Option correct>0.097 kg and 0.103 kg.<Why>Use each actual mass and convert it to kg.</Why></Option>
+<Option>0.100 kg and 0.100 kg because that was the plan.<Why>Changing data to match the plan removes evidence about the actual experiment.</Why></Option>
+
+
+<Solution>
+
+Actual inputs belong in both the record and the prediction.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-03-c2" outcome="g9.thermal.7">
+
+What should happen if the prepared water is 46 °C?
+
+<Option correct>Stop and ask the teacher to bring it within the protocol’s limit.<Why>The maximum for this trial protocol is 40 °C.</Why></Option>
+<Option>Pour it quickly before it cools.<Why>Speed does not replace the specified safety condition.</Why></Option>
+
+
+<Solution>
+
+Do not proceed above the 40 °C limit. Teacher preparation and supervision are required.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-03-c3" outcome="g9.thermal.9">
+
+Which is the t = 0 reading in this protocol?
+
+<Option correct>The first stable mixed-water reading, with its delay recorded.<Why>The timing definition makes trials interpretable.</Why></Option>
+<Option>An assumed 30 °C at the instant of pouring.<Why>That is neither an actual reading nor the protocol’s time definition.</Why></Option>
+
+
+<Solution>
+
+Record what was observed and when. The first stable reading is not instantaneous.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Choice id="g9-thermal-03-c4" outcome="g9.thermal.9">
+
+Why record the container and use the same one in both trials?
+
+<Option correct>It can exchange energy with the water; changing it changes the conditions.<Why>The water-only model ignores the container, but the experiment does not remove it.</Why></Option>
+<Option>Insulation guarantees the container has no effect.<Why>Insulation reduces exchange with surroundings; the container can still warm.</Why></Option>
+
+
+<Solution>
+
+Keep conditions documented and consistent; state the container omission in the model.
+
+</Solution>
+
+
+</Choice>
+
+
+
+
+<Task id="g9-thermal-03-c5" outcome="g9.thermal.7">
+
+Submit a short investigation record: question, system, prediction, safety check, two raw-data rows and one limitation. If no experiment was performed, submit the plan only and explicitly state “not performed”; use no invented measurements.
+
+
+
+<Marks>
+<Mark pts={1}>State a testable question and the water system.</Mark>
+<Mark pts={1}>Include supervision, 40 °C limit and actual equipment.</Mark>
+<Mark pts={1}>Preserve actual readings with units and timing, or clearly label the plan-only status.</Mark>
+<Mark pts={1}>Explain at least one omitted influence and a way to improve consistency.</Mark>
+</Marks>
+
+
+
+
+<Solution>
+
+There is no universal results row: use your measurements. A plan-only submission can explain equal-mass midpoint prediction, water-only system, supervised warm water ≤40 °C, mass/temperature measurements, consistent stable-reading criterion, and the possible container influence. Do not call this experimental evidence if it was not performed.
+
+</Solution>
+
+
+</Task>
+
+
+
+
+</Block>
+
+
+
+
+<Block kind="summary" title="A good record survives a surprising result">
+
+Record actual inputs, instrument resolution, first stable reading and its delay. Keep the same protocol in two trials. A prediction and a measurement serve different purposes. A lower-than-predicted reading invites analysis of assumptions; it is not a reason to rewrite the data.
+
+<Next>Use your record to compare heat gained, heat lost and the ideal prediction.</Next>
+
+</Block>
+
+
+
+
+<Block kind="teacher" title="Prepare before the class">
+
+**Before use:** perform the protocol yourself with the actual cups, balance and thermometer; confirm stable-reading response time and handling. No laboratory trial or teacher sign-off is claimed. Water limit ≤40 °C is this protocol’s chosen condition; follow your school’s procedures too.
+
+**45-minute route:** readiness and prediction 7 min; equipment/safety and time definition 8; two supervised trials 20; record check 5; limitations and exit response 5. Allocate analysis to lesson 4. If two safe trials cannot fit, retain a complete single trial and schedule the second later rather than rushing.
+
+The readiness questions assess procedural understanding, not competence with real equipment. Review the submitted record directly; the website cannot automatically judge physical execution or written evidence.
+
+**Terms EN · LT:** measured mass · išmatuota masė; instrument resolution · prietaiso padalos vertė / mažiausias rodomas žingsnis; first stable reading · pirmas nusistovėjęs rodmuo; delay · delsa; system boundary · sistemos riba.
+
+This water-mixing activity is a partial energy-conservation investigation. It does not fulfil the separate programme activity of determining the specific heat of an unknown material.
+
+</Block>
+
+
+
+</Lesson>

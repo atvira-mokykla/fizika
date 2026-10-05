@@ -1,0 +1,14 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import YearView from '../YearView.astro';
+import CoursePick from '../CoursePick.astro';
+import { ui } from '../../../i18n/ui';
+const { list } = Astro.props as any;
+const y = list[0];
+const single = list.length === 1 && !y.course;
+const L = ui(y.lang);
+const title = single ? (y.lang === 'lt' ? y.title : `${y.title} · ${y.subtitle}`) : L.gradeTitle(y.grade, y.gymn);
+---
+<StarlightPage frontmatter={{ title, description: title, tableOfContents: false }}>
+  {single ? <YearView year={y} /> : <CoursePick list={list} />}
+</StarlightPage>

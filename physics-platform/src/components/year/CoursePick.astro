@@ -1,0 +1,24 @@
+---
+import type { Year } from '../../lib/plan';
+import { yearHref, sequence } from '../../lib/plan';
+import { ui } from '../../i18n/ui';
+interface Props { list: Year[] }
+const { list } = Astro.props;
+const L = ui(list[0].lang);
+---
+<div class="am-course not-content">
+  <p>{L.courseIntro}</p>
+  <div class="am-course-grid">
+    {list.map((y) => (
+      <a class="am-course-card" href={yearHref(y)} data-choose-year={y.path}>
+        <span class="am-eyebrow">{L.courseN(y.course ?? 'B')}</span>
+        <span class="am-course-title">{L.course[y.course ?? 'B']}</span>
+        <span class="am-small">{L.courseAbout[y.course ?? 'B']}</span>
+        <span class="am-small">{L.courseStats(y.semesters.reduce((n, s) => n + s.units.length, 0), sequence(y).filter((s) => s.href).length, y.exam ?? '')}</span>
+      </a>
+    ))}
+  </div>
+</div>
+<script>
+  import '../../lib/year-ui.ts';
+</script>

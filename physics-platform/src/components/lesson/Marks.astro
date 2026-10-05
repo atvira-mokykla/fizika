@@ -1,0 +1,6 @@
+---
+import { ui, langOfPath } from '../../i18n/ui';
+const L = ui(langOfPath(Astro.url.pathname));
+/** Marking scheme of a <Task>: one <Mark pts={…}> per scoring step, in NŠA style. */
+---
+<div class="am-marks"><div class="am-marks-h">{L.markingScheme}</div><ol class="am-marks-list"><slot /></ol></div>

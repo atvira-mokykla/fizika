@@ -1,0 +1,264 @@
+path: '11'
+grade: 11
+gymn: III
+title: Grade 11
+subtitle: III gimnazijos klasė · Physics
+schoolYear: 2026–2027
+lessonsPerWeek: 3
+weeks: 36
+exam: null
+semesters:
+- id: autumn
+  title: Autumn semester
+  months: September–January
+  units:
+  - id: topic-1
+    title: Physics, methods and measurements
+    lt: Fizikos mokslas, metodai ir matavimai
+    curriculum:
+    - lt-physics-g11-01
+    - lt-physics-g11-02
+    - lt-physics-g11-03
+    hours: 10
+    months: September–January
+    goals:
+    - Explain and apply the development of physics.
+    - Explain and apply methods and the language of physics.
+    - Explain and apply measurements and calculations.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g11-topic-1-1
+      title: The development of physics
+      periods: 2
+      kind: lesson
+    - id: g11-topic-1-2
+      title: Methods and the language of physics
+      periods: 2
+      kind: lesson
+    - id: g11-topic-1-3
+      title: Measurements and calculations
+      periods: 2
+      kind: lesson
+    - id: g11-topic-1-4
+      title: Apply the models to problems
+      periods: 2
+      kind: practice
+    - id: g11-topic-1-5
+      title: Investigation, unit check and feedback
+      periods: 2
+      kind: check
+  - id: topic-2
+    title: Motion and forces
+    lt: Judėjimas ir jėgos
+    curriculum:
+    - lt-physics-g11-04
+    - lt-physics-g11-05
+    hours: 22
+    months: September–January
+    goals:
+    - Explain and apply motion.
+    - Explain and apply forces.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g11-topic-2-1
+      title: Motion
+      periods: 6
+      kind: lesson
+    - id: g11-topic-2-2
+      title: Forces
+      periods: 6
+      kind: lesson
+    - id: g11-topic-2-3
+      title: Apply the models to problems
+      periods: 5
+      kind: practice
+    - id: g11-topic-2-4
+      title: Investigation, unit check and feedback
+      periods: 5
+      kind: check
+  - id: topic-3
+    title: Momentum and impulse
+    lt: Judesio kiekis ir impulsas
+    curriculum:
+    - lt-physics-g11-06
+    hours: 8
+    months: September–January
+    goals:
+    - Explain and apply momentum and impulse.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g11-topic-3-1
+      title: Momentum and impulse
+      periods: 3
+      kind: lesson
+    - id: g11-topic-3-2
+      title: Apply the models to problems
+      periods: 3
+      kind: practice
+    - id: g11-topic-3-3
+      title: Investigation, unit check and feedback
+      periods: 2
+      kind: check
+  - id: topic-4
+    title: Energy, work and power
+    lt: Energija, darbas, galia
+    curriculum:
+    - lt-physics-g11-07
+    hours: 10
+    months: September–January
+    goals:
+    - Explain and apply energy, work and power.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g11-topic-4-1
+      title: Energy, work and power
+      periods: 4
+      kind: lesson
+    - id: g11-topic-4-2
+      title: Apply the models to problems
+      periods: 3
+      kind: practice
+    - id: g11-topic-4-3
+      title: Investigation, unit check and feedback
+      periods: 3
+      kind: check
+  - id: autumn-practice
+    title: Investigations, revision and assessment
+    lt: Tyrimai, kartojimas ir vertinimas
+    curriculum: []
+    hours: 4
+    months: September–January
+    goals:
+    - Use evidence, explain assumptions and improve a written solution.
+    needs:
+    - The topics studied in this semester.
+    lessons:
+    - id: g11-autumn-investigation
+      title: Class-selected investigation
+      kind: lesson
+      periods: 2
+    - id: g11-autumn-retrieval
+      title: Retrieval and mixed practice
+      kind: practice
+      periods: 1
+    - id: g11-autumn-assessment
+      title: Assessment and feedback
+      kind: check
+      periods: 1
+  tests: []
+- id: spring
+  title: Spring semester
+  months: February–June
+  units:
+  - id: topic-5
+    title: Microscopic models and thermodynamics
+    lt: Mikro ir makro pasaulis, termodinamika
+    curriculum:
+    - lt-physics-g11-08
+    - lt-physics-g11-09
+    hours: 20
+    months: February–June
+    goals:
+    - Explain and apply connecting the microscopic and macroscopic worlds.
+    - Explain and apply thermodynamics.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g11-topic-5-1
+      title: Connecting the microscopic and macroscopic worlds
+      periods: 5
+      kind: lesson
+    - id: g11-topic-5-2
+      title: Thermodynamics
+      periods: 5
+      kind: lesson
+    - id: g11-topic-5-3
+      title: Apply the models to problems
+      periods: 5
+      kind: practice
+    - id: g11-topic-5-4
+      title: Investigation, unit check and feedback
+      periods: 5
+      kind: check
+  - id: topic-6
+    title: Electrical and magnetic phenomena; energy sources
+    lt: Elektriniai ir magnetiniai reiškiniai, energijos šaltiniai
+    curriculum:
+    - lt-physics-g11-10
+    - lt-physics-g11-11
+    - lt-physics-g11-12
+    - lt-physics-g11-13
+    - lt-physics-g11-14
+    - lt-physics-g11-15
+    hours: 30
+    months: February–June
+    goals:
+    - Explain and apply electrostatic fields.
+    - Explain and apply electric current in metals.
+    - Explain and apply sources of electric current.
+    - Explain and apply magnetic fields.
+    - Explain and apply electromagnetic induction.
+    - Explain and apply energy sources.
+    needs:
+    - Measure quantities with units; read tables and graphs.
+    lessons:
+    - id: g11-topic-6-1
+      title: Electrostatic fields
+      periods: 4
+      kind: lesson
+    - id: g11-topic-6-2
+      title: Electric current in metals
+      periods: 4
+      kind: lesson
+    - id: g11-topic-6-3
+      title: Sources of electric current
+      periods: 4
+      kind: lesson
+    - id: g11-topic-6-4
+      title: Magnetic fields
+      periods: 4
+      kind: lesson
+    - id: g11-topic-6-5
+      title: Electromagnetic induction
+      periods: 4
+      kind: lesson
+    - id: g11-topic-6-6
+      title: Energy sources
+      periods: 4
+      kind: lesson
+    - id: g11-topic-6-7
+      title: Apply the models to problems
+      periods: 3
+      kind: practice
+    - id: g11-topic-6-8
+      title: Investigation, unit check and feedback
+      periods: 3
+      kind: check
+  - id: spring-practice
+    title: Investigations, revision and assessment
+    lt: Tyrimai, kartojimas ir vertinimas
+    curriculum: []
+    hours: 4
+    months: February–June
+    goals:
+    - Use evidence, explain assumptions and improve a written solution.
+    needs:
+    - The topics studied in this semester.
+    lessons:
+    - id: g11-spring-investigation
+      title: Class-selected investigation
+      kind: lesson
+      periods: 2
+    - id: g11-spring-retrieval
+      title: Retrieval and mixed practice
+      kind: practice
+      periods: 1
+    - id: g11-spring-assessment
+      title: Assessment and feedback
+      kind: check
+      periods: 1
+  tests: []

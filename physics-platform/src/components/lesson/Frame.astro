@@ -1,0 +1,8 @@
+---
+interface Props { title: string; state?: string }
+const { title, state } = Astro.props;
+---
+<div class="am-frame" data-title={title} data-state={state}>
+  <h3 class="am-frame-title">{title}</h3>
+  <slot />
+</div>

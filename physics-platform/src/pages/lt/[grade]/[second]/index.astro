@@ -1,0 +1,6 @@
+---
+import Page from '../../../../components/year/routes/SecondPage.astro';
+import { secondPaths } from '../../../../lib/plan';
+export const getStaticPaths = () => secondPaths('lt');
+---
+<Page {...Astro.props} />
