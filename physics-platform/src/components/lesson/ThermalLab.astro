@@ -1,0 +1,99 @@
+---
+import { nfmt, type Lang, readingKeys, noteKeys, metaKeys, emptyNotebook } from '../../lib/thermal';
+import { temperatureScene, heaterScene, heatingGraph, apparatusScene, mixingScene, balanceScene, systemScene } from '../../lib/thermal-svg';
+import '../../styles/thermal.css';
+interface Props { mode: 'temperature' | 'heating' | 'apparatus' | 'balance'; lang: Lang }
+const { mode, lang } = Astro.props;
+const isPrint = Astro.url.pathname.includes('/print/');
+const t = (en: string, lt: string) => lang === 'lt' ? lt : en;
+const names: Record<string, string> = {
+  coolMass: t('Cool-water mass (g)', 'Vėsaus vandens masė (g)'), warmMass: t('Warm-water mass (g)', 'Šilto vandens masė (g)'),
+  coolT: t('Initial cool temperature (°C)', 'Pradinė vėsaus temperatūra (°C)'), warmT: t('Initial warm temperature (°C)', 'Pradinė šilto temperatūra (°C)'),
+  finalT: t('First stable temperature (°C)', 'Pirma nusistovėjusi temperatūra (°C)'), delay: t('Pouring → first stable reading (s)', 'Nuo pylimo iki pirmo rodmens (s)'),
+  later30: t('Temperature at +30 s (°C)', 'Temperatūra po +30 s (°C)'), later60: t('Temperature at +60 s (°C)', 'Temperatūra po +60 s (°C)'),
+  prediction: t('My predicted temperature (°C)', 'Mano numatyta temperatūra (°C)'), reason: t('My reason', 'Mano paaiškinimas'),
+  observations: t('What I observed', 'Ką pastebėjau'), revision: t('I kept or changed my explanation because…', 'Palikau arba pakeičiau paaiškinimą, nes…'),
+  balanceResolution: t('Balance resolution (g)', 'Svarstyklių padalos vertė (g)'), probeResolution: t('Thermometer resolution (°C)', 'Termometro padalos vertė (°C)'),
+  accuracy: t('Documented accuracy / not known', 'Dokumentuotas tikslumas / nežinomas'), cup: t('Cup and its initial condition', 'Indas ir jo pradinė būklė'),
+  readingOrder: t('Initial reading order and times', 'Pradinių matavimų eilė ir laikas'),
+};
+const next = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}${lang === 'lt' ? 'lt/' : ''}9/thermal/heat-balance/#b-explore`;
+const titles = {
+  temperature: t('Same reading. What else matters?', 'Tas pats rodmuo. Kas dar svarbu?'),
+  heating: t('Can you predict the next curve?', 'Ar numatysi kitą kreivę?'),
+  apparatus: t('Your water-mixing notebook', 'Tavo vandens maišymo užrašai'),
+  balance: t('Follow the energy', 'Sek energijos perdavimą'),
+};
+---
+<div class="th-lab not-content" data-thermal={mode} data-lang={lang}>
+  <div class="th-head"><span class="th-badge">{mode === 'apparatus' ? t('SUPERVISED INVESTIGATION', 'PRIŽIŪRIMAS TYRIMAS') : t('MODEL LAB', 'MODELIŲ LABORATORIJA')}</span><h3>{titles[mode]}</h3></div>
+  <button type="button" class="am-btn th-enlarge th-interactive" data-enlarge aria-pressed="false">{t('Enlarge diagrams · scroll sideways', 'Padidinti schemas · slink į šonus')}</button>
+  {mode === 'temperature' && <>
+    <p>{t('Predict: do equal thermometer readings establish equal total internal energy? Compare the amounts before choosing your explanation.', 'Numatyk: ar vienodi termometrų rodmenys reiškia vienodą visą vidinę energiją? Prieš paaiškindamas palygink vandens kiekius.')}</p>
+    <div class="th-scene" data-scene set:html={temperatureScene(lang)} />
+    <div class="th-controls th-interactive">
+      <label>{t('Temperature of water B', 'Vandens B temperatūra')}<select data-temperature><option value="20">20 °C</option><option value="35">35 °C</option></select></label>
+      <label class="th-check"><input type="checkbox" data-particles />{t('Show a simplified particle view', 'Rodyti supaprastintą dalelių vaizdą')}</label>
+      <button type="button" class="am-btn" data-motion>{t('Pause particle motion', 'Sustabdyti dalelių judėjimą')}</button>
+    </div>
+    <p class="th-interpretation" data-temperature-explanation>{t('Both samples are at 20 °C. Water B has twice the mass; equal temperature alone does not establish equal total internal energy.', 'Abiejų temperatūra 20 °C. Vandens B masė dviguba; vien vienoda temperatūra neparodo visos vidinės energijos lygybės.')}</p>
+    <details open={isPrint}><summary>{t('How to read this model', 'Kaip suprasti šį modelį')}</summary><p>{t('Water level represents amount, and the thermometer represents temperature. The optional dots represent the same liquid at two thermal states; they are not a microscope image. Particle number and size stay fixed when temperature changes. The motion is qualitative and omits interaction energy. Changing the temperature control represents a new state; it does not specify how energy was supplied.', 'Vandens lygis rodo kiekį, termometras – temperatūrą. Pasirenkami taškai vaizduoja tą patį skystį dviejose šiluminėse būsenose; tai nėra mikroskopo vaizdas. Keičiant temperatūrą dalelių skaičius ir dydis nekinta. Judėjimas kokybinis, sąveikos energija nepavaizduota. Temperatūros valdiklis parenka kitą būseną; jis nenurodo, kaip energija buvo perduota.')}</p></details>
+    <table><caption>{t('Temperature and amount: illustrative states', 'Temperatūra ir kiekis: iliustracinės būsenos')}</caption><thead><tr><th scope="col">{t('Sample', 'Vanduo')}</th><th scope="col">m (g)</th><th scope="col">T (°C)</th><th scope="col">T (K)</th></tr></thead><tbody><tr><th scope="row">A</th><td>100</td><td>20</td><td>{nfmt(293.15, lang)}</td></tr><tr><th scope="row">B</th><td>200</td><td data-b-c>20</td><td data-b-k>{nfmt(293.15, lang)}</td></tr></tbody></table>
+  </>}
+  {mode === 'heating' && <>
+    <p>{t('Start with 200 g. Keep the first run, then try 400 g at the same power. Predict which curve will be steeper and explain your choice. Your prediction does not receive a mark.', 'Pradėk nuo 200 g. Išsaugok pirmą bandymą, tada pasirink 400 g ir tą pačią galią. Numatyk, kuri kreivė bus statesnė, ir paaiškink. Prognozė nevertinama pažymiu.')}</p>
+    <div class="th-visual-pair"><div class="th-scene" data-scene set:html={heaterScene(lang,.2,42,200)} /><div class="th-scene" data-graph set:html={heatingGraph(lang, {mass:.2, power:42, time:200})} /></div>
+    <p class="th-model-note">{t('Simulation · starts at 20 °C · liquid water · no container heating or losses · virtual seconds are compressed.', 'Simuliacija · pradžioje 20 °C · skystas vanduo · indo ir nuostolių nepaisoma · modelio sekundės pagreitintos.')}</p>
+    <div class="th-controls th-interactive">
+      <label>{t('Water mass', 'Vandens masė')}<select data-mass><option value="0.1">100 g</option><option value="0.2" selected>200 g</option><option value="0.4">400 g</option></select></label>
+      <label>{t('Prediction for the next run', 'Kito bandymo prognozė')}<select data-prediction><option value="">{t('Choose or leave open', 'Pasirink arba palik tuščią')}</option><option value="steeper">{t('Steeper', 'Statesnė')}</option><option value="same">{t('Same slope', 'Toks pat nuolydis')}</option><option value="shallower">{t('Shallower', 'Mažesnis nuolydis')}</option></select></label>
+      <label class="th-wide">{t('My reason', 'Mano paaiškinimas')}<textarea rows="2" maxlength="1000" data-prediction-reason></textarea></label>
+    </div>
+    <div class="th-controls th-interactive"><button type="button" class="am-btn" data-run>{t('Run', 'Pradėti')}</button><button type="button" class="am-btn" data-pause disabled>{t('Pause', 'Pauzė')}</button><button type="button" class="am-btn" data-finish>{t('Go to 200 s', 'Rodyti 200 s')}</button><button type="button" class="am-btn" data-keep>{t('Keep this run for comparison', 'Išsaugoti palyginimui')}</button><button type="button" class="am-btn" data-reset>{t('Restart this run', 'Kartoti šį bandymą')}</button></div>
+    <details class="th-interactive"><summary>{t('Extension: change power at fixed mass', 'Papildomai: keisk galią, masė pastovi')}</summary><label>{t('Power delivered to water', 'Vandeniui perduodama galia')}<select data-power><option value="42">42 W</option><option value="21">21 W</option></select></label><p>{t('Change one input at a time. Before comparing powers, keep a run at the same mass.', 'Keisk po vieną dydį. Prieš lygindamas galias išsaugok bandymą su ta pačia mase.')}</p></details>
+    <p class="th-interpretation" data-run-status role="status">{t('Static example: 200 g at 42 W warms from 20 to 30 °C in 200 model seconds. The table below gives the same values.', 'Statinis pavyzdys: 200 g vandens, gaudami 42 W galią, per 200 modelio sekundžių sušyla nuo 20 iki 30 °C. Lentelėje tos pačios reikšmės.')}</p>
+    <div class="th-data"><table><caption data-run-legend>{t('Current run: solid line. Kept run: dashed line.', 'Dabartinis bandymas: vientisa linija. Išsaugotas: brūkšniuota.')}</caption><thead><tr><th scope="col">t (s)</th><th scope="col">T (°C)</th><th scope="col">Q (J)</th><th scope="col">{t('Kept T (°C)', 'Išsaugota T (°C)')}</th></tr></thead><tbody data-heating-table>{[0,50,100,150,200].map(time => <tr><th scope="row">{time}</th><td>{nfmt(20+time*.05,lang)}</td><td>{nfmt(42*time,lang,0)}</td><td>—</td></tr>)}</tbody></table></div>
+    <div class="th-controls th-interactive"><label>{t('Highlight a recorded time', 'Pažymėti užrašytą laiką')}<select data-point><option value="live">{t('Current model time', 'Dabartinis modelio laikas')}</option>{[0,50,100,150,200].map(time => <option value={time}>{time} s</option>)}</select></label></div>
+    <label class="th-interactive">{t('I kept or changed my prediction because the graph/table showed…', 'Palikau arba pakeičiau prognozę, nes grafikas / lentelė parodė…')}<textarea rows="2" maxlength="1000" data-revision></textarea></label>
+    <details class="th-interactive"><summary>{t('My prediction and revision record', 'Mano prognozių ir pataisymų įrašai')}</summary><p>{t('Kept on this page until you leave or reload.', 'Saugoma šiame puslapyje iki išėjimo ar perkrovimo.')}</p><ol data-history></ol><button type="button" class="am-btn" data-record>{t('Record this comparison', 'Užrašyti palyginimą')}</button></details>
+    <details open={isPrint}><summary>{t('What the simulation can tell us', 'Ką gali parodyti simuliacija')}</summary><p>{t('These values follow a programmed liquid-water model with c = 4200 J/(kg·K). Exploring its predictions does not independently prove the equation. What would you measure to test it with a real heater? How could heating the cup or surroundings change a real graph?', 'Reikšmės apskaičiuotos pagal skysto vandens modelį, kurio c = 4200 J/(kg·K). Prognozių tyrimas savarankiškai neįrodo lygties. Ką matuotum, kad patikrintum modelį su tikru šildytuvu? Kaip indo ar aplinkos šildymas galėtų pakeisti tikrą grafiką?')}</p></details>
+    <div class="th-paper"><p>{t('On paper: sketch the 200 g and 400 g curves. My prediction: ____ . Evidence: ____ . Revised explanation: ____ .', 'Popieriuje: nubraižyk 200 g ir 400 g kreives. Mano prognozė: ____ . Įrodymai: ____ . Pataisytas paaiškinimas: ____ .')}</p></div>
+  </>}
+  {mode === 'apparatus' && <>
+    <div class="th-scene" set:html={apparatusScene(lang)} />
+    <p class="th-model-note">{t('Apparatus schematic · labels are examples, not your measurements. Follow the supervised protocol below.', 'Įrangos schema · rodmenys yra pavyzdžiai, ne tavo matavimai. Laikykis toliau pateiktos prižiūrimo tyrimo eigos.')}</p>
+    <ol class="th-method"><li>{t('Predict, measure actual masses and initial temperatures.', 'Numatyk, išmatuok tikrąsias mases ir pradines temperatūras.')}</li><li>{t('Pour warm into cool water already in the insulated cup; stir gently.', 'Pilk šiltą vandenį į vėsų izoliuotame inde; švelniai maišyk.')}</li><li>{t('Record the first stable reading, its delay, then +30 s and +60 s.', 'Užrašyk pirmą nusistovėjusį rodmenį, delsą, po to +30 s ir +60 s.')}</li><li>{t('Compare your evidence with your prediction. A second trial is an extension.', 'Palygink įrodymus su prognoze. Antras bandymas – papildoma užduotis.')}</li></ol>
+    <p><strong>{t('Teacher-prepared water ≤ 40 °C; pupils do not heat water.', 'Mokytojo paruoštas vanduo ≤ 40 °C; mokiniai vandens nešildo.')}</strong> {t('If equipment or supervision is unavailable, use the labelled synthetic analysis in lesson 4.', 'Jei nėra įrangos ar priežiūros, analizuok pažymėtus sintetinius 4 pamokos duomenis.')}</p>
+    <form data-notebook>
+      <fieldset><legend>{t('Equipment and reading conditions', 'Įranga ir matavimo sąlygos')}</legend><div class="th-input-grid">{metaKeys.map(key => <label>{names[key]}<input type="text" name={`meta.${key}`} maxlength="1000" autocomplete="off" /></label>)}</div></fieldset>
+      {emptyNotebook().trials.map((_,i) => <fieldset data-trial={i}><legend>{t('Trial', 'Bandymas')} {i+1}{i===1 && ` · ${t('optional repeat', 'papildomas kartojimas')}`}</legend><div class="th-input-grid">{readingKeys.map(key => <label>{names[key]}<input type="text" inputmode="decimal" name={`${i}.${key}`} maxlength="30" autocomplete="off" placeholder={t('Not measured', 'Neišmatuota')} /></label>)}{noteKeys.map(key => <label class="th-wide">{names[key]}<textarea name={`${i}.${key}`} rows="2" maxlength="2000"></textarea></label>)}</div></fieldset>)}
+      <div class="th-controls th-interactive"><button type="button" class="am-btn" data-save>{t('Save in this browser', 'Išsaugoti šioje naršyklėje')}</button><button type="button" class="am-btn" data-export>{t('Download my notebook', 'Atsisiųsti užrašus')}</button><button type="button" class="am-btn" data-new-notebook>{t('Download and start blank', 'Atsisiųsti ir pradėti naujus')}</button><label>{t('Open a notebook file', 'Atverti užrašų failą')}<input type="file" accept="application/json,.json" data-import /></label></div>
+      <p role="status" data-notebook-status>{t('Entered measurements · blank means not measured. Save only on a device where you want to keep this record.', 'Įvesti matavimai · tuščias laukelis reiškia „neišmatuota“. Saugok tik įrenginyje, kuriame nori palikti šiuos užrašus.')}</p>
+      <a class="am-btn th-interactive" href={next}>{t('Continue to heat-balance analysis', 'Tęsti šilumos balanso analizę')}</a>
+    </form>
+    <p class="th-model-note">{t('No accounts or upload. A saved notebook stays in this browser; you can delete physics data in the platform’s privacy controls. Paper works too.', 'Be paskyros ir įkėlimo. Išsaugoti užrašai lieka šioje naršyklėje; fizikos duomenis galima ištrinti platformos privatumo valdikliuose. Galima dirbti ir popieriuje.')}</p>
+  </>}
+  {mode === 'balance' && <>
+    <p>{t('Predict first: with more warm water, does the ideal mixture stay at the midpoint? Change the warm mass, then explain the diagram.', 'Pirmiausia numatyk: ar esant daugiau šilto vandens ideali mišinio temperatūra liks viduryje? Pakeisk šilto vandens masę ir paaiškink schemą.')}</p>
+    <div class="th-scene" data-scene set:html={mixingScene(lang)} />
+    <div class="th-controls th-interactive"><label>{t('Warm-water mass', 'Šilto vandens masė')}<select data-warm-mass><option value="0.05">50 g</option><option value="0.1" selected>100 g</option><option value="0.2">200 g</option></select></label></div>
+    <p class="th-interpretation" data-mixing-summary>{t('Ideal model: 100 g at 20 °C + 100 g at 40 °C → 200 g at 30 °C. No container heating or losses.', 'Idealus modelis: 100 g 20 °C + 100 g 40 °C → 200 g 30 °C. Indo ir nuostolių nepaisoma.')}</p>
+    <div class="th-data"><table><caption>{t('Ideal mixing: model values', 'Idealus maišymas: modelio reikšmės')}</caption><thead><tr><th scope="col">{t('Water', 'Vanduo')}</th><th scope="col">m (g)</th><th scope="col">T (°C)</th></tr></thead><tbody data-mixing-table><tr><th scope="row">{t('Cool', 'Vėsus')}</th><td>100</td><td>20</td></tr><tr><th scope="row">{t('Warm', 'Šiltas')}</th><td>100</td><td>40</td></tr><tr><th scope="row">{t('Mixture', 'Mišinys')}</th><td>200</td><td>30</td></tr></tbody></table></div>
+    <div class="th-scene" data-balance-scene set:html={balanceScene(lang)} />
+    <p>{t('The warm-to-cool transfer stays inside the boundary containing both portions. Energy transferred to an external cup or surroundings crosses that water-only boundary.', 'Šilto ir vėsaus vandens mainai vyksta abi dalis apimančios ribos viduje. Perdavimas išoriniam indui ar aplinkai kerta vien vandens sistemos ribą.')}</p>
+    <details open={isPrint}><summary>{t('Real experiment: choose a wider system', 'Tikras bandymas: pasirink platesnę sistemą')}</summary><p>{t('Suppose the cup starts cooler than the mixture. It can gain energy. Predict whether that transfer crosses each chosen boundary; no transfer amount is inferred here.', 'Tarkime, indas pradžioje vėsesnis už mišinį. Jis gali gauti energijos. Numatyk, ar šis perdavimas kerta pasirinktą ribą; perdavimo dydis čia nenustatomas.')}</p><div class="th-controls th-interactive"><label>{t('System boundary', 'Sistemos riba')}<select data-system><option value="water">{t('Both water portions', 'Abi vandens dalys')}</option><option value="cup">{t('Water and cup', 'Vanduo ir indas')}</option></select></label></div><div class="th-scene" data-system-scene set:html={systemScene(lang)} /></details>
+    <div class="th-analysis"><h4>{t('Now analyse your evidence', 'Dabar analizuok savo įrodymus')}</h4>
+      <div class="th-controls th-interactive"><button type="button" class="am-btn" data-load-notebook>{t('Load my saved measurements', 'Atverti išsaugotus matavimus')}</button><button type="button" class="am-btn" data-synthetic>{t('Use labelled synthetic examples', 'Naudoti pažymėtus sintetinius pavyzdžius')}</button><label>{t('Open a notebook file', 'Atverti užrašų failą')}<input type="file" accept="application/json,.json" data-import /></label></div>
+      <p data-source role="status">{t('No dataset selected. Load your notebook or choose the synthetic fallback. The diagrams above show the ideal model.', 'Duomenys nepasirinkti. Atverk užrašus arba pasirink sintetinius pavyzdžius. Aukščiau pateiktos schemos rodo idealų modelį.')}</p>
+      <div data-analysis-results></div>
+      <p>{t('A water-only residual is a mismatch in this calculation. It does not identify an exact loss to the room or prove that energy disappeared.', 'Vien vandens balanso liekana yra šio skaičiavimo neatitikimas. Ji nenustato tikslaus perdavimo kambariui ir neįrodo, kad energija išnyko.')}</p>
+    </div>
+    <div class="th-paper"><p>{t('On paper: use your trial masses and temperatures. Calculate the ideal temperature, then both water energy changes and their residual. Sketch the system boundary and explain one model limit.', 'Popieriuje: naudok savo bandymo mases ir temperatūras. Apskaičiuok idealią temperatūrą, abiejų dalių energijos pokyčius ir balanso liekaną. Nubraižyk sistemos ribą ir paaiškink vieną modelio ribą.')}</p></div>
+  </>}
+  <noscript><p>{t('Use the static diagrams and tables, record your predictions on paper, and follow the printed investigation. Interactive controls need JavaScript.', 'Naudok statines schemas ir lenteles, prognozes užrašyk popieriuje ir laikykis spausdintos tyrimo eigos. Interaktyviems valdikliams reikia JavaScript.')}</p></noscript>
+</div>
+<script>
+  import { initThermalLabs } from '../../lib/thermal-runtime';
+  initThermalLabs();
+  document.addEventListener('astro:page-load', initThermalLabs);
+</script>

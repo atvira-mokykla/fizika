@@ -11,6 +11,8 @@ Four grade 9 thermal lessons are available in both languages:
 3. Supervised water-mixing investigation.
 4. Heat balance, model predictions and evidence.
 
+The thermal lessons include original physical diagrams, a guided heating comparison with graphs and tables, a revisable prediction record, and a practical notebook connected to heat-balance analysis. Model illustrations, raw readings and synthetic practice data are labelled separately. The notebook can be saved in the local browser or exported; no account or upload is needed.
+
 Other lessons are visibly planned. These four lessons do not complete the full thermal topic. Practising teacher review, independent Lithuanian review, laboratory execution and classroom timing validation remain pending. Synthetic data are labelled and separated from blank real-data records.
 
 [Teacher and review resources](https://atvira-mokykla.github.io/fizika/teachers/) · [Mokytojams](https://atvira-mokykla.github.io/fizika/lt/teachers/) · [Editable original sources ZIP](https://atvira-mokykla.github.io/fizika/downloads/physics-original-sources.zip)
@@ -27,6 +29,8 @@ GitHub Actions checks and builds these sources with `contents: read` and deploys
 python3 -m pip install -r tools/requirements.txt PyYAML
 (cd physics-platform && npm ci)
 DRY_RUN=1 bash tools/publish.sh
+# Optional browser preview:
+bash tools/preview.sh
 # To check and push to GitHub:
 bash tools/publish.sh
 ```

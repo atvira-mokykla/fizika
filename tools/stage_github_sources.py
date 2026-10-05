@@ -32,7 +32,7 @@ def stage(destination: Path) -> None:
         'physics-starter/README.md', 'LICENSE', 'LICENSE-CONTENT.md',
         'tools/requirements.txt', 'tools/build_thermal_pilot.py',
         'tools/validate_thermal_pilot.py', 'tools/test_quantity_checker.mjs',
-        'tools/publish.sh', 'tools/stage_github_sources.py',
+        'tools/publish.sh', 'tools/preview.sh', 'tools/stage_github_sources.py',
         'publication/publish.yml', 'publication/fizika-README.md',
     ]
     for directory in directories:

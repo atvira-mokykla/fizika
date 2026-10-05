@@ -26,7 +26,7 @@ lesson:
     būdus. Moku palyginti temperatūras ir jų pokyčius Celsijaus ir Kelvino skalėse.
   kicker: Originali bandomoji pamoka. Praktikuojančio mokytojo peržiūra dar neatlikta.
 ---
-import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../../components/lesson';
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next, ThermalLab } from '../../../../../components/lesson';
 
 <Lesson>
 
@@ -81,6 +81,7 @@ Puodelyje yra 250 g vandens. Nurodyk masę kilogramais.
 
 
 
+
 <Block kind="hook" title="Ta pati temperatūra – ta pati energija?">
 
 Puodelyje ir kibire yra 20 °C vanduo. Draugas sako: „Termometrų rodmenys vienodi, todėl jų vidinės energijos vienodos.“ Prieš skaitydamas toliau parašyk, ar išvada pagrįsta, ir kokio fakto trūksta.
@@ -107,6 +108,19 @@ Galime teigti tik temperatūrų lygybę. Energijos pokyčiams palyginti reikės 
 
 
 </Block>
+
+
+
+
+
+<Block kind="explore" title="Palygink vaizdą prieš aiškindamas">
+
+**Vaizdinis tyrimas.** Pradėk nuo vienodų rodmenų. Atskirai aprašyk tai, ką matai, ir tai, ką iš to sprendi. Parink vandeniui B 35 °C ir paaiškink perdavimo kryptį esant šiluminiam kontaktui. Šioje iliustracijoje vanduo nesimaišo.
+
+<ThermalLab mode="temperature" lang="lt" />
+
+</Block>
+
 
 
 
@@ -156,20 +170,10 @@ Vidinė energija gali kisti perduodant šilumą **arba atliekant darbą**. Šilt
 
 
 
-</Block>
-
-
-
-
-<Block kind="explore" title="Dvi skalės, viena temperatūra" figure="thermal-model" figureProps={{mode: "scales"}} alt="Interaktyvus idealus šiluminis modelis; tos pačios reikšmės pateiktos duomenų lentelėje.">
-
-Pirmiausia numatyk: ar 20 °C perskaičiavimas į kelvinus reiškia, kad vanduo sušilo? Pasirink kitą temperatūrą ir palygink lentelę.
-
-$$T(\mathrm{K})=t(^{\circ}\mathrm{C})+273{,}15.$$
-
-Pakilus nuo 20 °C iki 30 °C, **pokytis yra 10 °C = 10 K**. Galutinė temperatūra yra **303,15 K**, ne 10 K. Kelvino vienetas rašomas be laipsnio ženklo. Šioje įvadinėje pamokoje 273,15 yra skalių poslinkis, ne energijos matas.
+**Skalė nėra šildymo procesas.** 20 °C = 293,15 K; 35 °C = 308,15 K. Pokytis yra 15 °C = 15 K. Kelvino vienetas rašomas be laipsnio ženklo. Vien vienetų keitimas vandens nekeičia.
 
 </Block>
+
 
 
 
@@ -228,6 +232,9 @@ Kambario temperatūros šaukštas įdedamas į vėsesnį vandenį. Kas vyksta š
 
 </YourTurn>
 
+
+<details class="th-extension">
+<summary>Daugiau pratybų: atvirkštiniai skaičiavimai ir gilesni pavyzdžiai</summary>
 
 
 
@@ -337,7 +344,11 @@ Galutinę 30 °C temperatūrą perskaičiuok į kelvinus.
 
 
 
+
+</details>
+
 </Block>
+
 
 
 
@@ -458,6 +469,7 @@ Trinant energija perduodama darbu ir didina rankų vidinę energiją; „sukaupt
 
 
 
+
 <Block kind="summary" title="Susiek dydį su jo klausimu">
 
 **Temperatūra:** šiluminė būsena, °C arba K. **Vidinė energija:** pasirinktos sistemos mikroskopinė energija, J. **Šiluma:** energijos perdavimas dėl temperatūrų skirtumo, J. Vidinė energija kinta perduodant šilumą arba atliekant darbą. 1 °C pokytis lygus 1 K; absoliučiai temperatūrai reikia skalių poslinkio.
@@ -469,7 +481,10 @@ Trinant energija perduodama darbu ir didina rankų vidinę energiją; „sukaupt
 
 
 
+
 <Block kind="teacher" title="Pastabos mokytojui ir 45 min eiga">
+
+**Vaizdinis pagrindas:** palygink vienodos temperatūros vandens kiekius; paaiškink šiluminio kontakto atvejį; atskirk temperatūrą, vidinę energiją ir perdavimą; nagrinėk vieną pavyzdį ir naują paaiškinimą. Dalelių detalės ir kiti pavyzdžiai papildomi.
 
 **Pagrindinė eiga:** prisiminimas 4 min; puodelio ir kibiro prognozė 5; aiškinimas ir skalių modelis 10; pavyzdžiai 10; pasitikrinimas 11; baigiamasis paaiškinimas 5. Jei diskusija užtrunka, rašytinę užduotį skirk papildomai. Laikas klasėje dar neišbandytas.
 
@@ -480,7 +495,6 @@ Trinant energija perduodama darbu ir didina rankų vidinę energiją; „sukaupt
 **Aprėptis:** vidinės energijos programos tema aptarta iš dalies. Būsenų kitimas ir išsamūs mikroskopiniai modeliai čia neužbaigti. Fizikos, lietuviškų terminų ir darbo klasėje žmogaus peržiūra dar neatlikta; tai originali bandomoji medžiaga.
 
 </Block>
-
 
 
 </Lesson>

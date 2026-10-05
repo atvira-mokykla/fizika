@@ -26,7 +26,7 @@ lesson:
     graph with units. I can use specific heat capacity to compare heating and cooling.
   kicker: An original trial lesson. Practising teacher review is still pending.
 ---
-import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../components/lesson';
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next, ThermalLab } from '../../../../components/lesson';
 
 <Lesson>
 
@@ -81,6 +81,7 @@ Water warms from 20 °C to 30 °C. Give its temperature change.
 
 
 
+
 <Block kind="hook" title="Which cup takes more energy?">
 
 
@@ -107,6 +108,19 @@ Doubling mass doubles Q when c and ΔT stay the same. Check this after the expla
 
 
 </Block>
+
+
+
+
+
+<Block kind="explore" title="Predict, run, compare, explain">
+
+**A guided model investigation, not measured evidence.** Compare masses at the same delivered power. Write a prediction and reason, keep a completed run, and name the graph or table evidence that supports your explanation. You can do the same comparison with the static table and a paper sketch.
+
+<ThermalLab mode="heating" lang="en" />
+
+</Block>
+
 
 
 
@@ -155,16 +169,6 @@ Do not use $mc\Delta T$ to describe melting at constant temperature: energy can 
 
 </Block>
 
-
-
-
-<Block kind="explore" title="Predict the slope, then change the mass" figure="thermal-model" figureProps={{mode: "heating"}} alt="Interactive ideal thermal model; the same values are listed in a data table.">
-
-**Illustrative model data, not measurements.** A constant 42 W transfers 42 J every second to the water. Start with 0.20 kg at 20 °C; ignore the container and heat loss. At 0, 50, 100, 150 and 200 s, the temperatures are 20, 22.5, 25, 27.5 and 30 °C.
-
-Draw the graph on paper: horizontal axis $t$ in s, vertical axis $T$ in °C. The slope is **temperature rise per second**, not heat itself. Predict what doubling mass does, then select 0.40 kg. What changes? What stays the same? Explain using $Q=mc\Delta T$.
-
-</Block>
 
 
 
@@ -226,6 +230,9 @@ Warm 0.40 kg of water by 10 K. How much heat is received?
 
 </YourTurn>
 
+
+<details class="th-extension">
+<summary>More practice: reverse calculations and deeper examples</summary>
 
 
 
@@ -334,7 +341,11 @@ Q = 0.20 × 4200 × (25 − 30) = −4200 J.
 
 
 
+
+</details>
+
 </Block>
+
 
 
 
@@ -450,7 +461,30 @@ The 8400 J calculation estimates the gain of the water alone. The container can 
 
 
 
+
+
+
+
+<Quantity id="g9-thermal-02-transfer" expected={6.666666666666667} quantity="temperature-difference" units="K|°C" show="6.67 K" tolerance={0.05} outcome="g9.thermal.5">
+
+**Transfer challenge.** A new run uses 0.30 kg of liquid water at 20 °C with 42 W delivered for 200 s. Predict its temperature rise, then explain where its curve lies between the 200 g and 400 g curves.
+
+<Ok>Q = 8400 J; ΔT = 8400/(0.30 × 4200) ≈ 6.67 K. Its curve is shallower than 200 g and steeper than 400 g at the same power. This is a prediction of the ideal model.</Ok>
+
+
+<Solution>
+
+Q = 8400 J; ΔT = 8400/(0.30 × 4200) ≈ 6.67 K. Its curve is shallower than 200 g and steeper than 400 g at the same power. This is a prediction of the ideal model.
+
+</Solution>
+
+
+</Quantity>
+
+
+
 </Block>
+
 
 
 
@@ -466,9 +500,12 @@ Identify the system; check that its state stays the same; convert mass to kg; ca
 
 
 
+
 <Block kind="teacher" title="Teaching route and misconceptions">
 
-**45-minute core:** recall 4 min; prediction 4; equation frames 9; graph model 8; examples 10; checks 8; exit boundary sketch 2. The reverse calculation and written challenge can become follow-up practice. These timings need classroom validation.
+**Investigation core:** prediction 5 min; controlled model comparison 10; discussion and equation 8; one worked example and transfer 7. Leave the rest of the 45-minute slot for transitions and teacher support. These are provisional timings, not classroom measurements. The model comes before the equation explanation; it does not empirically establish the law.
+
+**Expanded practice route, optional:** recall 4 min; prediction 4; equation frames 9; graph model 8; examples 10; checks 8; exit boundary sketch 2. The reverse calculation and written challenge can become follow-up practice. These timings need classroom validation.
 
 Ask pupils to predict before changing the model’s mass, and justify with a ratio before calculating. Compare ΔT and final T explicitly. Typical errors: grams substituted as kg; final temperature used for ΔT; larger c interpreted as larger temperature rise; cooling sign omitted; plateau declared “no energy transfer”.
 
@@ -477,7 +514,6 @@ Ask pupils to predict before changing the model’s mass, and justify with a rat
 No physical heater is needed. The data and visualisation are ideal-model values, not measurements. This addresses only the constant-state and graph foundations within the much broader changes-of-state programme node. Human review is pending.
 
 </Block>
-
 
 
 </Lesson>

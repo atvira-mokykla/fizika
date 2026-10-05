@@ -26,7 +26,7 @@ lesson:
     I can compare temperature readings and temperature changes in °C and K.
   kicker: An original trial lesson. Practising teacher review is still pending.
 ---
-import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../components/lesson';
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next, ThermalLab } from '../../../../components/lesson';
 
 <Lesson>
 
@@ -81,6 +81,7 @@ A cup contains 250 g of water. Write its mass in kilograms.
 
 
 
+
 <Block kind="hook" title="Same thermometer reading, same energy?">
 
 A cup and a bucket both contain water at 20 °C. Your friend says: “The thermometer readings are equal, so their internal energies must be equal.” Before reading on, write whether the conclusion follows and name one missing fact.
@@ -107,6 +108,19 @@ Only equality of temperature follows. To compare energy changes, we will need th
 
 
 </Block>
+
+
+
+
+
+<Block kind="explore" title="Compare the scene before explaining it">
+
+**Visual investigation.** Start with the equal readings. Describe what you can see, then distinguish it from what you infer. Switch water B to 35 °C and explain the direction of transfer in thermal contact. The water does not mix in this illustration.
+
+<ThermalLab mode="temperature" lang="en" />
+
+</Block>
+
 
 
 
@@ -156,20 +170,10 @@ Internal energy can change through heat transfer **or work**. A warm radiator tr
 
 
 
-</Block>
-
-
-
-
-<Block kind="explore" title="Two scales, one temperature" figure="thermal-model" figureProps={{mode: "scales"}} alt="Interactive ideal thermal model; the same values are listed in a data table.">
-
-Predict first: does converting 20 °C to kelvins describe hotter water? Select another reading and compare the table.
-
-$$T(\mathrm{K})=t(^{\circ}\mathrm{C})+273.15.$$
-
-A rise from 20 °C to 30 °C is **10 °C = 10 K as a change**. The final temperature is **303.15 K**, not 10 K. Kelvin uses no degree symbol. For this introductory lesson, 273.15 is the scale offset, not a measure of energy.
+**A scale is not a heating process.** 20 °C = 293.15 K; 35 °C = 308.15 K. The change is 15 °C = 15 K. Kelvin has no degree symbol. Changing units alone does not change the water.
 
 </Block>
+
 
 
 
@@ -228,6 +232,9 @@ The spoon transfers heat to the cooler water and cools.
 
 </YourTurn>
 
+
+<details class="th-extension">
+<summary>More practice: reverse calculations and deeper examples</summary>
 
 
 
@@ -337,7 +344,11 @@ Convert a final reading of 30 °C to kelvins.
 
 
 
+
+</details>
+
 </Block>
+
 
 
 
@@ -458,6 +469,7 @@ Rubbing transfers energy by work, increasing the hands’ internal energy; heat 
 
 
 
+
 <Block kind="summary" title="Keep the question attached to the quantity">
 
 **Temperature:** thermal state, °C or K. **Internal energy:** microscopic energy of the chosen system, J. **Heat:** energy transfer due to a temperature difference, J. Internal energy changes by heat transfer or work. A temperature difference of 1 °C equals 1 K; an absolute temperature needs the scale offset.
@@ -469,7 +481,10 @@ Rubbing transfers energy by work, increasing the hands’ internal energy; heat 
 
 
 
+
 <Block kind="teacher" title="Teaching notes and a 45-minute route">
+
+**Visual core:** compare equal-temperature samples; explain the thermal-contact case; distinguish temperature, stored energy and transfer; use one worked example and a new explanation. Particle detail and extra examples are optional.
 
 **Core route:** recall 4 min; cup/bucket prediction 5; explanation and scale model 10; examples 10; checks 11; exit explanation 5. Use the written challenge as an extension if discussion runs long. Timing has not been trialled in class.
 
@@ -480,7 +495,6 @@ Rubbing transfers energy by work, increasing the hands’ internal energy; heat 
 **Scope:** the internal-energy programme node is partly addressed. Changes of state and detailed microscopic models are not completed here. Physics, Lithuanian terminology and classroom review are pending; this is original trial material, not a teacher-certified lesson.
 
 </Block>
-
 
 
 </Lesson>

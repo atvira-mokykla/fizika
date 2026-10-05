@@ -103,6 +103,8 @@ html.am-print { --sl-nav-height: 0px; background: #fff; }
 
 /* Worksheet: room to write */
 .am-print-worksheet .am-item[data-kind='numeric'] .am-item-body::after { content: 'Answer:'; display: block; border-bottom: 1px solid #999; height: 8mm; font: 500 8pt var(--am-mono); color: var(--am-muted); padding-top: 3mm; }
+.am-print-worksheet .am-item[data-kind='quantity'] .am-item-body::after { content: 'Answer with unit:'; display:block; border-bottom:1px solid #999; height:8mm; font:500 8pt var(--am-mono); color:var(--am-muted); padding-top:3mm; }
+.am-print-worksheet:lang(lt) .am-item[data-kind='quantity'] .am-item-body::after { content:'Atsakymas su vienetu:'; }
 .am-print-worksheet .am-item[data-kind='task'] .am-item-body::after {
   content: ''; display: block; height: 95mm; border: 1px solid #dde3e8; border-radius: 2mm;
   background-image: linear-gradient(#e6ebef 1px, transparent 1px), linear-gradient(90deg, #e6ebef 1px, transparent 1px); background-size: 5mm 5mm;

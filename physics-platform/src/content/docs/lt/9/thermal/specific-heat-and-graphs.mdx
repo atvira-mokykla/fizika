@@ -26,7 +26,7 @@ lesson:
     temperatūros ir laiko grafiką, nurodyti vienetus. Moku taikyti savitąją šilumą šildymui ir vėsimui palyginti.
   kicker: Originali bandomoji pamoka. Praktikuojančio mokytojo peržiūra dar neatlikta.
 ---
-import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../../components/lesson';
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next, ThermalLab } from '../../../../../components/lesson';
 
 <Lesson>
 
@@ -81,6 +81,7 @@ Vanduo šyla nuo 20 °C iki 30 °C. Nurodyk temperatūros pokytį.
 
 
 
+
 <Block kind="hook" title="Kuriam puodeliui reikia daugiau energijos?">
 
 
@@ -107,6 +108,19 @@ Padvigubinus masę, Q padvigubėja, kai c ir ΔT tie patys. Po paaiškinimo pati
 
 
 </Block>
+
+
+
+
+
+<Block kind="explore" title="Numatyk, bandyk, palygink, paaiškink">
+
+**Prižiūrimas modelio tyrimas, ne matavimų įrodymai.** Lygink mases esant tai pačiai perduodamai galiai. Užrašyk prognozę ir paaiškinimą, išsaugok baigtą bandymą, nurodyk tavo paaiškinimą pagrindžiančius grafiko ar lentelės duomenis. Tą patį palyginimą gali atlikti pagal statinę lentelę ir brėžinį popieriuje.
+
+<ThermalLab mode="heating" lang="lt" />
+
+</Block>
+
 
 
 
@@ -155,16 +169,6 @@ Lydymosi esant pastoviai temperatūrai neaprašyk $mc\Delta T$: energija gali ke
 
 </Block>
 
-
-
-
-<Block kind="explore" title="Numatyk nuolydį, tada pakeisk masę" figure="thermal-model" figureProps={{mode: "heating"}} alt="Interaktyvus idealus šiluminis modelis; tos pačios reikšmės pateiktos duomenų lentelėje.">
-
-**Iliustraciniai modelio duomenys, ne matavimai.** Pastovi 42 W galia kiekvieną sekundę perduoda vandeniui 42 J. Pradžioje 0,20 kg vandens temperatūra 20 °C; indo ir nuostolių nepaisoma. Po 0, 50, 100, 150 ir 200 s temperatūra yra 20; 22,5; 25; 27,5 ir 30 °C.
-
-Nubraižyk grafiką popieriuje: horizontalioji ašis $t$ sekundėmis, vertikalioji $T$ Celsijaus laipsniais. Nuolydis yra **temperatūros pokytis per sekundę**, ne pati šiluma. Numatyk, ką pakeis dviguba masė, tada pasirink 0,40 kg. Kas kinta, kas lieka taip pat? Paaiškink taikydamas $Q=mc\Delta T$.
-
-</Block>
 
 
 
@@ -226,6 +230,9 @@ $Q=0{,}20\times4200\times10=8400\ \mathrm{J}=8{,}4\ \mathrm{kJ}$. Teigiamas: van
 
 </YourTurn>
 
+
+<details class="th-extension">
+<summary>Daugiau pratybų: atvirkštiniai skaičiavimai ir gilesni pavyzdžiai</summary>
 
 
 
@@ -334,7 +341,11 @@ Q = 0,20 × 4200 × (25 − 30) = −4200 J.
 
 
 
+
+</details>
+
 </Block>
+
 
 
 
@@ -450,7 +461,30 @@ Tikras šildytuvas sunaudoja daugiau nei 8400 J, kol 0,20 kg vandens sušyla 10 
 
 
 
+
+
+
+
+<Quantity id="g9-thermal-02-transfer" expected={6.666666666666667} quantity="temperature-difference" units="K|°C" show="6,67 K" tolerance={0.05} outcome="g9.thermal.5">
+
+**Naujas iššūkis.** Naujame bandyme 0,30 kg 20 °C skysto vandens 200 s perduodama 42 W galia. Numatyk temperatūros pokytį ir paaiškink, kur jo kreivė bus tarp 200 g ir 400 g kreivių.
+
+<Ok>Q = 8400 J; ΔT = 8400/(0,30 × 4200) ≈ 6,67 K. Esant tai pačiai galiai kreivė bus mažesnio nuolydžio nei 200 g ir statesnė nei 400 g. Tai idealaus modelio prognozė.</Ok>
+
+
+<Solution>
+
+Q = 8400 J; ΔT = 8400/(0,30 × 4200) ≈ 6,67 K. Esant tai pačiai galiai kreivė bus mažesnio nuolydžio nei 200 g ir statesnė nei 400 g. Tai idealaus modelio prognozė.
+
+</Solution>
+
+
+</Quantity>
+
+
+
 </Block>
+
 
 
 
@@ -466,9 +500,12 @@ Apibrėžk sistemą; patikrink, kad būsena nekinta; masę perskaičiuok į kg; 
 
 
 
+
 <Block kind="teacher" title="Pamokos eiga ir būdingos klaidos">
 
-**45 min pagrindas:** prisiminimas 4 min; prognozė 4; lygties aiškinimas 9; grafiko modelis 8; pavyzdžiai 10; pasitikrinimas 8; baigiamasis sistemos ribos brėžinys 2. Atvirkštinį skaičiavimą ir rašytinę užduotį galima skirti vėliau. Laiką reikia patikrinti klasėje.
+**Tyrimo pagrindas:** prognozė 5 min; modelio palyginimas keičiant vieną dydį 10; aptarimas ir lygtis 8; vienas pavyzdys ir naujas iššūkis 7. Likusį 45 min laiką skirkite perėjimams ir mokytojo pagalbai. Laikas siūlomas, ne išmatuotas klasėje. Modelis pateiktas prieš lygties paaiškinimą; jis empiriškai neįrodo dėsnio.
+
+**Išplėstinė pratybų eiga, pasirenkama:** prisiminimas 4 min; prognozė 4; lygties aiškinimas 9; grafiko modelis 8; pavyzdžiai 10; pasitikrinimas 8; baigiamasis sistemos ribos brėžinys 2. Atvirkštinį skaičiavimą ir rašytinę užduotį galima skirti vėliau. Laiką reikia patikrinti klasėje.
 
 Prieš keičiant modelio masę prašykite prognozės ir santykio paaiškinimo. Aiškiai palyginkite ΔT ir galutinę T. Būdingos klaidos: gramai vietoje kg; galutinė temperatūra vietoje ΔT; didesnis c suprantamas kaip didesnis temperatūros pokytis; praleistas vėsimo ženklas; horizontali atkarpa laikoma „energija neperduodama“.
 
@@ -477,7 +514,6 @@ Prieš keičiant modelio masę prašykite prognozės ir santykio paaiškinimo. A
 Tikro šildytuvo nereikia. Duomenys ir vaizdas yra idealaus modelio reikšmės, ne matavimai. Aptariami tik nekintančios būsenos ir grafiko pagrindai, sudarantys dalį platesnės būsenų kitimo programos temos. Žmogaus peržiūra dar neatlikta.
 
 </Block>
-
 
 
 </Lesson>

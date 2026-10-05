@@ -4,7 +4,7 @@ import re,json,yaml
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
 class Page(HTMLParser):
- def __init__(self):super().__init__();self.ids=[];self.links=[];self.lang=None;self.kinds=[];self.questions=[]
+ def __init__(self):super().__init__();self.ids=[];self.links=[];self.lang=None;self.kinds=[];self.questions=[];self.labs=[];self.diagrams=[]
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
   if tag=='html':self.lang=a.get('lang')
@@ -12,6 +12,8 @@ class Page(HTMLParser):
   if tag=='a' and 'href'in a:self.links.append(a['href'])
   if a.get('class','').startswith('am-block '):self.kinds.append(a.get('data-kind'))
   if 'am-item 'in a.get('class','')+' ':self.questions.append(a)
+  if 'data-thermal' in a:self.labs.append(a['data-thermal'])
+  if tag=='svg' and a.get('role')=='img':self.diagrams.append(a.get('aria-label'))
 p=Path('dist');routes={}
 for f in p.rglob('*.html'):
  if not f.is_file():continue
@@ -42,6 +44,8 @@ for l in published:
   f=p/f'{locale}{l["slug"]}/index.html';page=routes[f];pages.append(page)
   assert {'start','remember','hook','explain','examples','check','summary','teacher'}<=set(page.kinds)
   assert len(page.questions)>=10,f'Too little practice: {f}'
+  assert page.labs==[{'g9-thermal-01':'temperature','g9-thermal-02':'heating','g9-thermal-03':'apparatus','g9-thermal-04':'balance'}[l['id']]],f'Missing investigation: {f}'
+  assert len(page.diagrams)>=2 and all(page.diagrams),f'Missing labelled server-rendered diagrams: {f}'
   assert len([q for q in page.questions if q.get('data-kind')=='task'])>=1
   checks=[q for q in page.questions if re.search(r'-c\d+$',q.get('data-id',''))]
   actual=set(q['data-outcome'] for q in checks);assert set(l['outcomes'])<=actual,(l['id'],actual)
@@ -52,4 +56,4 @@ for l in published:
  assert signature(pages[0])==signature(pages[1]),f'Bilingual assessment drift: {l["id"]}'
  # Both display and print contain raw solutions, but worksheet CSS must hide those answers.
 css=Path('src/styles/print.css').read_text();assert '.am-print .am-hints, .am-print .am-solution'in css and '.am-print-key'in css
-print(f'PASS: {len(routes)} built HTML pages; 43 programme nodes; year allocations 72/72/108/102; 4 matched bilingual lessons; 12 outcomes assessed; 24 print views; internal targets and IDs.')
+print(f'PASS: {len(routes)} built HTML pages; 43 programme nodes; year allocations 72/72/108/102; 4 matched bilingual visual lessons; 12 outcomes assessed; 24 print views; server-rendered diagrams, investigation modes, internal targets and IDs.')

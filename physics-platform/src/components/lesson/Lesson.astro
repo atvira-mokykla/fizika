@@ -8,6 +8,7 @@ import { contextsForSlug, yearHref, slugOfPath } from '../../lib/plan';
 import { startCard } from '../../lib/outcomes';
 import { inlineTex } from '../../lib/tex';
 import { ui, langOfPath } from '../../i18n/ui';
+import ThermalHero from './ThermalHero.astro';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 // Print pages are not Starlight pages, so the route data may be missing.
 let title = '';
@@ -30,6 +31,8 @@ const refreshHref = (r: { id: string; refreshStep: { href: string | null } | nul
   body.includes(`id="refresh-${r.id}"`) ? `#refresh-${r.id}` : r.refreshStep?.href ?? null;
 const periods = contexts[0]?.step.periods ?? 1;
 const pdf = (kind: string) => `${base}print/${kind}/${pdfSlug}/`;
+const visualModes = {'9/thermal/temperature-energy-heat':'temperature','9/thermal/specific-heat-and-graphs':'heating','9/thermal/water-mixing-investigation':'apparatus','9/thermal/heat-balance':'balance'} as const;
+const visualMode = visualModes[slug as keyof typeof visualModes];
 ---
 <div class="am-lesson mode-all" data-slug={slug} data-title={title} data-plan-id={planId}>
   <div class="am-toolbar not-content">
@@ -59,6 +62,7 @@ const pdf = (kind: string) => `${base}print/${kind}/${pdfSlug}/`;
           <h2 class="am-block-title">{L.startTitle}</h2>
         </header>
         <div class="am-block-main">
+          {visualMode && <ThermalHero mode={visualMode} lang={lang} />}
           {meta?.goal && <p class="am-goal" set:html={inlineTex(meta.goal)} />}
           <div class="am-start-grid not-content">
             <div class="am-start-col">

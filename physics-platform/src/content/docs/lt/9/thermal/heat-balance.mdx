@@ -28,7 +28,7 @@ lesson:
     kad energija išnyko.
   kicker: Originali bandomoji pamoka. Praktikuojančio mokytojo peržiūra dar neatlikta.
 ---
-import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../../components/lesson';
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next, ThermalLab } from '../../../../../components/lesson';
 
 <Lesson>
 
@@ -81,11 +81,25 @@ Jei atlikote prižiūrimą bandymą, naudok savo tikras mases ir pradinius rodme
 
 
 
+
 <Block kind="hook" title="Prognozė nėra rezultatas">
 
 Vienodos masės iš pradžių yra 20 °C ir 40 °C. Idealus modelis numato 30 °C; pratybų duomenyse pateikta 29,2 °C. Ar skirtumas reiškia, kad energija išnyko? Prieš darydamas išvadą nurodyk sistemą ir parašyk vieną tikrintiną prielaidą.
 
 </Block>
+
+
+
+
+
+<Block kind="explore" title="Nuo tavo matavimų iki energijos balanso">
+
+**Dvi atskiros užduotys.** Pirma tyrinėk idealų maišymo modelį. Tada atverk 3 pamokos užrašus, patvirtink pradinius duomenis ir palygink prognozę su rodmenimis. Jei matavimų neturi, pasirink aiškiai pažymėtus sintetinius pratybų duomenis. Pateiktų duomenų analizė neparodo praktinių matavimo gebėjimų.
+
+<ThermalLab mode="balance" lang="lt" />
+
+</Block>
+
 
 
 
@@ -138,14 +152,6 @@ Tai nėra automatiškai tikslus kambariui perduotas šilumos kiekis. Energija ga
 
 </Block>
 
-
-
-
-<Block kind="explore" title="Keisk masę, patikrink prognozę" figure="thermal-model" figureProps={{mode: "mixing"}} alt="Interaktyvus idealus šiluminis modelis; tos pačios reikšmės pateiktos duomenų lentelėje.">
-
-Tai **idealus modelis, ne matavimai**. Vėsaus vandens masė 0,10 kg, pradinė temperatūra 20 °C; šiltas vanduo pradžioje 40 °C. Numatyk, kur pasislinks galutinė T padvigubinus šilto vandens masę. Tada pasirink 0,20 kg. Paaiškink, kodėl aritmetinis vidurys nebetinka. Jei vaizdo negali perskaityti, naudok lentelę. Tikram bandymui naudok išmatuotas pradines temperatūras, nepakeisk jų 20 ir 40.
-
-</Block>
 
 
 
@@ -203,6 +209,9 @@ Vienodų masių pradinės temperatūros 18 °C ir 36 °C. Rask idealią T.
 
 </YourTurn>
 
+
+<details class="th-extension">
+<summary>Daugiau pratybų: atvirkštiniai skaičiavimai ir gilesni pavyzdžiai</summary>
 
 
 
@@ -300,7 +309,11 @@ R = 4536 − 3864 = 672 J. Tai vien vandens neatitikimas; kitus gavėjus ir mata
 
 
 
+
+</details>
+
 </Block>
+
 
 
 
@@ -462,6 +475,7 @@ Kinta abu įverčiai: 2 × 0,100 × 4200 × 0,1 = 84 J. 1 °C žingsnis pakeiči
 
 
 
+
 <Block kind="summary" title="Balansas, riba, įrodymai">
 
 Viduriui reikia vienodų tos pačios medžiagos masių ir idealaus balanso. Kitu atveju taikyk mase svertą formulę. Abiejų dalių pokyčius skaičiuok pagal vieną nurodytą ženklų sutartį. Liekana skatina tikrinti ribą ir prielaidas; ji nerodo, kad energija išnyko. Skirk tikrus įrodymus ir sintetines pratybas.
@@ -473,7 +487,10 @@ Viduriui reikia vienodų tos pačios medžiagos masių ir idealaus balanso. Kitu
 
 
 
+
 <Block kind="teacher" title="Prieš vertinimą aptark modelį">
+
+**Analizės pagrindas:** atskirk modelį nuo rodmenų; patvirtink užrašų duomenis; apskaičiuok vieną balansą; paaiškink vandens ribą ir vieną neįtrauktą poveikį. Kiti pavyzdžiai ir jautrumo skaičiavimai papildomi. Pilnas paaiškinimas nurodo įrodymus, ne vien atsakymą.
 
 **45 min eiga:** prisiminimas 4 min; prognozė ir riba 5; balanso aiškinimas 10; nevienodų masių modelis 5; skaičiavimai 8; pasitikrinimas 8; išvada 5. Atvirkštinių masių pavyzdys gali būti papildomas. Laikas neišbandytas.
 
@@ -486,7 +503,6 @@ Sintetiniai atsakymai: 1 bandymas – gauta 3864 J, atiduota 4536 J, liekana 672
 Rašytinį darbą su kriterijais lygina mokinys ar mokytojas. Automatinė dydžio patikra nepatvirtina samprotavimo. Žmogaus fizikos ir darbo klasėje peržiūra dar neatlikta. Keturios pamokos neužbaigia visos šiluminių reiškinių programos temos.
 
 </Block>
-
 
 
 </Lesson>

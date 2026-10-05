@@ -28,7 +28,7 @@ lesson:
     energy disappeared.
   kicker: An original trial lesson. Practising teacher review is still pending.
 ---
-import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../components/lesson';
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next, ThermalLab } from '../../../../components/lesson';
 
 <Lesson>
 
@@ -81,11 +81,25 @@ Use your actual masses and initial readings from lesson 3 if a supervised trial 
 
 
 
+
 <Block kind="hook" title="A prediction is not a result">
 
 Equal masses start at 20 °C and 40 °C. The ideal model predicts 30 °C; practice data give 29.2 °C. Does the difference mean energy has disappeared? Name the system and write one assumption you would check before drawing a conclusion.
 
 </Block>
+
+
+
+
+
+<Block kind="explore" title="From your measurements to an energy account">
+
+**Two separate tasks.** First explore an ideal mixing model. Then load your lesson 3 record, confirm its inputs and compare the prediction with your readings. If you have no apparatus data, choose the explicitly synthetic practice route. Using a supplied dataset does not demonstrate physical measuring skills.
+
+<ThermalLab mode="balance" lang="en" />
+
+</Block>
+
 
 
 
@@ -138,14 +152,6 @@ It is not automatically the exact heat lost to the room. Energy may warm the cup
 
 </Block>
 
-
-
-
-<Block kind="explore" title="Change the mass, test your prediction" figure="thermal-model" figureProps={{mode: "mixing"}} alt="Interactive ideal thermal model; the same values are listed in a data table.">
-
-This is an **ideal model, not measurements**. Cool water stays at 0.10 kg and 20 °C; warm water starts at 40 °C. Predict where final T moves if you double the warm mass. Then select 0.20 kg. Explain why the arithmetic midpoint no longer applies. Use the table if the figure cannot be read. In a real experiment, use measured initial temperatures rather than replacing them with 20 and 40.
-
-</Block>
 
 
 
@@ -203,6 +209,9 @@ Equal masses start at 18 °C and 36 °C. Find ideal T.
 
 </YourTurn>
 
+
+<details class="th-extension">
+<summary>More practice: reverse calculations and deeper examples</summary>
 
 
 
@@ -300,7 +309,11 @@ R = 4536 − 3864 = 672 J. This is a water-only mismatch; other recipients and m
 
 
 
+
+</details>
+
 </Block>
+
 
 
 
@@ -462,6 +475,7 @@ Both estimates change: 2 × 0.100 × 4200 × 0.1 = 84 J. A 1 °C step changes R 
 
 
 
+
 <Block kind="summary" title="Balance, boundary, evidence">
 
 The midpoint needs equal masses of the same material and an ideal balance. Otherwise use the mass-weighted formula. Calculate both water changes with one stated sign convention. A residual asks you to check the boundary and assumptions; it does not show energy vanished. Keep real evidence separate from synthetic practice.
@@ -473,7 +487,10 @@ The midpoint needs equal masses of the same material and an ideal balance. Other
 
 
 
+
 <Block kind="teacher" title="Discuss the model before a verdict">
+
+**Analysis core:** distinguish model from readings; confirm notebook inputs; calculate one balance; explain the water boundary and one omitted effect. Other examples and sensitivity calculations are extensions. A complete explanation names evidence, not just an answer.
 
 **45-minute route:** recall 4 min; prediction and boundary 5; balance frames 10; unequal-mass model 5; worked calculations 8; checks 8; conclusion 5. The reversed-mass extension can be follow-up. Timing is untested.
 
@@ -486,7 +503,6 @@ Synthetic keys: trial 1 — 3864 J gain, 4536 J loss magnitude, 672 J residual; 
 Written work requires comparison with the rubric by a pupil or teacher. Automated quantity checks cannot certify reasoning. Human physics/classroom review remains pending. The four lessons do not complete the whole thermal programme node.
 
 </Block>
-
 
 
 </Lesson>

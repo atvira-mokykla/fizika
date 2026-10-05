@@ -3,6 +3,7 @@ Run from physics-platform. Structured authoring data keeps mirrored item IDs and
 """
 from pathlib import Path
 import yaml
+from visual_lessons import revise
 P=Path('src/content/docs'); lang='en'; number=1
 
 def t(en,lt):return lt if lang=='lt' else en
@@ -187,9 +188,9 @@ for lang in ['en','lt']:
   goal=' '.join(lt if lang=='lt' else en for en,lt in objectives[number-1])
   meta={'title':t(*titles[number-1]),'description':goal,'sidebar':{'order':number},'lesson':{'grade':9,'unit':'thermal','course':['core'],'curriculum':['lt-physics-g9-01'] if number==1 else ['lt-physics-g9-02'],'contentArea':'thermal','achievements':['B1','D1','E1'],'levels':[1,2,3],'exam':[],'minutes':45,'goal':goal,'kicker':t('An original trial lesson. Practising teacher review is still pending.','Originali bandomoji pamoka. Praktikuojančio mokytojo peržiūra dar neatlikta.')}}
   body='---\n'+yaml.safe_dump(meta,sort_keys=False,allow_unicode=True,width=110)+'---\n'
-  imports=['Lesson','Block','Frames','Frame','Choice','Option','Why','Ok','Numeric','Quantity','Task','Marks','Mark','Hints','Hint','Solution','Example','ExStep','YourTurn','Next']
+  imports=['Lesson','Block','Frames','Frame','Choice','Option','Why','Ok','Numeric','Quantity','Task','Marks','Mark','Hints','Hint','Solution','Example','ExStep','YourTurn','Next','ThermalLab']
   rel='../../../../../' if lang=='lt' else '../../../../'
-  body+='import { '+', '.join(imports)+' } from \''+rel+'components/lesson\';\n\n<Lesson>\n\n'+fn()+'\n</Lesson>\n'
+  body+='import { '+', '.join(imports)+' } from \''+rel+'components/lesson\';\n\n<Lesson>\n\n'+revise(fn(),lang,number)+'\n</Lesson>\n'
   for tag in ['Block','Choice','Numeric','Quantity','Example','YourTurn','Task','Frames','Frame','Solution','ExStep','Marks']:
    body=body.replace('<'+tag+' ', '\n\n<'+tag+' ').replace('<'+tag+'>', '\n\n<'+tag+'>').replace('</'+tag+'>', '</'+tag+'>\n\n')
   file=P/('lt/9/thermal' if lang=='lt' else '9/thermal')/(slugs[number-1]+'.mdx');file.parent.mkdir(parents=True,exist_ok=True);file.write_text(body)

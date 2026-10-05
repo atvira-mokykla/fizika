@@ -27,3 +27,4 @@ export { default as Next } from './Next.astro';
 export { default as UnitCheck } from './UnitCheck.astro';
 export { default as CheckForm } from './CheckForm.astro';
 export { default as Quantity } from './Quantity.astro';
+export { default as ThermalLab } from './ThermalLab.astro';

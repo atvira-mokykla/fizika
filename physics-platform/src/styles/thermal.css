@@ -1,0 +1,80 @@
+/* Original physics investigation components. */
+.th-hero { display:grid; grid-template-columns:1fr 1.25fr; gap:1rem; align-items:center; padding:1rem; border-radius:14px; background:var(--am-accent-soft); }
+.th-hero figcaption { display:grid; gap:.6rem; }
+.th-hero figcaption p { margin:0; font:700 1.3rem/1.25 var(--am-display); }
+.th-hero small { color:var(--am-muted); }
+.th-lab { display:grid; gap:1rem; padding:1.15rem; border:1px solid var(--am-line); border-radius:16px; background:var(--am-surface-2); min-width:0; }
+.th-lab * { box-sizing:border-box; }
+.th-lab p, .th-lab li { overflow-wrap:anywhere; }
+.th-result { display:grid; gap:.7rem; margin-top:1rem; }
+.th-lab :is(p,h3,h4,table,ol,fieldset) { margin:0; }
+.th-head { display:grid; gap:.4rem; }
+.th-head h3 { font-family:var(--am-display); font-size:1.4rem; color:var(--am-ink); }
+.th-badge { font:500 .7rem var(--am-mono); letter-spacing:.08em; color:var(--am-accent); }
+.th-scene { background:var(--am-surface); border:1px solid var(--am-line); border-radius:12px; padding:.35rem; min-width:0; }
+.th-scene svg { display:block; width:100%; height:auto; font-family:var(--sl-font); }
+.th-lab .th-enlarge { display:none; }
+.th-enlarged .th-scene { overflow-x:auto; }
+.th-enlarged .th-scene svg { min-width:500px; }
+.th-visual-pair { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; }
+.th-model-note { font-size:.85rem; color:var(--am-muted); }
+.th-interpretation { border-left:3px solid var(--am-accent); padding:.65rem .8rem; background:var(--am-accent-soft); border-radius:0 8px 8px 0; }
+.th-controls { display:flex; flex-wrap:wrap; gap:.7rem; align-items:end; }
+.th-lab label { display:grid; gap:.3rem; font-size:.9rem; min-width:0; }
+.th-lab :is(input:not([type=checkbox]),select,textarea) { border:1px solid var(--am-line); border-radius:7px; background:var(--am-surface); color:var(--am-ink); font:inherit; padding:.55rem .6rem; max-width:100%; min-width:0; }
+.th-lab textarea { resize:vertical; width:100%; }
+.th-lab :is(button,input,select,textarea,a,summary):focus-visible { outline:3px solid var(--am-accent); outline-offset:3px; }
+.th-lab .am-btn { white-space:normal; min-height:2.6rem; }
+.th-lab button:disabled { opacity:.5; cursor:default; }
+.th-lab .th-check { display:flex; align-items:center; align-self:center; gap:.5rem; }
+.th-check input { width:1.1rem; height:1.1rem; accent-color:var(--am-accent); }
+.th-lab details { border:1px solid var(--am-line); background:var(--am-surface); border-radius:9px; padding:.65rem .8rem; }
+.th-lab summary { cursor:pointer; font-weight:600; }
+.th-lab details[open] > :not(summary) { margin-top:.7rem; }
+.th-data { overflow-x:auto; min-width:0; }
+.th-lab table { width:100%; border-collapse:collapse; font-size:.9rem; }
+.th-lab :is(th,td) { padding:.5rem .6rem; text-align:left; border-bottom:1px solid var(--am-line); }
+.th-lab caption { text-align:left; color:var(--am-muted); font-size:.85rem; padding:.3rem 0 .6rem; }
+.th-lab tr.is-point { background:var(--am-accent-soft); }
+.th-lab tr.is-point th::before { content:'● '; color:var(--am-accent); }
+.th-input-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+.th-wide { grid-column:1/-1; flex-basis:100%; }
+.th-lab form { display:grid; gap:1rem; }
+.th-lab fieldset { border:1px solid var(--am-line); border-radius:10px; padding:.9rem; min-width:0; }
+.th-lab legend { font-weight:700; padding:0 .3rem; }
+.th-method { display:grid; gap:.5rem; padding-left:1.4rem; }
+.th-analysis { display:grid; gap:.9rem; border-top:1px solid var(--am-line); padding-top:1rem; }
+.th-paper { font-size:.9rem; color:var(--am-muted); }
+.th-particle { animation:th-jostle var(--duration) ease-in-out var(--delay) infinite alternate; }
+.th-particle.th-fast { animation-duration:calc(var(--duration) * .65); }
+.th-paused .th-particle { animation-play-state:paused; }
+@keyframes th-jostle { from { transform:translate(-1px,-1px); } to { transform:translate(2px,1px); } }
+@media (prefers-reduced-motion:reduce) { .th-particle { animation:none; } }
+@media (max-width:42rem) { .th-visual-pair { grid-template-columns:1fr; } }
+@media (max-width:38rem) { .th-hero { grid-template-columns:1fr; padding:.7rem; } }
+@media (max-width:42rem) { .th-lab .th-enlarge { display:inline-flex; justify-self:start; } }
+.am-print .th-hero { display:none; }
+@media (max-width:30rem) { .th-input-grid { grid-template-columns:1fr; } .th-lab { padding:.7rem; } .th-controls>label { width:100%; } .th-lab :is(th,td) { padding:.4rem .3rem; font-size:.8rem; } }
+.am-print .th-lab { display:block; background:none; border:0; padding:0; }
+.am-print .th-lab > * { margin-bottom:3mm; }
+.am-print .th-interactive { display:none !important; }
+.am-print .th-particle { animation:none; }
+.am-print .th-visual-pair { grid-template-columns:1fr 1fr; }
+.am-print .th-scene { break-inside:avoid; }
+.am-print .th-lab details:not(.th-interactive) { display:block; }
+.am-print .th-lab fieldset { break-inside:avoid; margin:3mm 0; }
+.am-print .th-input-grid { grid-template-columns:1fr 1fr; gap:2mm 5mm; }
+.am-print .th-lab :is(input,textarea) { width:100%; border:0; border-bottom:1px solid #999; border-radius:0; min-height:7mm; background:none; padding:1mm; }
+.am-print .th-lab input::placeholder { color:transparent; }
+.am-print .th-lab textarea { min-height:12mm; }
+.am-print .th-lab .th-wide { grid-column:1/-1; }
+.am-print-worksheet .am-block-explore:has(.th-lab) { display:block !important; }
+.am-print-worksheet .am-block-explore:has(.th-lab) .am-block-main>p { display:none; }
+.am-print-key .th-lab { display:none; }
+.am-print .th-lab details { break-inside:avoid; }
+@media print { .th-interactive { display:none !important; } .th-lab details:not([open]) > :not(summary) { display:block; } }
+.th-extension { border:1px solid var(--am-line); border-radius:10px; padding:.8rem 1rem; }
+.th-extension>summary { font-weight:600; color:var(--am-accent); cursor:pointer; }
+.th-extension>summary:focus-visible { outline:3px solid var(--am-accent); outline-offset:3px; }
+.th-extension[open]>.am-example { margin-top:1rem; }
+.am-print .th-extension>:not(summary) { display:block; }

@@ -28,7 +28,7 @@ lesson:
     experiment.
   kicker: An original trial lesson. Practising teacher review is still pending.
 ---
-import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../components/lesson';
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next, ThermalLab } from '../../../../components/lesson';
 
 <Lesson>
 
@@ -169,22 +169,11 @@ For a detailed residual comparison, use a thermometer with 0.1 °C resolution or
 
 
 
-<Block kind="explore" title="Collect your own evidence">
+<Block kind="explore" title="Collect evidence in your notebook">
 
-1. Record the equipment and instrument resolutions; check the teacher’s safety instructions.
-2. Measure actual masses and initial temperatures, and write your prediction.
-3. Under teacher supervision, pour warm water into the cool water already in the insulated cup and stir gently. Record the first stable reading, its delay and the later readings.
-4. Repeat once using the same protocol. Record new actual inputs.
-5. Keep every raw reading. If no reading is available, write “not measured”, rather than filling it from the model.
+**Follow the safety and measurement protocol from the explanation before using apparatus.** The core is one equal-mass supervised trial. The second trial is an optional repeat. Keep raw readings and observations; never replace a missing reading with the ideal prediction.
 
-**Blank record for real measurements:**
-
-| Trial | Cool mass (g) | Warm mass (g) | Initial cool T (°C) | Initial warm T (°C) | First stable T (°C) | Delay (s) | T at +30 s (°C) | T at +60 s (°C) |
-|---|---|---|---|---|---|---|---|---|
-| 1 | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |
-| 2 | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |
-
-Balance resolution: ____ g. Thermometer resolution: ____ °C. Container initial condition: ____. Pour direction: warm into cool. Initial-reading order/times: ____. Stability criterion: one step over 5 s.
+<ThermalLab mode="apparatus" lang="en" />
 
 </Block>
 
@@ -244,6 +233,9 @@ Illustrative entry: empty cup 28 g; cup + water 130 g. Find water mass.
 
 </YourTurn>
 
+
+<details class="th-extension">
+<summary>More practice: reverse calculations and deeper examples</summary>
 
 
 
@@ -323,6 +315,9 @@ Write: “The reading decreased over this interval; continued heat exchange or m
 
 
 
+
+
+</details>
 
 </Block>
 
@@ -459,9 +454,11 @@ Record actual inputs, instrument resolution, first stable reading and its delay.
 
 <Block kind="teacher" title="Prepare before the class">
 
+**Physical core:** one supervised trial after protocol preparation. Repeat, unequal masses and extra worked examples are extensions. Assign measuring, recording and timing roles; rotate them if repeating. The apparatus diagram is a schematic; the notebook fields are raw readings. Only lesson 3 needs physical apparatus.
+
 **Before use:** perform the protocol yourself with the actual cups, balance and thermometer; confirm stable-reading response time and handling. No laboratory trial or teacher sign-off is claimed. Water limit ≤40 °C is this protocol’s chosen condition; follow your school’s procedures too.
 
-**45-minute route:** readiness and prediction 7 min; equipment/safety and time definition 8; two supervised trials 20; record check 5; limitations and exit response 5. Allocate analysis to lesson 4. If two safe trials cannot fit, retain a complete single trial and schedule the second later rather than rushing.
+**Optional expanded two-trial route:** readiness and prediction 7 min; equipment/safety and time definition 8; two supervised trials 20; record check 5; limitations and exit response 5. Allocate analysis to lesson 4. If two safe trials cannot fit, retain a complete single trial and schedule the second later rather than rushing.
 
 The readiness questions assess procedural understanding, not competence with real equipment. Review the submitted record directly; the website cannot automatically judge physical execution or written evidence.
 

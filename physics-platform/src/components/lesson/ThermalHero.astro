@@ -1,0 +1,14 @@
+---
+import { temperatureScene, heaterScene, apparatusScene, mixingScene } from '../../lib/thermal-svg';
+import type { Lang } from '../../lib/thermal';
+import '../../styles/thermal.css';
+interface Props { mode: 'temperature' | 'heating' | 'apparatus' | 'balance'; lang: Lang }
+const {mode,lang} = Astro.props;
+const lt=lang==='lt';
+const questions={temperature:lt?'Ta pati temperatūra. Ar to pakanka?':'Same temperature. Is that enough?',heating:lt?'Kuris vandens kiekis sušils greičiau?':'Which amount of water warms faster?',apparatus:lt?'Ką užrašysi, kad galėtum pasitikėti išvada?':'What will you record to support your conclusion?',balance:lt?'Kodėl mišinys ne visada atsiduria viduryje?':'Why is the mixture not always at the midpoint?'};
+const images={temperature:()=>temperatureScene(lang),heating:()=>heaterScene(lang,.2,42,200),apparatus:()=>apparatusScene(lang),balance:()=>mixingScene(lang,.2)};
+---
+<figure class="th-hero not-content">
+  <figcaption><span class="th-badge">{lt?'ŠIOS PAMOKOS KLAUSIMAS':'THIS LESSON’S QUESTION'}</span><p>{questions[mode]}</p><small>{lt?'Modelio iliustracija. Tyrinėk ir paaiškink.':'Model illustration. Investigate and explain.'}</small></figcaption>
+  <div class="th-scene" set:html={images[mode]()} />
+</figure>

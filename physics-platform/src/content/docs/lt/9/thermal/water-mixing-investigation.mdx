@@ -26,7 +26,7 @@ lesson:
     prietaisų padalos vertę, neišgalvoti duomenų. Moku paaiškinti laiko ir indo įtaką vandens maišymo tyrimui.
   kicker: Originali bandomoji pamoka. Praktikuojančio mokytojo peržiūra dar neatlikta.
 ---
-import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next } from '../../../../../components/lesson';
+import { Lesson, Block, Frames, Frame, Choice, Option, Why, Ok, Numeric, Quantity, Task, Marks, Mark, Hints, Hint, Solution, Example, ExStep, YourTurn, Next, ThermalLab } from '../../../../../components/lesson';
 
 <Lesson>
 
@@ -167,22 +167,11 @@ Išsamiai liekanai palyginti naudok 0,1 °C ar smulkesnio žingsnio termometrą 
 
 
 
-<Block kind="explore" title="Surink savo įrodymus">
+<Block kind="explore" title="Surink įrodymus savo užrašuose">
 
-1. Užrašyk įrangą ir prietaisų padalos vertes; patikrink mokytojo saugos nurodymus.
-2. Išmatuok tikras mases ir pradines temperatūras, parašyk prognozę.
-3. Mokytojui prižiūrint šiltą vandenį pilk į vėsų, esantį izoliuotame inde, ir švelniai išmaišyk. Užrašyk pirmą nusistovėjusį rodmenį, jo delsą ir vėlesnius rodmenis.
-4. Pakartok tuo pačiu protokolu. Išmatuok ir užrašyk naujus tikrus pradinius dydžius.
-5. Išsaugok visus pirminius rodmenis. Jei rodmens nėra, rašyk „neišmatuota“, ne modelio skaičių.
+**Prieš naudodamas įrangą laikykis aiškinime pateiktos saugos ir matavimo eigos.** Pagrindas – vienas prižiūrimas vienodų masių bandymas. Antras bandymas yra papildomas kartojimas. Išsaugok rodmenis ir stebėjimus; trūkstamo rodmens nekeisk idealia prognoze.
 
-**Tuščia tikrų matavimų lentelė:**
-
-| Bandymas | Vėsaus masė (g) | Šilto masė (g) | Pradinė vėsaus T (°C) | Pradinė šilto T (°C) | Pirma nusistovėjusi T (°C) | Delsa (s) | T po +30 s (°C) | T po +60 s (°C) |
-|---|---|---|---|---|---|---|---|---|
-| 1 | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |
-| 2 | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |
-
-Svarstyklių padalos vertė: ____ g. Termometro padalos vertė: ____ °C. Pradinė indo būklė: ____. Pylimo kryptis: šiltas į vėsų. Pradinių rodmenų eilė ir laikas: ____. Nusistovėjimo kriterijus: vienas žingsnis per 5 s.
+<ThermalLab mode="apparatus" lang="lt" />
 
 </Block>
 
@@ -242,6 +231,9 @@ Iliustracinis įrašas: tuščias indas 28 g; indas su vandeniu 130 g. Rask vand
 
 </YourTurn>
 
+
+<details class="th-extension">
+<summary>Daugiau pratybų: atvirkštiniai skaičiavimai ir gilesni pavyzdžiai</summary>
 
 
 
@@ -321,6 +313,9 @@ Rašyk: „Šiame intervale rodmuo sumažėjo; galėjo prisidėti tęstiniai ši
 
 
 
+
+
+</details>
 
 </Block>
 
@@ -457,9 +452,11 @@ Užrašyk tikrus pradinius dydžius, prietaisų padalos vertes, pirmą nusistov�
 
 <Block kind="teacher" title="Pasiruošk prieš pamoką">
 
+**Praktinis pagrindas:** vienas prižiūrimas bandymas susipažinus su eiga. Kartojimas, nevienodos masės ir papildomi pavyzdžiai yra plėtiniai. Paskirkite matavimo, užrašymo ir laiko sekimo vaidmenis; kartodami juos sukeiskite. Įrangos brėžinys yra schema; užrašų laukeliuose – rodmenys. Tik 3 pamokai reikia fizinės įrangos.
+
 **Prieš naudojimą:** patys išbandykite protokolą su tikrais indais, svarstyklėmis ir termometru; patikrinkite nusistovėjimo laiką ir naudojimą. Laboratorinio bandymo ir mokytojo patvirtinimo dar nėra. ≤40 °C riba yra pasirinkta šio protokolo sąlyga; laikykitės ir mokyklos tvarkos.
 
-**45 min eiga:** pasirengimas ir prognozė 7 min; įranga, sauga ir laiko apibrėžimas 8; du prižiūrimi bandymai 20; užrašų patikra 5; ribos ir baigiamasis atsakymas 5. Analizė skirta 4 pamokai. Jei du saugūs bandymai netelpa, išsaugokite vieną pilną bandymą, o antrą atlikite vėliau; neskubinkite veiklos.
+**Papildoma išplėstinė dviejų bandymų eiga:** pasirengimas ir prognozė 7 min; įranga, sauga ir laiko apibrėžimas 8; du prižiūrimi bandymai 20; užrašų patikra 5; ribos ir baigiamasis atsakymas 5. Analizė skirta 4 pamokai. Jei du saugūs bandymai netelpa, išsaugokite vieną pilną bandymą, o antrą atlikite vėliau; neskubinkite veiklos.
 
 Pasirengimo klausimai tikrina procedūros supratimą, ne gebėjimą naudoti tikrą įrangą. Tyrimo užrašą peržiūrėkite tiesiogiai; svetainė negali automatiškai įvertinti fizinio atlikimo ar rašytinių įrodymų.
 
